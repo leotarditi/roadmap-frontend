@@ -437,9 +437,6 @@ button {
 
 ---
 
-Aquí tienes un archivo `README.md` que explica el concepto de especificidad en CSS usando analogías claras, con sus respectivos conceptos técnicos.
-
-```markdown
 # 📚 Especificidad en CSS
 
 ## ¿Qué es la especificidad? 🧠
@@ -627,9 +624,6 @@ Ahora será azul. Esto ocurre porque ambas reglas tienen la misma especificidad,
 
 ---
 
-Aquí te dejo un archivo Markdown basado en tu artículo de **Inheritance**, con una analogía sencilla para explicar los conceptos, manteniendo los aspectos técnicos claros:
-
-```markdown
 # Inheritance en CSS
 
 ## 📜 Herencia CSS: ¿Qué es y cómo funciona?
@@ -730,9 +724,6 @@ aside p {
 
 ---
 
-Aquí tienes un archivo markdown que describe el tema del color en CSS utilizando analogías y conceptos técnicos. Puedes usarlo como base para tu repositorio en GitHub.
-
-```markdown
 # Roadmap para Frontend: Color en CSS
 
 ## Color 
@@ -835,6 +826,1327 @@ Para los fondos, puedes establecer el color usando `background` o `background-co
 
 - `hsl(0 0% 0% / 20%)` (✔️)
 - `hsl(0, 0, 0)` (❌)
+
+---
+
+# Entendiendo las Unidades de Tamaño en CSS con Analogías Simples
+
+### Unidades de Tallas en CSS
+
+Imagina que estás diseñando una prenda de ropa. Necesitas saber las medidas para crear un buen ajuste. En CSS, el concepto es similar: necesitas especificar medidas para los elementos de tu página web. Las unidades de tamaño son como esas medidas, y te permiten controlar cómo se ajustan los elementos en diferentes situaciones.
+
+---
+
+### 🧵 **Analogía: Ajustando la Talla de la Ropa**  
+Piensa en las unidades de CSS como tallas de ropa. Dependiendo del material (en este caso, el tamaño de la pantalla o el dispositivo), la talla puede cambiar, pero las reglas que usas para decidir la talla son las mismas.
+
+---
+
+### 1. **Unidades Relativas: Adaptándose al Entorno**
+
+Las unidades relativas son como ropa elástica, ajustándose al cuerpo de quien la use. Estas unidades se adaptan en función del contexto. Un ejemplo es la unidad `em`, que cambia su tamaño en función del tamaño de la fuente de su elemento superior. Si la fuente principal es más grande, el valor de `em` también lo será. Lo mismo ocurre con `rem`, que usa como referencia el tamaño de la fuente del elemento raíz.
+
+#### 👕 **Analogía**: 
+Imagina que haces una camiseta para niños. Si haces la camiseta 1.5 veces más grande que la medida del niño (es decir, usas `1.5em`), la camiseta crecerá o se reducirá dependiendo del tamaño del niño (la fuente base del elemento).
+
+#### Ejemplo técnico:
+```css
+p {
+  font-size: 24px;
+  line-height: 1.5; /* Esto es un 150% del tamaño de la fuente */
+}
+```
+Aquí, `1.5` se refiere a la proporción de la altura de la línea en relación con el tamaño de la fuente. Si la fuente es de 24px, la altura de línea será 36px (150%).
+
+---
+
+### 2. **Unidades Absolutas: Tamaños Fijos, Sin Elasticidad**
+
+Por otro lado, las unidades absolutas son como un traje formal hecho a medida. Una vez que lo has cortado, no puedes estirarlo ni encogerlo. Un `px` (píxel) es una unidad absoluta que siempre mide lo mismo sin importar dónde lo uses.
+
+#### 👔 **Analogía**: 
+Si decides que una chaqueta mida 50cm de ancho, ese tamaño será fijo. No importa quién la use, esa chaqueta siempre tendrá ese ancho. Lo mismo sucede con los `px`, `cm` o `in` en CSS.
+
+#### Ejemplo técnico:
+```css
+div {
+  width: 10cm;
+  height: 5cm;
+}
+```
+Este `div` tendrá siempre un tamaño de 10x5 centímetros, perfecto si estás diseñando algo para impresión, donde el tamaño debe ser preciso.
+
+---
+
+### 3. **Porcentajes: Elásticos y Proporcionales**
+
+Los porcentajes en CSS funcionan como si ajustaras una prenda proporcionalmente al tamaño del cuerpo. Si dices que el ancho de un elemento debe ser el `50%`, estás diciendo que debe ocupar la mitad del espacio disponible en su contenedor superior.
+
+#### 👗 **Analogía**: 
+Es como si la prenda estuviera diseñada para ocupar el 50% del ancho de la persona que la viste. Si la persona (el contenedor) es más grande, la prenda (el elemento) también será más grande.
+
+#### Ejemplo técnico:
+```css
+div {
+  width: 50%; /* El div ocupará la mitad del ancho disponible */
+}
+```
+En este ejemplo, el `div` siempre será la mitad del tamaño de su contenedor principal, sin importar cuánto cambie el tamaño de la ventana del navegador.
+
+---
+
+### 4. **Unidades del Viewport: Ajustes Basados en la Ventana**
+
+Ahora, imagina que la prenda que estás creando puede cambiar dependiendo del lugar donde te encuentres. Las unidades de viewport (`vw`, `vh`) son como esa prenda mágica. Se adaptan al tamaño de la ventana del navegador.
+
+#### 👕 **Analogía**: 
+Si dices que tu camiseta mide `10vw` de ancho, significa que la camiseta siempre será el 10% del ancho de la ventana del navegador. A medida que el navegador se agranda o se achica, la camiseta cambiará su tamaño para mantenerse proporcional.
+
+#### Ejemplo técnico:
+```css
+div {
+  width: 10vw; /* El div será el 10% del ancho de la ventana */
+}
+```
+
+---
+
+### 5. **Unidades Especiales: Control Preciso para Casos Específicos**
+
+Hay otras unidades especiales como `ch`, que mide el ancho de un caracter "0" en la fuente utilizada. Estas unidades son útiles para casos específicos donde necesitas un control muy detallado sobre el tamaño de los elementos.
+
+#### 👕 **Analogía**: 
+Imagina que ajustas el ancho de una prenda en función de la anchura de un botón específico. Cada botón en la prenda mide lo mismo, por lo que puedes usar ese botón como referencia para ajustar el resto de las medidas.
+
+#### Ejemplo técnico:
+```css
+p {
+  max-width: 60ch; /* El párrafo no podrá ser más ancho que 60 caracteres "0" */
+}
+```
+
+---
+
+### Resumen
+
+Las unidades de tamaño en CSS son herramientas clave para diseñar interfaces web que sean funcionales y estéticamente agradables. Al entender cómo funcionan y cómo se adaptan a diferentes situaciones, puedes diseñar páginas que se vean bien sin importar el dispositivo en el que se vean.
+
+**Unidades relativas**: Se adaptan al contexto (como em, rem, %).  
+**Unidades absolutas**: Tienen un tamaño fijo (como px, cm).  
+**Viewport units**: Se basan en el tamaño de la ventana del navegador (vw, vh).
+
+```css
+p {
+  font-size: 1.2rem; /* relativo al tamaño de fuente raíz */
+  width: 80vw;       /* 80% del ancho de la ventana */
+}
+```
+
+---
+
+# Diseño CSS: Estructurando el Camino
+
+## Imagina que eres un arquitecto
+Para entender el diseño en CSS, imagina que eres un arquitecto que está diseñando una casa. Tienes que decidir cómo distribuir cada habitación (elementos), si estarán alineadas una al lado de la otra (diseño horizontal), una encima de la otra (diseño vertical) o en ambas direcciones (diseño bidimensional). CSS es tu herramienta, como los planos que decides usar para organizar cada parte de la casa.
+
+### Diseño: Una Breve Historia
+Al principio, la web era como construir casas usando mesas plegables. Los desarrolladores usaban elementos `<table>` para organizar contenido, lo cual era como intentar usar mesas para construir paredes. Luego llegó CSS y fue como si hubiéramos descubierto cemento: ahora podíamos separar la estructura (HTML) del diseño (CSS). Esto permitió que los arquitectos (desarrolladores) diseñaran casas (sitios web) sin modificar las paredes originales (HTML).
+
+#### Evolución del Diseño CSS
+CSS ha ido evolucionando y mejorando sus herramientas. Es como si ahora tuvieras más opciones de materiales y técnicas de construcción para hacer tu casa más sólida y estética. Hoy en día, contamos con herramientas avanzadas como **Flexbox** y **Grid**.
+
+### Propiedad `display`: Definiendo el Comportamiento de las Habitaciones
+
+- **Bloque (`block`)**: Piensa en los elementos de bloque como si fueran paredes de una casa. Ocupan todo el espacio horizontal disponible y no pueden estar al lado de otros elementos. Son grandes y sólidos.
+  
+  ```css
+  .my-element {
+      display: block;
+  }
+  ```
+
+- **Intercalado (`inline`)**: Los elementos intercalados son como los muebles en una habitación. No ocupan todo el ancho y pueden estar alineados uno al lado del otro, como sillas alineadas en un salón.
+
+  ```css
+  .my-element {
+      display: inline;
+  }
+  ```
+
+### Flexbox: Un Eje para Organizar
+**Flexbox** es como una cinta transportadora en una fábrica: alinea todo en una sola fila (eje) o columna. Te permite ajustar el espacio entre los elementos, estirarlos o contraerlos según el espacio disponible. Ideal para cuando quieres que todo esté alineado de manera organizada en una sola dirección, como en un estante.
+
+```css
+.my-element {
+    display: flex;
+}
+```
+
+- **`align-items`**: Es como decidir si los objetos estarán alineados al centro o distribuidos en los extremos.
+  
+  ```css
+  .my-element {
+      display: flex;
+      align-items: center;
+  }
+  ```
+
+### Grid: Diseños en Dos Dimensiones
+Si Flexbox es una cinta transportadora que organiza en una fila, **Grid** es como tener un plano cuadriculado para organizar todo en dos dimensiones: filas y columnas. Imagina que estás organizando los muebles en tu salón y quieres que algunos ocupen más espacio que otros. Grid te da ese control.
+
+```css
+.my-element {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+}
+```
+
+- **`grid-template-columns`**: Con esta propiedad defines el número de columnas y su tamaño, como si estuvieras decidiendo cuántas paredes poner en cada parte de la casa.
+
+### Conclusión
+
+CSS es como tu herramienta de diseño y construcción. Flexbox es ideal para organizar elementos en una sola fila o columna, mientras que Grid te permite organizar en varias filas y columnas. ¡Tu sitio web es como una casa y tú eres el arquitecto que decide cómo todo encaja perfectamente!
+
+---
+
+# 📦 Caja Flexible (Flexbox)
+
+### ¿Qué es Flexbox?
+
+Imagina que tienes una caja llena de objetos de diferentes tamaños y formas. Quieres organizarlos dentro de la caja de la mejor manera posible. A veces tienes mucho espacio, a veces no tanto, pero quieres que los objetos se adapten al espacio disponible sin hacerte pasar un mal rato.
+
+Así funciona **Flexbox**, un modelo de diseño CSS que te permite organizar elementos en una "caja flexible" que se adapta al tamaño del contenedor y los elementos que contiene. Esto es ideal para crear interfaces que cambian de tamaño de acuerdo con el tamaño de la pantalla (o **viewport**).
+
+---
+
+## 🚀 Conceptos Básicos de Flexbox
+
+### Eje Principal y Eje Cruzado
+
+Imagina que el eje principal es una cinta transportadora donde vas colocando tus objetos. Este eje lo decides tú. Puede ser una **fila** (los objetos se colocan uno al lado del otro) o una **columna** (los objetos se apilan uno encima del otro).
+
+El **eje cruzado** es el eje que cruza al principal. Si tu cinta transportadora es una fila, el eje cruzado será vertical, y si es una columna, el eje cruzado será horizontal.
+
+```css
+/* El eje principal es una fila */
+.container {
+  display: flex;
+  flex-direction: row; /* También puede ser 'column' */
+}
+```
+
+### 💡 Ejemplo Visual:
+Imagina una estantería (contenedor) donde pones libros (elementos flexibles). Si los libros no caben todos en una fila (eje principal), algunos caerán en la siguiente fila (eje cruzado). Flexbox te ayuda a decidir cómo se organizan.
+
+### Flexibilidad en el Espacio
+
+En una fila normal, los objetos se alinean rígidamente. Si no caben, simplemente se desbordan o se ven mal. Con Flexbox, los objetos **crecen o se encogen** dependiendo del espacio disponible. Piensa en ellos como globos que pueden expandirse o reducirse según el espacio que tengan.
+
+```css
+/* Hacemos que los elementos se adapten */
+.container {
+  display: flex;
+  flex-wrap: wrap; /* Los elementos se pueden mover a una nueva línea si no caben */
+}
+```
+
+### 🛠️ Propiedades Técnicas
+
+1. **flex-direction**: Define la dirección del eje principal.
+   - `row`: Los elementos se organizan en una fila.
+   - `column`: Los elementos se organizan en una columna.
+
+2. **flex-wrap**: Permite que los elementos "salten" a una nueva línea si no hay suficiente espacio.
+   - `wrap`: Los elementos se ajustan en varias filas o columnas.
+
+3. **justify-content**: Controla cómo se distribuyen los elementos en el eje principal.
+   - `flex-start`: Los elementos se alinean al inicio.
+   - `center`: Los elementos se centran en el contenedor.
+
+4. **align-items**: Controla cómo se alinean los elementos en el eje cruzado.
+   - `flex-start`: Los elementos se alinean al inicio del eje cruzado.
+   - `center`: Los elementos se centran a lo largo del eje cruzado.
+
+---
+
+### 🌱 Un Ejemplo Práctico
+
+```html
+<div class="container">
+  <div>Elemento 1</div>
+  <div>Elemento 2</div>
+  <div>Elemento 3</div>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-direction: row; /* Organiza los elementos en una fila */
+  justify-content: space-between; /* Espacio igual entre los elementos */
+  align-items: center; /* Alinea los elementos verticalmente al centro */
+}
+```
+
+En este caso, **los tres elementos se organizarán horizontalmente** en una fila. Tendrán espacio igual entre ellos y estarán centrados verticalmente.
+
+### ⚠️ Cuidado con el Reordenamiento
+
+Si cambias el orden visual con propiedades como `row-reverse`, los elementos parecerán moverse visualmente, pero **el orden lógico en el DOM no cambia**. Esto puede causar problemas de accesibilidad, especialmente para lectores de pantalla.
+
+```css
+/* Los elementos se muestran en orden inverso */
+.container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+```
+
+---
+
+## 🎯 Analogía Final
+
+Piensa en Flexbox como un grupo de amigos que entran en una foto grupal. Si hay espacio, se acomodan tranquilamente, pero si hay menos espacio, algunos se acercan o hacen espacio para otros, y si es necesario, se forman varias filas. ¡Así de flexible es Flexbox!
+
+---
+
+## 🎓 Conceptos Clave:
+
+- **Eje Principal**: La dirección en la que los elementos se organizan (puede ser horizontal o vertical).
+- **Eje Cruzado**: El eje perpendicular al principal, donde también puedes alinear elementos.
+- **flex-wrap**: Permite que los elementos se ajusten a una nueva fila o columna si no caben en una sola línea.
+
+---
+
+# CSS Grid: Organizando Elementos en una Cuadrícula
+
+## Introducción
+El diseño de **encabezado, barra lateral, cuerpo y pie de página** es uno de los más comunes en el diseño web. Imagina una página con un encabezado que contiene un logo y el menú de navegación, una barra lateral con enlaces o información adicional, y un área principal que muestra el contenido de un artículo. A lo largo del tiempo, se han utilizado diferentes enfoques para lograr este diseño, pero **CSS Grid** ha simplificado considerablemente la creación de este tipo de estructuras. 
+
+CSS Grid permite crear diseños bidimensionales, organizando elementos en **filas y columnas** de manera flexible y precisa. 
+
+## Concepto General
+CSS Grid es ideal porque combina lo mejor de los diseños con tamaños intrínsecos y extrínsecos. Esto significa que puedes definir el tamaño de las columnas y filas según el contenido o según el espacio disponible. La cuadrícula organiza los elementos en un contenedor dividiendo el espacio en celdas, lo que facilita posicionar elementos de forma controlada o dejar que el navegador los posicione automáticamente.
+
+## ¿Qué es una cuadrícula?
+Una **cuadrícula** en CSS se define al crear filas y columnas. Los elementos hijos del contenedor de la cuadrícula (o **grid container**) se colocan automáticamente en las celdas generadas o pueden ser posicionados manualmente.
+
+### Terminología de CSS Grid
+Para entender CSS Grid, es importante familiarizarse con algunos términos clave:
+
+- **Líneas de cuadrícula**: Son las líneas invisibles que delimitan las filas y columnas. Por ejemplo, si tienes una cuadrícula con 4 columnas, tendrás 5 líneas de columna.
+  
+  - *Analogía*: Piensa en las líneas de cuadrícula como las líneas de un cuaderno cuadriculado. Las líneas te ayudan a ubicar elementos de manera precisa.
+
+- **Pistas de cuadrícula (Grid Tracks)**: El espacio entre dos líneas de cuadrícula se denomina "pista". Puedes tener pistas de columna o de fila.
+
+  - *Analogía*: Imagina una estantería con repisas (las pistas) entre cada soporte vertical (las líneas de cuadrícula). Los objetos (elementos) se colocan en las repisas.
+
+- **Celda de cuadrícula**: Es el área más pequeña en una cuadrícula, formada por la intersección de una fila y una columna.
+
+  - *Analogía*: Una celda en CSS Grid es como una celda en una hoja de cálculo, donde cada celda puede contener datos (elementos).
+
+- **Área de la cuadrícula**: Se refiere a un grupo de celdas que abarcan varias filas y columnas.
+
+  - *Analogía*: Piensa en un edificio de oficinas, donde una "área" es un espacio abierto que ocupa varias oficinas (celdas).
+
+- **Brechas (Gaps)**: Son los espacios vacíos entre las pistas de la cuadrícula. Aunque no puedes colocar elementos directamente en ellos, ayudan a distribuir los elementos de manera ordenada.
+
+  - *Analogía*: Son como los pasillos entre las repisas de una estantería. No colocas cosas ahí, pero permiten que los objetos estén organizados y accesibles.
+
+## Implementando CSS Grid
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: 5em 100px 30%;
+  grid-template-rows: 200px auto;
+  gap: 10px;
+}
+```
+
+En este ejemplo, hemos creado una cuadrícula con tres columnas, cada una con un tamaño diferente (em, px, y %), y dos filas. La propiedad `gap` define el espacio entre las filas y columnas.
+
+### Explorando en el Navegador
+Puedes usar las **Herramientas para Desarrolladores** en Chrome para visualizar y depurar las cuadrículas. Selecciona un contenedor con `display: grid`, y verás las líneas y celdas resaltadas, lo que te permite entender mejor cómo se organizan los elementos.
+
+## Palabras Clave de Tamaño Intrínseco
+CSS Grid incluye palabras clave para ajustar el tamaño de las pistas según el contenido:
+
+- **min-content**: Define la pista tan pequeña como sea posible, sin cortar el contenido.
+- **max-content**: La pista se expande para mostrar todo el contenido en una sola línea.
+- **fit-content()**: Similar a `max-content`, pero puedes limitar el tamaño máximo.
+
+### Ejemplo de Palabras Clave de Tamaño Intrínseco:
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: min-content max-content fit-content(10em);
+}
+```
+
+En este ejemplo, las tres columnas usan diferentes métodos de ajuste de tamaño.
+
+## La Unidad `fr`
+La unidad **fracción** (`fr`) en CSS Grid permite distribuir el espacio disponible entre las columnas o filas de manera proporcional.
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+```
+
+En este caso, la segunda columna ocupa el doble de espacio que las otras dos.
+
+### Analogía:
+La unidad `fr` es como dividir una pizza. Si asignas `1fr` a una persona y `2fr` a otra, la segunda recibirá el doble de porciones.
+
+## Función `minmax()`
+La función **`minmax()`** te permite definir un tamaño mínimo y máximo para las pistas de la cuadrícula.
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: minmax(100px, 1fr);
+}
+```
+
+Aquí, la columna tendrá un tamaño mínimo de 100px y ocupará el espacio restante (1fr) si es posible.
+
+### Analogía:
+Imagina una goma elástica que tiene un tamaño mínimo de 100px, pero puede estirarse hasta llenar el espacio disponible.
+
+## Función `repeat()`
+Si necesitas crear varias columnas o filas repetidas, puedes usar la función **`repeat()`**.
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+```
+
+Esto creará 12 columnas con tamaños iguales.
+
+### Analogía:
+Es como pedir una docena de facturas; todas tienen el mismo tamaño y se acomodan perfectamente en la bandeja.
+
+## Auto-fill y Auto-fit
+Con **auto-fill** y **auto-fit**, puedes crear tantas columnas como quepan en el contenedor sin especificar un número fijo de columnas.
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+```
+
+Esto crea tantas columnas como quepan, con un tamaño mínimo de 200px.
+
+### Analogía:
+Piensa en llenar una caja con pelotas de tenis. Pones tantas como caben, pero cada una mantiene un tamaño mínimo.
+
+---
+
+## Conclusión
+CSS Grid te ofrece un control total sobre la disposición de los elementos en filas y columnas. Con herramientas como `fr`, `minmax()`, y `repeat()`, puedes crear diseños complejos y flexibles con un código limpio y fácil de mantener. Aprovecha la visualización de cuadrículas en las herramientas de desarrollo para comprender mejor cómo se distribuyen los elementos.
+
+# Números de Línea Negativos en CSS Grid
+
+### Introducción
+
+Imagina que estás jugando con un tablero de ajedrez. Ese tablero representa una **cuadrícula explícita**, la cual has definido y tiene un tamaño específico. Cada pieza que colocas es un **elemento** en esa cuadrícula. Ahora, ¿qué sucede si necesitas mover una pieza fuera del tablero? El tablero no desaparecerá; en cambio, se **expandirá** para dar espacio a la pieza, creando una **cuadrícula implícita**.
+
+Así es como funciona CSS Grid: cuando defines las **filas** y **columnas** de tu diseño (grid-template-rows y grid-template-columns), estás estableciendo tu **cuadrícula explícita**. Pero si necesitas colocar un elemento fuera de esos límites, CSS creará una cuadrícula adicional (cuadrícula implícita) para acomodar ese elemento.
+
+### Números de Línea Negativos: ¿Qué son?
+
+Cuando defines una cuadrícula, las **líneas** que la componen tienen números. Generalmente, empiezan desde el 1 y continúan en el sentido de lectura. Pero, ¿qué pasaría si quisieras hacer algo más flexible, como extender un elemento desde la primera línea hasta la última, sin importar cuántas filas o columnas haya? Aquí entran los **números de línea negativos**.
+
+Piensa en las líneas de la cuadrícula como si fueran las **páginas de un libro**. Normalmente, contarías desde la primera página (1) hasta la última (digamos 100). Sin embargo, podrías empezar a contar desde la última página hacia atrás, usando números negativos. Si quieres estirar un elemento desde la primera hasta la última línea de una cuadrícula, podrías usar `grid-column: 1 / -1`. El número -1 siempre representa la **última línea** de la cuadrícula.
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.grid-item {
+    grid-column: 1 / -1;
+}
+```
+
+### Analogía: La Mesa de Noche
+Imagina que tienes una mesa de noche con tres cajones. Cada cajón representa una fila de la cuadrícula. Si quisieras que un objeto (como una lámpara) se extienda a través de toda la mesa de noche, ocuparía todos los cajones. En términos de CSS Grid, esto se traduciría como `grid-row: 1 / -1`, es decir, desde el **primer** hasta el **último** cajón.
+
+### Controlando la Cuadrícula Implícita
+
+Cuando trabajas con CSS Grid, puedes encontrarte con elementos que "se salen" de la cuadrícula explícita. En estos casos, el navegador automáticamente ajusta el tamaño de las filas o columnas nuevas que crea. Esto puede controlarse usando propiedades como `grid-auto-rows` y `grid-auto-columns`.
+
+Por ejemplo, puedes especificar que las filas implícitas tengan un tamaño mínimo de `10em` y que crezcan automáticamente según el contenido.
+
+```css
+.container {
+    display: grid;
+    grid-auto-rows: minmax(10em, auto);
+}
+```
+
+### Analogía: El Estante que Crece
+
+Piensa en un estante donde guardas libros. Si compras más libros de los que caben en los estantes que ya tienes, puedes agregar más estantes automáticamente. Eso es lo que hace `grid-auto-rows`: define el **tamaño mínimo** de estos nuevos "estantes" (o filas implícitas) y les permite crecer si es necesario.
+
+### Nombres para las Líneas
+
+En lugar de usar números para las líneas de la cuadrícula, puedes **nombrarlas** para hacer tu código más legible y fácil de mantener. Esto es como etiquetar tus cajones con nombres: "Documentos", "Libros", "Ropa", en lugar de llamarlos "Cajón 1", "Cajón 2", etc.
+
+```css
+.container {
+    display: grid;
+    grid-template-columns:
+      [main-start aside-start] 1fr
+      [aside-end content-start] 2fr
+      [content-end main-end]; /* diseño de dos columnas */
+}
+
+.sidebar {
+    grid-column: aside-start / aside-end;
+}
+
+footer {
+    grid-column: main-start / main-end;
+}
+```
+
+### Áreas de la Cuadrícula
+
+CSS Grid también permite nombrar **áreas** completas de la cuadrícula, lo que hace más fácil visualizar cómo se verá el diseño. Piensa en esto como si estuvieras organizando tu casa: podrías etiquetar áreas como "Cocina", "Sala", "Dormitorio", etc., y cada una ocupará un espacio claramente definido.
+
+```css
+.container {
+    display: grid;
+    grid-template-areas:
+        "header header header header"
+        "sidebar content content content"
+        "sidebar footer footer footer";
+}
+```
+
+Cada área tiene un nombre específico, y cuando los defines, puedes colocar fácilmente los elementos en esas áreas. 
+
+```css
+header {
+    grid-area: header;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.content {
+    grid-area: content;
+}
+
+footer {
+    grid-area: footer;
+}
+```
+
+### Propiedades Abreviadas
+
+Finalmente, CSS Grid incluye **propiedades abreviadas** como `grid-template` y `grid`. Estas te permiten escribir menos código al establecer filas, columnas y áreas al mismo tiempo.
+
+```css
+.container {
+    display: grid;
+    grid-template:
+      "header header header" minmax(150px, auto)
+      "sidebar content content" auto
+      "sidebar footer footer" auto / 1fr 1fr 1fr;
+}
+```
+
+Esta propiedad es muy útil cuando quieres ahorrar tiempo y simplificar la estructura de tu código.
+
+---
+
+# Propiedades Lógicas en CSS
+
+## Podcast de CSS - 012: Propiedades lógicas 
+
+Imagina que estás organizando una fiesta de cumpleaños. Tienes una mesa decorada con globos y un pastel, y en un rincón, hay una caja de sorpresas con regalos. En este escenario, la forma en que organizas y distribuyes los elementos es crucial para que la fiesta sea un éxito.
+
+De manera similar, en el mundo del desarrollo web, la manera en que organizamos y posicionamos los elementos en una página web puede afectar su usabilidad y apariencia. Aquí es donde entran las **propiedades lógicas** en CSS.
+
+### Un Problema Común
+
+Un patrón de interfaz de usuario muy común es tener una etiqueta de texto con un ícono complementario. Piensa en un letrero que dice "¡Bienvenido!" y tiene un ícono de mano levantada a su izquierda. Sin embargo, este diseño solo funciona si el texto se lee de izquierda a derecha. Si decides cambiar el idioma a árabe, el ícono se posicionará en el lugar incorrecto, justo contra el texto.
+
+Aquí es donde las **propiedades lógicas** vienen al rescate, proporcionando una solución que se adapta automáticamente según el idioma y la dirección del texto. Son como una brújula que siempre te indica la dirección correcta, sin importar cómo gire el mapa.
+
+### Terminología
+
+Las propiedades físicas (superior, derecha, inferior, izquierda) son como una rosa de los vientos que nos dice dónde está cada punto de referencia en nuestro mapa. Por otro lado, las propiedades lógicas se refieren a los bordes de un elemento en relación con el flujo de contenido. Así, si cambiamos la dirección del texto, estas propiedades también cambian. Esto nos brinda mayor flexibilidad al definir estilos para nuestras interfaces.
+
+### Flujo de Bloques y Flujo Intercalado
+
+- **Flujo de Bloques**: Imagina que estás leyendo un libro en inglés. La historia avanza de arriba hacia abajo, como si los párrafos fueran bloques apilados uno sobre otro. Este es el **flujo de bloques**.
+
+- **Flujo Intercalado**: Ahora, piensa en cómo escribes una frase en inglés. El flujo es de izquierda a derecha. Si cambias a árabe, este flujo se convierte en derecha a izquierda. Esto es el **flujo intercalado**. 
+
+Puedes controlar cómo se presenta el texto usando la propiedad `writing-mode`. Así, puedes crear documentos que se adapten a diferentes direcciones de lectura, al igual que tu mesa de fiesta se puede reorganizar según la cantidad de invitados.
+
+### Relación de Flujo
+
+Históricamente, en CSS, aplicábamos propiedades como `margin-top` para referirnos a la parte superior de un elemento. Pero con las propiedades lógicas, `margin-top` se convierte en `margin-block-start`. Esto significa que, independientemente del idioma y la dirección del texto, las reglas de margen se aplican correctamente.
+
+### Tamaño de Elementos
+
+Para evitar que un elemento se extienda demasiado, puedes definir un tamaño máximo:
+
+```css
+.my-element {
+  max-width: 150px;
+  max-height: 100px;
+}
+```
+
+Usando propiedades lógicas, la regla se vería así:
+
+```css
+.my-element {
+  max-inline-size: 150px;
+  max-block-size: 100px;
+}
+```
+
+### Inicio y Finalización
+
+En lugar de usar direcciones (arriba, derecha, abajo, izquierda), utilizamos `inicio` y `fin`. Por ejemplo, para alinear texto a la derecha, en lugar de:
+
+```css
+p {
+  text-align: right;
+}
+```
+
+Podemos usar:
+
+```css
+p {
+  text-align: end;
+}
+```
+
+Esto se adapta automáticamente a la dirección de lectura.
+
+### Espaciado y Posicionamiento
+
+Las propiedades lógicas para `margin`, `padding` e `inset` facilitan el posicionamiento de elementos en diferentes modos de escritura. Por ejemplo, en lugar de usar:
+
+```css
+.my-element {
+  padding-top: 2em;
+  padding-bottom: 2em;
+  margin-left: 2em;
+  position: relative;
+  top: 0.2em;
+}
+```
+
+Usamos:
+
+```css
+.my-element {
+  padding-block-start: 2em;
+  padding-block-end: 2em;
+  margin-inline-start: 2em;
+  position: relative;
+  inset-block-start: 0.2em;
+}
+```
+
+Esto hace que el espaciado se adapte según la dirección del texto.
+
+### Bordes
+
+También puedes usar propiedades lógicas para bordes. Por ejemplo, en lugar de:
+
+```css
+.my-element {
+  border-bottom: 1px solid red;
+  border-right: 1px solid red;
+}
+```
+
+Podemos usar:
+
+```css
+.my-element {
+  border-block-end: 1px solid red;
+  border-inline-end: 1px solid red;
+}
+```
+
+### Nuevas Unidades
+
+Las propiedades lógicas introducen dos nuevas unidades: `vi` y `vb`. Estas se basan en el tamaño del viewport y se adaptan a la dirección de lectura.
+
+### Uso Pragmático de Propiedades Lógicas
+
+Las propiedades lógicas no son solo para internacionalización. También producen interfaces de usuario más versátiles. Por ejemplo, si tienes un gráfico con etiquetas en los ejes, puedes usar propiedades lógicas para aplicar márgenes de manera consistente, sin importar la dirección del texto.
+
+### Resolviendo el Problema del Ícono
+
+Regresando a nuestro ejemplo del ícono y el texto, para que el espaciado entre ellos sea adecuado en todas las direcciones de lectura, usamos:
+
+```css
+p {
+  display: inline-flex;
+  align-items: center;
+}
+
+p svg {
+  width: 1.2em;
+  height: 1.2em;
+  margin-inline-end: 0.5em;
+  flex: none;
+}
+```
+
+---
+
+# Espaciado en CSS
+
+Supongamos que tienes una colección de tres cajas, apiladas una encima de la otra, y queremos que haya espacio entre ellas. ¿Cómo podrías lograr eso en CSS?
+
+![Tres cuadros apilados con una flecha hacia abajo](url_de_la_imagen)
+
+La propiedad `margin` podría ofrecerte lo que necesitas, pero también puede agregar espacios adicionales que no deseas. Por ejemplo, ¿cómo te orientas solo al espacio entre cada uno de esos elementos? Algo como `gap` podría ser más apropiado en este caso. Hay muchas maneras de ajustar el espaciado dentro de una IU, cada uno con sus propias fortalezas y advertencias.
+
+## Espacio HTML
+
+El HTML proporciona algunos métodos para espaciar los elementos. Los elementos `<br>` y `<hr>` te permiten espaciar elementos en la dirección del bloque, que, si usas un idioma de origen latino, es de arriba a abajo.
+
+- Si usas un elemento `<br>`, se creará un salto de línea como si presionaras la tecla **Intro** en un procesador de texto.
+  
+- `<hr>` crea una línea horizontal con espacio a ambos lados, conocida como **margin**.
+
+Además de usar elementos HTML, las entidades HTML pueden crear espacio. Una entidad HTML es una cadena reservada de caracteres que el navegador reemplaza por entidades de caracteres. Por ejemplo, si escribieras `&copy;` en tu archivo HTML, se convertiría en un carácter ©. La entidad `&nbsp;` se convierte en un carácter de espacio de no separación, que proporciona un espacio intercalado. Sin embargo, ten cuidado, porque el aspecto de no ruptura de este carácter une los dos elementos, lo que puede provocar comportamientos extraños.
+
+**Nota:** Usa elementos HTML para agregar espacio solo cuando estos ayuden a comprender el documento. Por ejemplo, un elemento `<hr>` no solo agrega espacio, sino que crea una separación lógica de dos fragmentos de contenido. Si solo deseas una línea con espacio a su alrededor, puede ser más adecuado agregar un borde con CSS.
+
+## Margen
+
+Si deseas agregar espacio al exterior de un elemento, usas la propiedad `margin`. El margen es como agregar un cojín alrededor del elemento. La propiedad `margin` es la abreviatura de `margin-top`, `margin-right`, `margin-bottom` y `margin-left`.
+
+![Diagrama de las cuatro áreas principales del modelo de caja](url_de_la_imagen)
+
+La abreviatura `margin` aplica propiedades en un orden particular: arriba, derecha, abajo e izquierda. Puedes recordar estos errores: **TROUBLe**.
+
+- La palabra "Problemas" corriendo hacia abajo con T, R, B y L que se extiende a la parte superior, a la derecha, a la parte inferior y a la izquierda.
+
+La abreviatura `margin` también se puede usar con uno, dos o tres valores. Agregar un cuarto valor te permite configurar cada lado individual. Se aplican de la siguiente manera:
+
+- Un valor se aplicará a todos los lados. (`margin: 20px`)
+- Dos valores: el primer valor se aplicará a la parte superior e inferior, y el segundo valor se aplica a la izquierda y a la derecha. (`margin: 20px 40px`)
+- Tres valores: el primero es top, el segundo valor es left y right, y el tercer valor es bottom. (`margin: 20px 40px 30px`).
+
+El margen puede definirse con una longitud, porcentaje o valor automático, como `1em` o `20%`. Si usas un porcentaje, el valor se calculará en función del ancho del bloque contenedor de tu elemento. Esto significa que, si el bloque contenedor de tu elemento tiene un ancho de 250px y tu elemento tiene un valor `margin` de 20%: cada lado de tu elemento tendrá un margen calculado de 50px.
+
+También puedes usar un valor de `auto` para el margen. Para los elementos de nivel de bloque con un tamaño restringido, un margen de `auto` ocupará espacio disponible en la dirección en la que se aplique. Un buen ejemplo es el módulo **Flexbox**, donde los elementos se alejan entre sí.
+
+```css
+.wrapper {
+    max-width: 400px;
+    margin: 0 auto;
+}
+```
+
+Aquí, el margen se quita de los lados superior e inferior (bloqueo), y `auto` comparte el espacio entre los lados izquierdo y derecho (intercalados).
+
+**Nota:** En el módulo anterior sobre propiedades lógicas, aprendiste que, en lugar de especificar `margin-top`, `margin-right`, `margin-bottom` y `margin-left`, puedes usar `margin-block-start`, `margin-inline-end`, `margin-block-end` y `margin-inline-start`.
+
+## Margen Negativo
+
+Los valores negativos también se pueden usar para el margen. En lugar de agregar espacio entre elementos del mismo nivel, reducirá el espacio entre ellos. Esto puede dar como resultado la superposición de elementos si declaras un valor negativo superior al espacio disponible.
+
+## Contracción de Margen
+
+La contracción del margen es un concepto engañoso, pero es algo con lo que te encontrarás muy comúnmente cuando compiles interfaces. Supongamos que tienes dos elementos, un encabezado y un párrafo, ambos tienen un margen vertical:
+
+```html
+<article>
+  <h1>My heading with teal margin</h1>
+  <p>A paragraph of text that has blue margin on it, following the heading with margin.</p>
+</article>
+```
+
+```css
+h1 {
+    margin-bottom: 2rem;
+}
+
+p {
+    margin-top: 3rem;
+}
+```
+
+A primera vista, se te perdona pensar que el párrafo estará separado del encabezado 5em porque la combinación de 2rem y 3rem se calcula como 5rem. Sin embargo, debido a que el margen vertical se contrae, el espacio en realidad es 3rem.
+
+La contracción de márgenes funciona seleccionando el valor más grande de dos elementos contiguos con un margen vertical en los lados contiguos. La parte inferior de `h1` se une con la parte superior de `p`, para que se seleccione el valor más alto del margen inferior de `h1` y el margen superior de `p`. Si `h1` tuviera un 3.5rem de margen inferior, el espacio entre ambos sería 3.5rem porque es mayor que 3rem. Solo los márgenes de bloqueo se contraen, no los márgenes intercalados (horizontales).
+
+**Nota:** Este comportamiento se remonta a cuando la Web solo consistía en documentos. Los márgenes que se contraen ayudan a establecer un espaciado constante entre los elementos sin crear accidentalmente grandes espacios entre los elementos que también tienen un margen definido. La contracción de márgenes también ayuda con los elementos vacíos. Si tienes un párrafo con un margen inferior y superior de 20px, solo creará 20px de espacio, no 40px. Sin embargo, si se agrega algo dentro de este elemento, incluido padding, su margen ya no se contraerá y se tratará como cualquier cuadro con contenido.
+
+## Verifica tus conocimientos
+
+Pon a prueba tus conocimientos sobre la contracción de los márgenes:
+
+Si dos elementos apilados uno encima del otro tienen 20 px de margen superior y 30 px de margen inferior, ¿cuánto espacio habrá entre ellos?
+
+- 40 px
+- 30 px
+- 20 px
+- 10 px
+
+### Cómo evitar la contracción del margen
+
+Si haces que un elemento esté absolutamente posicionado (usando `position: absolute`), el margen ya no se contraerá. El margen tampoco se contraerá si también usas la propiedad **float**.
+
+Si tienes un elemento sin margen entre dos elementos con margen de bloque, el margen tampoco se contraerá, porque los dos elementos con margen de bloque ya no son hermanos adyacentes: solo son elementos del mismo nivel.
+
+En la lección de diseño, aprendiste que los contenedores de **flexbox** y **grid** son muy similares a los contenedores de bloques pero manejan sus elementos secundarios de forma muy diferente. Este también es el caso de la contracción de los márgenes.
+
+Si tomamos el ejemplo original de la lección y aplicamos **flexbox** con dirección de columna, los márgenes se combinan, en lugar de contraerse. Esto puede proporcionar previsibilidad con el trabajo de diseño, para los que se diseñaron los contenedores **flexbox** y **grid**.
+
+## Relleno
+
+En lugar de crear espacio en el exterior de la caja, como lo hace `margin`, la propiedad `padding` crea espacio en el interior del cuadro: como el aislamiento.
+
+![Una caja con flechas que apuntan hacia adentro para mostrar que el relleno se encuentra dentro de una caja](url_de_la_imagen)
+
+Según el modelo de caja que uses, como ya lo vimos en la lección sobre el modelo de caja, el `padding` también puede afectar las dimensiones generales del elemento.
+
+La propiedad `padding` es la abreviatura de `padding-top`, `padding-right`, `padding-bottom` y `padding-left`. Al igual que `margin`, `padding` también tiene propiedades lógicas: `padding-block-start`, `padding-inline-end`, `padding-block-end` y `padding-inline-start`.
+
+### Posicionamiento
+
+También se aborda en el módulo sobre diseño. Si estableces un valor para `position` distinto de **static**, puedes espaciar elementos con
+
+ márgenes y relleno y hacer que su comportamiento sea diferente, como hemos mencionado.
+
+Si usas `absolute` o `fixed`, puedes dejar que las propiedades `margin` y `padding` se acumulen entre sí, permitiéndote controlar el espacio total en tu interfaz.
+
+## Espaciado dentro de un contenedor flexible
+
+Por último, cuando se utilizan contenedores flexibles y de cuadrícula, existen propiedades adicionales disponibles para controlar el espaciado, como `gap`, que permite un espaciado más efectivo entre elementos, sin tener en cuenta márgenes o rellenos individuales.
+
+---
+
+## Resumen
+
+1. **HTML**: Utiliza elementos HTML con cuidado para espaciar contenido.
+2. **Margen**: `margin` agrega espacio exterior alrededor de los elementos.
+3. **Relleno**: `padding` agrega espacio interior dentro de un elemento.
+4. **Contracción de márgenes**: Los márgenes verticales de los elementos se combinan para evitar espacios innecesarios.
+5. **Contenedores flexibles**: Utiliza `gap` para espaciado entre elementos sin modificar los márgenes.
+
+---
+
+# Seudoelementos en CSS
+
+## Introducción
+
+Si tienes un artículo de contenido y quieres que la primera letra sea mucho más grande, ¿cómo lo logras?
+
+> **Ejemplo:**
+> Unos párrafos de texto con una gorra azul.
+
+En CSS, puedes usar el seudoelemento `::first-letter` para lograr este tipo de detalle de diseño.
+
+```css
+p::first-letter {
+  color: blue;
+  float: left;
+  font-size: 2.6em;
+  font-weight: bold;
+  line-height: 1;
+  margin-inline-end: 0.2rem;
+}
+```
+
+Un seudoelemento es como agregar o orientar un elemento adicional sin tener que agregar más HTML. En esta solución de ejemplo, con `::first-letter`, es uno de muchos seudoelementos. Tienen una variedad de roles. En esta lección, aprenderás qué seudoelementos están disponibles y cómo puedes usarlos.
+
+---
+
+## `::before` y `::after`
+
+Tanto el `::before` como el `::after` crean un elemento secundario dentro de un elemento solo si defines una propiedad `content`. 
+
+> **Analogía:** Imagina que estás colocando un cartel en la puerta de una tienda que dice "Abierto". No necesitas construir un nuevo marco, solo colocas una hoja de papel que dice "Abierto" encima de la puerta. Eso es lo que hacen `::before` y `::after`.
+
+```css
+.my-element::before {
+    content: "";
+}
+
+.my-element::after {
+    content: "";
+}
+```
+
+`content` puede ser cualquier cadena (incluso una vacía), pero ten en cuenta que es probable que el lector de pantalla anuncie cualquier cosa que no sea una cadena vacía. Puedes agregar una imagen URL para insertar una imagen con sus dimensiones originales, por lo que no podrás cambiar su tamaño. También puedes insertar un contador.
+
+> **Término clave:** Puedes crear un contador con nombre y, luego, incrementarlo según su posición en el flujo del documento. Hay todo tipo de contextos en los que pueden ser muy útiles, como la numeración automática de un esquema.
+
+Una vez que se crea un elemento `::before` o `::after`, puedes personalizarlo como quieras, sin límites. Solo puedes insertar un elemento `::before` o `::after` en un elemento que acepte elementos secundarios (elementos con un árbol de documentos), por lo que elementos como `<img />`, `<video>` y `<input>` no funcionarán. Sin embargo, `input[type="checkbox"]` es una excepción, y se permite tener pseudoelementos secundarios.
+
+---
+
+## `::first-letter`
+
+Conocimos este seudoelemento al principio de la lección. Ten en cuenta que no todas las propiedades de CSS se pueden utilizar al orientar los anuncios. `::first-letter` permite las siguientes propiedades:
+
+- `color`
+- Propiedades de `background` (como `background-image`)
+- Propiedades de `border` (como `border-color`)
+- `float`
+- Propiedades de `font` (como `font-size` y `font-weight`)
+- Propiedades de `text` (como `text-decoration` y `word-spacing`)
+
+```css
+p::first-letter {
+  color: goldenrod;
+  font-weight: bold;
+}
+```
+
+**Nota:** Solo puedes usar `::first-letter` en contenedores de bloques. Por lo tanto, no funcionará si intentas agregarlo a un elemento que tenga `display: inline`.
+
+---
+
+## `::first-line`
+
+El seudoelemento `::first-line` te permitirá dar estilo a la primera línea de texto solo si el elemento con `::first-line` aplicado tiene un valor `display` de block, inline-block, list-item, table-caption o table-cell.
+
+```css
+p::first-line {
+  color: goldenrod;
+  font-weight: bold;
+}
+```
+
+Como el seudoelemento `::first-letter`, solo puedes usar un subconjunto de propiedades de CSS:
+
+- `color`
+- Propiedades de `background`
+- Propiedades de `font`
+- Propiedades de `text`
+
+---
+
+## `::backdrop`
+
+Si tienes un elemento que se presenta en modo de pantalla completa, como `<dialog>` o `<video>`, puedes darle estilo al fondo (el espacio entre el elemento y el resto de la página) con el pseudoelemento `::backdrop`.
+
+```css
+video::backdrop {
+  background-color: goldenrod;
+}
+```
+
+---
+
+## `::marker`
+
+La `::marker` te permite aplicar diseño a la viñeta o al número de un elemento de la lista o a la flecha de un elemento `<summary>`.
+
+```css
+::marker {
+  color: hotpink;
+}
+
+ul::marker {
+  font-size: 1.5em;
+}
+
+ol::marker {
+  font-size: 1.1em;
+}
+
+summary::marker {
+  content: '\002B'; /* Plus symbol */
+}
+
+details[open] summary::marker {
+  content: '\2212'; /* Minus symbol */
+}
+```
+
+Solo se admite un pequeño subconjunto de propiedades de CSS para `::marker`:
+
+- `color`
+- `content`
+- `white-space`
+- Propiedades de `font`
+- Propiedades de `animation` y `transition`
+
+---
+
+## `::selection`
+
+El seudoelemento `::selection` te permite darle estilo al texto seleccionado.
+
+```css
+::selection {
+  background: green;
+  color: white;
+}
+```
+
+Este seudoelemento se puede usar para aplicar estilo a todo el texto seleccionado. También se puede combinar con otros selectores para lograr un estilo de selección más específico.
+
+```css
+p:nth-of-type(2)::selection {
+  background: darkblue;
+  color: yellow;
+}
+```
+
+Al igual que con otros seudoelementos, solo se permite un subconjunto de propiedades de CSS:
+
+- `color`
+- `background-color`, pero no `background-image`
+- Propiedades de `text`
+
+---
+
+## `::placeholder`
+
+La `::placeholder` te permite darle estilo al texto que aparece como sugerencia en un campo de entrada de formulario, como `<input>` con un atributo `placeholder`.
+
+```css
+input::placeholder {
+  color: darkcyan;
+}
+```
+
+`::placeholder` solo admite un subconjunto de reglas de CSS:
+
+- `color`
+- Propiedades de `background`
+- Propiedades de `font`
+- Propiedades de `text`
+
+**Nota:** Un `placeholder` no es `<label>` y no se debe usar en lugar de un `<label>`. Los elementos del formulario deben estar etiquetados. De lo contrario, no se podrá acceder a ellos.
+
+---
+
+## `::cue`
+
+Finalmente, en este recorrido por los seudoelementos, llegamos al pseudoelemento `::cue`. Esto te permite diseñar las indicaciones WebVTT, que son las leyendas de un elemento `<video>`.
+
+También puedes pasar un selector a un `::cue`, lo que te permite aplicar ajustes de estilo a elementos específicos dentro de un subtítulo.
+
+```css
+video::cue {
+  color: yellow;
+}
+
+video::cue(b) {
+  color: red;
+}
+
+video::cue(i) {
+  color: lightpink;
+}
+```
+
+---
+
+## Conclusión
+
+Los seudoelementos son herramientas poderosas en CSS que te permiten agregar estilo y funcionalidad a tus elementos HTML sin necesidad de alterar la estructura del documento. Usar seudoelementos de manera efectiva puede ayudarte a lograr un diseño más atractivo y accesible en tus proyectos de frontend.
+
+---
+
+# Seudoclases en CSS
+
+Supongamos que tienes un formulario de registro por correo electrónico, y quieres que el campo del formulario de correo electrónico tenga un borde rojo si contiene una dirección de correo electrónico no válida. ¿Cómo puedes hacerlo? Puedes usar una seudoclase `:invalid` de CSS, que es una de las muchas seudoclases proporcionadas por el navegador.
+
+Una **seudoclase** te permite aplicar estilos en función de cambios de estado y factores externos. Esto significa que tu diseño puede reaccionar a las entradas del usuario, como una dirección de correo electrónico no válida. Estos se abordan en el módulo de selectores, y en este módulo las analizaremos en mayor detalle.
+
+A diferencia de los seudoelementos, que se utilizan para dar estilo a partes específicas de un elemento, las seudoclases se conectan a **estados específicos** en los que puede estar un elemento.
+
+## Estados Interactivos
+
+Las siguientes seudoclases se aplican debido a una interacción que un usuario tiene con tu página.
+
+### `:hover`
+
+**Navegadores compatibles**
+
+- Chrome: 1. (1)
+- Edge: 12. (12)
+- Firefox: 1. (1)
+- Safari: 2. (2)
+
+**Origen**: Si un usuario tiene un dispositivo apuntador, como un mouse o un panel táctil, y lo coloca sobre un elemento, puedes conectarte a ese estado con `:hover` para aplicar estilos. Esta es una manera útil de sugerir que se puede interactuar con un elemento.
+
+### `:active`
+
+**Navegadores compatibles**
+
+- Chrome: 1. (1)
+- Edge: 12. (12)
+- Firefox: 1. (1)
+- Safari: 1. (1)
+
+**Origen**: Este estado se activa cuando un elemento está en interacción activa, como un clic, antes de que se libere. Si se utiliza un dispositivo apuntador, este estado se da cuando comienza el clic y aún no se ha liberado.
+
+### `:focus`, `:focus-within` y `:focus-visible`
+
+**Navegadores compatibles**
+
+- Chrome: 1. (1)
+- Edge: 12. (12)
+- Firefox: 1. (1)
+- Safari: 1. (1)
+
+**Origen**: Si un elemento puede recibir el foco, como un `<button>`, puedes reaccionar a ese estado con la seudoclase `:focus`. También puedes reaccionar si un elemento secundario de tu elemento recibe el foco con `:focus-within`. 
+
+Los elementos enfocables, como los botones, mostrarán un anillo de enfoque cuando estén en foco. Esto puede presentar un problema de accesibilidad si se elimina el anillo de enfoque por completo. Puedes usar `:focus-visible` para mostrar un estilo de foco cuando un elemento recibe el foco a través del teclado.
+
+```css
+button:focus {
+    outline: none;
+}
+
+button:focus-visible {
+    outline: 1px solid black;
+}
+```
+
+### `:target`
+
+**Navegadores compatibles**
+
+- Chrome: 1. (1)
+- Edge: 12. (12)
+- Firefox: 1. (1)
+- Safari: 1.3
+
+**Origen**: La `:target` selecciona un elemento que tiene un id que coincide con un fragmento de URL. Por ejemplo, si tienes el siguiente código HTML:
+
+```html
+<article id="content">
+    …
+</article>
+```
+
+Puedes adjuntar estilos a ese elemento si la URL contiene `#content`.
+
+```css
+#content:target {
+    background: yellow;
+}
+```
+
+Esto es útil para resaltar áreas que podrían haberse vinculado específicamente como el contenido principal de un sitio web.
+
+## Estados Históricos
+
+### `:link` y `:visited`
+
+**Navegadores compatibles**
+
+- Chrome: 1. (1)
+- Edge: 12. (12)
+- Firefox: 1. (1)
+- Safari: 1. (1)
+
+**Origen**: La `:link` seudoclase se puede aplicar a cualquier elemento `<a>` que tenga un valor `href` que aún no se haya visitado. Por otro lado, puedes definir el estilo de un vínculo que el usuario ya visitó mediante la seudoclase `:visited`. Sin embargo, tienes menos propiedades de CSS para usar con `:visited` por motivos de seguridad.
+
+**Regla LVHA**: El orden es importante al definir estilos de vínculos. Te recomendamos que uses la regla LVHA para definir el estilo de los vínculos con seudoclases en el siguiente orden:
+
+```css
+a:link {}
+a:visited {}
+a:hover {}
+a:active {}
+```
+
+### Estados del Formulario
+
+Las siguientes seudoclases pueden seleccionar elementos de formulario en los diversos estados en los que pueden estar durante la interacción con ellos.
+
+### `:disabled` y `:enabled`
+
+**Navegadores compatibles**
+
+- Chrome: 1. (1)
+- Edge: 12. (12)
+- Firefox: 1. (1)
+- Safari: 3.1
+
+**Origen**: Puedes usar `:disabled` para seleccionar un elemento de formulario, como `<button>`, si el navegador lo inhabilita. La seudoclase `:enabled` está disponible para el estado opuesto, aunque los elementos del formulario también son `:enabled` de forma predeterminada.
+
+### `:checked` y `:indeterminate`
+
+**Navegadores compatibles**
+
+- Chrome: 1. (1)
+- Edge: 12. (12)
+- Firefox: 1. (1)
+- Safari: 3.1
+
+**Origen**: La `:checked` está disponible cuando un elemento de formulario complementario, como una casilla de verificación o un botón de selección, está marcado. El estado `:checked` es un estado binario (verdadero o falso). Sin embargo, las casillas de verificación tienen un estado intermedio, que se conoce como `:indeterminate`.
+
+### `:placeholder-shown`
+
+**Navegadores compatibles**
+
+- Chrome: 47. (47)
+- Edge: 79. (79)
+- Firefox: 51. (51)
+- Safari: 9. (9)
+
+**Origen**: Si un campo del formulario tiene un atributo `placeholder` y no tiene valor, puedes usar `:placeholder-shown` para adjuntar estilos a ese estado.
+
+## Estados de Validación
+
+**Navegadores compatibles**
+
+- Chrome: 10. (10)
+- Edge: 12. (12)
+- Firefox: 4. (4)
+- Safari: 5. (5)
+
+Puedes responder a la validación del formulario HTML con seudoclases como `:valid`, `:invalid` y `:in-range`. Estas seudoclases son útiles para mostrar a los usuarios si un campo, como un campo de correo electrónico, es válido o no. 
+
+**Nota**: No es una buena idea confiar únicamente en el color para representar los cambios de estado, ya que los usuarios daltónicos y con visión reducida pueden tener dificultades para notar cambios de estado. Es recomendable combinar colores con cambios de texto e íconos para representar visualmente el cambio.
+
+## Selección de Elementos por su Índice, Orden y Casos
+
+Hay un grupo de seudoclases que seleccionan elementos en función de dónde se encuentran en el documento.
+
+### `:first-child` y `:last-child`
+
+**Navegadores compatibles**
+
+- Chrome: 4. (4)
+- Edge: 12. (12)
+- Firefox: 3. (3)
+- Safari: 3.1
+
+**Origen**: Si quieres encontrar el primer o el último elemento, puedes usar `:first-child` y `:last-child`. Estas seudoclases devolverán el primer o el último elemento de un grupo de elementos del mismo nivel.
+
+### `:only-child`
+
+**Navegadores compatibles**
+
+- Chrome: 2. (2)
+- Edge: 12. (12)
+- Firefox: 1.5
+- Safari: 3.1
+
+**Origen**: También puedes seleccionar elementos que no tengan hermanos con la seudoclase `:only-child`.
+
+### `:first-of-type` y `:last-of-type`
+
+**Navegadores compatibles**
+
+- Chrome: 1. (1)
+- Edge: 12. (12)
+- Firefox: 3.5
+- Safari: 3.1
+
+**Origen**: Puedes seleccionar `:first-of-type` y `:last-of-type`, que parecen hacer lo mismo que `:first-child` y `:last-child`, pero con una diferencia clave. Considera el siguiente HTML:
+
+```html
+<div class="my-parent">
+    <p>A paragraph</p>
+    <div>A div</div>
+    <div>Another div</div>
+</div>
+```
+
+Si aplicas el siguiente CSS:
+
+```css
+.my-parent div:first-child {
+    color: red;
+}
+```
+
+Ningún elemento se mostrará en rojo porque el primer elemento secundario es un párrafo y no un div. La seudoclase `:first-of-type` es útil en este contexto.
+
+```css
+.my-parent div:first-of-type {
+    color: red;
+}
+```
+
+Aunque el primer elemento `<div>` es el segundo elemento secundario, sigue siendo el primero de su tipo dentro del elemento `.my-parent`, por lo que con esta regla, será de color rojo.
+
+### `:nth-child` y `:nth-of-type`
+
+**Navegadores compatibles**
+
+- Chrome
+
+: 4. (4)
+- Edge: 12. (12)
+- Firefox: 3. (3)
+- Safari: 3.1
+
+**Origen**: Las seudoclases `:nth-child` y `:nth-of-type` son útiles para seleccionar elementos en función de su posición dentro de su padre. La seudoclase `:nth-child` puede usar un argumento de tipo fórmula para seleccionar elementos.
+
+**Ejemplo de código**:
+
+```css
+/* Selecciona el tercer hijo de cualquier tipo */
+li:nth-child(3) {
+    background-color: lightgreen;
+}
+
+/* Selecciona todos los hijos impares */
+li:nth-child(odd) {
+    background-color: lightblue;
+}
+
+/* Selecciona todos los hijos pares */
+li:nth-child(even) {
+    background-color: lightpink;
+}
+```
+
+La seudoclase `:nth-of-type` se puede usar para seleccionar elementos de un tipo específico:
+
+```css
+/* Selecciona el segundo párrafo */
+p:nth-of-type(2) {
+    color: blue;
+}
+```
+
+### `:not()`
+
+**Navegadores compatibles**
+
+- Chrome: 1. (1)
+- Edge: 12. (12)
+- Firefox: 1. (1)
+- Safari: 1. (1)
+
+**Origen**: La `:not()` seudoclase se puede usar para excluir un elemento específico. Ten en cuenta que solo puedes usar una regla dentro de `:not()`, no puedes incluir combinaciones o grupos de selectores dentro de ella. 
+
+## Conclusión
+
+Las seudoclases te permiten aplicar estilos basados en el estado de un elemento y en su relación con otros elementos. Estas son una excelente manera de hacer que tus diseños sean más interactivos y accesibles para los usuarios. Prueba a aplicar diferentes seudoclases en tus proyectos para explorar todo su potencial.
 
 ---
 
