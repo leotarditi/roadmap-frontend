@@ -2150,3 +2150,738 @@ Las seudoclases te permiten aplicar estilos basados en el estado de un elemento 
 
 ---
 
+# Bordes
+
+## ¿Qué son los bordes en CSS?
+
+Imagina que tienes una colección de marcos de fotos. Cada foto representa un elemento en una página web, y el borde es el marco que rodea cada una de esas fotos. Como en la vida real, puedes elegir marcos de diferentes estilos, grosores y colores para darle un toque personal a cada cuadro. En CSS, **los bordes** hacen lo mismo, dándote opciones para enmarcar los elementos de tu página de la forma que prefieras.
+
+### Propiedades del borde
+
+En CSS, las propiedades del borde permiten definir de manera individual cómo será el diseño del marco (o borde) de un elemento. 
+
+### Estilos de borde
+
+Para que un borde aparezca, debes definir el **`border-style`**. Es como elegir el estilo del marco de tu foto: ¿quieres que sea sólido, punteado, doble? Algunas de las opciones de estilos disponibles son:
+
+- `solid`: Un borde simple y continuo, como un marco de madera liso.
+- `dotted`: Un borde de puntos, como si el marco fuera hecho con pequeños clavos espaciados.
+- `dashed`: Un borde de líneas interrumpidas, como si el marco estuviera decorado con pequeñas piezas separadas.
+- `double`: Dos líneas paralelas como si el marco tuviera un diseño doble.
+- `groove`, `ridge`, `inset`, `outset`: Estos estilos crean efectos tridimensionales, como si el marco tuviera sombras y relieve. Dependiendo del navegador, se verán con más o menos profundidad.
+
+```css
+.my-element {
+    border-style: solid;
+}
+```
+
+### El color del borde
+
+Al igual que pintas un marco en tu color favorito, en CSS puedes cambiar el color del borde con la propiedad **`border-color`**. Si no especificas un color, el borde usará el color del texto del elemento por defecto.
+
+```css
+.my-element {
+    color: blue;
+    border: solid; /* El borde será azul */
+}
+
+.my-element {
+    color: blue;
+    border: solid yellow; /* El borde será amarillo */
+}
+```
+
+### Grosor del borde
+
+El grosor del borde es como el tamaño de la moldura de un marco: puede ser más delgado o más grueso según lo prefieras. Usamos la propiedad **`border-width`** para controlar el grosor. Puedes definirlo en diferentes unidades, como `px`, `em`, `rem`, o incluso porcentajes.
+
+```css
+.my-element {
+    border-width: 2px;
+}
+```
+
+### Abreviaturas
+
+Si no quieres escribir cada parte del borde por separado, puedes usar una abreviatura como esta:
+
+```css
+.my-element {
+    border: 1px solid red;
+}
+```
+
+Este código establece el grosor (1px), el estilo (sólido) y el color (rojo) en una sola línea, ahorrando tiempo.
+
+### Bordes redondeados
+
+Si no te gustan los marcos cuadrados, puedes darle curvas a las esquinas de tus fotos usando **`border-radius`**. Esto es como tener un marco con esquinas redondeadas. Puedes definir un valor único para todas las esquinas, o diferentes valores para cada una.
+
+```css
+.my-element {
+    border-radius: 10px;
+}
+```
+
+También puedes crear esquinas elípticas, donde las curvas son diferentes en los ejes horizontal y vertical.
+
+```css
+.my-element {
+    border-radius: 10px 20px;
+}
+```
+
+### Imágenes de borde
+
+Si quieres un marco más personalizado, puedes usar una **imagen** en lugar de un borde sólido. Con **`border-image`**, puedes definir una imagen para que se use como borde alrededor del elemento.
+
+```css
+.my-element {
+    border-image-source: url('path/to/image.png');
+}
+```
+
+### Repetición de imágenes en bordes
+
+Puedes controlar cómo se repite la imagen alrededor del borde con **`border-image-repeat`**. Esto es similar a cómo decidirías si un patrón en un marco se repite o se estira para ajustarse a las dimensiones del cuadro.
+
+- `stretch`: Estira la imagen para ajustarla a todo el borde.
+- `repeat`: Repite la imagen tantas veces como sea necesario.
+- `round`: Repite la imagen, ajustándola para que encaje perfectamente.
+- `space`: Repite la imagen dejando espacios entre cada repetición.
+
+```css
+.my-element {
+    border-image-repeat: repeat;
+}
+```
+
+### Conclusión
+
+En resumen, los bordes en CSS son como marcos para tus elementos en la web. Puedes personalizarlos de muchas maneras: grosor, estilo, color, radios redondeados y hasta imágenes. La clave está en jugar con estas propiedades para lograr el diseño que mejor se ajuste a lo que estás buscando.
+
+---
+
+# Sombras en CSS
+
+## Introducción
+
+Imagina que eres un artesano que está trabajando en la vitrina de una tienda. Un diseñador te envió la imagen de una camiseta que tiene una sombra paralela proyectada detrás. Pero te advierte que la imagen del producto puede cambiar; tal vez más tarde sea un pantalón corto o un visor. Lo importante es que, no importa el producto que aparezca en la vitrina, siempre debe proyectar una sombra similar. ¿Cómo haces que esto funcione automáticamente para cualquier producto?
+
+Para resolverlo, CSS nos ofrece varias herramientas para aplicar sombras. En este artículo, exploraremos cómo las sombras pueden ayudar a crear efectos visuales como el que el diseñador te pidió.
+
+## Box-shadow: La sombra del contenedor
+
+La propiedad `box-shadow` en CSS funciona como si le pusieras una luz detrás de un objeto. Lo que hace es proyectar una sombra en torno al borde de un "cuadro", es decir, el espacio que ocupa el elemento en la página.
+
+**Ejemplo:**
+
+```css
+.my-element {
+    box-shadow: 5px 5px 20px 5px #000;
+}
+```
+
+### Desglosando los parámetros:
+
+- **Desplazamiento horizontal (5px)**: Esto mueve la sombra hacia la derecha. Si usas un valor negativo, la sombra se mueve hacia la izquierda.
+- **Desplazamiento vertical (5px)**: Mueve la sombra hacia abajo. Si pones un valor negativo, la mueve hacia arriba.
+- **Radio de desenfoque (20px)**: Hace que la sombra se vea más difusa a medida que el valor aumenta.
+- **Radio de dispersión (5px)**: Aumenta o disminuye el tamaño de la sombra.
+- **Color (#000)**: El color de la sombra.
+
+**Analogía**: Imagina que estás sosteniendo una linterna cerca de una caja (el elemento HTML), cuanto más lejos esté la linterna (radio de desenfoque), más difusa será la sombra que proyecta la caja.
+
+### Varias sombras
+
+Puedes aplicar múltiples sombras a un solo elemento simplemente separando cada conjunto de parámetros con comas.
+
+```css
+.my-element {
+  box-shadow: 5px 5px 20px 5px darkslateblue, -5px -5px 20px 5px dodgerblue;
+}
+```
+
+**Analogía**: Es como si hubiera varias fuentes de luz en diferentes direcciones, cada una proyectando su propia sombra.
+
+### Efectos de recorte con border-radius y overflow
+
+Si le das bordes redondeados a un elemento con `border-radius`, la sombra seguirá esos bordes. Por otro lado, si un elemento padre tiene `overflow: hidden`, la sombra quedará "recortada" dentro de los límites del contenedor.
+
+**Ejemplo**:
+
+```css
+.my-parent {
+  overflow: hidden;
+}
+
+.my-shadow {
+  box-shadow: 0px 0px 20px 5px darkslateblue;
+  border-radius: 25px;
+}
+```
+
+**Analogía**: Si pones una caja dentro de una vitrina cerrada (overflow: hidden), la sombra no podrá escapar de la vitrina. Además, si la caja tiene bordes redondeados (border-radius), la sombra también seguirá esa curva.
+
+## Text-shadow: Sombra para el texto
+
+La propiedad `text-shadow` es como `box-shadow`, pero solo funciona en texto.
+
+```css
+.my-element {
+  text-shadow: 3px 3px 3px hotpink;
+}
+```
+
+**Analogía**: Imagina que el texto es como una etiqueta colgada en la camiseta de la vitrina. Puedes hacer que esa etiqueta proyecte una sombra detrás, dando un efecto de profundidad.
+
+## Drop-shadow: Sombra paralela para imágenes
+
+El problema que teníamos al principio era cómo aplicar una sombra alrededor de la camiseta, no solo al cuadro que la contiene. Aquí es donde entra `drop-shadow`. Este filtro sigue los bordes reales de la imagen, no solo el rectángulo que la envuelve.
+
+```css
+.my-image {
+  filter: drop-shadow(0px 0px 10px rgba(0 0 0 / 30%));
+}
+```
+
+**Analogía**: Si la camiseta cambia a una gorra o pantalones cortos, la sombra se ajustará automáticamente, siguiendo el contorno de la prenda, como si estuvieras proyectando la luz directamente sobre el objeto y no sobre la caja en la que está guardado.
+
+### Limitaciones y detalles
+
+A diferencia de `box-shadow`, `drop-shadow` no admite la palabra clave `inset` (que hace que la sombra esté dentro del objeto) ni los valores de dispersión (spread). Sin embargo, sigue siendo una opción increíblemente útil cuando trabajas con imágenes recortadas.
+
+## Conclusión
+
+Las sombras en CSS son una herramienta poderosa para añadir realismo y profundidad a tus diseños. Dependiendo de lo que necesites, puedes utilizar `box-shadow`, `text-shadow` o `drop-shadow` para lograr efectos únicos y personalizables. La clave está en entender cómo funciona cada una y cuándo usarlas.
+
+---
+
+# Enfoque en la Web
+
+## Analogía para entender el enfoque
+
+Imagina que estás en una biblioteca gigante buscando un libro específico. Tienes un mapa (tu teclado) que te ayuda a moverte por los estantes. Cada vez que sigues una dirección en el mapa (presionas una tecla), necesitas una pista visual que te diga cuál es el próximo libro que estás mirando. Esa pista visual es lo que llamamos el "enfoque".
+
+Si no tuvieras ninguna pista de cuál libro estás viendo en ese momento, sería fácil perderte. De la misma manera, en una página web, los usuarios que navegan con teclado necesitan saber en qué parte de la página están. Esto se logra con el enfoque, un elemento visual que indica claramente qué parte de la interfaz está activa o lista para la interacción.
+
+## ¿Por qué es importante el enfoque?
+
+En el desarrollo web, debemos hacer que los sitios sean accesibles e inclusivos para todos los usuarios, incluyendo aquellos que navegan usando un teclado en lugar de un ratón. Crear estados de enfoque claros es parte fundamental de esta tarea. Si un elemento recibe el foco (es decir, es seleccionado) y no hay una indicación visual clara, el usuario puede perder de vista dónde está en la página. Esto puede causar confusión y errores, como seleccionar el enlace o botón equivocado.
+
+## Cómo funcionan los elementos enfocables
+
+En una página web, hay ciertos elementos que son naturalmente enfocables, como los enlaces (`<a>`), botones (`<button>`), campos de entrada (`<input>`), y selectores (`<select>`). Estos elementos son automáticamente parte de lo que llamamos el "orden de tabulación", que es el recorrido que el usuario sigue cuando usa la tecla **Tab** para moverse por la página.
+
+### Atributo `tabindex`
+
+El atributo `tabindex` en HTML te permite modificar el orden de tabulación de los elementos. Aquí está cómo funciona:
+
+- **`tabindex="0"`**: El elemento es enfocable con la tecla **Tab** y respeta el orden natural del documento.
+- **`tabindex="-1"`**: El elemento solo puede ser enfocado de manera programática, es decir, con JavaScript o con cambios en la URL (como un anclaje `#`).
+- **`tabindex="n"`** (donde `n` es un número mayor a 0): El elemento tendrá prioridad en el orden de tabulación. Un elemento con `tabindex="1"` será enfocado antes que uno con `tabindex="2"`.
+
+**Advertencia:** Modificar el orden de tabulación puede ser riesgoso, ya que romper el flujo natural de la página puede hacerla menos accesible. Solo debes hacerlo cuando sea absolutamente necesario.
+
+## Estilos de enfoque en CSS
+
+El comportamiento predeterminado del navegador para un elemento que recibe el foco es mostrar un "anillo de enfoque" (focus ring). Este anillo varía entre navegadores y sistemas operativos, pero puedes personalizarlo con CSS usando las pseudoclases `:focus`, `:focus-within` y `:focus-visible`.
+
+```css
+a:focus {
+  outline: 2px solid slateblue;
+}
+```
+
+La propiedad `outline` es la más utilizada para estilizar el enfoque. Sin embargo, si el anillo está demasiado cerca del texto del enlace, puedes usar la propiedad `outline-offset` para separarlo un poco.
+
+```css
+a:focus {
+  outline-offset: 4px;
+}
+```
+
+### Box-shadow vs. outline
+
+Es tentador usar `box-shadow` en lugar de `outline` para estilizar el enfoque, porque `box-shadow` respeta los bordes redondeados (`border-radius`). Sin embargo, esto puede generar problemas de accesibilidad, especialmente en Windows con el Modo de Contraste Alto, que ignora las sombras. Por eso, es recomendable usar `outline` para garantizar la compatibilidad con todas las configuraciones de accesibilidad.
+
+## Resumen
+
+- **No uses `outline: none`** en elementos que pueden recibir foco del teclado, ya que esto elimina la pista visual para los usuarios de teclado.
+- **Evita usar solo `box-shadow`** para reemplazar el anillo de enfoque, ya que no es compatible con el Modo de Contraste Alto en Windows.
+- **Solo usa `tabindex` positivo** cuando sea absolutamente necesario, y asegúrate de que los cambios en el orden de tabulación no rompan la accesibilidad del sitio.
+- **Asegúrate de que el estilo de enfoque sea claro y visible** en comparación con el estado predeterminado del elemento.
+
+Un enfoque accesible es clave para garantizar una buena experiencia de usuario para todos.
+
+---
+
+# Índice Z y Contextos de Apilamiento
+
+## Explicando con analogía
+
+Imagina que tienes un grupo de cartas sobre una mesa, y estás tratando de apilarlas una sobre la otra. El **índice Z** es como decidir en qué orden apilar las cartas: una con un número más alto se coloca encima de una con un número más bajo. La mesa es nuestro navegador y las cartas son los elementos en una página web.
+
+## ¿Qué es el Índice Z?
+
+El **índice Z** establece el orden de apilamiento de los elementos HTML en una página web usando el eje Z, que es la profundidad en un espacio tridimensional. Si no defines el valor del índice Z de un elemento, el navegador por defecto los apilará según el orden en que aparecen en el código HTML.
+
+- **X** = horizontal (izquierda a derecha)
+- **Y** = vertical (arriba a abajo)
+- **Z** = profundidad (adelante y atrás)
+
+### Un ejemplo técnico:
+
+```html
+<div class="stacked-items">
+  <div class="item-1">Item 1</div>
+  <div class="item-2">Item 2</div>
+</div>
+```
+
+Si ambos elementos tienen posición **absoluta**, sin un índice Z definido, el navegador los apilará de acuerdo al orden en el HTML. Pero si quieres que "Item 2" se apile sobre "Item 1", puedes usar el siguiente CSS:
+
+```css
+.item-1 {
+  position: absolute;
+  z-index: 1;
+}
+
+.item-2 {
+  position: absolute;
+  z-index: 2;
+}
+```
+
+Aquí, **Item 2** se coloca sobre **Item 1** porque tiene un valor de `z-index` mayor.
+
+## Z-Index Negativo
+
+Si alguna vez necesitas que una carta (o un elemento) esté detrás de otra, puedes asignarle un valor negativo de **índice Z**. Es como decirle al navegador que esa carta está "debajo de la mesa".
+
+```css
+.item-1 {
+  position: absolute;
+  z-index: -1;
+}
+```
+
+Sin embargo, para que esto funcione, debes asegurarte de que el contenedor principal no cree su propio contexto de apilamiento.
+
+### Cuidado con los contextos de apilamiento
+
+Los contextos de apilamiento son como grupos de cartas que, aunque estén apiladas unas sobre otras, se mueven juntas. Imagina que tienes dos pilas de cartas y quieres comparar las que están en la cima. Si ambos grupos de cartas tienen un número más alto, no importa qué tan alto sea el número de las cartas individuales dentro de las pilas, ya que la pila en conjunto tiene su propio orden.
+
+```css
+.parent {
+  position: relative;
+  z-index: 1;
+}
+
+.child {
+  position: relative;
+  z-index: 999;
+}
+```
+
+Incluso si el **child** tiene un valor de **z-index** muy alto, no podrá sobrepasar a otro elemento con un **z-index** mayor en su **contexto de apilamiento**.
+
+## Crear un Contexto de Apilamiento
+
+No siempre necesitas usar **z-index** o **position** para crear un nuevo contexto de apilamiento. Ciertas propiedades como **opacity**, **will-change** o **transform** automáticamente crean una nueva "capa" o contexto.
+
+- **Opacity**: cambia la transparencia del elemento.
+- **Transform**: cambia la forma o posición del elemento.
+- **Will-change**: sugiere al navegador que el elemento cambiará pronto.
+
+### Ejemplo:
+
+```css
+.element {
+  transform: translateY(10px);
+  z-index: 1;
+}
+```
+
+Este cambio en la posición crea un nuevo contexto de apilamiento, lo que significa que cualquier **z-index** en su interior será relativo a este nuevo contexto.
+
+## Resumen:
+
+1. **Índice Z** controla qué elementos están más "cerca" o "lejos" de la vista del usuario.
+2. Usa **z-index** con **position: relative/absolute/fixed** para controlar el apilamiento.
+3. Los **contextos de apilamiento** son como "grupos" de elementos que se apilan juntos.
+4. Propiedades como **transform** y **opacity** crean contextos de apilamiento.
+
+Recuerda que cambiar el orden de apilamiento no siempre es tan simple como ajustar un número. Asegúrate de considerar cómo los contextos de apilamiento afectan el diseño general de tu página.
+
+---
+
+# Funciones en CSS
+
+Hasta ahora, en este roadmap aprendiste a usar varias funciones de CSS como `minmax()`, `fit-content()` para ajustar tamaños, y `rgb()`, `hsl()` para definir colores. Pero ¿qué son exactamente las funciones? ¿Cómo funcionan y cómo podemos aplicarlas de manera efectiva? Vamos a verlo.
+
+## ¿Qué es una función?
+
+### Analogía: La receta de cocina
+Piensa en una función como una receta de cocina. Cada receta tiene un nombre (por ejemplo, "Receta de pastel") y unos ingredientes (argumentos) que pasas para obtener un resultado final (el pastel). Si sigues los mismos pasos y usas los mismos ingredientes, siempre obtendrás el mismo pastel, sin importar en qué cocina estés.
+
+De manera similar, en CSS, una función es un bloque de código con un nombre que realiza una tarea específica. Algunas funciones son "puras", lo que significa que siempre que les des los mismos ingredientes (argumentos), obtendrás el mismo resultado, como sucede con `rgb()` que siempre devolverá el mismo color si se le pasan los mismos valores.
+
+```css
+.my-element {
+    background-color: rgb(255, 0, 0); /* siempre será rojo */
+}
+```
+
+## Selectores funcionales
+
+### Analogía: Filtrar contactos
+Imagina que tienes una lista de contactos en tu teléfono y quieres ver solo los amigos o familiares. Puedes crear un filtro que muestre solo aquellos que pertenecen a esas categorías. En CSS, los **selectores funcionales** como `:is()` y `:not()` te permiten "filtrar" elementos en tu página web.
+
+```css
+.post :is(h1, h2, h3) {
+    line-height: 1.2;
+}
+```
+
+En este caso, `:is()` actúa como un filtro para aplicar la misma regla (en este caso, `line-height`) a los elementos `h1`, `h2`, y `h3`.
+
+## Propiedades personalizadas y `var()`
+
+### Analogía: Etiquetas en un armario
+Imagina que en tu armario etiquetas los cajones con palabras como "ropa de verano" o "ropa de invierno". Cuando necesitas un tipo de ropa específico, simplemente miras la etiqueta y sabes dónde está. En CSS, las **propiedades personalizadas** actúan como esas etiquetas, asignando valores específicos que puedes reutilizar a lo largo de tu código.
+
+```css
+:root {
+    --base-color: #ff00ff;
+}
+
+.my-element {
+    background: var(--base-color);
+}
+```
+
+En este ejemplo, `--base-color` es la etiqueta (propiedad personalizada) y `var(--base-color)` es la forma en que accedes a esa etiqueta en tu código.
+
+## Funciones que muestran un valor
+
+### Analogía: El menú del restaurante
+Piensa en el menú de un restaurante que muestra información sobre los platos disponibles. Cada vez que miras el menú, la información (el nombre del plato o el precio) está vinculada al plato en cuestión. En CSS, funciones como `attr()` y `url()` hacen algo similar, mostrando información vinculada a un atributo o recurso externo.
+
+```css
+a::after {
+  content: attr(href);
+}
+```
+
+Aquí, `attr(href)` toma el valor del atributo `href` de un enlace y lo muestra como contenido.
+
+## Expresiones matemáticas
+
+### Analogía: Ajustar el volumen
+Imagina que tienes un control de volumen que ajusta la intensidad del sonido. A medida que lo giras, puedes combinar los decibeles con otras configuraciones de audio para obtener el volumen perfecto. Las **expresiones matemáticas** en CSS, como `calc()`, hacen algo parecido: ajustan propiedades combinando diferentes valores.
+
+```css
+.my-element {
+    width: calc(100% - 2rem);
+}
+```
+
+En este caso, `calc()` ajusta el ancho de un elemento restando `2rem` del 100% del ancho disponible.
+
+## Funciones de transformación
+
+### Analogía: Girar una silla
+Imagina que estás sentado en una silla giratoria. Si empujas la silla hacia un lado, girará en una dirección específica. Las **funciones de transformación** en CSS, como `rotate()`, funcionan de manera similar, permitiéndote girar, escalar, mover y cambiar el tamaño de los elementos en una página.
+
+```css
+.my-element {
+  transform: rotate(45deg);
+}
+```
+
+Este código rotará un elemento `45 grados` alrededor de su eje central.
+
+## Resumen
+
+Las funciones en CSS son herramientas poderosas que nos permiten hacer cálculos, manipular el diseño y reutilizar valores con facilidad. Al entenderlas, es como tener un conjunto de recetas que nos ayudan a crear páginas web más dinámicas y flexibles.
+
+En el siguiente capítulo, profundizaremos en otras funciones de CSS y cómo usarlas de manera efectiva para mejorar tu trabajo como frontend.
+
+---
+
+# Gradientes
+
+Imagina que tienes un sitio para construir y, en la parte superior, hay una introducción con un encabezado, un resumen y un botón. El diseñador entregó un diseño con fondo púrpura para esta introducción. El único problema es que el fondo presenta dos tonos de púrpura como gradiente. ¿Cómo lo haces?
+
+Un fondo degradado de color púrpura oscuro a claro con encabezado, párrafo y vínculo.
+
+Inicialmente podrías pensar que vas a necesitar exportar una imagen de tu herramienta de diseño para esto, pero puedes usar `linear-gradient` en su lugar.
+
+## ¿Qué es un gradiente?
+
+Un gradiente es una imagen y puede usarse en cualquier lugar, pero se crea con CSS y está formado por colores, números y ángulos. Los gradientes de CSS te permiten crear lo que quieras, desde un gradiente suave entre dos colores, hasta impresionantes obras de arte mezclando y repitiendo varios gradientes.
+
+### Gradiente lineal
+
+#### Navegadores compatibles
+- **Chrome**: 26+
+- **Edge**: 12+
+- **Firefox**: 16+
+- **Safari**: 7+
+
+La función `linear-gradient()` genera una imagen de dos o más colores, de forma progresiva. Toma varios argumentos, pero en su configuración más sencilla, puedes pasar algunos colores y automáticamente los dividirá de manera uniforme y los mezclará:
+
+```css
+.my-element {
+    background: linear-gradient(black, white);
+}
+```
+
+También puedes pasar un ángulo o palabras clave que representen un ángulo. Si eliges utilizar palabras clave, especifica una dirección después de la palabra clave `to`. Por ejemplo, si quieres un gradiente que sea blanco y negro, que va de izquierda (negro) a derecha (blanco):
+
+```css
+.my-element {
+    background: linear-gradient(to right, black, white);
+}
+```
+
+Además, puedes definir un valor de límite de color donde un color se detiene y se mezcla con sus vecinos. Por ejemplo, para un gradiente que comienza con un tono oscuro de rojo que corre en un ángulo de 45 grados, el 30% del tamaño del gradiente cambia a un rojo más claro:
+
+```css
+.my-element {
+    background: linear-gradient(45deg, darkred 30%, crimson);
+}
+```
+
+Puedes agregar tantos colores y tonos como quieras en `linear-gradient()`, y puedes superponer gradientes uno sobre otro separando cada gradiente con una coma.
+
+### Gradiente radial
+
+#### Navegadores compatibles
+- **Chrome**: 26+
+- **Edge**: 12+
+- **Firefox**: 16+
+- **Safari**: 7+
+
+Para crear un gradiente que se irradia de forma circular, la función `radial-gradient()` te ayuda. Es similar a `linear-gradient()`, pero en vez de especificar un ángulo, puedes especificar una posición y una forma final. Si solo especificas colores, `radial-gradient()` seleccionará automáticamente la posición como `center`, y seleccionará un círculo o una elipse, según el tamaño del cuadro:
+
+```css
+.my-element {
+    background: radial-gradient(white, black);
+}
+```
+
+La posición del gradiente es similar a `background-position` si se usan palabras clave o valores numéricos. El tamaño del gradiente radial determina el tamaño de la forma final del gradiente. De forma predeterminada, será `farthest-corner`, lo que significa que se unirá exactamente con la esquina más lejana de la caja al centro. También puedes utilizar las siguientes palabras clave:
+- `closest-corner`: alcanzará la esquina más cercana al centro del gradiente.
+- `closest-side`: se unirá al lado del cuadro más cercano al centro del gradiente.
+- `farthest-side`: hará lo contrario a `closest-side`.
+
+Puedes agregar tantos límites de color como quieras, al igual que con `linear-gradient`. Del mismo modo, puedes agregar tantos `radial-gradients` como desees.
+
+### Gradiente cónico
+
+#### Navegadores compatibles
+- **Chrome**: 69+
+- **Edge**: 79+
+- **Firefox**: 83+
+- **Safari**: 12.1+
+
+Un gradiente cónico tiene un punto central en tu cuadro y comienza desde la parte superior (de forma predeterminada) y gira en un círculo de 360 grados:
+
+```css
+.my-element {
+    background: conic-gradient(white, black);
+}
+```
+
+La función `conic-gradient()` acepta argumentos de posición y ángulo. De forma predeterminada, el ángulo es de 0 grados, que comienza en la parte superior, en el centro. Si establecieras el ángulo en 45deg, sería la esquina superior derecha. El argumento de ángulo acepta cualquier tipo de valor de ángulo, como los gradientes lineales y radiales.
+
+### Repetición y mezcla
+
+Cada tipo de gradiente también tiene una variante repetitiva: `repeating-linear-gradient()`, `repeating-radial-gradient()` y `repeating-conic-gradient()`. Estas funciones son similares a las funciones no repetitivas y toman los mismos argumentos. La diferencia es que, si el gradiente definido se puede repetir para rellenar el cuadro, en función de ambos tamaños.
+
+Por ejemplo, puedes crear un fondo a rayas con un `repeating-linear-gradient` configurando longitudes de parada de color:
+
+```css
+.my-element {
+  background: repeating-linear-gradient(
+    45deg,
+    red,
+    red 30px,
+    white 30px,
+    white 60px
+  );
+}
+```
+
+Además, puedes mezclar funciones de gradiente en las propiedades de `background`, definiendo tantos gradientes como desees, tal como lo harías con una imagen de fondo. Por ejemplo, puedes mezclar varios gradientes lineales o dos gradientes lineales con un gradiente radial.
+
+---
+
+### Resumen
+
+Los gradientes son herramientas poderosas en CSS que permiten crear fondos visualmente atractivos sin necesidad de imágenes. Al dominar las funciones `linear-gradient`, `radial-gradient` y `conic-gradient`, así como sus variantes repetitivas, podrás dar un toque profesional a tus diseños web. ¡Explora y experimenta con diferentes colores y combinaciones para encontrar el estilo que más te guste!
+
+---
+
+# Animaciones en CSS
+
+Las animaciones son una excelente manera de resaltar elementos interactivos y agregar interés y diversión a tus diseños. En este módulo, aprenderás a agregar y controlar efectos de animación con CSS.
+
+## Introducción a las Animaciones
+
+Imagina que estás en un teatro. Las luces se apagan y un actor entra en el escenario con un foco en él. Las animaciones en una interfaz funcionan de manera similar: ayudan a guiar la atención del usuario hacia elementos importantes. Por ejemplo, algunas veces verás pequeños íconos que parpadean suavemente, indicando que hay información útil disponible cuando haces clic en ellos. Este módulo te mostrará cómo crear esas ayudas y otras animaciones utilizando CSS.
+
+Los íconos intermitentes son una forma de garantizar que los usuarios presten atención a la información importante. Puedes usar CSS para establecer una secuencia de animación con fotogramas clave. Estas secuencias pueden ser animaciones básicas de un estado o secuencias complejas basadas en el tiempo.
+
+## ¿Qué es un Fotograma Clave?
+
+En la mayoría de las herramientas de animación, los fotogramas clave son el mecanismo que utilizas para asignar animaciones a estados en momentos específicos de una línea de tiempo. Piensa en un fotograma clave como una parada en un viaje en tren; cada parada es un estado y la línea de tiempo es el camino que recorres.
+
+Por ejemplo, aquí hay una línea de tiempo del destello de la palabra "helper". La animación se ejecuta durante 1 segundo y tiene 2 estados:
+
+1. **Estado 1:** La palabra es completamente visible.
+2. **Estado 2:** La palabra desaparece.
+
+Cada uno de estos estados tiene un punto específico donde comienza y termina. Los organizas en el cronograma utilizando fotogramas clave.
+
+### Ejemplo de Fotogramas Clave
+
+```css
+@keyframes my-animation {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+```
+
+En este ejemplo, `my-animation` es el identificador personalizado, que funciona como el nombre de una función, permitiendo hacer referencia a esta regla en otras partes del código CSS.
+
+## Propiedades de Animación
+
+Las animaciones se controlan mediante varias propiedades en CSS. Aquí tienes las más importantes:
+
+### `animation-duration`
+
+Define la longitud del cronograma `@keyframes` como un valor de tiempo.
+
+```css
+.my-element {
+    animation-duration: 10s;
+}
+```
+
+### `animation-timing-function`
+
+Controla la velocidad de la animación en diferentes puntos. Puedes usar palabras clave como `linear`, `ease`, `ease-in`, `ease-out`, y `ease-in-out`.
+
+```css
+.my-element {
+    animation-timing-function: ease-in-out;
+}
+```
+
+### `animation-iteration-count`
+
+Define cuántas veces debe ejecutarse el cronograma `@keyframes` durante la animación.
+
+```css
+.my-element {
+    animation-iteration-count: infinite; /* Animación en bucle */
+}
+```
+
+### `animation-direction`
+
+Establece en qué dirección se ejecutará el cronograma sobre los fotogramas clave.
+
+```css
+.my-element {
+    animation-direction: alternate; /* Alterna entre hacia adelante y hacia atrás */
+}
+```
+
+### `animation-delay`
+
+Define cuánto tiempo espera el navegador antes de iniciar la animación.
+
+```css
+.my-element {
+    animation-delay: 5s; /* Espera 5 segundos antes de comenzar */
+}
+```
+
+### `animation-play-state`
+
+Permite reproducir o pausar la animación.
+
+```css
+.my-element:hover {
+    animation-play-state: paused; /* Pausa la animación al pasar el cursor */
+}
+```
+
+### `animation-fill-mode`
+
+Define qué valores de tu cronograma `@keyframes` se conservan antes de que comience la animación o después de que finalice.
+
+```css
+.my-element {
+    animation-fill-mode: forwards; /* Mantiene el último fotograma clave al finalizar */
+}
+```
+
+## Abreviatura de Animación
+
+Puedes definir todas las propiedades de animación en una sola línea utilizando la propiedad `animation`.
+
+```css
+.my-element {
+    animation: my-animation 10s ease-in-out 1s infinite forwards;
+}
+```
+
+## Consideraciones para Animaciones Accesibles
+
+Es importante tener en cuenta que algunos usuarios pueden configurar su sistema operativo para que prefiera la reducción de movimiento. Puedes detectar esta preferencia con la consulta de medios `prefers-reduced-motion`.
+
+```css
+@media (prefers-reduced-motion) {
+  .my-autoplaying-animation {
+    animation-play-state: paused; /* Pausa la animación si el usuario prefiere menos movimiento */
+  }
+}
+```
+
+## Ejemplo Práctico
+
+Intenta crear un pequeño ejemplo de animación en tu proyecto, como un botón que parpadea al pasar el cursor sobre él. Comienza con un simple estado y luego ve agregando más fotogramas clave y propiedades de animación para enriquecer la experiencia.
+
+```css
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.button {
+  animation: pulse 2s infinite;
+}
+```
+
+¡Ahora tienes un mejor entendimiento sobre cómo funcionan las animaciones en CSS! Las animaciones son una herramienta poderosa para mejorar la interacción y la experiencia del usuario. No dudes en experimentar con diferentes propiedades y combinaciones para ver qué efectos puedes lograr.
+
+---
+

@@ -2023,3 +2023,887 @@ div:empty {
 
 ---
 
+# Borders
+
+In the **box model**, the border can be thought of as the **frame** around the content, much like how a picture frame surrounds an image. Just as a frame defines the boundaries and provides style, the border properties in CSS offer a wide array of options to stylize the boundary of an element.
+
+## Border Properties
+
+Border properties allow you to style the various parts of a border. These include:
+
+- **Style** (e.g., solid, dashed)
+- **Width** (how thick the border is)
+- **Color** (the color of the border)
+
+## Browser Support
+
+| Browser | Version |
+|---------|---------|
+| Chrome  | 1       |
+| Edge    | 12      |
+| Firefox | 1       |
+| Safari  | 1       |
+
+## Border Style
+
+The **border-style** property defines the type of line used for the border. You can choose from options like:
+
+- `solid`
+- `dashed`
+- `dotted`
+- `ridge`, `groove`, `inset`, and `outset`: These styles create a 3D effect by darkening one side of the border to give it depth.
+
+**Example:**
+```css
+.my-element {
+    border-style: solid;
+}
+```
+
+The way borders are rendered can vary across browsers. For example, borders may appear differently between **Chrome**, **Firefox**, and **Safari**, especially with styles like `dotted` and `dashed`. It’s important to test borders across different browsers to ensure consistency.
+
+## Shorthand for Borders
+
+As with **margin** and **padding**, borders also have a shorthand property that lets you set the **width**, **style**, and **color** in one line.
+
+**Example:**
+```css
+.my-element {
+    border: 1px solid red;
+}
+```
+This is equivalent to defining:
+- `border-width: 1px;`
+- `border-style: solid;`
+- `border-color: red;`
+
+## Border Color
+
+The **border-color** property sets the color of the border. By default, the color will inherit from the text color (`currentColor`). You can also define different colors for each side.
+
+**Example:**
+```css
+.my-element {
+    border-top-color: red;
+    border-right-color: green;
+    border-bottom-color: blue;
+    border-left-color: yellow;
+}
+```
+
+## Border Width
+
+The **border-width** property controls how thick the border is. You can specify a width for each side, using units like `px`, `em`, or `%`.
+
+**Example:**
+```css
+.my-element {
+    border-width: 2px 4px 6px 8px;
+}
+```
+
+This sets the border thickness for each side in the order: **top**, **right**, **bottom**, and **left**.
+
+## Logical Properties
+
+Instead of referring to explicit **top**, **right**, **bottom**, and **left** sides, you can use logical properties like `border-inline-start` or `border-block-end` to define borders in terms of **inline** and **block** flow.
+
+**Example:**
+```css
+.my-element {
+    border-inline-end: 2px solid red;
+}
+```
+In **left-to-right** languages like English, this would apply a red border to the **right side**, while in **right-to-left** languages like Arabic, it would apply to the **left side**.
+
+## Border Radius
+
+To create rounded corners, use the **border-radius** property.
+
+**Example:**
+```css
+.my-element {
+    border-radius: 1em;
+}
+```
+
+You can define a specific radius for each corner, or use shorthand to specify all corners at once. For complex shapes, you can also use the elliptical radius.
+
+**Example:**
+```css
+.my-element {
+    border-radius: 1em 2em 3em 4em;
+}
+```
+
+This sets different radii for each corner in the order **top-left**, **top-right**, **bottom-right**, and **bottom-left**.
+
+## Border Images
+
+CSS allows you to use images for borders with the **border-image** property. You can specify an image, slice it, and control how it is applied to the edges of the box.
+
+**Example:**
+```css
+.my-element {
+    border-image-source: url('path/to/image.png');
+    border-image-slice: 30;
+}
+```
+
+The **border-image-slice** property lets you slice the image into sections, which are then applied to the corners and edges of the box. You can also control how the image repeats with **border-image-repeat**.
+
+## Conclusion
+
+Borders are a fundamental part of the box model, providing structure and style to your elements. By mastering the different properties—**style**, **color**, **width**, **radius**, and **image**—you can create visually appealing and functional borders for any element in your design.
+
+---
+
+# Shadows in CSS
+
+### Introduction
+
+Imagine you're tasked with building a design where there's a dynamic product image, say, of a t-shirt. The designer has applied a drop shadow around the t-shirt to make it stand out. The challenge? The product image is dynamic — it could change to a visor, shorts, or anything else, and the shadow should adapt accordingly. The question is, how do we create a dynamic shadow around any image with CSS?
+
+At first glance, you might think of using the common CSS properties `box-shadow` or `text-shadow`. However, `text-shadow` only works on text, and `box-shadow` places the shadow around the box, not the t-shirt itself. This is where CSS's `drop-shadow()` filter comes in handy. Let’s break down the options for shadows in CSS.
+
+### Box Shadow
+
+Think of `box-shadow` like placing a sticker on a surface. The shadow forms around the **entire shape** of the sticker, whether it's a square, rectangle, or any other shape defined by the box around it. It doesn't follow the contours of the t-shirt within the box but rather the box itself.
+
+```css
+.my-element {
+    box-shadow: 5px 5px 20px 5px #000;
+}
+```
+
+The syntax might look confusing, so let's break it down:
+- **Horizontal Offset**: This moves the shadow left or right. Imagine you're moving the shadow horizontally along the X-axis.
+- **Vertical Offset**: Moves the shadow up or down along the Y-axis.
+- **Blur Radius**: This controls how "fuzzy" the shadow looks, as if you're adjusting the focus of the shadow.
+- **Spread Radius**: This expands or shrinks the shadow. Think of it as zooming in or out on the shadow's size.
+- **Color**: The shadow can take any color, but commonly we use a darker color to mimic realistic shadows.
+
+Here’s an example:
+```css
+.my-element {
+    box-shadow: 5px 5px 20px 5px #000;
+}
+```
+
+This code creates a shadow that’s slightly offset to the right and down, with a blur and size to match. The values can be tweaked for different effects.
+
+### Inner Shadows
+
+Now, let’s imagine you have a box, and you want to make it look like the light is coming from the inside of the box, casting shadows **inward**. This is where the `inset` keyword comes into play:
+
+```css
+.my-element {
+    box-shadow: inset 5px 5px 20px 5px #000;
+}
+```
+
+### Multiple Shadows
+
+Just like layering stickers on top of each other, CSS allows you to layer multiple shadows. You can apply multiple shadows on the same element, separating them by commas:
+
+```css
+.my-element {
+  box-shadow: 5px 5px 20px 5px darkslateblue, -5px -5px 20px 5px dodgerblue,
+    inset 0px 0px 10px 2px darkslategray, inset 0px 0px 20px 10px steelblue;
+}
+```
+
+### Text Shadow
+
+When it comes to **text**, shadows work differently. Picture someone casting light over the letters on a sign, and the letters cast shadows behind them. This is what the `text-shadow` property does:
+
+```css
+.my-element {
+    text-shadow: 3px 3px 3px hotpink;
+}
+```
+
+You can adjust the **offset**, **blur**, and **color** similarly to `box-shadow`. However, `text-shadow` doesn’t have an `inset` option or a spread value. And just like with `box-shadow`, you can add multiple text shadows for more complex effects.
+
+Here’s an example of a 3D text effect using multiple shadows:
+
+```css
+.my-element {
+    text-shadow: 1px 1px 0px white,
+    2px 2px 0px firebrick;
+    color: darkslategray;
+}
+```
+
+### Drop Shadow
+
+Now, let’s return to the **t-shirt problem**. The `drop-shadow()` filter is like taking a cutout of a t-shirt and shining light behind it, casting a shadow that perfectly matches its shape, even if the image changes. It applies to the image’s **alpha channel** (i.e., the transparent areas), so the shadow conforms to the shape of the t-shirt, visor, or any other dynamic image.
+
+```css
+.my-image {
+    filter: drop-shadow(0px 0px 10px rgba(0 0 0 / 30%));
+}
+```
+
+This is ideal for dynamic images where the shape isn't confined to a box.
+
+### Key Takeaways:
+- **Box shadows** work around the element’s entire box, not its content.
+- **Text shadows** are for shadows on text, and they can create cool 3D effects with multiple shadows.
+- **Drop shadows** follow the shape of an image, ideal for dynamically shaped images like t-shirts, shoes, or other cutouts.
+
+Shadows in CSS are all about adding depth and realism to your designs, and each method serves a different purpose. Knowing which one to use when will make your design more polished and visually compelling.
+
+---
+
+# Focus
+
+## The Importance of Focus in Web Development
+
+Imagine you're in a supermarket, looking for a specific product. You don't just wander aimlessly; you focus on signs or shelves that help guide you to your target. Similarly, when navigating a website, users—especially those who use keyboards or other assistive devices—rely on something called **focus** to find their way around. Without it, they'd be like a shopper in a store with no signs or directions.
+
+In your webpage, when you click a link, it might jump you to a different part of the page, often the main content. This is known as a **skip link** or **anchor link**. If you're using a keyboard to do this, the focused area (like the main content) is highlighted with something called a **focus ring**.
+
+### Why does this happen?
+
+It's because the `<main>` element has an attribute `tabindex="-1"`. This means the element can be focused programmatically, rather than being part of the regular tabbing order. When a URL has something like `#main-content`, it tells the browser to focus on the `<main>` section. This focus helps users understand where they are on the page.
+
+You might be tempted to remove focus styles because they seem unnecessary, but **handling focus properly** is crucial for creating an accessible and user-friendly experience.
+
+---
+
+## Why is Focus Important?
+
+Think of focus as a highlighter for your users. When someone is navigating your site with a keyboard, focus styles—like a focus ring—tell them exactly which part of the page they're interacting with. Without it, they might lose track, like trying to read without knowing where the line ends.
+
+As a developer, part of your job is to make your website accessible to everyone, including people with disabilities. **Accessible focus states** are essential for this.
+
+Imagine clicking the wrong link just because there was no focus style to show what was selected. This could cause frustration for users and make navigation difficult.
+
+> **Note:** To learn more about the importance of focus in accessibility, check out these resources:
+> - [Learn Accessibility: Focus](https://web.dev/focus/)
+> - [Learn HTML: Focus](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+
+---
+
+## How Do Elements Receive Focus?
+
+Some elements naturally receive focus, like links (`<a>`), buttons (`<button>`), and form inputs (`<input>`, `<select>`). These are interactive elements that expect some kind of input or action. Think of them as the "cash registers" of your supermarket—everyone eventually needs to interact with them.
+
+You can navigate through these focusable elements using the **Tab** key to move forward, and **Shift + Tab** to move backward.
+
+But there's more! You can also control focus using the **tabindex** attribute. This lets you adjust the order in which elements receive focus:
+
+- `tabindex="0"`: The element follows the regular tab order (based on the document flow).
+- `tabindex="-1"`: The element is only focusable programmatically, like when a button is clicked via JavaScript.
+- `tabindex="1" or higher`: These elements are focused before any others that don't have a tabindex or have a lower value.
+
+> **Warning:** Changing the focus order with `tabindex` can cause confusion. It’s like re-arranging the aisles in the supermarket without telling anyone! Stick to the natural document order unless absolutely necessary.
+
+---
+
+## Styling the Focus
+
+When an element receives focus, most browsers show a **focus ring**—this is a visual cue that tells the user what they’re currently interacting with. The style of the ring can vary depending on the browser and operating system.
+
+You can change the focus style using CSS. The most common pseudo-classes for focus are `:focus`, `:focus-within`, and `:focus-visible`.
+
+```css
+a:focus {
+  outline: 2px solid slateblue;
+}
+```
+
+In this example, a solid blue outline will appear when a link is focused. The **outline** is like that highlighter pen—it makes things stand out.
+
+However, outlines sometimes appear too close to text or elements. To fix this, you can use `outline-offset`, which pushes the outline further away:
+
+```css
+a:focus {
+  outline: 2px solid slateblue;
+  outline-offset: 4px;
+}
+```
+
+Another option some developers try is using **box-shadow** instead of outline because it can respect things like `border-radius`. But this can cause issues in **Windows High Contrast Mode**, where shadows are not displayed.
+
+---
+
+## Key Takeaways
+
+- Always provide clear, visible focus styles. They’re like the guiding signs in a store, helping users know where they are.
+- Avoid using `outline: none;` unless you provide an alternative focus style.
+- Don’t rely on `box-shadow` for focus styles, especially if you want to ensure compatibility with all accessibility modes.
+- Only use positive `tabindex` values if you really need to alter the focus order. Stick to the natural document flow when possible.
+
+By managing focus effectively, you're helping all users—including those with disabilities—navigate your site easily and efficiently. Think of it as making sure every aisle in your store has clear, easy-to-read signs that help everyone find what they need.
+
+---
+
+# Z-index and Stacking Contexts
+
+Let's dive into the world of layering in CSS. To make this easier, imagine you're stacking cards on a table. Some cards will be on top of others, right? The way you decide which card goes on top in the browser is controlled by the **z-index** property. Let's break this down:
+
+### Stacking Cards (Z-index)
+Imagine you have two cards, one red and one blue. You want to place them on top of each other, but you're not sure which one will appear above. In the browser, this is controlled by the **z-index** property, which tells the browser which card (or element) should be "higher" in the stack.
+
+Here's some code for example:
+
+```html
+<div class="stacked-items">
+    <div class="item-1">Item 1</div>
+    <div class="item-2">Item 2</div>
+</div>
+```
+
+In this case, **Item 1** might sit above or below **Item 2**, depending on their **z-index** values.
+
+### What is Z-index?
+
+**Z-index** is like saying, "How high or low should my card (element) be in the stack?" In the digital world, our browser has three dimensions to work with: X (horizontal), Y (vertical), and Z (depth, closer or further from you). The z-index controls the Z-axis, i.e., how "close" or "far" the element is from the viewer.
+
+Here's a rule of thumb:
+
+- A **higher z-index** number means the element is on top.
+- A **lower z-index** number means it's behind.
+
+If you don’t set any z-index, the default behavior is to stack elements based on their position in the document. So, elements that come later in your HTML will appear on top of those that come before.
+
+### Quick Example
+
+```css
+.item-1 {
+    position: absolute;
+    z-index: 2;
+}
+
+.item-2 {
+    position: absolute;
+    z-index: 1;
+}
+```
+
+In this case, **Item 1** will sit on top of **Item 2** because it has a higher z-index value.
+
+### When Z-index Doesn't Work
+
+Now, let’s say you set a z-index but nothing happens. This is because **z-index** only works if the element has a **position** property set to something other than `static`. For example:
+
+```css
+.item-1 {
+    z-index: 10; /* This won't work */
+}
+```
+
+This doesn't work because we forgot to set the `position`. Once we add `position: relative;`, the z-index will start working:
+
+```css
+.item-1 {
+    position: relative;
+    z-index: 10; /* Now it works */
+}
+```
+
+### Negative Z-index: Going Behind
+
+If you want an element to be "behind" another one, you can set a **negative z-index**. Think of it as placing a card under the others:
+
+```css
+.my-element {
+    position: relative;
+    z-index: -1;
+}
+```
+
+In this case, `.my-element` will appear behind other elements in the same stacking context.
+
+### Stacking Context: Grouping Cards
+
+Here’s where it gets a bit tricky: sometimes, cards are grouped together in stacks, and they move up and down **as a group**. This is called a **stacking context**.
+
+Imagine you have two stacks of cards. Each stack has its own "rules" for which card is on top. Even if you set one card’s z-index super high (e.g., 999), it won’t jump to the top of a different stack.
+
+```css
+.parent {
+    position: relative;
+    z-index: 1;
+}
+
+.child {
+    position: relative;
+    z-index: 999;
+}
+```
+
+In this example, the `.parent` creates a new stacking context. The `.child` will have the highest z-index **within that context**, but it can’t go outside its parent’s boundaries.
+
+### Creating a New Stacking Context
+
+You can create new stacking contexts in several ways. Here are a few common ones:
+
+- Setting `z-index` on an element with `position: relative` or `position: absolute`.
+- Using properties like `opacity`, `transform`, or `will-change`.
+
+For example, adding `opacity: 0.5` to an element will create a new stacking context, even if no z-index is defined:
+
+```css
+.my-element {
+    opacity: 0.5;
+}
+```
+
+This tells the browser, "Hey, treat this element and its children as their own separate stack."
+
+### Analogy: A Canvas and Sticky Notes
+
+Think of your webpage as a giant canvas, and your elements as sticky notes. When you move one sticky note, it doesn’t impact the whole canvas. Similarly, when you set properties like `opacity` or `transform`, the browser creates a new layer (or sticky note) on top of the canvas to optimize performance.
+
+For example, when you set `transform: rotate(20deg)`, the browser creates a new composite layer for that element, making it easier and faster to move without re-painting the whole page.
+
+### Conclusion
+
+Understanding **z-index** and **stacking contexts** is crucial for controlling which elements appear on top of others in your webpage. Remember:
+
+- **Z-index** determines the stacking order along the Z-axis.
+- You need to set a position property (other than `static`) for z-index to work.
+- Negative z-index values push elements behind others.
+- **Stacking contexts** are like groups of elements that follow their own stacking rules.
+
+Keep this analogy in mind, and you’ll have a solid understanding of how to control layers in CSS!
+
+---
+
+# Functions in CSS
+
+In CSS, **functions** are like little machines that perform specific tasks to help style your webpage. You've probably already come across a few of them, like `rgb()` for colors or `minmax()` for grids. But there’s a lot more to them! Let's dive into functions, their purpose, and how you can use them to simplify your CSS.
+
+### What is a Function?
+
+Think of a function like a recipe. You give it some ingredients (known as **arguments**), and it gives you a dish (or result). A **function** in CSS has a specific job, whether it’s calculating sizes, handling colors, or creating animations. For example, when you use `rgb(255, 0, 0)` in CSS, you’re calling the `rgb()` function and passing in three arguments (red, green, and blue values) to get a red color.
+
+#### **Analogy:**  
+Imagine you're making a sandwich.  
+- **Function name:** Make sandwich.  
+- **Arguments:** Bread, lettuce, tomato, and cheese.  
+- **Result:** A sandwich!  
+Similarly, in CSS, when you call a function like `rgb()`, you pass values (arguments) into it, and the result is a color.
+
+### CSS Functions You’ve Already Used
+
+#### Color Functions
+You’ve probably used the `rgb()` or `hsl()` functions for colors. These functions help you define specific color values, making it easier to work with dynamic or transparent colors.
+
+Example:
+```css
+.my-element {
+    background-color: rgb(255, 0, 0); /* Red color */
+}
+```
+
+**Analogy:**  
+Think of the `rgb()` function as mixing paint. The three values represent the amounts of red, green, and blue paint you're mixing to create the final color.
+
+#### Sizing Functions
+Functions like `minmax()` and `calc()` are used to help with element sizing. These functions calculate values for you based on the parameters you give them, making your layout more flexible.
+
+Example:
+```css
+.my-element {
+    width: calc(100% - 50px); /* Subtract 50px from 100% width */
+}
+```
+
+**Analogy:**  
+If you're building a table, you might need to cut a piece of wood to fit. `calc()` helps you calculate the exact measurement, just like a tape measure.
+
+### Pure Functions in CSS
+
+Some CSS functions are **pure functions**, which means they always return the same result if given the same arguments, no matter what’s happening in the rest of your code. This makes them predictable and reliable.
+
+Example of pure function:
+```css
+.my-element {
+    background-color: rgb(255, 255, 255); /* This will always result in white */
+}
+```
+
+**Analogy:**  
+Pure functions are like a coffee machine. If you put in the same amount of coffee and water every time, you'll always get the same cup of coffee, regardless of what else is happening in your kitchen.
+
+### Functional Selectors
+
+Selectors like `:is()` and `:not()` are also considered functions because they take arguments— in this case, CSS selectors— and return a result.
+
+Example:
+```css
+.post :is(h1, h2, h3) {
+    line-height: 1.2;
+}
+```
+
+**Analogy:**  
+Imagine you're setting up a security system. The `:is()` function is like giving access to a list of people (in this case, `h1`, `h2`, `h3`). Only these people are allowed in.
+
+### Custom Properties and `var()`
+
+Custom properties, or **CSS variables**, let you store values and reuse them throughout your stylesheet. The `var()` function is used to retrieve these values.
+
+Example:
+```css
+:root {
+    --base-color: #ff00ff;
+}
+
+.my-element {
+    background-color: var(--base-color); /* Uses the custom property */
+}
+```
+
+**Analogy:**  
+Think of `var()` like a nickname. Instead of calling someone by their full name every time (like #ff00ff for the color), you just use the nickname (`--base-color`), and everyone knows what you mean.
+
+### Math Functions: `calc()`, `min()`, `max()`, `clamp()`
+
+Math functions in CSS let you perform calculations directly in your stylesheet. This helps make your layouts more responsive and flexible.
+
+- **`calc()`** performs simple math, like adding or subtracting lengths.
+- **`min()`** returns the smallest value from a set of arguments.
+- **`max()`** returns the largest value from a set of arguments.
+- **`clamp()`** sets a value between a defined minimum and maximum.
+
+Example:
+```css
+.my-element {
+    width: min(50vw, 300px); /* Use the smaller value between 50% of viewport or 300px */
+}
+```
+
+**Analogy:**  
+Imagine you’re shopping for a pair of shoes. If your size is between two sizes, `clamp()` helps you choose the size that fits best by setting boundaries.
+
+### Transform Functions
+
+The **transform** property allows you to apply geometric transformations, like rotating or scaling elements. Functions like `rotate()`, `scale()`, and `translate()` control how elements are transformed.
+
+Example:
+```css
+.my-element {
+    transform: rotate(45deg); /* Rotates the element 45 degrees */
+}
+```
+
+**Analogy:**  
+Think of transform functions like moving or resizing furniture in a room. You can rotate a chair (rotate), make a table bigger (scale), or move a couch across the room (translate).
+
+### Conclusion
+
+CSS functions are incredibly powerful tools that allow you to write more dynamic, flexible, and efficient styles. They help simplify complex tasks and give you more control over how your webpage looks and behaves. Whether you're mixing colors with `rgb()`, calculating sizes with `calc()`, or rotating elements with `transform()`, functions are your go-to solution for many CSS challenges.
+
+In the next lessons, we'll go deeper into some of these functions and explore how they can make your CSS even more versatile!
+
+---
+
+# Gradients
+
+Imagine you've got a site to build, and at the top, there's an intro with a heading, summary, and a button. The designer has handed over a design that features a purple background for this intro. The only problem is that the background has two shades of purple forming a gradient. How do you implement this?
+
+## A Dark to Light Purple Gradient Background
+
+Initially, you might think you need to export an image from your design tool for this effect, but you can actually use a **linear-gradient** instead.
+
+A gradient is an image that can be used anywhere images are applicable, but it is created using CSS and consists of colors, numbers, and angles. CSS gradients allow you to create anything from a smooth transition between two colors to impressive artwork by mixing and repeating multiple gradients.
+
+## Linear Gradient
+
+### Browser Support
+- **Chrome**: 26
+- **Edge**: 12
+- **Firefox**: 16
+- **Safari**: 7
+
+### What is it?
+The `linear-gradient()` function generates an image that transitions between two or more colors progressively. Think of it like a painting where colors blend into each other, creating a smooth transition. In its simplest form, you can provide a couple of colors, and it will automatically distribute them evenly and blend them together.
+
+```css
+.my-element {
+    background: linear-gradient(black, white);
+}
+```
+
+### Direction and Angles
+You can also specify an angle or use keywords to indicate a direction. If you opt for keywords, simply specify a direction after the `to` keyword. For instance, if you want a gradient that transitions from black (on the left) to white (on the right), you would set it up like this:
+
+```css
+.my-element {
+    background: linear-gradient(to right, black, white);
+}
+```
+
+### Color Stops
+A color stop is where one color fades into another. For example, if you have a gradient starting with a dark red that changes to a lighter red at 30% of the gradient size, you would code it like this:
+
+```css
+.my-element {
+    background: linear-gradient(45deg, darkred 30%, crimson);
+}
+```
+
+You can include as many colors and stops as you like, layering gradients on top of each other by separating them with commas.
+
+## Radial Gradient
+
+### Browser Support
+- **Chrome**: 26
+- **Edge**: 12
+- **Firefox**: 16
+- **Safari**: 7
+
+### What is it?
+To create a gradient that radiates outward in a circular fashion, you would use the `radial-gradient()` function. Imagine a light bulb casting light in a circle; that's how a radial gradient works. If you only provide colors, `radial-gradient()` will automatically position the center and choose a shape (circle or ellipse) based on the box size.
+
+```css
+.my-element {
+    background: radial-gradient(white, black);
+}
+```
+
+### Positioning and Size
+The gradient's position can be controlled with keywords and/or numeric values. The size of the radial gradient determines the size of the final shape (circle or ellipse), defaulting to `farthest-corner`, which means it will stretch to the farthest corner of the box from the center. Here are some additional keywords you can use:
+- `closest-corner`: meets the closest corner to the center.
+- `closest-side`: meets the nearest side to the center.
+- `farthest-side`: does the opposite of `closest-side`.
+
+Just like with linear gradients, you can add multiple color stops in a radial gradient.
+
+## Conic Gradient
+
+### Browser Support
+- **Chrome**: 69
+- **Edge**: 79
+- **Firefox**: 83
+- **Safari**: 12.1
+
+### What is it?
+A conic gradient starts from a central point in your box and rotates around in a 360-degree circle, like the hands of a clock moving around its face.
+
+```css
+.my-element {
+    background: conic-gradient(white, black);
+}
+```
+
+### Positioning and Angles
+By default, the angle starts at 0 degrees, which means it begins at the top center of the box. If you set the angle to 45 degrees, it would start at the top right corner. Just like with other gradients, you can specify the position using keywords or numeric values.
+
+## Repeating and Mixing Gradients
+Each type of gradient has a repeating variant: `repeating-linear-gradient()`, `repeating-radial-gradient()`, and `repeating-conic-gradient()`. These work similarly to their non-repeating counterparts but can fill the entire box based on size.
+
+If your gradient isn't repeating as expected, it may be because you haven’t set a length for one of the color stops. For example, you can create a striped effect using `repeating-linear-gradient()` by defining lengths for color stops:
+
+```css
+.my-element {
+    background: repeating-linear-gradient(
+        45deg,
+        red,
+        red 30px,
+        white 30px,
+        white 60px
+    );
+}
+```
+
+### Mixing Gradients
+You can also mix gradient functions within the `background` property and define as many gradients as you'd like, just like you would with a background image. For instance, you could combine multiple linear gradients or layer linear and radial gradients together.
+
+```css
+.my-element {
+    background: linear-gradient(to right, red, yellow), radial-gradient(circle, blue, green);
+}
+```
+
+With gradients, you can enhance your web designs significantly, making them more vibrant and visually appealing without relying on images!
+
+---
+
+# Animations
+
+Animation is a great way to highlight interactive elements and add interest and fun to your designs. In this module, find out how to add and control animation effects with CSS.
+
+Sometimes you see little helpers on interfaces that provide helpful information about the section they're in when you click them. These often have a pulsing animation to subtly let you know that the information is there and should be interacted with. This module shows you how to create those helpers and other animations using CSS.
+
+## The Power of Animation
+
+Think of animations as a **traffic light** guiding the flow of a busy intersection. Just as the lights help cars know when to stop and go, animations guide users' attention to important information on a webpage. By using CSS animations, you can draw users' focus where it matters most.
+
+### What is a Keyframe?
+
+In most animation tools, keyframes are the mechanism you use to assign animation states to timestamps on a timeline. For example, here's a timeline for the pulsing "helper" dot. The animation runs for 1 second and has 2 states.
+
+**Analogy:** Imagine a **movie director** who needs to capture specific moments in a scene. Keyframes are like the **storyboard** that outlines key moments in the animation.
+
+The states of the pulsing animation are specific points where each of these animation states start and end. You map these out on the timeline with keyframes.
+
+### Defining Keyframes in CSS
+
+In CSS, you can define keyframes using the `@keyframes` rule:
+
+```css
+@keyframes my-animation {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+```
+
+The first important part is the custom identifier (custom-ident), the name of the keyframes rule. The identifier in this example is `my-animation`. This works like a **label** for a box of toys; it helps you remember what’s inside so you can find it when you need it.
+
+Inside the keyframes rule, `from` and `to` represent 0% and 100%, which are the start and end of the animation.
+
+You could also define the same rule like this:
+
+```css
+@keyframes my-animation {
+  0% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+```
+
+### More Keyframes
+
+You can add as many positions as you like along the timeframe. In the pulsing helper example, there are two states, which translate to two keyframes. This means you have two positions inside your keyframes rule to represent the changes for each of these keyframes.
+
+```css
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.4;
+  }
+}
+```
+
+### Animation Properties
+
+To use your `@keyframes` in a CSS rule, you can define various animation properties individually or use the animation shorthand property.
+
+#### Animation Duration
+
+**Analogy:** Think of the animation duration as the **time limit** for a game. If the time is too short, you can’t enjoy the game, but if it’s too long, you might lose interest. The `animation-duration` property defines how long the `@keyframes` timeline should be as a time value.
+
+```css
+.my-element {
+    animation-duration: 10s;
+}
+```
+
+#### Animation Timing Function
+
+To recreate natural motion in animation, you can use timing functions that calculate the speed of an animation at each point. These values are often curved, making the animation run at variable speeds, similar to how a car accelerates and decelerates.
+
+```css
+.my-element {
+    animation-timing-function: ease-in-out;
+}
+```
+
+#### Steps Easing Function
+
+Sometimes you might want to take more granular control of your animation. The `steps()` easing function lets you break the timeline into defined intervals of equal duration, like a **dance instructor** counting beats for a dance routine.
+
+```css
+.my-element {
+    animation-timing-function: steps(10, end);
+}
+```
+
+#### Animation Iteration Count
+
+The `animation-iteration-count` property defines how many times the `@keyframes` timeline should run during the animation. 
+
+```css
+.my-element {
+    animation-iteration-count: 10;
+}
+```
+
+To make your animation loop indefinitely, set the iteration count to infinite, like a **repeating song** that keeps playing until you stop it.
+
+#### Animation Direction
+
+You can set which direction the timeline runs over your keyframes with `animation-direction`, like a **rewind button** on a video player.
+
+```css
+.my-element {
+    animation-direction: reverse;
+}
+```
+
+#### Animation Delay
+
+The `animation-delay` property defines how long the browser waits before starting the animation. You can even use negative values to start the animation from a certain point in your timeline, similar to how a **race starts** when the buzzer goes off.
+
+```css
+.my-element {
+    animation-delay: 5s;
+}
+```
+
+#### Animation Play State
+
+The `animation-play-state` property lets you play and pause the animation. This is like a **pause button** on a TV remote.
+
+```css
+.my-element:hover {
+    animation-play-state: paused;
+}
+```
+
+### Animation Fill Mode
+
+The `animation-fill-mode` property defines which values in your `@keyframes` timeline persist before the animation starts or after it ends. 
+
+```css
+.my-element {
+    animation-fill-mode: forwards;
+}
+```
+
+### Animation Shorthand
+
+Instead of defining each property separately, you can define them in an animation shorthand, letting you define the animation properties in a single line.
+
+```css
+.my-element {
+    animation: my-animation 10s ease-in-out 1s infinite forwards running;
+}
+```
+
+### Considerations When Working with Animation
+
+Users can set their operating systems to prefer reduced motion when interacting with applications and websites. You can detect this preference using the `prefers-reduced-motion` media query:
+
+```css
+@media (prefers-reduced-motion) {
+    .my-autoplaying-animation {
+        animation-play-state: paused;
+    }
+}
+```
+
+This isn’t necessarily a preference for no animation; it's a preference for less unexpected animation. Understanding this can enhance user experience, ensuring your designs are not only attractive but also considerate of user needs.
+
+## Summary
+
+Animations are a powerful tool in your design toolkit, helping to create engaging, interactive user experiences. By using keyframes, understanding animation properties, and considering user preferences, you can bring your web designs to life with captivating animations. Keep experimenting, and have fun with your animations!
+
+---
+
