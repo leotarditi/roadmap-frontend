@@ -2885,3 +2885,1078 @@ Intenta crear un pequeño ejemplo de animación en tu proyecto, como un botón q
 
 ---
 
+# Filtros CSS
+
+## Introducción
+
+Supongamos que necesitas crear un elemento que sea un poco opaco, con un efecto de vidrio esmerilado, que se ubique sobre la parte superior de una imagen. El texto debe ser texto en vivo y no una imagen. ¿Cómo puedes hacerlo?
+
+Una combinación de filtros CSS y el `backdrop-filter` nos permite aplicar efectos y difuminar lo que necesitamos en tiempo real. El desenfoque y la opacidad son dos de los tantos filtros disponibles. Veamos rápidamente qué hacen y cómo se usan.
+
+**Nota:** Cuando coloques texto sobre imágenes, asegúrate de que sea legible en caso de que el efecto de filtro no sea compatible con el navegador de un usuario.
+
+## La propiedad `filter`
+
+### Navegadores compatibles
+
+- **Chrome:** 53+
+- **Edge:** 12+
+- **Firefox:** 35+
+- **Safari:** 9.1+
+
+Puedes aplicar uno o varios de los siguientes filtros como un valor para `filter`. Si aplicas un filtro de forma incorrecta, el resto de los filtros definidos para `filter` no funcionarán.
+
+### Filtros disponibles
+
+#### 1. `blur`
+
+Imagina que estás mirando a través de un vidrio empañado. Así es como funciona el filtro `blur`. Aplica un desenfoque gaussiano, y el único argumento que puedes pasar es un `radius`, que es cuánto desenfoque se aplica. Debe ser una unidad de longitud, como `10px`. No se aceptan porcentajes.
+
+```css
+.my-element {
+    filter: blur(0.2em);
+}
+```
+
+#### 2. `brightness`
+
+Piensa en un dimmer de luz. Para aumentar o disminuir el brillo de un elemento, usa la función `brightness`. El valor de brillo se expresa como un porcentaje; la imagen sin modificar se expresa como un valor del `100%`. Un valor de `0%` hace que la imagen se vea completamente negra, mientras que valores superiores al `100%` aumentan el brillo.
+
+```css
+.my-element {
+    filter: brightness(80%);
+}
+```
+
+**Nota:** También puedes usar valores decimales, por ejemplo, para establecer un brillo del `80%` con un decimal, escribe `0.8`.
+
+#### 3. `contrast`
+
+Imagina que estás ajustando el contraste en una fotografía. Establece un valor entre `0%` y `100%` para disminuir o aumentar el contraste.
+
+```css
+.my-element {
+    filter: contrast(160%);
+}
+```
+
+#### 4. `grayscale`
+
+Si piensas en una fotografía en blanco y negro, puedes aplicar un efecto completamente en escala de grises si usas `1` como valor para `grayscale()`, o `0` para tener un elemento completamente saturado.
+
+```css
+.my-element {
+    filter: grayscale(80%);
+}
+```
+
+#### 5. `invert`
+
+Es como mirar un negativo de una foto. Puedes pasar `1` o `0` a la función `invert()` para activarlo o desactivarlo. Cuando está activado, los colores del elemento se invierten por completo.
+
+```css
+.my-element {
+    filter: invert(1);
+}
+```
+
+#### 6. `opacity`
+
+Imagina que estás usando un cristal ahumado. El filtro `opacity()` funciona igual que la propiedad `opacity`, donde puedes pasar un número o porcentaje para aumentar o reducir la opacidad.
+
+```css
+.my-element {
+    filter: opacity(0.3);
+}
+```
+
+#### 7. `saturate`
+
+Piénsalo como un regulador de color. El filtro de saturación es similar al filtro de brillo y acepta el mismo argumento: número o porcentaje. En lugar de aumentar o disminuir el brillo, `saturate` aumenta o disminuye la saturación de color.
+
+```css
+.my-element {
+    filter: saturate(155%);
+}
+```
+
+#### 8. `sepia`
+
+Imagina que estás viendo una foto antigua. Puedes agregar un efecto de tono sepia con este filtro. Puedes pasar un número o un porcentaje como argumento.
+
+```css
+.my-element {
+    filter: sepia(70%);
+}
+```
+
+#### 9. `hue-rotate`
+
+Este filtro funciona como una rotación de la rueda de colores. Si pasas un ángulo, cambia el matiz de todos los colores del elemento.
+
+```css
+.my-element {
+    filter: hue-rotate(120deg);
+}
+```
+
+#### 10. `drop-shadow`
+
+Imagina que estás creando una sombra detrás de un objeto en una ilustración. Puedes aplicar una sombra paralela usando `drop-shadow`, que toma un parámetro que contiene los valores de `offset-x`, `offset-y`, `desenfoque` y `color`.
+
+```css
+.my-element {
+    filter: drop-shadow(5px 5px 10px orange);
+}
+```
+
+#### 11. `url`
+
+El filtro `url` te permite aplicar un filtro SVG de un elemento o archivo SVG vinculado. Puedes obtener más información sobre los filtros SVG [aquí](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/filter).
+
+### Filtro de Fondo
+
+#### Navegadores compatibles
+
+- **Chrome:** 76+
+- **Edge:** 79+
+- **Firefox:** 103+
+- **Safari:** 18+
+
+El `backdrop-filter` acepta todos los mismos valores de función de filtro que `filter`. La diferencia es que `backdrop-filter` solo aplica los filtros al fondo, mientras que `filter` los aplica a todo el elemento. Esto es útil, como en el ejemplo del comienzo, porque no quieres que el texto se desenfoque.
+
+```css
+.my-backdrop {
+    backdrop-filter: blur(5px);
+}
+```
+
+---
+
+# Modos de Fusión en CSS
+
+**Introducción a los Modos de Fusión**
+
+Duotone es un tratamiento de color popular para la fotografía que hace que una imagen parezca compuesta solo por dos colores que contrastan: uno para las zonas brillantes y otro para las sombras. Pero, ¿cómo podemos replicar este efecto usando CSS?
+
+Los modos de fusión, junto con otras técnicas como los filtros y los seudoelementos, nos permiten aplicar efectos visuales interesantes a cualquier imagen.
+
+## ¿Qué es un Modo de Fusión?
+
+Los modos de fusión son herramientas que se utilizan comúnmente en diseño gráfico (como en Photoshop) para crear efectos visuales combinando colores de diferentes capas. Al ajustar cómo se mezclan los colores, podemos obtener resultados visuales sorprendentes. Por ejemplo, podríamos usar los modos de fusión para aislar una imagen con un fondo blanco, haciendo que parezca tener un fondo transparente.
+
+En CSS, podemos aplicar estos efectos utilizando las propiedades `mix-blend-mode` y `background-blend-mode`. Aquí te explico cómo funcionan:
+
+- **`mix-blend-mode`**: Aplica la mezcla a un elemento completo, afectando todos sus hijos y seudoelementos.
+- **`background-blend-mode`**: Se utiliza cuando tenemos múltiples fondos en un elemento y queremos que se integren entre sí.
+
+Imagina que estás mezclando colores en una paleta. `mix-blend-mode` sería como aplicar un color a toda la mezcla, mientras que `background-blend-mode` sería como ajustar cómo se ven varios colores en el fondo de un cuadro.
+
+### Compatibilidad del Navegador
+
+#### mix-blend-mode
+
+- **Chrome**: 41+
+- **Edge**: 79+
+- **Firefox**: 32+
+- **Safari**: 8+
+
+#### background-blend-mode
+
+- **Chrome**: 35+
+- **Edge**: 79+
+- **Firefox**: 30+
+- **Safari**: 8+
+
+## Modos de Combinación Separables
+
+Los modos de combinación se dividen en dos categorías: **separables** y **no separables**. Los separables consideran cada componente de color (RGB) de forma individual.
+
+### 1. Normal
+
+Este es el modo de combinación predeterminado, que no altera la forma en que un elemento se combina con otros.
+
+### 2. Multiplicar
+
+El modo de combinación `multiply` es como apilar varias transparencias. Los píxeles blancos se vuelven transparentes y los píxeles negros se oscurecen. Es como si estuvieras pintando capas de colores sobre una hoja de papel; cada capa oscurece la imagen.
+
+```css
+.my-element {
+  mix-blend-mode: multiply;
+}
+```
+
+### 3. Pantalla
+
+`screen` es el opuesto de `multiply`, aclara la imagen al multiplicar los valores de luz.
+
+```css
+.my-element {
+  mix-blend-mode: screen;
+}
+```
+
+### 4. Superposición
+
+`overlay` combina los efectos de `multiply` y `screen`. Los colores oscuros se oscurecen y los claros se aclaran, mientras que los colores medios permanecen sin cambios.
+
+```css
+.my-element {
+  mix-blend-mode: overlay;
+}
+```
+
+### 5. Oscurecer
+
+El modo `darken` selecciona el color más oscuro entre la imagen de origen y el fondo.
+
+```css
+.my-element {
+  mix-blend-mode: darken;
+}
+```
+
+### 6. Aclarar
+
+`lighten` hace lo contrario a `darken`, eligiendo el color más claro.
+
+```css
+.my-element {
+  mix-blend-mode: lighten;
+}
+```
+
+### 7. Sobreexposición de Color
+
+`color-dodge` aclara el color de fondo para reflejar el color de origen, ignorando los colores negros.
+
+```css
+.my-element {
+  mix-blend-mode: color-dodge;
+}
+```
+
+### 8. Quema de Color
+
+`color-burn` es similar a `multiply`, pero aumenta el contraste, generando colores más saturados.
+
+```css
+.my-element {
+  mix-blend-mode: color-burn;
+}
+```
+
+### 9. Luz Fuerte
+
+`hard-light` crea un contraste más fuerte al multiplicar o aplicar pantallas según el valor de luminosidad.
+
+```css
+.my-element {
+  mix-blend-mode: hard-light;
+}
+```
+
+### 10. Luz Suave
+
+`soft-light` es una versión más sutil de `overlay`, con menos contraste.
+
+```css
+.my-element {
+  mix-blend-mode: soft-light;
+}
+```
+
+### 11. Diferencia
+
+El modo `difference` es como una fotografía negativa, invirtiendo los colores. Si los valores de color son idénticos, se vuelven negros.
+
+```css
+.my-element {
+  mix-blend-mode: difference;
+}
+```
+
+### 12. Exclusión
+
+`exclusion` es similar a `difference`, pero produce un gris 50% en lugar de negro, resultando en una salida más suave.
+
+```css
+.my-element {
+  mix-blend-mode: exclusion;
+}
+```
+
+## Modos de Combinación No Separables
+
+Estos modos mezclan valores de componente específicos de la capa activa.
+
+### 1. Tono
+
+`hue` aplica el matiz del color de origen al color de fondo.
+
+```css
+.my-element {
+  mix-blend-mode: hue;
+}
+```
+
+### 2. Saturación
+
+`Saturation` aplica la saturación del color de origen al matiz y luminosidad del color de fondo.
+
+```css
+.my-element {
+  mix-blend-mode: saturation;
+}
+```
+
+### 3. Color
+
+`color` mezcla el matiz y la saturación del color de origen con la luminosidad del color de fondo.
+
+```css
+.my-element {
+  mix-blend-mode: color;
+}
+```
+
+### 4. Luminosidad
+
+`luminosity` es lo opuesto a `color`, usando la luminosidad del color de origen junto con el matiz y saturación del color de fondo.
+
+```css
+.my-element {
+  mix-blend-mode: luminosity;
+}
+```
+
+## La Propiedad `isolation`
+
+La propiedad `isolation` permite crear un nuevo contexto de apilamiento. Al establecer `isolation: isolate`, evitarás que el elemento se mezcle con el fondo, lo que significa que no se aplicarán los modos de fusión de nivel superior.
+
+### Compatibilidad del Navegador
+
+- **Chrome**: 41+
+- **Edge**: 79+
+- **Firefox**: 36+
+- **Safari**: 8+
+
+Ten en cuenta que esta propiedad no funciona con `background-blend-mode`, ya que el fondo ya está aislado.
+
+---
+
+# Listas
+
+Imagina que tienes un montón de artículos que planeas comprar la próxima vez que vayas al supermercado. Una forma común de representar esto visualmente es una lista, pero ¿cómo puedes darle estilo a tu lista de compras?
+
+<ul>
+  <li>oat milk</li>
+  <li>rhubarb</li>
+  <li>cereal</li>
+  <li>pie crust</li>
+</ul>
+
+## Cómo crear una lista
+
+La lista anterior comenzó con un elemento semántico, `<ul>`, con los elementos de la lista de compras (`<li>`) como elementos secundarios. Si inspeccionas cada elemento `<li>`, puedes ver que todos tienen `display: list-item`, razón por la cual el navegador renderiza un `::marker` de forma predeterminada.
+
+```css
+li {
+  display: list-item;
+}
+```
+
+Existen otros dos tipos de listas.
+
+### Listas ordenadas
+
+Las listas ordenadas se pueden crear con `<ol>`, en cuyo caso el elemento de la lista mostrará un número como `::marker`.
+
+<ol>
+  <li>oat milk</li>
+  <li>rhubarb</li>
+  <li>cereal</li>
+  <li>pie crust</li>
+</ol>
+
+### Listas de descripciones
+
+Las listas de descripciones se crean con `<dl>`. Sin embargo, este tipo de lista no usa el elemento de lista `<li>`.
+
+```html
+<dl>
+  <dt>oat milk</dt>
+  <dd>- bebida no láctea de moda</dd>
+  <dt>cereal</dt>
+  <dd>- alimento para el desayuno</dd>
+</dl>
+```
+
+## Estilos de lista
+
+### Navegadores compatibles
+
+- **Chrome**: 1
+- **Firefox**: 1
+- **Safari**: 1
+
+Ahora que sabes cómo crear una lista, puedes aplicarles un estilo. Las primeras propiedades de CSS que se deben descubrir son las que se aplican a toda la lista.
+
+### Propiedades de estilo de lista
+
+1. **`list-style-position`**: te permite mover la viñeta a `inside` o `outside` del contenido del elemento de la lista. El valor predeterminado `outside` significa que la viñeta no está incluida en el contenido, mientras que `inside` mueve la viñeta dentro del cuadro de contenido del elemento de la lista.
+
+2. **`list-style-image`**: te permite reemplazar las viñetas de tu lista por imágenes. Esto te permite configurar una imagen como `url()` o `none` para que tus viñetas sean imágenes, SVG o GIF.
+
+   ```css
+   ul {
+     list-style-image: url('../img/oat-milk.png');
+   }
+   ```
+
+3. **`list-style-type`**: define el estilo de `list-style-type`, que cambia las viñetas a palabras clave de estilo conocidas, cadenas personalizadas, emojis y más.
+
+### Abreviatura de `list-style`
+
+Puedes usar la abreviatura `list-style` para establecer todos los estilos de lista en una línea:
+
+```css
+list-style: <'list-style-type'> || <'list-style-position'> || <'list-style-image'>
+```
+
+Esto te permite declarar combinaciones de una, dos o tres de las propiedades de `list-style` en cualquier orden. 
+
+Ejemplos:
+
+```css
+/* Solo tipo */
+list-style: square;
+
+/* Solo imagen */
+list-style: url('../img/shape.png');
+
+/* Tipo y posición */
+list-style: lower-roman url('../img/shape.png') outside;
+```
+
+### Seudoelemento `::marker`
+
+El elemento de marcador `list-item` es la viñeta, el guion o el número que ayuda a indicar cada elemento de tu lista. Si inspeccionas la lista en herramientas para desarrolladores, puedes ver un elemento `::marker` para cada uno de los elementos de la lista.
+
+```css
+::marker {
+  color: blue;
+}
+```
+
+Cuando se declara una lista, se asigna un marcador a cada elemento, y este se genera automáticamente por el navegador.
+
+### Cuadro de marcador
+
+El cuadro de marcador es el contenedor que normalmente contiene la viñeta o el número. Para definir el diseño del cuadro del marcador, puedes usar el selector `::marker`.
+
+### Estilos de marcadores
+
+Puedes personalizar los estilos del marcador utilizando propiedades como:
+
+- `color`
+- `font-size`
+- `white-space`
+
+### Tipo de visualización
+
+Puedes convertir elementos que no sean `<li>` en un elemento de lista utilizando la propiedad `display: list-item`. Por ejemplo, si deseas colocar una viñeta en un encabezado, puedes hacerlo así:
+
+```css
+h2 {
+  display: list-item;
+}
+```
+
+### Nota sobre el uso de listas
+
+Siempre debes usar lenguaje de marcado semántico y crear listas con `<li>` siempre que sea posible. Cambiar la apariencia visual de un elemento a uno de lista no cambia la forma en que los servicios de accesibilidad leen y reconocen el elemento, por lo que no se leerá como uno en lectores de pantalla.
+
+## Conclusión
+
+Las listas son una herramienta fundamental en HTML y CSS para organizar contenido de manera clara y efectiva. Aprender a crear y estilizar listas te ayudará a mejorar la accesibilidad y la presentación de tu contenido en la web.
+
+---
+
+# Transiciones en CSS
+
+Cuando interactuamos con un sitio web, es común notar que muchos elementos tienen diferentes estados. Por ejemplo, un menú desplegable puede estar abierto o cerrado, un botón puede cambiar de color al pasar el cursor sobre él, o un modal puede aparecer y desaparecer. 
+
+### La importancia de las transiciones
+
+De manera predeterminada, CSS cambia el estilo de estos elementos de forma instantánea. Sin embargo, con las transiciones de CSS, podemos hacer que estos cambios de estado ocurran de forma gradual. Esto no solo mejora la experiencia del usuario, sino que también proporciona una guía visual que ayuda a entender el resultado de la interacción.
+
+**Analogía:** Imagina que estás en una montaña rusa. Al principio, sientes una suave inclinación antes de que el carrito descienda rápidamente. Esa transición suave es lo que hace que la experiencia sea emocionante y predecible. De la misma manera, las transiciones en CSS crean un movimiento fluido entre los estados de un elemento.
+
+### Término clave: Interpolación
+
+La interpolación es el proceso de crear "pasos" que permiten que un elemento pase de un estado a otro de manera fluida. En el caso de las transiciones de CSS, esto significa que podemos definir cómo un elemento cambia de un estilo a otro, en lugar de hacerlo de manera abrupta.
+
+## Propiedades de transición
+
+Para utilizar transiciones en CSS, podemos usar diferentes propiedades o la propiedad abreviada `transition`.
+
+### `transition-property`
+
+La propiedad `transition-property` especifica los estilos que deben cambiar durante la transición.
+
+```css
+.my-element {
+  transition-property: background-color;
+}
+```
+
+Puedes listar varias propiedades CSS separadas por comas. También puedes usar `transition-property: all` para aplicar la transición a todas las propiedades.
+
+### `transition-duration`
+
+La propiedad `transition-duration` define cuánto tiempo tomará completar la transición. Acepta valores en segundos (s) o milisegundos (ms), y el valor predeterminado es 0s.
+
+```css
+.my-element {
+  transition-duration: 1s; /* 1 segundo */
+}
+```
+
+**Analogía:** Piensa en un semáforo que cambia de rojo a verde. Si el cambio es instantáneo, puede ser confuso. Pero si dura un segundo, te da tiempo para reaccionar.
+
+### `transition-timing-function`
+
+Usa `transition-timing-function` para modificar la velocidad de una transición a lo largo del tiempo especificado en `transition-duration`. 
+
+Por defecto, las transiciones son lineales (`linear`), lo que puede parecer poco natural. Utilizar funciones como `ease-in-out` puede dar una sensación más orgánica, similar a un coche que acelera y desacelera suavemente.
+
+### `transition-delay`
+
+La propiedad `transition-delay` especifica cuándo comenzará la transición. Si no se define `transition-duration`, la transición comenzará instantáneamente.
+
+```css
+.my-element {
+  transition-delay: 500ms; /* Espera 500 ms antes de iniciar la transición */
+}
+```
+
+**Analogía:** Imagina que estás esperando a que un artista comience a pintar. La demora antes de que empiece te genera expectativa.
+
+### Abreviación: `transition`
+
+Como muchas propiedades de CSS, hay una versión abreviada llamada `transition` que combina `transition-property`, `transition-duration`, `transition-timing-function` y `transition-delay`.
+
+```css
+.longhand {
+  transition-property: transform;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
+}
+
+.shorthand {
+  transition: transform 300ms ease-in-out 0s; /* Abreviación de todas las propiedades anteriores */
+}
+```
+
+## Propiedades que puedes y no puedes animar
+
+No todas las propiedades de CSS se pueden animar. Por ejemplo, no puedes realizar una transición en `font-family` porque no hay un "estado intermedio" claro entre las fuentes. Sin embargo, puedes animar `font-size` porque su unidad es una longitud que permite la interpolación.
+
+### Propiedades comunes que puedes animar:
+
+- **Transformar:** Permite escalar, rotar o trasladar un elemento.
+  
+  ```css
+  .my-element {
+    transform: scale(1.5); /* Aumenta el tamaño al 150% */
+  }
+  ```
+
+- **Color:** Los cambios de color son claros para el usuario, como un botón que cambia de color al pasar el cursor.
+  
+  ```css
+  .my-button:hover {
+    background-color: blue; /* Cambia a azul al pasar el cursor */
+  }
+  ```
+
+- **Sombras:** Las sombras pueden indicar cambios de elevación al enfocarse en un elemento.
+  
+  ```css
+  .my-element:focus {
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Agrega una sombra al enfocar */
+  }
+  ```
+
+- **Filtros:** Los filtros pueden agregar efectos visuales sorprendentes durante la transición.
+
+## Activadores de transición
+
+Para que las transiciones de CSS se activen, necesitas un cambio de estado y un evento que lo active. Un activador común es la pseudoclase `:hover`.
+
+```css
+.my-element:hover {
+  background: blue; /* Cambia el fondo al pasar el cursor */
+}
+```
+
+Algunas pseudoclases y eventos que pueden activar cambios son:
+
+- `:hover`: Coincide cuando el cursor está sobre el elemento.
+- `:focus`: Coincide si el elemento está enfocado.
+- `:active`: Coincide cuando el elemento se activa (al hacer clic).
+
+## Diferentes transiciones para entrar y salir
+
+Puedes aplicar diferentes propiedades de transición al pasar el cursor sobre un elemento y al quitarlo, creando efectos interesantes.
+
+```css
+.my-element {
+  background: red;
+  transition: background 2000ms ease-in; /* Transición al salir */
+}
+
+.my-element:hover {
+  background: blue;
+  transition: background 150ms ease; /* Transición al entrar */
+}
+```
+
+## Consideraciones de accesibilidad
+
+Las transiciones y animaciones no son adecuadas para todos. Algunas personas pueden experimentar mareos o molestias. Por suerte, CSS tiene una función llamada `prefers-reduced-motion` que permite detectar si un usuario prefiere menos movimiento en su dispositivo.
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  .my-element {
+    transition: none; /* Sin transiciones si el usuario prefiere menos movimiento */
+  }
+}
+```
+
+## Consideraciones de rendimiento
+
+Al trabajar con transiciones de CSS, es crucial considerar el rendimiento. Evita aplicar transiciones a propiedades como `width` o `height`, ya que pueden causar recalculos de diseño. En su lugar, utiliza propiedades como `transform` y `opacity`, que son más eficientes.
+
+Para obtener más información sobre el rendimiento en animaciones de CSS, consulta la guía sobre animaciones de alto rendimiento.
+
+---
+
+# Menú Ampliado
+
+Cuando el contenido se extiende más allá de su elemento superior, hay muchas opciones para controlarlo. Puedes imaginar que estás en una habitación llena de muebles (el contenido) que se desbordan hacia el pasillo (el espacio disponible). Existen diferentes maneras de manejar esta situación: puedes mover los muebles (desplazarte), esconder algunos (recortar) o poner un aviso que diga que hay más muebles en el pasillo (indicar el corte con puntos suspensivos). Es especialmente importante tener en cuenta el desbordamiento cuando se desarrollan aplicaciones para teléfonos y diferentes tamaños de pantalla.
+
+## Desbordamiento de una Sola Línea con `text-overflow`
+
+Usa la propiedad `text-overflow` en cualquier elemento que contenga nodos de texto, como un párrafo (`<p>`). Piensa en esto como en un rótulo de una tienda: si el nombre de la tienda es demasiado largo para el letrero, queremos que se vea de una forma organizada. Para usar `text-overflow`, necesitas una sola línea de texto, así que también debes establecer `overflow` en `hidden` y tener un valor `white-space` que evite el ajuste.
+
+```css
+p {
+    text-overflow: ellipsis; /* Indica que hay más texto */
+    overflow: hidden; /* Esconde el texto que no cabe */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}
+```
+
+## Uso de Propiedades de Menú Ampliado
+
+Las propiedades de desbordamiento se establecen en un elemento para controlar lo que sucede cuando sus elementos secundarios necesitan más espacio del que tiene disponible. Imagina que tienes una ventana en tu casa. El marco de la ventana (el elemento superior) tiene un tamaño fijo, mientras que las cosas que miras a través de la ventana (el contenido) pueden querer más espacio. La administración del desbordamiento te ayuda a decidir cómo se muestra este contenido.
+
+### Desplazamiento en los Ejes Vertical y Horizontal
+
+La propiedad `overflow-y` controla el desbordamiento a lo largo del eje vertical, permitiendo el desplazamiento hacia arriba y hacia abajo. Por otro lado, `overflow-x` se ocupa del desplazamiento horizontal, permitiendo que el contenido se desplace hacia la izquierda y la derecha.
+
+## Propiedades Lógicas para la Dirección de Desplazamiento
+
+Las propiedades `overflow-inline` y `overflow-block` establecen el desbordamiento en función de la dirección del documento y el modo de escritura. Esto es útil para aplicaciones multilingües donde el texto puede ir de izquierda a derecha o de derecha a izquierda.
+
+## La Abreviatura `overflow`
+
+La abreviatura `overflow` permite establecer los estilos `overflow-x` y `overflow-y` en una sola línea:
+
+```css
+overflow: hidden scroll; /* Primer valor para overflow-x, segundo para overflow-y */
+```
+
+### Valores de `overflow`
+
+Analicemos más de cerca los valores y palabras clave disponibles para las propiedades `overflow`.
+
+- `overflow: visible` (predeterminado): El contenido no se oculta y se muestra todo. Imagina que es como una caja de cartón sin tapa, donde todo lo que hay adentro es visible.
+  
+- `overflow: hidden`: El contenido se recorta y no se proporcionan barras de desplazamiento. Esto sería como una caja cerrada donde no puedes ver lo que hay dentro.
+
+- `overflow: scroll`: Se habilitan las barras de desplazamiento, aunque no haya contenido desbordante. Es como tener una caja con una tapa que se puede abrir, incluso si no hay nada dentro.
+
+- `overflow: clip`: Similar a `hidden`, pero prohíbe todo el desplazamiento, incluyendo el programático.
+
+- `overflow: auto`: Este es el valor más utilizado, ya que muestra las barras de desplazamiento solo si es necesario. Es como tener una caja que solo muestra su contenido cuando la abres.
+
+## Desplazamiento y Accesibilidad
+
+Es importante asegurarse de que el área desplazable pueda aceptar el enfoque. Esto permite que los usuarios que usan el teclado puedan presionar Tab para acceder al cuadro y, luego, usar las teclas de flecha para desplazarse. Para permitir esto, agrega `tabindex="0"`, un nombre con el atributo `aria-labelledby` y un atributo `role` adecuado.
+
+```html
+<div tabindex="0" role="region" aria-labelledby="id-of-descriptive-text">
+    content
+</div>
+```
+
+Luego, puedes usar CSS para indicar que el cuadro está enfocado y utilizar la propiedad `outline` para dar una pista visual.
+
+```css
+[role][aria-labelledby][tabindex] {
+    overflow: auto;
+}
+
+[role][aria-labelledby][tabindex]:focus {
+    outline: .1em solid blue; /* Indica que el cuadro está enfocado */
+}
+```
+
+## Posicionamiento de la Barra de Desplazamiento Dentro del Modelo de Cuadros
+
+Las barras de desplazamiento ocupan espacio dentro del cuadro de padding y pueden competir por espacio si son `inline` y no `overlaid`. Este comportamiento puede afectar el diseño.
+
+## Desplazamiento Raíz vs. Desplazamiento Implícito
+
+Algunos desplazadores tienen un comportamiento de "deslizar hacia abajo para actualizar". Este comportamiento ocurre en la barra de desplazamiento raíz, que es la única en una página. De forma predeterminada, `documentElement` es la barra de desplazamiento raíz. Puedes cambiar esto mediante "promoción de desplazamiento", posicionando un contenedor fijo que cubra todo el viewport.
+
+## `scroll-behavior`
+
+La propiedad `scroll-behavior` te permite habilitar el desplazamiento controlado por el navegador. Esto es útil para la navegación in-page.
+
+```css
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-view {
+    scroll-behavior: auto; /* Comportamiento de desplazamiento normal */
+  }
+}
+```
+
+## Comportamiento de Sobredesplazamiento
+
+Si alguna vez llegaste al final de un modal y continuaste desplazándote, has experimentado el "encadenamiento de desplazamiento". La propiedad `overscroll-behavior` te permite evitar que el desplazamiento de desbordamiento se filtre en un contenedor superior.
+
+---
+
+# Fondos
+
+## Fondos en CSS
+
+Detrás de cada cuadro CSS hay una capa especializada llamada **capa en segundo plano**. Piensa en esta capa como el papel de fondo de una pintura. Así como puedes cambiar el color o el patrón del papel para que tu pintura resalte, en CSS puedes realizar cambios significativos en esta capa, lo que incluye permitir múltiples fondos. 
+
+### Concepto Técnico
+Las capas en segundo plano se renderizan detrás del contenido de un cuadro, a partir de su región **padding-box**. Esto significa que cualquier fondo no se superpondrá a los bordes del cuadro, lo que permite que el contenido se mantenga visible y claro.
+
+---
+
+## Color de Fondo
+
+### Navegadores compatibles
+- **Chrome**: 1
+- **Edge**: 12
+- **Firefox**: 1
+- **Safari**: 1
+
+### Origen
+Uno de los efectos más simples que puedes aplicar a una capa de fondo es configurar el **color**. Por defecto, el color de fondo es **transparent**, lo que permite que el contenido de un elemento superior sea visible. Un color válido se sitúa detrás de otros elementos dentro del mismo contenedor.
+
+### Analogía
+Imagina una ventana con una cortina de color: si la cortina es transparente, puedes ver el mundo exterior, pero al poner una cortina de color, el paisaje aún se ve, pero con un tono diferente.
+
+---
+
+## Imágenes de Fondo
+
+### Navegadores compatibles
+- **Chrome**: 1
+- **Edge**: 12
+- **Firefox**: 1
+- **Safari**: 1
+
+### Origen
+Puedes agregar una imagen de fondo en la capa que creamos con la propiedad `background-image`. Esta acepta:
+- Una **URL** de imagen.
+- Una **URI** de datos usando `url()`.
+- Imágenes generadas dinámicamente mediante funciones de CSS como gradientes.
+
+### Analogía
+Añadir una imagen de fondo es como poner una foto detrás de una cortina: la cortina (color de fondo) está frente a la foto (imagen de fondo).
+
+---
+
+## Fondos de Gradiente de CSS
+
+Con CSS, puedes generar imágenes de fondo usando gradientes al combinar dos o más colores. Esto te permite crear transiciones suaves entre colores, como un atardecer que cambia de amarillo a naranja.
+
+### Ejemplo de uso:
+```css
+background-image: linear-gradient(to right, red, yellow);
+```
+
+---
+
+## Repetición de Imágenes de Fondo
+
+### Navegadores compatibles
+- **Chrome**: 1
+- **Edge**: 12
+- **Firefox**: 1
+- **Safari**: 1
+
+### Origen
+Por defecto, las imágenes de fondo se repiten horizontal y verticalmente. Puedes controlar este comportamiento con la propiedad `background-repeat` utilizando valores como:
+- `repeat`: repite la imagen dentro del espacio disponible.
+- `no-repeat`: no repite la imagen.
+- `round`: estira y ajusta la imagen para que quepa.
+- `space`: distribuye el espacio entre las repeticiones.
+
+### Analogía
+Imagina que tienes un papel de regalo que deseas colocar en tu pared: si lo repites, cubrirás toda la pared. Pero si decides no repetir, solo tendrás un diseño único en el centro.
+
+---
+
+## Posición en Segundo Plano
+
+### Navegadores compatibles
+- **Chrome**: 1
+- **Edge**: 12
+- **Firefox**: 1
+- **Safari**: 1
+
+### Origen
+La posición predeterminada de las imágenes de fondo es la parte superior izquierda del contenedor. Con la propiedad `background-position`, puedes ajustar esta posición. Utiliza dos valores: el primero para el eje x (horizontal) y el segundo para el eje y (vertical).
+
+### Ejemplo de uso:
+```css
+background-position: center bottom;
+```
+
+### Analogía
+Es como mover un cuadro en la pared: puedes decidir si lo colocas en el centro, en la parte superior o en cualquier lugar que desees.
+
+---
+
+## Tamaño del Fondo
+
+### Navegadores compatibles
+- **Chrome**: 3
+- **Edge**: 12
+- **Firefox**: 4
+- **Safari**: 5
+
+### Origen
+La propiedad `background-size` establece el tamaño de las imágenes de fondo. Por defecto, el tamaño se basa en la imagen original. Puedes usar valores como:
+- `cover`: la imagen cubre toda la capa de fondo.
+- `contain`: la imagen se ajusta sin estirarse ni recortarse.
+
+### Analogía
+Imagina que estás eligiendo un mantel para tu mesa: si eliges un mantel que cubre toda la mesa, eso sería como `cover`. Si eliges uno que se ajusta justo al centro sin sobrepasar, eso sería como `contain`.
+
+---
+
+## Archivo Adjuntos en Segundo Plano
+
+### Navegadores compatibles
+- **Chrome**: 1
+- **Edge**: 12
+- **Firefox**: 1
+- **Safari**: 1
+
+### Origen
+La propiedad `background-attachment` controla si las imágenes de fondo se mueven con el contenido al desplazarse. Los valores son:
+- `scroll`: la imagen se desplaza con el contenido.
+- `fixed`: la imagen permanece fija en la ventana.
+- `local`: la imagen se desplaza con el contenido del elemento.
+
+### Analogía
+Es como tener una decoración fija en tu pared (fondo fijo) mientras que tus muebles (contenido) se pueden mover. En cambio, si todo se mueve junto, la decoración se desplaza también.
+
+---
+
+## Origen en Segundo Plano
+
+### Navegadores compatibles
+- **Chrome**: 1
+- **Edge**: 12
+- **Firefox**: 4
+- **Safari**: 3
+
+### Origen
+La propiedad `background-origin` te permite cambiar el área de la que provienen los fondos, ya sea **border-box**, **padding-box**, o **content-box**.
+
+### Analogía
+Imagina que tienes un marco alrededor de una pintura: el `border-box` sería el marco, el `padding-box` sería el espacio entre la pintura y el marco, y el `content-box` sería solo la pintura.
+
+---
+
+## Clip de Fondo
+
+### Navegadores compatibles
+- **Chrome**: 1
+- **Edge**: 12
+- **Firefox**: 4
+- **Safari**: 5
+
+### Origen
+La propiedad `background-clip` controla lo que se visualiza en la capa en segundo plano. Acepta los mismos valores que `background-origin`.
+
+### Analogía
+Es como si tuvieras una plantilla para recortar fotos: puedes decidir qué parte de la foto se mostrará.
+
+---
+
+# Texto y Tipografía
+
+El texto es uno de los componentes básicos de la Web. 
+
+Cuando creas un sitio web, no necesariamente necesitas aplicar un estilo a tu texto; HTML tiene un estilo predeterminado bastante razonable. Sin embargo, es probable que el texto constituya la mayor parte de tu sitio web, por lo que vale la pena agregar un poco de estilo para mejorarlo. Si cambias algunas propiedades básicas, puedes mejorar significativamente la experiencia de lectura para tus usuarios.
+
+## La Regla @font-face
+
+La regla `@font-face` es fundamental en el diseño web, ya que te permite especificar y usar fuentes personalizadas para mostrar texto. Imagina que estás organizando una fiesta: la regla `@font-face` es como la invitación que envías a tus amigos, diciéndoles qué tipo de ropa (fuente) deben llevar. 
+
+### Sintaxis
+
+```css
+@font-face {
+  font-family: "Trickster";
+  src:
+    local("Trickster"),
+    url("trickster-COLRv1.otf") format("opentype"),
+    url("trickster-outline.otf") format("opentype"),
+    url("trickster-outline.woff") format("woff");
+}
+```
+
+### Descriptores
+
+Aquí hay algunas propiedades que puedes usar con `@font-face`:
+
+- **ascent-override**: Personaliza el espacio sobre el modelo de referencia, como ajustar la altura de un estante.
+- **descent-override**: Ajusta el espacio debajo del modelo de referencia, como acomodar más espacio para una mesa.
+- **font-display**: Controla cómo se muestra la fuente mientras se descarga, como si tu invitado llega antes que la comida.
+- **font-family**: Asigna un nombre a la fuente para usarla en otras partes de tu CSS, como dar un nombre a tu fiesta.
+- **src**: Define la fuente, ya sea local o remota, como elegir entre un amigo que trae comida o comprar en el supermercado.
+
+## Diferencias entre @font-face y font-family
+
+En CSS, `@font-face` y `font-family` suelen confundirse, pero cumplen propósitos distintos. Usando la analogía de la fiesta, `@font-face` es la invitación que defines antes de la fiesta (especifica qué ropa deben llevar), mientras que `font-family` es la lista de amigos (fuentes) que están en tu fiesta.
+
+### Ejemplo de uso
+
+```css
+@font-face {
+  font-family: "CustomFont";
+  src: url("customfont.woff2") format("woff2");
+}
+
+body {
+  font-family: "CustomFont", Arial, sans-serif;
+}
+```
+
+En este ejemplo, `@font-face` define "CustomFont" y le indica al navegador dónde encontrarlo. Luego, la propiedad `font-family` aplica esta fuente al cuerpo del documento.
+
+## Cambiar el Tipo de Letra
+
+Usa `font-family` para cambiar el tipo de letra del texto. Piensa en esto como elegir qué música tocar en tu fiesta. La propiedad `font-family` acepta una lista de fuentes separadas por comas.
+
+```css
+body {
+  font-family: "Helvetica", Arial, sans-serif;
+}
+```
+
+## Usar Fuentes Cursivas y Oblícuas
+
+Usa `font-style` para establecer si el texto debe aparecer en cursiva o no. Esto es como decidir si tus amigos deben bailar en la pista de baile (cursiva) o simplemente relajarse en el sofá (normal).
+
+```css
+p {
+  font-style: italic;
+}
+```
+
+## Aplicar Negrita al Texto
+
+Utiliza `font-weight` para establecer la "negrita" del texto. Esto es como decidir si quieres que la música suene más fuerte (negrita) o a un volumen normal.
+
+```css
+h1 {
+  font-weight: bold;
+}
+```
+
+## Cambiar el Tamaño del Texto
+
+Usa `font-size` para controlar el tamaño de los elementos de texto. Imagina que estás eligiendo cuán grandes deben ser las letras en tu cartel de fiesta.
+
+```css
+p {
+  font-size: 20px;
+}
+```
+
+## Cambiar el Espacio entre las Líneas
+
+Usa `line-height` para especificar la altura de cada línea en un elemento. Esto es como decidir cuánta distancia dejar entre tus amigos cuando bailan.
+
+```css
+p {
+  line-height: 1.5;
+}
+```
+
+## Cambiar el Espacio entre Caracteres
+
+Usa `letter-spacing` para controlar el espacio horizontal entre los caracteres del texto. Es como decidir cuántas sillas poner entre tus amigos en la mesa.
+
+```css
+p {
+  letter-spacing: 0.05em;
+}
+```
+
+## Cambiar el Espacio entre Palabras
+
+Usa `word-spacing` para aumentar o disminuir el espacio entre cada palabra del texto. Esto es como decidir cuánta comida poner entre cada amigo en la mesa.
+
+```css
+p {
+  word-spacing: 0.1em;
+}
+```
+
+## Abreviatura de Font
+
+Puedes usar la propiedad abreviada `font` para establecer muchas propiedades relacionadas con la fuente a la vez, como en una fiesta donde decides el menú completo de una vez.
+
+```css
+h2 {
+  font: italic bold 20px "CustomFont", sans-serif;
+}
+```
+
+## Cómo Cambiar las Mayúsculas y Minúsculas del Texto
+
+Usa `text-transform` para modificar las mayúsculas del texto. Esto es como decidir si tus amigos deben gritar (mayúsculas) o hablar en voz baja (minúsculas).
+
+```css
+h1 {
+  text-transform: uppercase;
+}
+```
+
+## Cómo Agregar Subrayados, Sobrelíneas y Líneas Directas
+
+Puedes usar propiedades como `text-decoration` para agregar subrayados, sobrelíneas o líneas directas a tu texto. Esto es como elegir si poner globos, guirnaldas o luces en tu fiesta.
+
+```css
+a {
+  text-decoration: underline;
+}
+```

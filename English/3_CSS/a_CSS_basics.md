@@ -2907,3 +2907,1135 @@ Animations are a powerful tool in your design toolkit, helping to create engagin
 
 ---
 
+# CSS Filters and Backdrop-Filter
+
+## Introduction
+
+Imagine you're at a café, sipping a refreshing drink while enjoying a beautiful view. The glass is slightly frosted, giving it a cool and modern look while still allowing you to see the scenery behind it. Now, what if you could create a similar effect on your website? That’s where CSS filters and the `backdrop-filter` property come in handy. 
+
+### Filters
+
+Filters are like a set of stylish sunglasses for your elements. They can enhance or change the way an element looks without altering the actual content. 
+
+#### The filter Property
+
+You can apply one or more filters to an element using the `filter` property in CSS. Just like a barista who carefully mixes ingredients to craft the perfect drink, you can combine various filters to achieve the desired effect.
+
+**Browser Support:**
+- **Chrome:** 53+
+- **Edge:** 12+
+- **Firefox:** 35+
+- **Safari:** 9.1+
+
+#### Available Filters
+
+1. **blur**  
+   Think of this as putting on a pair of blurry glasses. It makes everything look softer. You can control the amount of blur with a radius (e.g., `blur(0.2em)`).
+   ```css
+   .my-element {
+       filter: blur(0.2em);
+   }
+   ```
+
+2. **brightness**  
+   Adjust the brightness of your element like a dimmer switch in a restaurant. A value of `100%` means no change; less than `100%` darkens the element, while more than `100%` brightens it.
+   ```css
+   .my-element {
+       filter: brightness(80%);
+   }
+   ```
+
+3. **contrast**  
+   Imagine turning up the contrast on a photo to make colors pop. A value of `100%` keeps it the same, while `0%` makes it completely gray.
+   ```css
+   .my-element {
+       filter: contrast(160%);
+   }
+   ```
+
+4. **grayscale**  
+   This is like seeing the world in black and white. A value of `1` gives a complete grayscale effect, while `0` means full color.
+   ```css
+   .my-element {
+       filter: grayscale(80%);
+   }
+   ```
+
+5. **invert**  
+   Think of this as flipping the colors like a photo negative. A value of `1` inverts all colors, while `0` leaves them unchanged.
+   ```css
+   .my-element {
+       filter: invert(1);
+   }
+   ```
+
+6. **opacity**  
+   Similar to a see-through glass, this filter adjusts how visible an element is. A value of `1` means fully visible, while `0` is completely transparent.
+   ```css
+   .my-element {
+       filter: opacity(0.3);
+   }
+   ```
+
+7. **saturate**  
+   Imagine mixing vibrant paint colors. This filter increases or decreases the intensity of colors. A value of `100%` means no change.
+   ```css
+   .my-element {
+       filter: saturate(155%);
+   }
+   ```
+
+8. **sepia**  
+   This filter gives a warm, vintage tone to your element, much like an old photograph. A value of `100%` applies full sepia.
+   ```css
+   .my-element {
+       filter: sepia(70%);
+   }
+   ```
+
+9. **hue-rotate**  
+   Just like spinning a color wheel, this filter changes the hue of colors by a specified angle.
+   ```css
+   .my-element {
+       filter: hue-rotate(120deg);
+   }
+   ```
+
+10. **drop-shadow**  
+    This adds a shadow effect around an element, similar to a shadow cast by a tree on a sunny day.
+    ```css
+    .my-element {
+        filter: drop-shadow(5px 5px 10px orange);
+    }
+    ```
+
+11. **url**  
+    This filter allows you to link to an SVG filter. Think of it as applying a special recipe from a cookbook.
+    
+### Backdrop-filter
+
+While the `filter` property applies effects to the whole element, the `backdrop-filter` property focuses solely on the background, similar to how a frosted glass might obscure a view while allowing you to see through it.
+
+**Browser Support:**
+- **Chrome:** 76+
+- **Edge:** 79+
+- **Firefox:** 103+
+- **Safari:** 18+
+
+Using `backdrop-filter`, you can blur or adjust the backdrop of your element while keeping the text or content sharp and readable.
+
+### Example
+Here’s how you might apply a backdrop filter to achieve a frosted glass effect over an image:
+```css
+.my-backdrop {
+    backdrop-filter: blur(10px);
+}
+```
+
+### Note on Accessibility
+When placing text over images, it’s crucial to ensure readability, especially for users whose browsers might not support filter effects. Always check your design on multiple devices.
+
+## Conclusion
+CSS filters and `backdrop-filter` allow you to create visually stunning effects for your web elements. Just like a skilled chef uses various ingredients to craft a delicious dish, you can combine these filters to enhance your web design.
+
+---
+
+# Blend Modes
+
+Duotone is a popular color treatment for photography that transforms an image into two contrasting colors: one for highlights and the other for lowlights. So, how can you achieve this effect with CSS?
+
+Using blend modes, along with techniques you've learned about, such as filters and pseudo-elements, you can apply this effect to any image. 
+
+## What is a Blend Mode?
+
+Blend modes are like the secret sauce in graphic design that helps you mix colors from different layers to create striking visual effects. Imagine you’re in a kitchen, blending ingredients (colors) to make a unique dish (visual effect). 
+
+Just as a chef can decide how to mix flavors, you can use CSS to change how colors mix by employing properties like `mix-blend-mode` and `background-blend-mode`. 
+
+- **mix-blend-mode**: Applies blending to the entire element, including its pseudo-elements. Think of this as using a blender to mix all the ingredients together.
+  
+- **background-blend-mode**: Applies blending specifically to the background of an element. Imagine this as adding spices to the background flavor of your dish without altering the main ingredients.
+
+### Types of Blend Modes
+
+Blend modes can be categorized into two types: **separable** and **non-separable**.
+
+#### Separable Blend Modes
+
+Separable blend modes treat each color component (like RGB) independently, just like choosing different spices for each ingredient in your dish.
+
+1. **Normal**: This is the default mode that leaves things as they are. It’s like serving the ingredients without mixing.
+
+    ```css
+    .my-element {
+      mix-blend-mode: normal;
+    }
+    ```
+
+2. **Multiply**: Imagine stacking transparencies; white becomes transparent while black remains black. It’s like combining dark chocolate with milk to create a richer flavor.
+
+    ```css
+    .my-element {
+      mix-blend-mode: multiply;
+    }
+    ```
+
+3. **Screen**: The inverse of multiply; it lightens colors. Picture it as adding whipped cream to your dessert to make it lighter.
+
+    ```css
+    .my-element {
+      mix-blend-mode: screen;
+    }
+    ```
+
+4. **Overlay**: Combines multiply and screen, enhancing contrast. It’s like glazing your dish with a shiny finish.
+
+    ```css
+    .my-element {
+      mix-blend-mode: overlay;
+    }
+    ```
+
+5. **Darken**: Selects the darkest color between the source and backdrop. Think of it as choosing the ripest fruit for your recipe.
+
+    ```css
+    .my-element {
+      mix-blend-mode: darken;
+    }
+    ```
+
+6. **Lighten**: The opposite of darken. It’s like picking the brightest colors from your palette.
+
+    ```css
+    .my-element {
+      mix-blend-mode: lighten;
+    }
+    ```
+
+7. **Color Dodge**: Lightens the backdrop to reflect the source color. It’s akin to adding a bright zest to your dish.
+
+    ```css
+    .my-element {
+      mix-blend-mode: color-dodge;
+    }
+    ```
+
+8. **Color Burn**: Similar to multiply but increases contrast. Think of it as roasting ingredients to enhance their flavors.
+
+    ```css
+    .my-element {
+      mix-blend-mode: color-burn;
+    }
+    ```
+
+9. **Hard Light**: Creates a stark contrast. It’s like using a strong seasoning that can overpower the dish if not balanced.
+
+    ```css
+    .my-element {
+      mix-blend-mode: hard-light;
+    }
+    ```
+
+10. **Soft Light**: A gentler version of overlay, adding subtlety to your creation.
+
+    ```css
+    .my-element {
+      mix-blend-mode: soft-light;
+    }
+    ```
+
+11. **Difference**: Inverts light colors, similar to how a photo negative looks. It’s like experimenting with unexpected flavors to create a surprise.
+
+    ```css
+    .my-element {
+      mix-blend-mode: difference;
+    }
+    ```
+
+12. **Exclusion**: Similar to difference but returns 50% gray for identical pixels. It’s like adding a mild flavor that softens the dish.
+
+    ```css
+    .my-element {
+      mix-blend-mode: exclusion;
+    }
+    ```
+
+#### Non-Separable Blend Modes
+
+Non-separable blend modes are like adjusting specific flavor components (HSL) without altering the entire dish.
+
+1. **Hue**: Applies the hue of the source color to the backdrop's saturation and luminosity. It’s akin to adjusting the spice level while keeping the main ingredient intact.
+
+    ```css
+    .my-element {
+      mix-blend-mode: hue;
+    }
+    ```
+
+2. **Saturation**: Applies saturation from the source to the backdrop. Imagine making a sauce richer without changing its base flavor.
+
+    ```css
+    .my-element {
+      mix-blend-mode: saturation;
+    }
+    ```
+
+3. **Color**: Creates a color using the hue and saturation of the source color while keeping the backdrop's luminosity. It’s like making a dip that enhances the main dish.
+
+    ```css
+    .my-element {
+      mix-blend-mode: color;
+    }
+    ```
+
+4. **Luminosity**: The inverse of color; it mixes luminosity from the source with the hue and saturation of the backdrop. Think of it as adjusting the brightness of your dish without changing its core flavors.
+
+    ```css
+    .my-element {
+      mix-blend-mode: luminosity;
+    }
+    ```
+
+### The Isolation Property
+
+Using the `isolation` property with a value of `isolate` creates a new stacking context, preventing blending with backdrop layers. It’s like putting your dish in a separate bowl, allowing it to shine without interference.
+
+```css
+.my-element {
+  isolation: isolate;
+}
+```
+
+## Browser Compatibility
+
+### mix-blend-mode
+
+| Browser  | Version |
+|----------|---------|
+| Chrome   | 41      |
+| Edge     | 79      |
+| Firefox   | 32      |
+| Safari   | 8       |
+
+### background-blend-mode
+
+| Browser  | Version |
+|----------|---------|
+| Chrome   | 35      |
+| Edge     | 79      |
+| Firefox   | 30      |
+| Safari   | 8       |
+
+### isolation
+
+| Browser  | Version |
+|----------|---------|
+| Chrome   | 41      |
+| Edge     | 79      |
+| Firefox   | 36      |
+| Safari   | 8       |
+
+By understanding blend modes, you can add creative effects to your designs, making them visually captivating and engaging for users. Use the above analogies to help clarify the concepts, and don't hesitate to experiment with different combinations to find what works best for your project!
+
+---
+
+# Understanding Lists in HTML & CSS: A Roadmap to Frontend Development
+
+## Lists  
+
+Imagine you have a bunch of items you plan to buy during your next grocery trip. One common way to represent this visually is a list—but how can you add styling to your grocery list?
+
+```html
+<ul>
+  <li>oat milk</li>
+  <li>rhubarb</li>
+  <li>cereal</li>
+  <li>pie crust</li>
+</ul>
+```
+
+### Creating a List
+
+The preceding list started with a semantic element, `<ul>`, with grocery list items (`<li>` elements) as children. If you inspect each `<li>` element, you can see that they all have `display: list-item`, which is why the browser renders a `::marker` by default.
+
+```css
+li {
+  display: list-item;
+}
+```
+
+#### Different Types of Lists
+
+Just like our grocery list, there are two other types of lists you might encounter:
+
+1. **Ordered Lists**: These can be created with `<ol>`, in which case the list items will display a number as the `::marker`.
+
+   ```html
+   <ol>
+     <li>oat milk</li>
+     <li>rhubarb</li>
+     <li>cereal</li>
+     <li>pie crust</li>
+   </ol>
+   ```
+
+2. **Description Lists**: These are created with `<dl>`, however, this list type does not use the `<li>` list item element.
+
+   ```html
+   <dl>
+     <dt>oat milk</dt>
+     <dd>- non-dairy trendy drink</dd>
+     <dt>cereal</dt>
+     <dd>- breakfast food</dd>
+   </dl>
+   ```
+
+### List Styles
+
+Once you know how to make a list, you can style them. The first CSS properties to discover are those that are applied to the entire list.
+
+#### List Style Properties
+
+There are three main properties you can use to style your list:
+
+1. **`list-style-position`**: This property allows you to move your bullet point to either inside or outside the list item’s contents. 
+   - **Outside** (default): The bullet point is not included in the list item’s content.
+   - **Inside**: The bullet point moves into the content box of the list item.
+
+   ```css
+   list-style-position: inside;
+   ```
+
+2. **`list-style-image`**: This property lets you replace your list’s bullet points with images. You can set an image URL, an SVG, or even a data URI.
+
+   ```css
+   list-style-image: url('path/to/image.png');
+   ```
+
+   **Note**: This property is somewhat limited in controlling the position and size of the bullets, so it's better to use the `::marker` property for more customization.
+
+3. **`list-style-type`**: This property changes the bullet points to known style keywords, custom strings, emojis, and more. You can explore a full list of possible types [here](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type).
+
+#### List Style Shorthand
+
+You can use the `list-style` shorthand property to set all of the styles in one line:
+
+```css
+list-style: <'list-style-type'> || <'list-style-position'> || <'list-style-image'>
+```
+
+For example:
+
+```css
+/* type */
+list-style: square;
+
+/* image */
+list-style: url('../img/shape.png');
+
+/* type | position */
+list-style: georgian inside;
+
+/* type | image | position */
+list-style: lower-roman url('../img/shape.png') outside;
+
+/* Keyword value */
+list-style: none;
+
+/* Global values */
+list-style: inherit;
+list-style: initial;
+list-style: revert;
+list-style: unset;
+```
+
+A common application is `list-style: none;` to hide default styles, especially when using reset stylesheets.
+
+### Granular Control with `::marker`
+
+The `::marker` pseudo-element is crucial for controlling the appearance of list markers like bullets, hyphens, or roman numerals.
+
+```css
+::marker {
+    color: blue; /* Changing the color of the markers */
+}
+```
+
+The marker box is the container that holds the bullet or number. To style it, you can use the `::marker` selector, which allows for more granular control over just the marker rather than the entire list item.
+
+#### Available Styles for `::marker`
+
+Here are some properties you can apply to `::marker`:
+
+- `color`
+- `font-*`
+- `content`
+- `white-space`
+
+### Display Type: Making Any Element a List Item
+
+You can turn any element into a list item by adding `display: list-item`. For example, if you want a heading to act like a list item:
+
+```css
+h2 {
+  display: list-item; /* This makes the heading look like a list item */
+}
+```
+
+However, using correct semantic markup is crucial. Always use `<li>` when creating actual lists, as accessibility services read and recognize the content based on markup. Changing visual appearance does not change how it’s read by screen readers.
+
+### Conclusion
+
+By understanding these fundamental concepts of lists in HTML and CSS, you are taking the first steps on your journey to becoming a proficient frontend developer. Remember that every list serves a purpose, much like each grocery item on your shopping list—understanding how to style them effectively is key to enhancing your web pages.
+
+---
+
+# Transitions
+
+When interacting with a website, you might notice that many elements have states. For example, dropdowns can be in opened or closed states. Buttons might change color when focused or hovered. Modals appear and disappear. 
+
+By default, CSS switches the style of these states instantly, much like flipping a light switch—quick and jarring.
+
+## CSS Transitions: The Smooth Switch
+
+Using CSS transitions, we can interpolate between the initial state and the target state of the element. This transition enhances the user experience by providing visual direction, support, and hints about the cause and effect of the interaction, like a smooth dimming of the lights rather than an abrupt change.
+
+**Key term:** Interpolation is the process of creating "in-between" steps that smoothly transition from one state to another, just like the gradual color shift from one shade to another in a painting.
+
+## Transition Properties
+
+### Browser Support
+
+| Browser | Version |
+|---------|---------|
+| Chrome  | 26+     |
+| Edge    | 12+     |
+| Firefox | 16+     |
+| Safari  | 9+      |
+
+### Transition Properties Overview
+
+To use transitions in CSS, you can use various transition properties or the transition shorthand property.
+
+#### `transition-property`
+
+The `transition-property` property specifies which style(s) to transition.
+
+```css
+.my-element {
+  transition-property: background-color;
+}
+```
+
+This property accepts one or more CSS property names in a comma-separated list. Optionally, you may use `transition-property: all` to indicate that every property should transition.
+
+#### `transition-duration`
+
+The `transition-duration` property defines the length of time that a transition will take to complete.
+
+```css
+.my-element {
+  transition-duration: 300ms; /* 300 milliseconds */
+}
+```
+
+The duration can be specified in seconds (s) or milliseconds (ms) and defaults to `0s`, which means there is no transition.
+
+#### `transition-timing-function`
+
+Use the `transition-timing-function` property to vary the speed of a CSS transition over its duration.
+
+By default, CSS will transition your elements at a constant speed (`transition-timing-function: linear`). Linear transitions can end up looking somewhat artificial, like a robot making sharp movements. Easing into or out of a transition can make your transitions feel more alive and natural, similar to how a car accelerates or decelerates.
+
+#### `transition-delay`
+
+Use the `transition-delay` property to specify when a transition will start. If `transition-duration` is not specified, transitions will start instantly because the default value is `0s`.
+
+```css
+.my-element {
+  transition-delay: 500ms; /* Delays the start by 500 milliseconds */
+}
+```
+
+This property is useful for staggering transitions, achieved by setting a longer `transition-delay` for each subsequent element in a group.
+
+### Shorthand: `transition`
+
+Like most CSS properties, there is a shorthand version. The `transition` shorthand combines `transition-property`, `transition-duration`, `transition-timing-function`, and `transition-delay`.
+
+```css
+.longhand {
+  transition-property: transform;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
+}
+
+.shorthand {
+  transition: transform 300ms ease-in-out 0s;
+}
+```
+
+## What Can and Can't Transition?
+
+When writing CSS, you can specify which properties should have animated transitions. In general, it's only possible to transition elements that can have a "middle state" between their start and final states. For example, transitioning `font-family` doesn’t work because it’s unclear what the middle state looks like between serif and monospace.
+
+**Common properties you can transition:**
+
+- **Transform:** This property lets you scale, rotate, translate, or skew an element. It's commonly transitioned because it results in smoother animation and consumes less battery.
+  
+  ```css
+  .my-element {
+    transition: transform 300ms ease;
+  }
+  ```
+
+- **Color:** The color can be a great indicator of state. A button might change color when hovered, signaling that it’s clickable.
+  
+  ```css
+  .my-button:hover {
+    background-color: blue;
+  }
+  ```
+
+- **Shadows:** Shadows can indicate elevation change, much like how a shadow lengthens or shortens as the light source moves.
+
+- **Filters:** The `filter` property allows you to add graphic effects on the fly, creating impressive results through transitions.
+
+## Transition Triggers
+
+Your CSS must include a change of state and an event that triggers that state change for CSS transitions to activate. A typical example is the `:hover` pseudo-class, which matches when the cursor hovers over an element.
+
+### Examples of Transition Triggers
+
+- `:hover`: Matches if the cursor is over the element.
+- `:focus`: Matches if the element is focused.
+- `:focus-within`: Matches if the element or any of its descendants are focused.
+- `:target`: Matches when the current URL's fragment matches the element's id.
+- `:active`: Matches when the element is being activated (e.g., mouse pressed).
+- Class change via JavaScript: When an element's CSS class changes, eligible properties will transition.
+
+### Different Transitions for Enter or Exit
+
+By setting different transition properties on hover/focus, you can create interesting effects:
+
+```css
+.my-element {
+  background: red;
+  transition: background 2000ms ease-in; /* Exit transition */
+}
+
+.my-element:hover {
+  background: blue;
+  transition: background 150ms ease; /* Enter transition */
+}
+```
+
+## Accessibility Considerations
+
+CSS transitions are not for everyone. For some, they can cause motion sickness or discomfort. Thankfully, CSS has a media feature called `prefers-reduced-motion` that detects if a user has indicated a preference for less motion.
+
+```css
+/* If the user prefers reduced motion, disable transitions. */
+@media (prefers-reduced-motion: reduce) {
+  .my-element {
+    transition: none;
+  }
+}
+
+/* If the user prefers motion, enable transitions. */
+@media (prefers-reduced-motion: no-preference) {
+  .my-element {
+    transition: transform 250ms ease;
+  }
+}
+```
+
+Check out our blog post on `prefers-reduced-motion` for more information on this media feature.
+
+## Performance Considerations
+
+When working with CSS transitions, you may encounter performance issues if you add transitions for certain CSS properties, like `width` or `height`, as they can push content around on the page. When possible, we recommend using properties like `transform` and `opacity` instead, which tend to perform better.
+
+For a deeper dive into high-performance CSS animations, check out our guide.
+
+---
+
+# Understanding Overflow in CSS
+
+## Overflow
+
+When content extends beyond its parent, there are many options for how you can handle it. You can scroll to add additional space, clip the overflowing edges, indicate the cut-off with an ellipsis, and much more. Overflow is especially important to consider when developing for phone applications and multiple screen sizes.
+
+### The Concept of Overflow
+
+Think of a container (like a box) that holds your content (toys). When you add more toys than the box can hold, you have several options:
+- **Scroll**: You can add wheels to the box, allowing it to roll (scroll) to show more toys.
+- **Clip**: You can cut off the toys that don't fit (clip).
+- **Ellipsis**: You can put a label on the box indicating there's more inside (ellipsis).
+
+These techniques help you manage how your content is displayed, especially in responsive designs.
+
+## Single Line Overflow with `text-overflow`
+
+The `text-overflow` property applies to elements that contain text nodes, like paragraphs (`<p>`). It specifies how the text appears when it doesn’t fit in the available space. To use `text-overflow`, you need a single unwrapped line of text, meaning you must also set `overflow` to `hidden` and use `white-space` to prevent wrapping.
+
+```css
+p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+```
+
+### Analogy
+
+Imagine you have a single line of text on a ribbon. If the ribbon is too short to display the entire text, you can choose to hide the overflow with a clip or indicate that more text exists by adding three dots at the end (ellipsis).
+
+## Using Overflow Properties
+
+Overflow properties are set on an element to control what happens when its children need more space than the parent has available. This can be intentional, like in an interactive map, or unintentional, like a chat application with long messages.
+
+### The Window Analogy
+
+Think of the parent element as a window, and the child elements as the view outside. The window has a fixed size (the parent), and the content wants to spill out (the children). Managing overflow helps frame what you see through that window.
+
+### Scrolling on the Vertical and Horizontal Axis
+
+- **Vertical Scroll**: The `overflow-y` property controls overflow along the vertical axis, allowing users to scroll up and down.
+- **Horizontal Scroll**: The `overflow-x` property controls overflow along the horizontal axis, allowing users to scroll left and right.
+
+### Logical Properties for Scroll Direction
+
+The `overflow-inline` and `overflow-block` properties set the overflow based on document direction and writing mode.
+
+## The Overflow Shorthand
+
+The `overflow` shorthand sets both `overflow-x` and `overflow-y` styles in one line:
+
+```css
+overflow: hidden scroll;
+```
+
+If two keywords are specified, the first applies to `overflow-x` and the second to `overflow-y`.
+
+## Overflow Values
+
+Here's a closer look at the values and keywords available for the overflow properties:
+
+- **`overflow: visible` (default)**: Content is never hidden, following the principle of "never hide content."
+- **`overflow: hidden`**: Content is clipped, and no scrollbars are provided.
+- **`overflow: scroll`**: Enables scrollbars, even if content isn't currently overflowing. This prepares users for future overflow situations.
+- **`overflow: clip`**: Similar to `hidden`, but forbids all scrolling.
+- **`overflow: auto`**: Shows scrollbars only when needed, giving control to the user.
+
+### Creating a Block Formatting Context
+
+Using the overflow property with a value other than visible creates a block formatting context, helping to manage layout.
+
+## Scrolling and Accessibility
+
+It's essential to ensure that scrollable areas can accept focus for keyboard users. To allow a scrolling box to accept focus, use the `tabindex="0"` attribute and appropriate roles. 
+
+```html
+<div tabindex="0" role="region" aria-labelledby="id-of-descriptive-text">
+    content
+</div>
+```
+
+CSS can indicate focus using the `outline` property:
+
+```css
+[role][aria-labelledby][tabindex] {
+  overflow: auto;
+}
+
+[role][aria-labelledby][tabindex]:focus {
+  outline: .1em solid blue;
+}
+```
+
+## Scrollbar Positioning within the Box Model
+
+Scroll bars take up space within the padding box and can affect layout if they are inline and not overlaid.
+
+### Root-Scroller vs Implicit-Scroller
+
+You may notice some scroll behaviors, especially in mobile applications. The root scroller is the primary scrollable area on a page. By default, the `documentElement` serves as the root scroller. However, you can promote other elements to root scrollers by positioning them fixed and ensuring they cover the entire viewport.
+
+## Scroll Behavior
+
+The `scroll-behavior` property allows you to opt into browser-controlled scrolling for elements. It enhances in-page navigation:
+
+```css
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-view {
+    scroll-behavior: auto;
+  }
+}
+```
+
+## Overscroll Behavior
+
+The `overscroll-behavior` property prevents overflow scrolling from leaking into a parent container, which can be crucial in maintaining a clean user experience in overlays.
+
+### Conclusion
+
+Managing overflow in CSS is like carefully framing a beautiful picture with a window. It ensures that the content is presented in a way that is both functional and visually appealing, allowing for an optimal user experience across different devices.
+
+---
+
+# Backgrounds in CSS
+
+## Overview
+
+Behind every CSS box lies a specialized layer called the **background layer**. Think of it as the canvas of a painting where different elements (like colors and images) can be layered to create an aesthetically pleasing design. CSS allows us to manipulate this background layer in various ways, including the ability to have multiple backgrounds—much like layering different transparent sheets over one another to achieve a complex visual effect.
+
+### Background Layers
+
+Background layers are the furthest from the user, rendered behind the contents of a box starting from its **padding-box** region. This means that they do not overlap with borders, just like how the foundation of a house is beneath the walls and the roof.
+
+## Background Color
+
+### Browser Support
+
+- **Chrome:** 1.0
+- **Edge:** 12.0
+- **Firefox:** 1.0
+- **Safari:** 1.0
+
+### Explanation
+
+One of the simplest effects you can apply to a background layer is setting the **background color**. Imagine this as painting a wall before hanging pictures on it. The initial value of `background-color` is **transparent**, which means the colors of underlying elements can shine through. A valid color set on a background layer sits behind other elements painted on that element.
+
+## Background Images
+
+### Browser Support
+
+- **Chrome:** 1.0
+- **Edge:** 12.0
+- **Firefox:** 1.0
+- **Safari:** 1.0
+
+### Explanation
+
+On top of the `background-color`, you can add a **background image** using the `background-image` property. This is akin to putting a framed picture on a painted wall. You can use:
+- An image URL or data URI with the `url` CSS function.
+- An image created dynamically by a gradient CSS function.
+
+### CSS Gradient Backgrounds
+
+CSS provides several gradient functions to generate a background image by blending two or more colors. This is like creating a beautiful sunset effect on your wall where colors transition smoothly from one to another.
+
+## Repeating Background Images
+
+### Browser Support
+
+- **Chrome:** 1.0
+- **Edge:** 12.0
+- **Firefox:** 1.0
+- **Safari:** 1.0
+
+### Explanation
+
+By default, background images repeat both horizontally and vertically, similar to how a patterned wallpaper covers an entire wall. You can control this behavior with the `background-repeat` property:
+
+- **repeat:** The image fills the space, cropping as necessary.
+- **round:** The image fits into the space, stretching and compressing as needed.
+- **space:** The image fits into the space without cropping, leaving even gaps between instances.
+
+The first parameter sets the horizontal repeat behavior, and the second sets the vertical behavior. If only one value is used, it applies to both directions.
+
+## Background Position
+
+### Browser Support
+
+- **Chrome:** 1.0
+- **Edge:** 12.0
+- **Firefox:** 1.0
+- **Safari:** 1.0
+
+### Explanation
+
+When images are styled with `background-repeat: no-repeat`, they are typically displayed in the top-left corner of their container. The `background-position` property allows you to change this position, akin to deciding where to place a picture frame on your wall.
+
+The property accepts two values for independent positioning along the x and y axes. The order of these values matters if CSS lengths or percentages are used. For example:
+- **Correct:** `background-position: left 50%;`
+- **Incorrect:** `background-position: 50% left;`
+
+### Advanced Positioning
+
+You can also specify offsets using keywords like `top`, `bottom`, `left`, and `right`. For example:
+- **Correct:** `background-position: bottom 88% right;`
+- **Incorrect:** `background-position: 88% bottom right;`
+
+## Background Size
+
+### Browser Support
+
+- **Chrome:** 3.0
+- **Edge:** 12.0
+- **Firefox:** 4.0
+- **Safari:** 5.0
+
+### Explanation
+
+The `background-size` property controls the size of background images. By default, images retain their intrinsic width and height, similar to how a photograph keeps its original dimensions when framed. You can use keywords like:
+- **auto:** Default sizing based on the image’s intrinsic dimensions.
+- **cover:** Stretches or crops the image to cover the entire background area.
+- **contain:** Scales the image to fit without cropping, potentially leaving empty space.
+
+## Background Attachment
+
+### Browser Support
+
+- **Chrome:** 1.0
+- **Edge:** 12.0
+- **Firefox:** 1.0
+- **Safari:** 1.0
+
+### Explanation
+
+The `background-attachment` property modifies how background images behave when scrolling. Think of it as deciding whether a picture on your wall moves with you or stays in place. It accepts:
+- **scroll:** Images move with the content.
+- **fixed:** Images remain fixed relative to the viewport.
+- **local:** Images move with the content of their container.
+
+## Background Origin
+
+### Browser Support
+
+- **Chrome:** 1.0
+- **Edge:** 12.0
+- **Firefox:** 4.0
+- **Safari:** 3.0
+
+### Explanation
+
+The `background-origin` property allows you to specify the area of backgrounds associated with a particular box, similar to determining the starting point of a painting on a canvas. It accepts values like `border-box`, `padding-box`, and `content-box`.
+
+## Background Clip
+
+### Browser Support
+
+- **Chrome:** 1.0
+- **Edge:** 12.0
+- **Firefox:** 4.0
+- **Safari:** 5.0
+
+### Explanation
+
+The `background-clip` property controls what part of the background is visible, akin to cropping a photo before framing it. It can be set to `border-box`, `padding-box`, `content-box`, or `text` for clipping backgrounds based on text shapes.
+
+## Multiple Backgrounds
+
+As previously mentioned, you can define multiple background layers in CSS. Each layer is rendered from top to bottom, with the first background being the closest to the user—just like stacking several transparent sheets of colored film over a light source. The last background can assign a background color.
+
+### Example
+
+```css
+background-image: url("image1.png"), url("image2.png"), linear-gradient(to right, red, blue);
+background-size: contain, cover, auto;
+background-repeat: no-repeat, no-repeat, no-repeat;
+background-position: center, top left, 0% 0%;
+background-origin: padding-box, border-box, content-box;
+```
+
+## The Background Shorthand
+
+To simplify the styling of backgrounds, especially when using multiple layers, CSS provides a shorthand notation:
+
+```css
+background: 
+  <background-image>
+  <background-position> / <background-size>?
+  <background-repeat>
+  <background-attachment>
+  <background-origin>
+  <background-clip>
+  <background-color>?;
+```
+
+Order matters in shorthand declarations, and omitted properties will revert to their initial values.
+
+### Example
+
+```css
+background: 
+  url("image.png") top left / cover no-repeat;
+```
+
+This declaration sets an image at the top left, sizes it to cover the background, and ensures it doesn't repeat.
+
+## Conclusion
+
+Understanding how to manipulate the background layer in CSS can significantly enhance the visual appeal of your web pages. Just like a well-arranged room, a thoughtfully designed background can elevate the overall experience for users. By mastering these properties, you can create stunning layouts that stand out in the crowded digital space.
+
+---
+
+# Text and Typography
+
+Text is one of the core building blocks of the web. Think of it like the bricks in a house: while you can build a house without fancy bricks, using quality ones makes the structure not only strong but also appealing.
+
+When making a website, you don't necessarily need to style your text; HTML actually has some pretty reasonable default styling. However, just like a plain house can be transformed into a beautiful home with a bit of decoration, adding styling to your text can greatly enhance the reading experience for your users!
+
+## Overview of Typography
+
+In this module, we'll start with the `@font-face` rule, which lets you import custom fonts into your webpages. This ensures that you have the exact typography you need, independent of user-installed fonts. After that, we'll cover essential CSS font properties including `font-family`, `font-style`, `font-weight`, and `font-size`. These basics set the stage for manipulating text for both style and readability.
+
+We'll also touch on paragraph-specific properties like `text-indent` and `word-spacing`, before concluding with advanced topics such as variable fonts and pseudo-elements, which further refine your typographic control. Throughout the module, practical examples and tips will help solidify your understanding and application of these CSS techniques.
+
+---
+
+## The `@font-face` Rule
+
+The `@font-face` CSS at-rule is instrumental in web design, letting you specify and use custom fonts to display text. Imagine being a chef who can select any ingredient you want, rather than being limited to what's available in a basic pantry. The beauty of `@font-face` is in its versatility: it lets you source fonts from a remote server or from a font installed on the user's device.
+
+### Syntax
+
+```css
+@font-face {
+  font-family: "Trickster";
+  src:
+    local("Trickster"),
+    url("trickster-COLRv1.otf") format("opentype") tech(color-COLRv1),
+    url("trickster-outline.otf") format("opentype"),
+    url("trickster-outline.woff") format("woff");
+}
+```
+
+### Descriptors
+
+- **ascent-override**: Customizes the ascent metric, impacting the space above the baseline.
+- **descent-override**: Adjusts the descent metric, affecting the space below the baseline.
+- **font-display**: Controls the font's display behavior depending on its download status.
+- **font-family**: Names the font for use within font-related properties.
+- **font-stretch**: Sets acceptable horizontal scaling, specified as a single value or range.
+- **font-style**: Defines the font style, supporting angle ranges for oblique styles.
+- **font-weight**: Determines the font's weight or range of weights available.
+- **font-feature-settings**: Enables access to OpenType font features.
+- **font-variation-settings**: Provides fine-tuned control over variable font settings.
+- **line-gap-override**: Overrides the font's default line gap.
+- **size-adjust**: Applies a scaling factor to the font's outline and metrics.
+- **src**: Defines the font source, whether local or remote. This is required for the `@font-face` rule.
+- **unicode-range**: Limits the characters this font should be used for.
+
+### Description
+
+`@font-face` frees designers from the constraints of "web-safe" fonts by letting them use custom typography. The `local()` function's ability to search for a font on the user's device offers a seamless experience that doesn't necessarily depend on an internet connection.
+
+*Note*: For compatibility strategies and more details on older browsers, refer to the `src` descriptor documentation. You can also nest `@font-face` within CSS conditional group rules.
+
+### Font MIME Types
+
+| Format | MIME Type             |
+|--------|-----------------------|
+| TrueType | font/ttf            |
+| OpenType | font/otf            |
+| Web Open Font Format | font/woff |
+| Web Open Font Format 2 | font/woff2 |
+
+*Note*: Web fonts follow the same-origin policy but can be configured for cross-origin use with HTTP access controls. Also, `@font-face` can't be declared inside a CSS selector block.
+
+---
+
+## The Difference Between `@font-face` and `font-family`
+
+In CSS, `@font-face` and `font-family` are often confused, but they serve distinct purposes. Think of `@font-face` as the architect who designs a unique structure (the font) and `font-family` as the interior designer who selects how that structure will be presented in the final room (the webpage).
+
+- **`@font-face`**: This rule defines any custom fonts you want to use in your web application. It tells the browser where to download the font, how to display it during loading (with the `font-display` property), and specifies which subset of characters to download (with the `unicode-range`).
+
+- **`font-family`**: This is a CSS property used within a CSS rule to assign a particular font or a list of fonts to an element. The fonts listed under `font-family` can be web-safe fonts, system fonts, or custom fonts defined with `@font-face`.
+
+To summarize, `@font-face` declares a font and gives it a name, while `font-family` applies this declared font to HTML elements.
+
+### Example of Using Both
+
+```css
+@font-face {
+  font-family: "CustomFont";
+  src: url("customfont.woff2") format("woff2");
+}
+
+body {
+  font-family: "CustomFont", Arial, sans-serif;
+}
+```
+
+In this example, `@font-face` defines "CustomFont" and tells the browser where to find it. The `font-family` property then applies it to the body element, with Arial as a fallback if "CustomFont" isn't available.
+
+---
+
+## Change the Typeface
+
+Use `font-family` to change the typeface of your text. The `font-family` property accepts a comma-separated list of strings, either referring to specific or generic font families. 
+
+- **Specific font families**: Quoted strings, such as "Helvetica", "EB Garamond", or "Times New Roman".
+- **Generic font families**: Keywords such as serif, sans-serif, and monospace.
+
+The browser will display the first available typeface from the provided list. 
+
+*Note*: When the browser chooses which font to display from your `font-family` declaration, it doesn't stop at the first available font in the list. Instead, it selects fonts one character at a time. If a particular character isn't available in the first font in the list, it moves on to the next, and so on.
+
+When using `font-family`, specify at least one generic font family as a fallback in case the user's browser doesn't have your preferred fonts. Generally, the fallback generic font family should be similar to your preferred fonts: if using `font-family: "Helvetica"` (a sans-serif font family), your fallback should be `sans-serif` to match.
+
+---
+
+## Use Italic and Oblique Fonts
+
+Use `font-style` to set whether text should be italic or not. The `font-style` property accepts one of the following keywords: `normal`, `italic`, and `oblique`.
+
+*Note*: **Q**: What's the difference between italic and oblique? **A**: In fonts that support it, `font-style: italic` is typically a cursive version of the regular typeface, while `font-style: oblique` displays a slanted version of the regular typeface.
+
+---
+
+## Make Text Bold
+
+Use `font-weight` to set the "boldness" of text. This property accepts keyword values (normal, bold), relative keyword values (lighter, bolder), and numeric values (100 to 900).
+
+- The keywords `normal` and `bold` are equivalent to the numeric values 400 and 700, respectively.
+- The keywords `lighter` and `bolder` are calculated relative to the parent element.
+
+*Note*: Most fonts, especially the "web-safe" ones, only support the weights 400 (normal) and 700 (bold). When importing fonts using `@font-face`, you can choose specific weights to pull in, but non-variable fonts only support numeric values in the 100s (e.g., 100, 200, 300). If you want to use `font-weight: 321`, you'll have to use a Variable Font.
+
+---
+
+## Change the Size of Text
+
+Use `font-size` to control the size of your text elements. This property accepts length values, percentages, and a handful of keyword values.
+
+In addition to length and percentage values, `font-size` accepts some absolute keyword values (xx-small, x-small, small, medium, large, x-large, xx-large) and a couple of relative keyword values (smaller, larger). The relative values are relative to the parent element's font size.
+
+*Note*: **Q**: What's the difference between `em` and `rem`? **A**: In CSS, `em` represents the font size inherited from the element's parent. For example, `font-size: 2em` is equivalent to the parent's font size multiplied by two. `rem` is similar but represents the font size inherited from the root element (e.g., `<html>`).
+
+---
+
+## Change the Space Between Lines
+
+Use `line-height` to specify the height of each line in an element. This property accepts either a number, length, percentage, or the keyword normal. Generally, it's recommended to use a number instead of a length or percentage to avoid issues with inheritance.
+
+---
+
+## Change the Space Between Characters
+
+Use `letter-spacing` to control the amount of horizontal space
+
+ between characters. This property accepts length values (positive or negative). Positive values increase space, while negative values decrease it. 
+
+---
+
+## Change the Space Between Words
+
+Use `word-spacing` to control the amount of space between words. This property accepts length values (positive or negative) to increase or decrease space between words.
+
+---
+
+## Change the Text Indent
+
+Use `text-indent` to adjust the indentation of the first line in a block of text. This property accepts length values (positive or negative). 
+
+---
+
+## Conclusion
+
+In this module, we explored how to use CSS to control text and typography on the web. By using the `@font-face` rule, various properties like `font-family`, `font-style`, `font-weight`, and others, we can create visually appealing and legible text that enhances the overall design of our web pages. 
