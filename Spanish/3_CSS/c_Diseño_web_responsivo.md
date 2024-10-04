@@ -516,3 +516,695 @@ Las consultas a contenedores cambian las reglas del juego para los microdiseños
 
 ---
 
+# Typography
+
+## Understanding Typography through a Simple Analogy
+
+Imagine your web page is like a billboard. If the letters are too small, people driving by won’t be able to read them. If the letters are too big, it might get overwhelming, and no one will know what to focus on. Typography is about making your text not only readable but also pleasant to look at, just like balancing the size and style of the letters on your billboard.
+
+When you're building a webpage, if you don’t set a font style, the browser will automatically choose one for you. This is similar to letting someone else decide the font for your billboard—they’ll make it readable, but it might not be what you wanted. To control this, you have to specify the text size, font, and line spacing yourself.
+
+### Browser Defaults (User-Agent Stylesheets)
+Each browser comes with its own set of "default" styles. If you don't specify your own, the browser uses its default font size, color, and spacing, just like if you rented a billboard and didn't specify any size or design—someone else would decide for you.
+
+But here's the key: **users can also change these styles**. Some people prefer bigger fonts, while others might use a smaller one. It’s important to respect user preferences.
+
+### Line Length & Readability
+If a billboard stretches across an entire highway, it would be impossible to read if the letters go all the way from one side to the other. In web typography, we call this "line length." Ideally, text lines should not be too long or too short—somewhere between 45 to 75 characters per line is considered ideal for readability.
+
+```css
+article {
+  max-inline-size: 66ch; /* Limits line length to 66 characters */
+}
+```
+This code ensures that the text stays within a comfortable width for reading.
+
+### Text Size and Screen Size
+Just like you would make the letters bigger on a billboard that's far away, text on bigger screens should be larger. On smaller screens, like mobile devices, the text should be smaller so it fits well.
+
+Here's how you can use **media queries** to adjust the size of text based on the screen width:
+
+```css
+@media (min-width: 30em) {
+  html {
+    font-size: 125%; /* Text gets bigger as screen width increases */
+  }
+}
+
+@media (min-width: 60em) {
+  html {
+    font-size: 200%; /* Even larger for very wide screens */
+  }
+}
+```
+
+### Responsive Text Sizing
+Sometimes, you want the text size to automatically adjust as the screen size changes, like making your billboard text bigger when viewed from far away and smaller when up close. For this, CSS provides the `vw` unit, which stands for viewport width (the size of the screen). However, using `vw` alone isn’t ideal, because it might make text too small or too large.
+
+```css
+html {
+  font-size: calc(0.75rem + 1.5vw); /* Responsive font size */
+}
+```
+
+### Controlling the Extremes with `clamp()`
+To ensure your text doesn’t shrink too much on small screens or grow too large on big ones, you can use the `clamp()` function. This lets you define a minimum, a preferred size, and a maximum for your text size.
+
+```css
+html {
+  font-size: clamp(1rem, 0.75rem + 1.5vw, 2rem);
+}
+```
+Here, the text size will always be between 1rem (a comfortable default size) and 2rem, scaling based on the screen width.
+
+### Line Height for Readability
+Just as the spacing between billboards matters to avoid crowding, so does the space between lines of text. The **line-height** property controls this. For long lines, too much space can make the text harder to read. For short lines, you might want more spacing.
+
+```css
+article {
+  line-height: 1.65; /* Sets comfortable spacing between lines */
+}
+```
+
+### Web Fonts
+Using custom web fonts is like choosing a specific font for your billboard instead of sticking with what’s available by default. Web fonts can add character to your website, but they come with a cost—slower load times, like waiting for the perfect paint to dry on your billboard.
+
+```css
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/roboto-regular.woff2') format('woff2');
+}
+```
+
+To avoid slowing down the user’s experience, you can **preload** fonts and **swap** to them only after they're ready to ensure your text doesn’t remain invisible while waiting.
+
+```html
+<link href="/fonts/roboto-regular.woff2" rel="preload" as="font" crossorigin>
+```
+
+And to handle text switching smoothly, use:
+```css
+body {
+  font-family: 'Roboto', sans-serif;
+  font-display: swap;
+}
+```
+
+### Variable Fonts: The All-in-One Solution
+Variable fonts allow you to pack all styles (bold, italic, etc.) into a single file. This is like having multiple billboards (different styles) all in one—saving space while offering flexibility.
+
+---
+
+# Imágenes Responsivas
+
+### ¿Qué pasa cuando agrandamos una imagen?
+Imagina que tienes una foto y decides pegarla en la pared de tu cuarto. Si la pared es más pequeña que la foto, tendrás que doblarla para que encaje, lo que no es ideal porque te perderás parte de la imagen, ¿verdad? Bueno, en la web pasa algo similar.
+
+El texto de una página web se ajusta automáticamente al tamaño de la pantalla, como si las letras supieran cómo acomodarse en el espacio disponible. Las imágenes, por otro lado, son un poco más rebeldes y, si no las controlamos, podrían salirse de los límites y hacer que tengas que "deslizarte" para verlas por completo, como si estuvieras moviendo la foto en tu pared con una lupa. 
+
+#### ¿Cómo evitamos esto?
+Afortunadamente, con CSS podemos "decirles" a las imágenes que se ajusten al tamaño del contenedor donde las colocamos, igual que si recortaras la foto para que siempre encaje en la pared de tu cuarto.
+
+### Código básico para imágenes responsivas
+```css
+img {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+```
+
+### Analogía técnica:
+- **max-inline-size**: Es como decirle a la imagen "Nunca seas más ancha que la pantalla o el espacio donde te coloqué".
+- **block-size**: Mantiene el "tamaño de bloque", es decir, que la imagen conserve su altura original en relación con su ancho, evitando que se deforme.
+
+### Navegadores compatibles:
+- Chrome: 57+
+- Edge: 79+
+- Firefox: 41+
+- Safari: 12.1+
+
+---
+
+## ¿Y qué pasa si la imagen se deforma?
+
+A veces, cuando cargamos una imagen, podría aplastarse o estirarse para que encaje en un espacio. ¿Te ha pasado que ves una foto en tu celular y parece que a las personas las aplastaron o alargaron? Eso sucede porque no se mantiene la relación de aspecto de la imagen.
+
+### Solución con `aspect-ratio`
+Podemos usar una propiedad llamada `aspect-ratio` para asegurarnos de que la imagen mantenga su proporción original, como si dijéramos "Mantén la relación entre tu ancho y tu alto, ¡sin deformarte!"
+
+```css
+img {
+  max-inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 2/1; /* Esto indica que el ancho siempre será el doble que el alto */
+}
+```
+
+### Object-fit: Evita la compresión y estiramiento
+
+En vez de forzar que la imagen encaje de cualquier forma, podemos usar `object-fit` para darle al navegador instrucciones sobre cómo encajar la imagen. Si alguna vez has recortado una foto para que solo quepa la parte más importante, esto es lo que hacemos con `object-fit`.
+
+- **contain**: La imagen se ajusta al espacio disponible pero puede dejar áreas vacías.
+- **cover**: La imagen llena todo el espacio, aunque tenga que cortar partes de la imagen.
+
+```css
+img {
+  max-inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 2/1;
+  object-fit: contain; /* O prueba con cover */
+}
+```
+
+---
+
+## Recortar una imagen con estilo
+
+Si una parte específica de la imagen es la más importante (como la cara de una persona o un objeto), podemos usar `object-position` para asegurarnos de que esa parte quede visible. Imagina que tienes una foto grupal y quieres asegurarte de que siempre se vea la persona en el centro.
+
+```css
+img {
+  max-inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 2/1;
+  object-fit: cover;
+  object-position: top center; /* Asegura que la parte superior de la imagen esté centrada */
+}
+```
+
+---
+
+## Optimizando la carga de imágenes
+
+Ahora bien, cuando tenemos muchas imágenes en una página web, puede ser un problema que todas se carguen al mismo tiempo. ¡Es como si intentaras abrir todos tus regalos de cumpleaños a la vez! 😅 Para evitar esto, podemos usar el atributo `loading="lazy"` que le dice al navegador que no cargue la imagen hasta que sea realmente necesario (como cuando el usuario se desplaza hasta ese lugar en la página).
+
+```html
+<img src="image.png" alt="Descripción de la imagen" width="300" height="200" loading="lazy">
+```
+
+---
+
+## Sugerencias para la precarga
+
+Si tienes imágenes muy importantes en la parte superior de la página, como un banner principal, puedes decirle al navegador que las cargue con prioridad usando `fetchpriority="high"`. Esto es como decirle al navegador "¡Esta imagen es importante, tráela primero!"
+
+```html
+<img src="hero.jpg" alt="Imagen principal" width="1200" height="800" loading="eager" fetchpriority="high">
+```
+
+---
+
+## ¿Por qué es importante todo esto?
+
+La idea detrás de las imágenes responsivas es que tus usuarios no tengan que esperar más de lo necesario ni gastar datos innecesarios, especialmente si están usando un dispositivo móvil o una conexión lenta. Recuerda, ¡cada kilobyte cuenta!
+
+Por lo tanto, es esencial no solo ajustar las imágenes a los diferentes tamaños de pantalla, sino también asegurarse de que se carguen de manera eficiente.
+
+---
+
+# El elemento de imagen
+
+En el módulo anterior, aprendimos cómo el atributo `srcset` te permite proporcionar versiones de la misma imagen en diferentes tamaños, dándole al navegador la posibilidad de elegir la versión más adecuada. Sin embargo, si quieres cambiar la imagen por completo dependiendo del dispositivo o las condiciones, necesitarás el elemento `picture`.
+
+## ¿Cómo funciona el elemento `picture`?
+
+Imagina que estás organizando una cena y, según el número de invitados, decides cambiar el tipo de comida. Si hay pocas personas, sirves algo simple como pizza, pero si llegan más, decides hacer un asado. Aquí, el elemento `picture` es como tú, tomando decisiones más grandes, y el elemento `img` es la comida que sirve la cena.
+
+El `picture` se basa en el `img`, igual que en la cena dependes de la comida disponible. Si no tienes comida (no hay elemento `img`), ¡no puedes servir nada!
+
+Ejemplo básico:
+```html
+<picture>
+  <img src="image.jpg" alt="Descripción de la imagen.">
+</picture>
+```
+
+## Control total con `picture`
+
+Cuando usas `srcset`, le das sugerencias al navegador, como cuando le dices a un amigo que podría ser una buena idea traer algo a la cena. Pero con `picture`, no das sugerencias, ¡das órdenes! Tú tienes el control y decides qué imagen usar.
+
+```html
+<picture>
+  <source srcset="image.avif" type="image/avif">
+  <source srcset="image.webp" type="image/webp">
+  <img src="image.jpg" alt="Descripción de la imagen." width="300" height="200" loading="lazy" decoding="async">
+</picture>
+```
+
+### Analizando el código
+Aquí el navegador primero intentará usar el formato `AVIF` (el asado), luego `WebP` (la pizza), y si no puede con ninguno, usará la imagen en formato `JPEG` (un sándwich simple). Es como tener opciones para tu cena según las condiciones.
+
+## Cambiando tamaños de imagen
+
+Otra ventaja del `picture` es que puedes cambiar la imagen dependiendo del tamaño de la pantalla, como cambiar la decoración de tu casa según la cantidad de gente que venga. Si tienes muchos invitados, pones más sillas; si son pocos, usas menos espacio.
+
+Ejemplo:
+```html
+<picture>
+  <source srcset="large.png" media="(min-width: 75em)">
+  <source srcset="medium.png" media="(min-width: 40em)">
+  <img src="small.png" alt="Descripción de la imagen." width="300" height="200" loading="lazy" decoding="async">
+</picture>
+```
+
+En este caso, el navegador usará una imagen más grande si la pantalla es muy amplia (75em o más), una imagen mediana si la pantalla es intermedia (entre 40em y 75em) y una pequeña si la pantalla es pequeña.
+
+## Controlando la densidad de píxeles
+
+Piensa en esto como si tus invitados trajeran diferentes tipos de vasos a la cena. Si hay invitados con vasos grandes y resistentes (dispositivos con mayor densidad de píxeles), les sirves en esos. Si tienen vasos pequeños (menor densidad), les sirves en esos.
+
+```html
+<picture>
+  <source srcset="large.png 1x" media="(min-width: 75em)">
+  <source srcset="medium.png 1x, large.png 2x" media="(min-width: 40em)">
+  <img src="small.png" alt="Descripción de la imagen." width="300" height="200" loading="lazy" decoding="async" srcset="small.png 1x, medium.png 2x, large.png 3x">
+</picture>
+```
+
+Aquí, el navegador seleccionará la imagen adecuada no solo según el tamaño de la pantalla, sino también según la densidad de píxeles del dispositivo.
+
+## Recortando imágenes
+
+Si necesitas ajustar una imagen para que luzca mejor en diferentes dispositivos, puedes recortarla para que se vea bien tanto en pantallas pequeñas como grandes. Es como cortar un pastel: puedes servirlo en porciones pequeñas para los niños, pero cuando llegan los adultos, sirves una porción más grande.
+
+```html
+<picture>
+  <source srcset="full.jpg" media="(min-width: 75em)" width="1200" height="500">
+  <source srcset="regular.jpg" media="(min-width: 50em)" width="800" height="400">
+  <img src="cropped.jpg" alt="Descripción de la imagen." width="400" height="400" loading="eager" decoding="sync">
+</picture>
+```
+
+Aquí le estás diciendo al navegador que si la pantalla es grande (más de 75em), use una imagen completa, pero si la pantalla es mediana, use una imagen más pequeña. Y si la pantalla es muy pequeña, usa un recorte más estrecho.
+
+## Conclusión
+
+El elemento `picture` te da un control mucho más detallado sobre qué imágenes mostrar y cómo deben cambiar según el contexto, como el tamaño de la pantalla o el formato de imagen que soporte el navegador. Pero para la mayoría de los casos, `srcset` y `sizes` del `img` son suficientes, así que no siempre es necesario complicarse.
+
+---
+
+# Íconos y Gráficos en la Web
+
+## Introducción a los Íconos
+Piensa en los íconos como señales de tránsito en la web. Así como las señales te indican qué hacer en una carretera (frenar, girar, etc.), los íconos ayudan a los usuarios a navegar por una página web de forma intuitiva. Los íconos no son el contenido principal de la web, pero sí son fundamentales para que la interfaz de usuario sea clara y funcional.
+
+Al igual que el texto en la interfaz de usuario, los íconos deben adaptarse y escalarse para verse bien en diferentes dispositivos y tamaños de pantalla. Un ícono mal dimensionado sería como una señal de tránsito que es tan pequeña que no la ves, o tan grande que te distrae. ¡Nadie quiere eso en la web!
+
+## Gráficos Vectoriales Escalables (SVG)
+Imagina que quieres hacer un cartel para un evento. Si lo diseñas usando una imagen tradicional (como un JPG o PNG), podrías necesitar crear diferentes versiones de tu cartel para que se vea bien en un afiche grande, en una invitación de bolsillo, o en una página web. Pero si usas un formato como SVG, es como tener una plantilla que puedes ampliar o reducir sin perder calidad.
+
+- **PNG y JPG**: Son como un mosaico hecho de píxeles; si lo amplías demasiado, los píxeles se ven borrosos.
+- **SVG**: Funciona como un diagrama técnico. No importa cuánto lo amplíes, siempre se verá nítido porque se basa en instrucciones de dibujo.
+
+En lugar de usar múltiples versiones de un mismo ícono en diferentes tamaños, con un solo archivo SVG puedes tener un ícono que se ve perfecto en cualquier tamaño. ¡Menos trabajo, más claridad!
+
+### Código de Ejemplo de un SVG:
+```xml
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-21 -21 42 42" width="100" height="100">
+  <title>Carita sonriente</title>
+  <circle r="20" fill="yellow" stroke="black"/>
+  <ellipse rx="2.5" ry="4" cx="-6" cy="-7" fill="black"/>
+  <ellipse rx="2.5" ry="4" cx="6" cy="-7" fill="black"/>
+  <path stroke="black" d="M -12,5 A 13.5,13.5,0 0,0 12,5 A 13,13 0 0,1 -12,5"/>
+</svg>
+```
+
+En este ejemplo, cada forma (círculo, elipses y líneas) tiene instrucciones claras para ser dibujada por el navegador, y no importa cuánto escales esta carita, siempre se verá bien.
+
+## Íconos en la Interfaz de Usuario
+
+### Íconos Presentacionales
+Un ícono es como el "fondo" de la interfaz. Si tienes un botón con un texto que dice "Menú", el texto es lo más importante, y el ícono de las tres rayitas solo lo acompaña. Esto significa que el ícono es presentacional, su rol es estético, no informativo.
+
+Ejemplo de código para íconos presentacionales:
+```html
+<button>
+  <img src="hamburger.svg" alt="" width="16" height="16"> Menú
+</button>
+```
+Nota: El atributo `alt=""` indica que la imagen es decorativa y no es necesario que un lector de pantalla lo lea.
+
+### Íconos Independientes
+Si decides usar un ícono sin texto, como el ícono de "hamburguesa" para un menú sin acompañarlo de la palabra "Menú", entonces el ícono ya no es solo decorativo, tiene un propósito funcional. Necesitamos asegurarnos de que las tecnologías de accesibilidad (como los lectores de pantalla) entiendan que este ícono tiene un significado.
+
+Ejemplo de código con ícono accesible:
+```html
+<button aria-label="Menú">
+  <img src="hamburger.svg" alt="">
+</button>
+```
+
+### SVG y Accesibilidad
+Si usas SVG directamente en el HTML, puedes tener control total sobre cómo se ve y cómo se comporta. Pero recuerda, si el ícono no es decorativo, debes hacerlo accesible. En este caso, podrías usar `aria-label` para darle un nombre accesible al ícono.
+
+Ejemplo:
+```html
+<button aria-label="Menú">
+  <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80" width="16" height="16">
+    <rect width="100" height="20" />
+    <rect y="30" width="100" height="20"/>
+    <rect y="60" width="100" height="20"/>
+  </svg>
+</button>
+```
+
+## Estilos para Íconos SVG
+Una gran ventaja de los SVG es que puedes cambiar su apariencia directamente con CSS, como si fuera cualquier otro elemento de tu página. Esto significa que puedes cambiar el color del ícono cuando el usuario pasa el mouse sobre él, o cuando recibe foco.
+
+Ejemplo:
+```css
+button {
+  color: blue;
+}
+button rect {
+  fill: blue;
+}
+
+button:hover rect,
+button:focus rect {
+  fill: red;
+}
+```
+
+En este ejemplo, el ícono cambia de color cuando el usuario interactúa con el botón.
+
+## Conclusión
+Usar íconos en la web es como usar señales para guiar a los usuarios, y con formatos como SVG, puedes asegurarte de que esas señales se vean claras y profesionales sin importar el tamaño. Además, el uso adecuado de íconos en la interfaz de usuario mejora la accesibilidad y la experiencia de todos los usuarios.
+
+---
+
+# Personalización del Navegador
+
+## Temas
+
+**Imagina que tu sitio web es como elegir la vestimenta adecuada para diferentes ocasiones.** Dependiendo de dónde estés (en la playa, una reunión o en casa), vas a elegir algo que se ajuste mejor a la situación. Lo mismo sucede con los sitios web: podemos adaptar su apariencia para que se ajusten al entorno y a las preferencias del usuario. En este artículo te explico cómo puedes hacer que tu sitio web se vea genial en cualquier contexto, incluso en el navegador que el usuario esté utilizando.
+
+---
+
+### Personaliza la Interfaz del Navegador
+
+Así como puedes elegir un color que combine con tu vestimenta para cada ocasión, también puedes hacer que el navegador combine con los colores de tu sitio web. Algunos navegadores permiten cambiar su interfaz según el color que elijas para tu página. Para lograr esto, solo debes agregar un meta tag en tu archivo HTML.
+
+```html
+<meta name="theme-color" content="#00D494">
+```
+
+> **Concepto técnico:** Este código le dice al navegador qué color utilizar en su barra de navegación cuando cargue tu sitio. Aunque parezca raro poner un color directamente en HTML en lugar de CSS, esta técnica permite que el navegador adapte su color inmediatamente, sin esperar a que la CSS esté lista.
+
+**¿Cuándo usar esto?** Es como si le dijeras al usuario: "Te doy la opción de personalizar un poco tu experiencia mientras navegas mi sitio". Esto puede ser genial, pero usa esta funcionalidad con moderación, ¡no querrás distraer al usuario con muchos cambios de color!
+
+### Manifiesto de Aplicación Web
+
+Si quieres llevar la experiencia al siguiente nivel, puedes hacer que tu sitio funcione como una app cuando el usuario lo guarde en su pantalla de inicio, al igual que si guardas un acceso directo a tu página favorita en el escritorio de tu computadora.
+
+Para esto, necesitas un archivo especial llamado `manifest.json`, que contiene información básica sobre tu sitio:
+
+```json
+{
+  "short_name": "Clearleft",
+  "name": "Clearleft design agency",
+  "start_url": "/",
+  "background_color": "#00D494",
+  "theme_color": "#00D494",
+  "display": "standalone"
+}
+```
+
+> **Concepto técnico:** El archivo de manifiesto le dice al navegador cómo debe presentarse tu sitio si lo agregan a la pantalla de inicio, mostrando el ícono y los colores que definiste. 
+
+### Cómo Proporcionar un Modo Oscuro
+
+Pensemos en esto como si tu sitio web fuera una sala que puede cambiar de luces brillantes a luces tenues, según las preferencias del usuario. Hoy en día, muchos sistemas operativos permiten elegir entre temas claros u oscuros, y tu sitio web debería adaptarse también. ¡No querrás que los ojos de tu visitante sufran si tienen activado el modo oscuro!
+
+Puedes detectar la preferencia del usuario usando una consulta de medios llamada `prefers-color-scheme`.
+
+```css
+@media (prefers-color-scheme: dark) {
+  /* Estilos para el tema oscuro */
+  body {
+    background-color: black;
+    color: white;
+  }
+}
+```
+
+> **Concepto técnico:** `@media` es una herramienta poderosa que nos permite definir estilos específicos para diferentes situaciones, como el modo oscuro. Así, cuando el usuario tenga el modo oscuro activado, tu sitio se ajustará automáticamente para hacer su experiencia más cómoda.
+
+### Propiedades Personalizadas en CSS
+
+Piensa en las propiedades personalizadas de CSS como etiquetas adhesivas. En lugar de escribir el mismo color una y otra vez en diferentes lugares, colocamos estas etiquetas para reutilizar colores y otros valores.
+
+```css
+html {
+  --page-color: white;
+  --ink-color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    --page-color: black;
+    --ink-color: white;
+  }
+}
+
+body {
+  background-color: var(--page-color);
+  color: var(--ink-color);
+}
+```
+
+> **Concepto técnico:** Las propiedades personalizadas en CSS (también conocidas como variables CSS) son muy útiles para reducir la repetición de código. Al actualizar solo una variable, puedes cambiar el color en toda tu página.
+
+### Imágenes y Modo Oscuro
+
+Así como cambias la decoración de tu sala dependiendo de la hora del día, las imágenes de tu sitio también pueden cambiar en modo oscuro para mejorar la experiencia visual.
+
+```html
+<picture>
+  <source srcset="darkimage.png" media="(prefers-color-scheme: dark)">
+  <img src="lightimage.png" alt="Descripción de la imagen.">
+</picture>
+```
+
+> **Concepto técnico:** El elemento `<picture>` permite cargar imágenes diferentes según las condiciones del navegador. Con `prefers-color-scheme`, puedes cambiar automáticamente entre imágenes claras y oscuras.
+
+### Formularios y Estilos
+
+Finalmente, es importante que todos los elementos, como los formularios, también se adapten al modo oscuro o claro. Imagina que los botones y campos de texto de un formulario son como el toque final en la decoración de tu sala; deben estar en armonía con el resto del entorno.
+
+```css
+html {
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+```
+
+> **Concepto técnico:** La propiedad `color-scheme` en CSS le dice al navegador cómo estilizar los elementos de formulario predeterminados según el tema que prefiera el usuario.
+
+---
+
+### Conclusión
+
+Adaptar tu sitio web a las preferencias del usuario es como asegurarse de que la decoración de tu sala esté lista para cualquier ocasión. Usando herramientas como `theme-color`, `prefers-color-scheme`, y variables CSS, puedes crear una experiencia más personalizada y cómoda para tus visitantes. ¡Recuerda usar estas técnicas de manera sutil y bien pensada para que el usuario siempre se sienta bienvenido!
+
+---
+
+# Accesibilidad
+
+Permitir que tus páginas respondan a diferentes tamaños de pantalla es solo una forma de asegurarte de que la mayor cantidad posible de personas pueda acceder a tu sitio web. Considera algunos de estos otros factores que debes tener en cuenta.
+
+## Deficiencia de la visión del color
+
+Cada persona percibe el color de manera diferente, como si estuvieran viendo el mundo a través de diferentes lentes. Por ejemplo, una persona con **protanopia** no percibe el rojo como un color distintivo. Imagina que el rojo es un semáforo; para esta persona, parece que siempre está en verde. Con la **deuteranopia**, falta el verde, y para las personas con **tritanopia**, es el azul el que no pueden distinguir.
+
+### Herramientas útiles:
+
+- **Firefox**: La pestaña de accesibilidad incluye un menú desplegable que simula diferentes tipos de visión de color.
+- **Chrome**: Las herramientas para desarrolladores permiten emular estas deficiencias.
+
+### Consejos de diseño:
+
+No debes confiar únicamente en el color para diferenciar elementos. Por ejemplo, al igual que un semáforo también emite sonidos, los vínculos deben tener un estilo adicional, como estar subrayados o en negrita, para que sean fácilmente identificables.
+
+#### Qué no debes hacer:
+
+```css
+a {
+  color: red;
+}
+```
+
+#### Qué debes hacer:
+
+```css
+a {
+  color: red;
+  font-weight: bold;
+}
+```
+
+## Contraste de color
+
+Algunas combinaciones de colores pueden causar problemas. Si el texto y el fondo son similares, es como intentar leer un libro en la oscuridad: te cansas la vista y no puedes concentrarte. Afortunadamente, puedes detectar problemas de contraste desde el principio del proceso de diseño.
+
+### Herramientas para probar el contraste:
+
+- **tota11y**: Un bookmarklet que puedes añadir a tu barra de herramientas.
+- **VisBug**: Extensión de navegador que facilita la edición visual.
+
+### Mejores prácticas:
+
+Siempre declara `color` y `background-color` juntos en tu CSS. No asumas que el color de fondo será el predeterminado del navegador, ya que los usuarios pueden personalizar sus colores.
+
+#### Qué no debes hacer:
+
+```css
+body {
+  color: black;
+}
+```
+
+#### Qué debes hacer:
+
+```css
+body {
+  color: black;
+  background-color: white;
+}
+```
+
+## Contraste alto
+
+Algunas personas configuran sus sistemas operativos para usar un modo de contraste alto. Para estas personas, es como si estuvieran mirando un letrero iluminado en medio de la oscuridad; necesitan que el contraste sea fuerte para distinguir el texto.
+
+### Configuración en Mac:
+
+1. Preferencias del sistema
+2. Accesibilidad
+3. Display
+4. Selecciona la opción para aumentar el contraste.
+
+### CSS y contraste alto:
+
+Puedes usar la función multimedia `prefers-contrast` para ajustar tu paleta de colores:
+
+```css
+@media (prefers-contrast: more) {
+  /* Cambios de color para alto contraste */
+}
+```
+
+## Tamaño de fuente
+
+El tamaño de fuente también es esencial. Imagina que cada usuario es un lector con diferentes niveles de visión; algunos necesitan una lupa y otros pueden leer sin problemas. Puedes responder a esta necesidad usando tamaños de fuente relativos, como `rem` o `em`.
+
+### Prueba la escalabilidad:
+
+Intenta aumentar el tamaño de texto en tu navegador. ¿Tu sitio web sigue siendo funcional si el tamaño de fuente se duplica? Asegúrate de que la experiencia sea la misma tanto en computadoras de escritorio como en dispositivos móviles.
+
+## Navegación con el teclado
+
+No todos usan un mouse para navegar. Algunos se mueven por la página usando el teclado, similar a cómo un viajero podría seguir un mapa sin GPS. Asegúrate de que los elementos sean accesibles con el teclado.
+
+### Mejores prácticas:
+
+Utiliza las pseudoclases `:hover` y `:focus` para resaltar los enlaces, garantizando que sean visibles tanto con mouse como con teclado.
+
+```css
+a:focus,
+a:hover {
+  outline: 1px dotted;
+}
+```
+
+## Movimiento reducido
+
+Las animaciones pueden ser deslumbrantes, pero para algunas personas pueden causar mareos, como un viaje en un barco en aguas turbulentas. Usa la consulta de función `prefers-reduced-motion` para evitar que esos usuarios se sientan incómodos.
+
+### Ejemplo de CSS:
+
+```css
+@media (prefers-reduced-motion: no-preference) {
+  a {
+    transition-duration: 0.4s;
+    transition-property: transform;
+  }
+}
+```
+
+## Voz
+
+Algunas personas no ven tu sitio web en una pantalla. Utilizan tecnologías de asistencia, como lectores de pantalla, que convierten el texto en voz. Es crucial que tu HTML sea semántico y esté bien estructurado para que estas herramientas funcionen eficazmente.
+
+### Importancia de la estructura:
+
+Usa encabezados de manera correcta, como `<h1>`, `<h2>`, etc. Los lectores de pantalla dependen de estos encabezados para navegar por tu contenido.
+
+#### Qué no debes hacer:
+
+```html
+<div class="heading-main">Welcome to my page</div>
+```
+
+#### Qué debes hacer:
+
+```html
+<h1>Welcome to my page</h1>
+```
+
+## Estructura
+
+Emplea elementos de referencia como `<main>`, `<nav>`, `<aside>`, `<header>`, y `<footer>` para estructurar tu contenido. Esto ayuda a los usuarios de lectores de pantalla a navegar rápidamente.
+
+#### Ejemplo de estructura correcta:
+
+```html
+<header>...</header>
+<nav>...</nav>
+<main>...</main>
+<aside>...</aside>
+<footer>...</footer>
+```
+
+## Formularios
+
+Todos los campos de formulario deben tener un elemento `<label>` asociado. Esto es como poner una etiqueta clara en una caja; asegura que los usuarios sepan qué contiene.
+
+#### Ejemplo correcto:
+
+```html
+<label for="name">Your name</label>
+<input id="name" type="text">
+```
+
+## Imágenes
+
+Proporciona siempre una descripción de texto de las imágenes con el atributo `alt`. Esto es como contarle a alguien lo que hay en una foto si no puede verla.
+
+#### Ejemplo:
+
+```html
+<img src="dog.jpg" alt="A golden retriever sitting on the grass looking happy.">
+```
+
+## Vínculos
+
+Incluye texto descriptivo en los vínculos. Evita frases genéricas como "haz clic aquí", que son como indicaciones vagamente útiles.
+
+#### Ejemplo:
+
+```html
+<p>Find out more about <a href="/offers.html">our latest offers</a>.</p>
+```
+
+## ARIA
+
+El uso de HTML semántico hará que tus páginas sean más accesibles. Sin embargo, si creas widgets de interfaz que no tienen un elemento HTML correspondiente, necesitarás usar **ARIA** (Accessible Rich Internet Applications) para añadir semántica a esos elementos.
+
+---
+
