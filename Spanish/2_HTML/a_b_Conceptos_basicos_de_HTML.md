@@ -1211,10 +1211,6 @@ Recuerda, HTML puede hacer mucho por sí solo en términos de validación y acce
 
 # Imágenes en HTML: Una Guía Sencilla
 
-## Objetivo
-
-Este módulo es una descripción general de alto nivel sobre cómo manejar imágenes en HTML, con el objetivo de hacer estos conceptos más comprensibles mediante analogías y explicaciones técnicas. Si quieres profundizar en el tema, visita el curso [Aprende a usar imágenes](#).
-
 ## Imágenes Decorativas vs. Imágenes de Contenido
 
 Imagina que estás decorando una habitación. Los **gradientes de fondo** en botones o las **imágenes de fondo** en una sección de tu habitación son como los adornos en las paredes: son decorativos y deben aplicarse con **CSS** (como colgar un cuadro en la pared). Pero cuando una **imagen** es parte fundamental de la decoración o del contenido, como una foto en un álbum, debe ser parte del **HTML** (como colocar una foto en un marco sobre la mesa).
