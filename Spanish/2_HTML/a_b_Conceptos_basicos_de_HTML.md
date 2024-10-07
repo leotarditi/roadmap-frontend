@@ -49,8 +49,6 @@ Es importante recordar que la mayoría de los elementos deben cerrarse adecuadam
 
 # Estructura del Documento HTML
 
-En esta sección, vamos a desglosar la estructura básica de un documento HTML. Aunque suene técnico, lo explicaremos de una manera sencilla y con analogías que te ayudarán a entenderlo mejor.
-
 ### Imagina que tu HTML es como una Casa
 
 Piensa en una página web como una casa. Para construirla necesitas ciertos componentes básicos que, aunque a veces no sean visibles, son esenciales para que todo funcione correctamente.
