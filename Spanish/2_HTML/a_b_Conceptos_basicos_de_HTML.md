@@ -936,25 +936,25 @@ Imagina una tabla como una hoja de papel con una cuadrícula dibujada. Cada casi
 
 ### Elementos de la tabla
 
-1. **<table>**: Es como la portada de tu cuaderno de registro. Une todos los elementos de la tabla.
+1. **`<table>`**: Es como la portada de tu cuaderno de registro. Une todos los elementos de la tabla.
 
-2. **<caption>**: Este es el título de la tabla, como el encabezado de una página en tu cuaderno que dice de qué se trata. Debe ser el primer elemento dentro de `<table>`, para que todos entiendan de inmediato el propósito de la tabla.
+2. **`<caption>`**: Este es el título de la tabla, como el encabezado de una página en tu cuaderno que dice de qué se trata. Debe ser el primer elemento dentro de `<table>` para que todos entiendan de inmediato el propósito de la tabla.
 
-3. **<thead>**: Representa el encabezado de la tabla. Es como los títulos de las columnas en una hoja de cálculo.
+3. **`<thead>`**: Representa el encabezado de la tabla. Es como los títulos de las columnas en una hoja de cálculo.
 
-4. **<tbody>**: Aquí van los datos principales de la tabla, como el contenido de las filas en tu hoja de cálculo.
+4. **`<tbody>`**: Aquí van los datos principales de la tabla, como el contenido de las filas en tu hoja de cálculo.
 
-5. **<tfoot>**: Se usa para el pie de la tabla, que puede contener resúmenes o totales, como los totales de una columna en tu hoja de cálculo.
+5. **`<tfoot>`**: Se usa para el pie de la tabla, que puede contener resúmenes o totales, como los totales de una columna en tu hoja de cálculo.
 
-**Analogía:** Imagina que `<thead>` es la primera fila de tu cuaderno de registro con los nombres de las categorías, `<tbody>` es el resto de las filas donde escribes los datos, y `<tfoot>` es una sección al final para resúmenes.
+   **Analogía:** Imagina que `<thead>` es la primera fila de tu cuaderno de registro con los nombres de las categorías, `<tbody>` es el resto de las filas donde escribes los datos, y `<tfoot>` es una sección al final para resúmenes.
 
 ### Filas y Celdas
 
-- **<tr>**: Es una fila en la tabla, como una línea en una hoja de cálculo.
-- **<th>**: Es una celda de encabezado, que está en negrita y centrada por defecto. Es como el título de una columna en tu hoja de cálculo.
-- **<td>**: Es una celda de datos que contiene la información real, como los valores en una hoja de cálculo.
+- **`<tr>`**: Es una fila en la tabla, como una línea en una hoja de cálculo.
+- **`<th>`**: Es una celda de encabezado, que está en negrita y centrada por defecto. Es como el título de una columna en tu hoja de cálculo.
+- **`<td>`**: Es una celda de datos que contiene la información real, como los valores en una hoja de cálculo.
 
-**Analogía:** Piensa en `<tr>` como una fila de datos en tu hoja de cálculo. `<th>` es como el encabezado de esa fila, y `<td>` es donde pones los datos.
+   **Analogía:** Piensa en `<tr>` como una fila de datos en tu hoja de cálculo. `<th>` es como el encabezado de esa fila, y `<td>` es donde pones los datos.
 
 ### Combinando Celdas
 
