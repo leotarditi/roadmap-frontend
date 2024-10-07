@@ -1208,3 +1208,382 @@ El uso de HTML semántico hará que tus páginas sean más accesibles. Sin embar
 
 ---
 
+# Interacción: Haciendo la Web Amigable para Todos
+
+Cuando pensamos en cómo interactuamos con dispositivos, solemos hacer asociaciones rápidas: las pantallas pequeñas (como las de los teléfonos) con toques de dedos, y las pantallas grandes (como las de las laptops) con el uso de un mouse. Pero, en la realidad, las cosas no son tan sencillas.
+
+### Una Analogía Simple
+
+Imagina que estás jugando un videojuego con diferentes tipos de controles: a veces usas un joystick, otras veces el teclado o el mouse, y en ocasiones simplemente tocas la pantalla. Lo que tienes en común es que cada control tiene un propósito y un nivel de precisión diferente. En el mundo del diseño web, los dispositivos funcionan de manera similar: el tamaño de la pantalla no siempre determina cómo las personas interactúan con ella.
+
+Por ejemplo, puedes usar una laptop que te permita tocar la pantalla o usar el mouse, o bien un teléfono al que puedes conectar un teclado externo. Por eso, en lugar de asumir el tipo de interacción según el dispositivo, utilizamos **funciones multimedia en CSS** para adaptarnos a las posibilidades del usuario.
+
+## El Concepto Técnico: Puntero y la Función `pointer`
+
+Cuando hablamos de **punteros** (lo que usamos para interactuar con la pantalla), podemos clasificarlos en tres categorías usando la función `pointer` de CSS:
+
+1. **none**: No hay ningún puntero disponible. Tal vez el usuario solo está usando un teclado para navegar.
+2. **coarse**: El puntero no es muy preciso. Un buen ejemplo de esto es un dedo tocando una pantalla táctil.
+3. **fine**: El puntero es preciso. Los ejemplos incluyen el mouse o una pluma stylus.
+
+### Analogía: El Puntero como un Lápiz o un Marcador
+
+Imagina que estás dibujando un mapa en una hoja. Si usas un lápiz fino, puedes hacer líneas detalladas y pequeñas, pero si usas un marcador grueso, es más difícil hacer detalles y necesitas más espacio. Del mismo modo, con un puntero **coarse** (como un dedo), necesitas botones más grandes y visibles. Con un puntero **fine** (como un mouse), puedes hacer botones más pequeños y detallados, pero no te apresures a reducir demasiado su tamaño.
+
+### Ejemplo en CSS:
+
+Aquí hay un ejemplo de cómo cambiar el tamaño de un botón dependiendo del tipo de puntero:
+
+```css
+button {
+  padding: 0.5em 1em;
+}
+
+@media (pointer: coarse) {
+  button {
+    padding: 1em 2em;
+  }
+}
+```
+
+## Cualquier Puntero: `any-pointer`
+
+Es posible que un dispositivo tenga más de un puntero, como una laptop con pantalla táctil y un mouse conectado al mismo tiempo. En este caso, podemos usar la función `any-pointer` para comprobar si alguno de los dispositivos conectados cumple con ciertos requisitos.
+
+### Analogía: Tu Juego con Múltiples Controles
+
+Siguiendo la analogía del videojuego, es como si estuvieras jugando con dos controles: un joystick y un teclado. El joystick puede ser impreciso (como tocar la pantalla), pero el teclado puede darte más precisión. Con **any-pointer**, nos aseguramos de que la experiencia de usuario sea óptima para cualquiera de los dispositivos conectados.
+
+### Ejemplo en CSS:
+
+```css
+@media (any-pointer: fine) {
+  button {
+    padding: 0.5em 1em;
+  }
+}
+
+@media (any-pointer: coarse) {
+  button {
+    padding: 1em 2em;
+  }
+}
+```
+
+En este caso, si el dispositivo tiene un puntero fino y otro grueso, se aplican los estilos del puntero grueso para asegurar una mejor interacción.
+
+## Desplazarse Sobre un Elemento: `hover`
+
+Otra característica importante es si el usuario puede **colocar el cursor sobre un elemento**. Esto lo gestionamos con la función `hover` de CSS, que nos indica si el dispositivo de entrada principal permite esta acción.
+
+### Analogía: Foco y Enfoque
+
+Imagina que estás usando un linterna para resaltar un objeto en una habitación oscura. Si puedes apuntar la linterna directamente (como un mouse), puedes "colocar el foco" sobre los elementos. Pero si solo puedes tocar los objetos (como una pantalla táctil), no puedes mover el foco antes de interactuar con ellos.
+
+En dispositivos donde es posible "colocar el foco", el CSS puede cambiar la visibilidad de elementos al pasar sobre ellos:
+
+```css
+button .extra {
+  visibility: visible;
+}
+
+@media (hover: hover) {
+  button .extra {
+    visibility: hidden;
+  }
+  button:hover .extra {
+    visibility: visible;
+  }
+}
+```
+
+Esto muestra un ícono adicional solo cuando pasas el mouse por encima del botón.
+
+### Evita Esconder Información
+
+Es importante tener en cuenta que no debes ocultar información crucial detrás de interacciones de desplazamiento, ya que muchos usuarios no podrán acceder a ella si no tienen un mouse.
+
+## Teclados Virtuales
+
+Finalmente, cuando los usuarios necesitan ingresar información, pueden utilizar **teclados virtuales** en sus dispositivos. Estos teclados se pueden adaptar al tipo de datos que se espera que ingresen, lo que mejora la experiencia del usuario.
+
+### Analogía: Las Herramientas Correctas
+
+Imagina que estás llenando un formulario en línea. Si te piden un número, es más fácil si aparece un teclado numérico en lugar de uno con letras. Usar los atributos correctos en los campos del formulario ayuda a los usuarios a tener la "herramienta adecuada" al alcance.
+
+### Ejemplo de Formulario:
+
+```html
+<label for="email">Email</label>
+<input type="email" id="email">
+
+<label for="number">Number</label>
+<input type="number" id="number">
+
+<label for="tel">Tel</label>
+<input type="tel" id="tel">
+
+<label for="url">URL</label>
+<input type="url" id="url">
+```
+
+Además, puedes usar el atributo `inputmode` para especificar el tipo de teclado que el usuario verá, como números enteros o decimales:
+
+```html
+<label for="age">Age</label>
+<input type="number" id="age" inputmode="numeric">
+
+<label for="price">Price</label>
+<input type="number" id="price" inputmode="decimal">
+```
+
+## Conclusión
+
+El diseño web interactivo se trata de anticipar cómo los usuarios interactuarán con tu sitio en diferentes dispositivos y adaptar la experiencia a sus necesidades. Al comprender los conceptos técnicos, como `pointer`, `hover` y los tipos de entrada, puedes ofrecer una experiencia más accesible y agradable para todos, sin importar el dispositivo que utilicen.
+
+---
+
+# Patrones de Interfaz de Usuario
+
+## ¿Qué son los patrones de interfaz de usuario?
+
+Imagina que estás construyendo una casa. No importa si es una casa grande o pequeña, los elementos clave como puertas, ventanas y pasillos deben estar bien ubicados para que todo funcione. De manera similar, los **patrones de interfaz de usuario** son principios que usamos para diseñar cómo los usuarios interactúan con una aplicación o sitio web, y se deben adaptar correctamente a distintos "tamaños de casa" o pantallas.
+
+### La importancia de un diseño adaptable
+
+Al diseñar una interfaz para una pantalla pequeña, como un celular, no se trata de hacer una versión "achicada" de lo que se ve en una pantalla grande, como una laptop. Es como tratar de meter todos los muebles de una mansión en un departamento chico. En lugar de eso, adaptamos los espacios y elementos para que todo fluya y sea cómodo, sea cual sea el tamaño de la pantalla. Esto se conoce como **diseño responsivo**.
+
+Un diseño **responsivo** es como una pieza de ropa elástica: se ajusta perfectamente sin importar si es para una persona alta o baja, ancha o delgada.
+
+## Desafíos comunes al adaptar interfaces
+
+### Navegación
+
+Piensa en la **navegación** como un menú en un restaurante. En un lugar amplio, como una pantalla grande, puedes mostrar todo el menú extendido sin problema, pero en un lugar pequeño, como un celular, podrías necesitar una estrategia para no saturar al usuario con toda la información al mismo tiempo.
+
+En pantallas chicas, es común esconder la navegación detrás de un botón, como un menú desplegable o "hamburguesa". Es como cuando te sirven el pan antes de mostrarte todo el menú: primero tienes que hacer clic para abrir el menú y luego ver las opciones. Sin embargo, esto puede crear una sensación de incertidumbre, porque el usuario se pregunta: **"¿Dónde puedo ir?"** hasta que abre el menú.
+
+#### Soluciones de navegación
+
+Una estrategia es mostrar todos los elementos importantes directamente, como poner los platos más populares en una sección visible. Si tienes pocos vínculos, puedes hacer que aparezcan sin necesidad de esconderlos, como si tuvieras un menú más reducido para que el comensal vea todo de un vistazo.
+
+Para navegaciones más extensas, se puede utilizar el **patrón de desbordamiento**. Este es como un buffet en el que puedes ver algunas opciones en la mesa, pero tienes que deslizarte o moverte un poco para ver el resto. Esto lo logras permitiendo que la navegación se desplace horizontalmente. Sin embargo, siempre es importante asegurarse de que el usuario sepa que hay más opciones, usando señales visuales como un gradiente en los bordes para indicar que hay más contenido disponible.
+
+Como última opción, puedes esconder el menú completo detrás de un botón, pero asegúrate de que el botón esté claramente etiquetado, no solo con un ícono. Un menú con íconos sin etiquetas es como un plato tapado en un restaurante: no sabes qué estás por comer hasta que lo destapas.
+
+### Carruseles
+
+Un **carrusel** es como un libro de fotos que puedes ir pasando. Es útil cuando tienes varias imágenes o elementos que mostrar, pero no quieres que ocupen demasiado espacio en la pantalla al mismo tiempo. En pantallas pequeñas, puede ser una solución para no abrumar al usuario con demasiada información de golpe.
+
+Por ejemplo, en un celular podrías usar un carrusel para mostrar una fila de tarjetas que el usuario puede deslizar horizontalmente, pero en una pantalla más grande, como una laptop, puedes mostrar todas las tarjetas en una cuadrícula. El truco está en usar **media queries** para cambiar el diseño según el tamaño de la pantalla. Esto es como usar una bufanda en invierno: te la enrollas en el cuello cuando hace frío, pero te la quitas cuando entra el calor.
+
+Un carrusel bien implementado usa propiedades como `scroll-snap` para que el desplazamiento sea suave y cómodo. Es como tener un álbum de fotos que se cierra automáticamente cuando llegas a la página correcta, evitando que el usuario tenga que esforzarse para posicionarse en el lugar adecuado.
+
+### Tablas de datos
+
+Las **tablas** son muy útiles para mostrar datos estructurados, como una hoja de cálculo. Sin embargo, en pantallas pequeñas, una tabla grande puede romper el diseño. Aquí es donde entra el patrón de desbordamiento nuevamente.
+
+Imagina que tienes una mesa en un comedor pequeño, y tienes muchos platos que no caben todos a la vez. Lo que haces es permitir que los comensales se pasen los platos unos a otros, es decir, permites que el contenido se desplace. Para hacer esto, puedes envolver la tabla en un contenedor que permita el **scroll horizontal**.
+
+### Lineamientos generales
+
+1. **Diseña primero para pantallas pequeñas**: Es más fácil adaptar un diseño de pantalla pequeña a una grande que al revés. Piensa en armar primero un departamento funcional antes de trasladarlo a una mansión.
+
+2. **Haz evidente el contenido oculto**: Si estás usando patrones como el de desbordamiento, asegúrate de que sea claro para los usuarios que hay más contenido fuera de la vista, como usar una sombra o gradiente para mostrar que el contenido continúa más allá del borde de la pantalla.
+
+3. **Cuida el etiquetado de los botones**: Si usas íconos en lugar de texto, siempre asegúrate de que estén claramente identificados, de lo contrario, será como servir "comida misteriosa".
+
+## Conclusión
+
+Adaptar un diseño a diferentes tamaños de pantalla es todo un desafío, pero con los **patrones de interfaz de usuario** adecuados, puedes crear una experiencia fluida y accesible para todos. Piensa en ello como hacer que tu "casa" (o sitio web) sea cómoda sin importar si estás invitando a una sola persona o a toda una fiesta.
+
+---
+
+# Funciones de Contenido Multimedia
+
+En este artículo, aprenderás cómo las funciones multimedia te permiten adaptar tu diseño web a diferentes dispositivos y preferencias del usuario. Usaremos algunas analogías para hacer estos conceptos más fáciles de entender.
+
+## 1. ¿Qué son las consultas de medios?
+
+Piensa en una consulta de medios como si tu sitio web pudiera hacer preguntas sobre el dispositivo del usuario antes de mostrarle algo. Imagina que tu sitio web pregunta: "¿Qué tan grande es la ventana del navegador?", "¿La pantalla es en blanco y negro o tiene colores?", o "¿Qué tan rápido se actualiza la pantalla?"
+
+Esto es lo que hacen las **consultas de medios**: le permiten a tu sitio web adaptar su contenido según el dispositivo que lo esté mostrando. Antes de que existieran, los diseñadores solo podían adivinar qué dispositivo estaba usando la persona, como si diseñaras la misma ropa para todas las personas, sin importar su talla.
+
+### Tipos de medios
+
+Hay cuatro tipos principales de medios que puedes usar en tus consultas:
+
+- `@media all`: Aplica los estilos sin importar el tipo de dispositivo.
+- `@media screen`: Solo para pantallas (computadoras, teléfonos, etc.).
+- `@media print`: Para cuando se imprime la página.
+- `@media speech`: Para dispositivos de lectura de pantalla.
+
+## 2. Dimensiones del Viewport
+
+Aquí es donde las cosas se ponen interesantes. Piensa en el *viewport* como una ventana. Dependiendo de qué tan grande o pequeña sea la ventana, querrás mostrar más o menos información.
+
+- **max-width**: Aplica estilos cuando la ventana sea **más pequeña** que un cierto ancho. 
+- **min-width**: Aplica estilos cuando la ventana sea **más grande** que un cierto ancho.
+
+Imagina que organizas una fiesta en casa. Si tu casa es pequeña (max-width), no puedes poner muchas mesas, pero si tienes una casa grande (min-width), puedes colocar más mesas y sillas. Lo mismo pasa con tu diseño web: si la pantalla es pequeña, cambias el diseño para que sea más simple, pero si es grande, agregas más elementos.
+
+### Ejemplo de código:
+
+```css
+main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+@media (max-width: 45em) {
+  main {
+    display: block;
+  }
+}
+
+@media (min-width: 45em) {
+  main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+}
+```
+
+En este caso, si la ventana es más pequeña de 45em, el diseño se hace más sencillo (`block`). Si es más grande, usamos un diseño más elaborado (`grid`).
+
+## 3. Proporción de Aspecto (Aspect Ratio)
+
+Esto se refiere a la relación entre el ancho y el alto de una pantalla. Por ejemplo, una pantalla de 16:9 es más ancha que alta, mientras que una de 4:3 es más cuadrada. Es como si estuvieras eligiendo un marco para una foto: ¿quieres uno rectangular o cuadrado?
+
+- **min-aspect-ratio**: Aplica estilos si la proporción es mayor o igual a un valor.
+- **max-aspect-ratio**: Aplica estilos si la proporción es menor o igual a un valor.
+
+```css
+@media (min-aspect-ratio: 16/9) {
+  /* Aplica si la pantalla es más ancha que alta */
+}
+
+@media (max-aspect-ratio: 16/9) {
+  /* Aplica si la pantalla es más alta que ancha */
+}
+```
+
+## 4. Orientación (Orientation)
+
+Este es un concepto simple: ¿está la pantalla en modo retrato (vertical) o en modo paisaje (horizontal)? Si la pantalla es más alta que ancha, estás en retrato; si es más ancha que alta, estás en paisaje. Es como si estuvieras eligiendo si sostener tu teléfono de manera vertical u horizontal para ver una película.
+
+- **portrait**: Modo retrato (vertical).
+- **landscape**: Modo paisaje (horizontal).
+
+```css
+@media (orientation: portrait) {
+  /* La pantalla es más alta que ancha */
+}
+
+@media (orientation: landscape) {
+  /* La pantalla es más ancha que alta */
+}
+```
+
+## 5. Resolución
+
+La resolución se refiere a la cantidad de detalles que puede mostrar una pantalla. Es como comparar una foto impresa en papel de baja calidad con una foto impresa en papel fotográfico de alta calidad.
+
+- **min-resolution**: Aplica estilos si la resolución es mayor o igual a un valor.
+- **max-resolution**: Aplica estilos si la resolución es menor o igual a un valor.
+
+```css
+@media (min-resolution: 300dpi) {
+  /* Pantallas con alta resolución */
+}
+```
+
+## 6. Actualización (Update)
+
+La función `update` se refiere a qué tan rápido se puede actualizar la pantalla. Esto es importante si tu sitio web tiene animaciones o transiciones. Piensa en esto como la velocidad de fotogramas en una película: cuanto más rápida es la actualización, más suaves se ven las animaciones.
+
+- **none**: La pantalla no se actualiza (por ejemplo, una página impresa).
+- **slow**: La pantalla se actualiza lentamente (como una pantalla de tinta electrónica).
+- **fast**: La pantalla se actualiza rápido (como una pantalla normal de computadora).
+
+```css
+@media (update: fast) {
+  a {
+    transition-duration: 0.4s;
+  }
+}
+```
+
+## 7. Preferencias del Usuario
+
+Algunas funciones multimedia pueden responder a las preferencias del usuario, como si prefieren un tema oscuro (`prefers-color-scheme`) o menos animaciones (`prefers-reduced-motion`). Es como si estuvieras configurando tu teléfono para que sea más cómodo para ti, ajustando el brillo o activando el modo oscuro.
+
+```css
+@media (prefers-reduced-motion: no-preference) {
+  /* Aplica si al usuario no le molestan las animaciones */
+}
+```
+
+## Conclusión
+
+Las funciones de contenido multimedia son una poderosa herramienta para adaptar el diseño web a diferentes dispositivos y preferencias. Piensa en ellas como una conversación entre tu sitio web y el dispositivo del usuario, donde ambos trabajan juntos para ofrecer la mejor experiencia posible. ¡Y con estas analogías, esperamos que te resulte más fácil comprender cómo y cuándo usarlas!
+
+---
+
+# Configuraciones de Pantalla 📱💻
+
+### Introducción
+
+El diseño web adaptable (Responsive Web Design o RWD) surge como una respuesta a la revolución de los teléfonos móviles. Antes de la llegada de los smartphones, la mayoría de los sitios web solo se diseñaban pensando en pantallas grandes, como las de las computadoras de escritorio. Pero, con el auge de los dispositivos móviles, los desarrolladores empezaron a cuestionarse: ¿cómo adaptar las páginas a pantallas más pequeñas?
+
+Hoy en día, no solo debemos pensar en teléfonos o computadoras, sino también en una amplia variedad de dispositivos como tablets, televisores inteligentes y hasta asistentes de voz. El diseño web adaptable se convierte en una forma de pensar y desarrollar para asegurar que nuestro contenido llegue a todos los usuarios, sin importar el dispositivo que usen.
+
+### Analogía
+
+Imagina que estás organizando una fiesta. Sabes que vendrán invitados de todas las edades y con diferentes gustos. Para que todos disfruten, debes ser flexible: preparas varios tipos de comidas, ofreces distintos tipos de música y decoras el lugar con detalles que le gusten a todos. El diseño web adaptable es como esa fiesta: preparas tu página para que se vea bien y funcione perfectamente sin importar qué "invitado" (dispositivo) la visite.
+
+### Diseño Adaptable y Pantallas Plegables
+
+Con la llegada de los dispositivos plegables, como los teléfonos con pantalla doble, surgen nuevos retos. Imagina que tu sitio web ahora se verá en dos pantallas separadas por una bisagra. Es como si un libro tuviera una página dividida en dos partes; si no piensas en cómo se verá, podrías cortar palabras por la mitad y arruinar la lectura.
+
+Para solucionar esto, el diseño web usa tecnologías como **media queries** para detectar cuántas pantallas hay y adaptar el diseño. Usando la función experimental `viewport-segments`, podemos averiguar si hay una bisagra en el medio y ajustar nuestro contenido.
+
+### Código Ejemplo para Pantallas Dobles
+
+Si tu sitio se va a mostrar en un dispositivo con dos pantallas separadas por una bisagra vertical, puedes usar el siguiente código:
+
+```css
+@media (horizontal-viewport-segments: 2) and (vertical-viewport-segments: 1) {
+  main article {
+    flex: 1 1 env(viewport-segment-width 0 0);
+  }
+  main aside {
+    flex: 1;
+  }
+}
+```
+
+Esto divide el contenido de manera que se adapte a ambas pantallas sin que la bisagra interrumpa el texto.
+
+### Variables de Entorno
+
+Para adaptar el contenido a las muescas o bisagras de los dispositivos, podemos usar **variables de entorno** en CSS. Por ejemplo, en el iPhone X existe una "muesca" en la parte superior de la pantalla. Puedes ajustar los márgenes de tu sitio para que el contenido no quede oculto detrás de esa muesca, usando código como este:
+
+```css
+body {
+  padding-top: env(safe-area-inset-top, 1em);
+  padding-right: env(safe-area-inset-right, 1em);
+  padding-bottom: env(safe-area-inset-bottom, 1em);
+  padding-left: env(safe-area-inset-left, 1em);
+}
+```
+
+Este código garantiza que tu contenido se muestre correctamente en cualquier dispositivo que tenga bordes o áreas restringidas.
+
+### El Futuro del Diseño Web Adaptable
+
+¿Las pantallas plegables serán el futuro? Nadie lo sabe con certeza. Pero, lo que es seguro es que la diversidad de dispositivos sigue aumentando. El diseño web adaptable no solo es una técnica, es una mentalidad que te prepara para los cambios que vendrán. Así como hoy diseñamos para móviles y tablets, mañana podríamos diseñar para dispositivos que ni siquiera podemos imaginar.
+
+### Resumen
+
+El diseño web adaptable es clave para asegurar que tu contenido se vea y funcione bien en cualquier dispositivo. Ya sea un teléfono, una tablet, una computadora o incluso una pantalla plegable, la flexibilidad en tu código permitirá que tu página se mantenga relevante y accesible. Utiliza media queries y variables de entorno para crear experiencias adaptadas a cualquier tamaño de pantalla, y mantén siempre una mentalidad abierta para lo que depare el futuro de la tecnología.
