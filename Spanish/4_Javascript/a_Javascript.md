@@ -3268,3 +3268,3579 @@ function(){}; // función
 
 ---
 
+# Eventos en JavaScript
+
+Los eventos HTML son "cosas" que suceden en los elementos HTML. Cuando JavaScript se utiliza en páginas HTML, puede "reaccionar" a estos eventos.
+
+## Eventos HTML
+
+Un evento HTML puede ser algo que el navegador hace o algo que un usuario realiza. Aquí hay algunos ejemplos de eventos HTML:
+
+- Una página web HTML ha terminado de cargarse
+- Un campo de entrada HTML ha sido modificado
+- Un botón HTML ha sido presionado
+
+A menudo, cuando ocurren eventos, es posible que desees hacer algo. JavaScript te permite ejecutar código cuando se detectan eventos. HTML permite agregar atributos de manejadores de eventos, con código JavaScript, a los elementos HTML.
+
+### Analogía: El Timón de un Barco
+
+Imagina que tu página web es un barco en el mar. Los eventos son como olas que afectan el movimiento del barco. Cuando el barco se enfrenta a una ola (un evento), puedes girar el timón (ejecutar código) para reaccionar a esa ola y mantener el barco en la dirección correcta.
+
+### Ejemplo de Atributos de Eventos
+
+Con comillas simples:
+```html
+<element event='algún código JavaScript'>
+```
+
+Con comillas dobles:
+```html
+<element event="algún código JavaScript">
+```
+
+En el siguiente ejemplo, se añade un atributo `onclick` (con código) a un elemento `<button>`:
+
+#### Ejemplo 1
+
+```html
+<button onclick="document.getElementById('demo').innerHTML = Date()">¿Qué hora es?</button>
+```
+
+En el ejemplo anterior, el código JavaScript cambia el contenido del elemento con `id="demo"`.
+
+#### Ejemplo 2
+
+En el siguiente ejemplo, el código cambia el contenido de su propio elemento (usando `this.innerHTML`):
+
+```html
+<button onclick="this.innerHTML = Date()">¿Qué hora es?</button>
+```
+
+El código JavaScript a menudo es más extenso. Es más común ver los atributos de eventos llamando a funciones:
+
+#### Ejemplo 3
+
+```html
+<button onclick="displayDate()">¿Qué hora es?</button>
+```
+
+## Eventos HTML Comunes
+
+Aquí hay una lista de algunos eventos HTML comunes:
+
+| Evento       | Descripción                                    |
+|--------------|------------------------------------------------|
+| `onchange`   | Un elemento HTML ha sido cambiado              |
+| `onclick`    | El usuario hace clic en un elemento HTML       |
+| `onmouseover`| El usuario mueve el mouse sobre un elemento    |
+| `onmouseout` | El usuario mueve el mouse fuera de un elemento  |
+| `onkeydown`  | El usuario presiona una tecla                  |
+| `onload`     | El navegador ha terminado de cargar la página  |
+
+La lista es mucho más extensa: [Referencia de Eventos DOM en JavaScript de W3Schools](https://www.w3schools.com/jsref/dom_obj_event.asp).
+
+### Analogía: Los Controladores de un Automóvil
+
+Imagina que los eventos HTML son como las acciones que realizas al conducir un automóvil. Cuando presionas el acelerador (evento), el auto reacciona (ejecuta una función) aumentando la velocidad. De igual manera, cuando se produce un evento en tu página web, puedes hacer que tu código reaccione para realizar una acción específica.
+
+## Manejadores de Eventos en JavaScript
+
+Los manejadores de eventos pueden utilizarse para gestionar y verificar la entrada del usuario, acciones del usuario y acciones del navegador. Algunas de las cosas que se pueden hacer son:
+
+- Acciones que deben realizarse cada vez que se carga una página
+- Acciones que deben realizarse cuando se cierra la página
+- Acciones que se deben ejecutar cuando un usuario hace clic en un botón
+- Contenido que debe verificarse cuando un usuario ingresa datos
+- Y más...
+
+### Métodos Comunes para Usar Eventos en JavaScript:
+
+- Los atributos de eventos HTML pueden ejecutar código JavaScript directamente.
+- Los atributos de eventos HTML pueden llamar a funciones JavaScript.
+- Puedes asignar tus propias funciones manejadoras de eventos a los elementos HTML.
+- Puedes prevenir que los eventos se envíen o sean manejados.
+- Y más...
+
+Aprenderás mucho más sobre eventos y manejadores de eventos en los capítulos sobre DOM en HTML.
+
+---
+
+### Conclusión
+
+Los eventos son fundamentales para la interacción en páginas web. Comprender cómo funcionan y cómo reaccionar a ellos te permitirá crear aplicaciones web más dinámicas y atractivas.
+
+---
+
+# String en JavaScript
+
+Las cadenas son para almacenar texto. Se escriben con comillas.
+
+## Uso de Comillas
+
+Una cadena de JavaScript es cero o más caracteres escritos dentro de comillas.
+
+### Ejemplo
+
+```javascript
+let texto = "John Doe";
+```
+
+Puedes usar comillas simples o dobles:
+
+### Ejemplo
+
+```javascript
+let nombreAuto1 = "Volvo XC60";  // Comillas dobles
+let nombreAuto2 = 'Volvo XC60';  // Comillas simples
+```
+
+**Nota:** Las cadenas creadas con comillas simples o dobles funcionan igual. No hay diferencia entre las dos.
+
+### Analogía: Una Cubierta de Libro
+
+Piensa en las cadenas como las cubiertas de los libros. Así como un libro puede tener una cubierta hecha de diferentes materiales (papel o tela), una cadena puede estar encerrada en comillas simples o dobles. El contenido dentro de la cubierta (el texto) sigue siendo el mismo, sin importar el tipo de cubierta que se use.
+
+## Comillas Dentro de Comillas
+
+Puedes usar comillas dentro de una cadena, siempre y cuando no coincidan con las comillas que rodean la cadena:
+
+### Ejemplo
+
+```javascript
+let respuesta1 = "Está bien";
+let respuesta2 = "Lo llaman 'Johnny'";
+let respuesta3 = 'Lo llaman "Johnny"';
+```
+
+### Analogía: Cajas Anidadas
+
+Imagina que tienes una caja (las comillas externas) que contiene otra caja más pequeña (las comillas internas). Siempre que no uses el mismo tipo de caja para ambas, todo encajará perfectamente sin confusiones.
+
+## Cadenas de Plantilla
+
+Las plantillas se introdujeron con ES6 (JavaScript 2016). Las plantillas son cadenas encerradas en comillas invertidas (`` `Esta es una cadena de plantilla` ``).
+
+Las plantillas permiten comillas simples y dobles dentro de una cadena:
+
+### Ejemplo
+
+```javascript
+let texto = `A menudo lo llaman "Johnny"`;
+```
+
+**Nota:** Las plantillas no son compatibles con Internet Explorer.
+
+### Analogía: Un Sobre Flexible
+
+Las plantillas son como un sobre flexible que puede contener cartas de varias formas y tamaños (comillas). Pueden acomodar todo tipo de contenido sin preocuparse por qué tipo de sobre (comillas) estás usando.
+
+## Longitud de la Cadena
+
+Para encontrar la longitud de una cadena, usa la propiedad `length` incorporada:
+
+### Ejemplo
+
+```javascript
+let texto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let longitud = texto.length;
+```
+
+### Analogía: Midiendo una Cuerda
+
+Piensa en una cadena como una cuerda. Así como puedes medir la longitud de una cuerda, puedes medir cuántos caracteres hay en una cadena.
+
+## Caracteres de Escape
+
+Debido a que las cadenas deben escribirse dentro de comillas, JavaScript malinterpretará esta cadena:
+
+```javascript
+let texto = "Somos los llamados "Vikingos" del norte.";
+```
+
+La cadena se cortará a `"Somos los llamados "`.
+
+Para resolver este problema, puedes usar un carácter de escape con barra invertida. El carácter de escape con barra invertida (`\`) convierte los caracteres especiales en caracteres de cadena:
+
+### Secuencias de Escape
+
+| Código | Resultado    | Descripción         |
+|--------|--------------|---------------------|
+| `\'`   | `'`          | Comilla simple       |
+| `\"`   | `"`          | Comilla doble        |
+| `\\`   | `\`          | Barra invertida      |
+| `\b`   | (Retroceso)  | Retroceso            |
+| `\f`   | (Avance de formulario) | Avance de formulario |
+| `\n`   | (Nueva línea) | Nueva línea          |
+| `\r`   | (Retorno de carro) | Retorno de carro  |
+| `\t`   | (Tabulador horizontal) | Tabulador horizontal |
+| `\v`   | (Tabulador vertical) | Tabulador vertical   |
+
+### Analogía: Personajes Especiales en un Guion
+
+Imagina que estás escribiendo un guion de cine. La barra invertida es como una señal del director que le dice a los actores cómo entregar líneas especiales (como las comillas) sin interrumpir el flujo del guion (la cadena).
+
+### Ejemplos
+
+```javascript
+let texto = "Somos los llamados \"Vikingos\" del norte.";  // Inserta una comilla doble
+let texto = 'Está bien.';                                    // Inserta una comilla simple
+let texto = "El carácter \\ se llama barra invertida.";     // Inserta una barra invertida
+```
+
+## Dividir Líneas Largas
+
+Para mejorar la legibilidad, los programadores suelen evitar líneas de código largas. Una forma segura de dividir una declaración es después de un operador:
+
+### Ejemplo
+
+```javascript
+document.getElementById("demo").innerHTML =
+"¡Hola Dolly!";
+```
+
+Una forma segura de dividir una cadena es utilizando la adición de cadenas:
+
+### Ejemplo
+
+```javascript
+document.getElementById("demo").innerHTML = "Hola " +
+"Dolly!";
+```
+
+## Cadenas de JavaScript como Objetos
+
+Normalmente, las cadenas de JavaScript son valores primitivos, creados a partir de literales:
+
+```javascript
+let x = "John";
+```
+
+Pero las cadenas también pueden definirse como objetos con la palabra clave `new`:
+
+```javascript
+let y = new String("John");
+```
+
+### **Precaución:** Evita los Objetos de Cadenas
+
+**No crees objetos de cadenas.** La palabra clave `new` complica el código y ralentiza la velocidad de ejecución. Los objetos de cadena pueden producir resultados inesperados:
+
+### Ejemplo de Comparación
+
+```javascript
+let x = "John";
+let y = new String("John");
+
+console.log(x == y);  // true
+console.log(x === y); // false
+```
+
+### Analogía: Dos Maneras de Presentarte
+
+Presentarte puede hacerse de dos maneras: diciendo informalmente, "Hola, soy John" (cadena primitiva) o presentando una tarjeta de identificación formal que dice, "Yo soy John" (objeto de cadena). Aunque ambos se refieren a la misma persona, la tarjeta de identificación (objeto de cadena) agrega una complejidad innecesaria.
+
+---
+
+# Metodos de String en JavaScript
+
+## Métodos Básicos de Cadenas
+
+Las cadenas en JavaScript son primitivas e inmutables: todos los métodos de cadenas producen una nueva cadena sin alterar la cadena original.
+
+### Longitud de la Cadena
+
+La propiedad `length` devuelve la longitud de una cadena:
+
+```javascript
+let text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let length = text.length; // Devuelve 26
+```
+
+### Extracción de Caracteres de la Cadena
+
+Hay 4 métodos para extraer caracteres de una cadena:
+
+- **El Método `at(position)`**
+- **El Método `charAt(position)`**
+- **El Método `charCodeAt(position)`**
+- **Acceso a Propiedades `[]` como en Arreglos**
+
+### Método `charAt()`
+
+El método `charAt()` devuelve el carácter en un índice (posición) especificado en una cadena:
+
+```javascript
+let text = "HELLO WORLD";
+let char = text.charAt(0); // Devuelve 'H'
+```
+
+### Método `charCodeAt()`
+
+El método `charCodeAt()` devuelve el código del carácter en un índice especificado en una cadena. Este método devuelve un código UTF-16 (un número entero entre 0 y 65535).
+
+```javascript
+let text = "HELLO WORLD";
+let char = text.charCodeAt(0); // Devuelve 72
+```
+
+### Método `at()`
+
+ES2022 introdujo el método `at()` para cadenas. Permite el uso de índices negativos.
+
+```javascript
+const name = "W3Schools";
+let letter = name.at(2); // Devuelve '3'
+let letterNeg = name.at(-1); // Devuelve 's'
+```
+
+### Acceso a Propiedades `[]`
+
+```javascript
+let text = "HELLO WORLD";
+let char = text[0]; // Devuelve 'H'
+```
+
+**Nota:** El acceso a propiedades puede ser algo impredecible, ya que las cadenas no son arreglos. Si no se encuentra ningún carácter, `[]` devuelve `undefined`, mientras que `charAt()` devuelve una cadena vacía.
+
+### Extracción de Partes de la Cadena
+
+Hay 3 métodos para extraer una parte de una cadena:
+
+- `slice(start, end)`
+- `substring(start, end)`
+- `substr(start, length)`
+
+#### Método `slice()`
+
+`slice()` extrae una parte de una cadena y devuelve la parte extraída en una nueva cadena.
+
+```javascript
+let text = "Apple, Banana, Kiwi";
+let part = text.slice(7, 13); // Devuelve 'Banana'
+```
+
+**Ejemplo con Índices Negativos:**
+
+```javascript
+let partNeg = text.slice(-12, -6); // Devuelve 'Banana'
+```
+
+#### Método `substring()`
+
+`substring()` es similar a `slice()`. La diferencia es que los valores de inicio y fin menores que 0 se tratan como 0 en `substring()`.
+
+```javascript
+let str = "Apple, Banana, Kiwi";
+let part = str.substring(7, 13); // Devuelve 'Banana'
+```
+
+#### Método `substr()`
+
+`substr()` es similar a `slice()`, pero el segundo parámetro especifica la longitud de la parte extraída.
+
+```javascript
+let str = "Apple, Banana, Kiwi";
+let part = str.substr(7, 6); // Devuelve 'Banana'
+```
+
+### Convertir a Mayúsculas y Minúsculas
+
+Para convertir una cadena a mayúsculas, se utiliza `toUpperCase()`, y para convertir a minúsculas, se utiliza `toLowerCase()`.
+
+#### Ejemplo `toUpperCase()`
+
+```javascript
+let text1 = "Hello World!";
+let text2 = text1.toUpperCase(); // Devuelve 'HELLO WORLD!'
+```
+
+#### Ejemplo `toLowerCase()`
+
+```javascript
+let text1 = "Hello World!";
+let text2 = text1.toLowerCase(); // Devuelve 'hello world!'
+```
+
+### Método `concat()`
+
+`concat()` une dos o más cadenas:
+
+```javascript
+let text1 = "Hello";
+let text2 = "World";
+let text3 = text1.concat(" ", text2); // Devuelve 'Hello World!'
+```
+
+### Método `trim()`
+
+El método `trim()` elimina los espacios en blanco de ambos lados de una cadena:
+
+```javascript
+let text1 = "      Hello World!      ";
+let text2 = text1.trim(); // Devuelve 'Hello World!'
+```
+
+### Método `trimStart()` y `trimEnd()`
+
+ECMAScript 2019 añadió los métodos `trimStart()` y `trimEnd()`, que eliminan espacios solo del inicio o del final de una cadena, respectivamente.
+
+#### Ejemplo `trimStart()`
+
+```javascript
+let text1 = "     Hello World!     ";
+let text2 = text1.trimStart(); // Devuelve 'Hello World!     '
+```
+
+#### Ejemplo `trimEnd()`
+
+```javascript
+let text1 = "     Hello World!     ";
+let text2 = text1.trimEnd(); // Devuelve '     Hello World!'
+```
+
+### Métodos de Relleno
+
+ECMAScript 2017 añadió `padStart()` y `padEnd()` para soportar el relleno al inicio y al final de una cadena.
+
+#### Método `padStart()`
+
+`padStart()` rellena una cadena desde el inicio hasta alcanzar una longitud dada.
+
+```javascript
+let text = "5";
+let padded = text.padStart(4, "0"); // Devuelve '0005'
+```
+
+#### Método `padEnd()`
+
+`padEnd()` rellena una cadena desde el final hasta alcanzar una longitud dada.
+
+```javascript
+let text = "5";
+let padded = text.padEnd(4, "0"); // Devuelve '5000'
+```
+
+### Método `repeat()`
+
+El método `repeat()` devuelve una cadena con un número de copias de una cadena.
+
+```javascript
+let text = "Hello world!";
+let result = text.repeat(2); // Devuelve 'Hello world!Hello world!'
+```
+
+### Reemplazo de Contenido de Cadena
+
+El método `replace()` reemplaza un valor especificado por otro en una cadena. Solo reemplaza la primera coincidencia.
+
+```javascript
+let text = "Please visit Microsoft!";
+let newText = text.replace("Microsoft", "W3Schools"); // Devuelve 'Please visit W3Schools!'
+```
+
+Para reemplazar todas las coincidencias, utiliza una expresión regular con el flag `/g`.
+
+```javascript
+let text = "Please visit Microsoft and Microsoft!";
+let newText = text.replace(/Microsoft/g, "W3Schools"); // Devuelve 'Please visit W3Schools and W3Schools!'
+```
+
+### Método `replaceAll()`
+
+En 2021, JavaScript introdujo el método `replaceAll()`, que permite reemplazar todas las coincidencias sin necesidad de usar expresiones regulares.
+
+```javascript
+text = text.replaceAll("Cats", "Dogs");
+```
+
+## Resumen
+
+Este documento ha cubierto los métodos básicos para manipular cadenas en JavaScript. Utilizando analogías simples y conceptos técnicos, ahora puedes entender cómo trabajar con cadenas de manera efectiva. Recuerda que todos los métodos devuelven una nueva cadena y no modifican la cadena original.
+
+---
+
+# JavaScript String Search
+
+## Introducción
+Buscar en cadenas de texto en JavaScript es como buscar un libro en una biblioteca. Usamos diferentes herramientas y métodos para encontrar lo que necesitamos. A continuación, exploraremos varios métodos que nos permiten localizar texto dentro de cadenas.
+
+## Métodos de Búsqueda de Cadenas
+- `String indexOf()`
+- `String lastIndexOf()`
+- `String search()`
+- `String match()`
+- `String matchAll()`
+- `String includes()`
+- `String startsWith()`
+- `String endsWith()`
+
+## JavaScript String indexOf()
+El método `indexOf()` es como un bibliotecario que te dice en qué estante se encuentra un libro por primera vez. Devuelve el índice (posición) de la primera ocurrencia de una cadena en otra cadena o -1 si no se encuentra.
+
+### Ejemplo
+```javascript
+let text = "Please locate where 'locate' occurs!";
+let index = text.indexOf("locate"); // index será 7
+```
+
+**Nota:** JavaScript cuenta las posiciones desde cero. Por lo tanto, 0 es la primera posición en una cadena, 1 es la segunda, etc.
+
+## JavaScript String lastIndexOf()
+El método `lastIndexOf()` es como un bibliotecario que te dice en qué estante se encuentra un libro, pero buscando desde el final hacia el principio. Devuelve el índice de la última ocurrencia de un texto específico.
+
+### Ejemplo
+```javascript
+let text = "Please locate where 'locate' occurs!";
+let index = text.lastIndexOf("locate"); // index será 7
+```
+
+Ambos métodos (`indexOf()` y `lastIndexOf()`) devuelven -1 si el texto no se encuentra.
+
+### Búsqueda desde una posición específica
+Ambos métodos aceptan un segundo parámetro que indica la posición desde la cual iniciar la búsqueda.
+
+### Ejemplo
+```javascript
+let index = text.indexOf("locate", 15); // index será -1
+```
+
+## JavaScript String search()
+El método `search()` es como un detective que busca una palabra clave en un libro. Devuelve la posición de la coincidencia de una cadena o una expresión regular.
+
+### Ejemplo
+```javascript
+let text = "Please locate where 'locate' occurs!";
+let index = text.search("locate"); // index será 7
+```
+
+### Comparación con `indexOf()`
+Ambos métodos aceptan argumentos similares y devuelven valores similares, pero hay diferencias:
+- `search()` no acepta un segundo argumento.
+- `indexOf()` no acepta expresiones regulares.
+
+## JavaScript String match()
+El método `match()` es como un examen que evalúa si hay coincidencias de un patrón en un texto. Devuelve un array con los resultados.
+
+### Ejemplo
+```javascript
+let text = "The rain in SPAIN stays mainly in the plain";
+let matches = text.match("ain"); // ["ain"]
+```
+
+### Búsqueda global
+```javascript
+let matches = text.match(/ain/g); // ["ain", "ain", "ain"]
+```
+
+## JavaScript String matchAll()
+El método `matchAll()` es como un grupo de detectives que buscan todas las coincidencias en un libro. Devuelve un iterador con todos los resultados.
+
+### Ejemplo
+```javascript
+const iterator = text.matchAll(/ain/g);
+```
+
+**Nota:** `matchAll()` es una característica de ES2020 y no es compatible con Internet Explorer.
+
+## JavaScript String includes()
+El método `includes()` es como preguntar si una tienda tiene un producto específico. Devuelve `true` si la cadena contiene un valor específico y `false` en caso contrario.
+
+### Ejemplo
+```javascript
+let text = "Hello world, welcome to the universe.";
+let hasWorld = text.includes("world"); // true
+```
+
+## JavaScript String startsWith()
+El método `startsWith()` es como verificar si un libro comienza con una determinada frase. Devuelve `true` si la cadena comienza con un valor específico.
+
+### Ejemplo
+```javascript
+let text = "Hello world, welcome to the universe.";
+let startsWithHello = text.startsWith("Hello"); // true
+```
+
+## JavaScript String endsWith()
+El método `endsWith()` es como verificar si un libro termina con una determinada frase. Devuelve `true` si la cadena termina con un valor específico.
+
+### Ejemplo
+```javascript
+let text = "John Doe";
+let endsWithDoe = text.endsWith("Doe"); // true
+```
+
+## Conclusión
+Entender cómo buscar y manipular cadenas de texto en JavaScript es fundamental para trabajar con datos. Estos métodos son herramientas poderosas que te permitirán acceder y modificar información de manera eficiente. A medida que avances en tu camino como desarrollador frontend, dominar estas técnicas será esencial.
+
+---
+
+# Numbers en JavaScript
+
+JavaScript tiene un solo tipo de número. Los números pueden escribirse con o sin decimales.
+
+## Ejemplo
+```javascript
+let x = 3.14;    // Un número con decimales
+let y = 3;       // Un número sin decimales
+```
+
+Los números extremadamente grandes o pequeños pueden escribirse en notación científica (exponencial):
+
+## Ejemplo
+```javascript
+let x = 123e5;    // 12300000
+let y = 123e-5;   // 0.00123
+```
+
+## Los Números en JavaScript Son Siempre de Punto Flotante de 64 bits
+A diferencia de muchos otros lenguajes de programación, JavaScript no define diferentes tipos de números, como enteros, cortos, largos o de punto flotante.
+
+Los números en JavaScript siempre se almacenan como números de punto flotante de doble precisión, siguiendo el estándar internacional IEEE 754.
+
+Este formato almacena números en 64 bits, donde el número (la fracción) se almacena en los bits del 0 al 51, el exponente en los bits del 52 al 62, y el signo en el bit 63:
+
+| Valor (también conocido como Fracción/Mantisa) | Exponente | Signo |
+|------------------------------------------------|-----------|-------|
+| 52 bits (0 - 51)                               | 11 bits (52 - 62) | 1 bit (63) |
+
+### Precisión de Enteros
+Los enteros (números sin un punto o notación de exponente) son precisos hasta 15 dígitos.
+
+## Ejemplo
+```javascript
+let x = 999999999999999;   // x será 999999999999999
+let y = 9999999999999999;  // y será 10000000000000000
+```
+El número máximo de decimales es 17.
+
+### Precisión de Punto Flotante
+Las operaciones de punto flotante no siempre son 100% precisas:
+
+```javascript
+let x = 0.2 + 0.1;
+```
+
+Para resolver el problema anterior, ayuda multiplicar y dividir:
+
+```javascript
+let x = (0.2 * 10 + 0.1 * 10) / 10;
+```
+
+### Sumar Números y Cadenas
+**¡ADVERTENCIA!**
+
+JavaScript utiliza el operador + tanto para la suma como para la concatenación.
+
+- Los números se suman.
+- Las cadenas se concatenan.
+
+Si sumas dos números, el resultado será un número:
+
+## Ejemplo
+```javascript
+let x = 10;
+let y = 20;
+let z = x + y; // z será 30
+```
+
+Si sumas dos cadenas, el resultado será una concatenación de cadenas:
+
+## Ejemplo
+```javascript
+let x = "10";
+let y = "20";
+let z = x + y; // z será "1020"
+```
+
+Si sumas un número y una cadena, el resultado será una concatenación de cadenas:
+
+## Ejemplo
+```javascript
+let x = 10;
+let y = "20";
+let z = x + y; // z será "1020"
+```
+
+Si sumas una cadena y un número, el resultado también será una concatenación de cadenas:
+
+## Ejemplo
+```javascript
+let x = "10";
+let y = 20;
+let z = x + y; // z será "1020"
+```
+
+Un error común es esperar este resultado para la siguiente operación:
+
+## Ejemplo
+```javascript
+let x = 10;
+let y = 20;
+let z = "The result is: " + x + y; // z será "The result is: 1020"
+```
+
+Otro error común es esperar que el siguiente resultado sea 102030:
+
+## Ejemplo
+```javascript
+let x = 10;
+let y = 20;
+let z = "30";
+let result = x + y + z; // result será "3030"
+```
+
+El intérprete de JavaScript trabaja de izquierda a derecha.
+
+Primero, se suma 10 + 20 porque x e y son ambos números.
+
+Luego, se concatena 30 + "30" porque z es una cadena.
+
+### Cadenas Numéricas
+Las cadenas en JavaScript pueden tener contenido numérico:
+
+```javascript
+let x = 100;         // x es un número
+let y = "100";       // y es una cadena
+```
+
+JavaScript intentará convertir cadenas en números en todas las operaciones numéricas:
+
+Esto funcionará:
+
+```javascript
+let x = "100";
+let y = "10";
+let z = x / y; // z será 10
+```
+
+Esto también funcionará:
+
+```javascript
+let x = "100";
+let y = "10";
+let z = x * y; // z será 1000
+```
+
+Y esto funcionará:
+
+```javascript
+let x = "100";
+let y = "10";
+let z = x - y; // z será 90
+```
+
+Pero esto no funcionará:
+
+```javascript
+let x = "100";
+let y = "10";
+let z = x + y; // z será "10010"
+```
+
+En el último ejemplo, JavaScript usa el operador + para concatenar las cadenas.
+
+### NaN - No es un Número
+NaN es una palabra reservada de JavaScript que indica que un número no es un número legal.
+
+Intentar realizar una operación aritmética con una cadena no numérica resultará en NaN (Not a Number):
+
+## Ejemplo
+```javascript
+let x = 100 / "Apple"; // x será NaN
+```
+
+Sin embargo, si la cadena es numérica, el resultado será un número:
+
+## Ejemplo
+```javascript
+let x = 100 / "10"; // x será 10
+```
+
+Puedes usar la función global de JavaScript isNaN() para averiguar si un valor no es un número:
+
+## Ejemplo
+```javascript
+let x = 100 / "Apple";
+isNaN(x); // true
+```
+
+Ten cuidado con NaN. Si usas NaN en una operación matemática, el resultado también será NaN:
+
+## Ejemplo
+```javascript
+let x = NaN;
+let y = 5;
+let z = x + y; // z será NaN
+```
+
+O el resultado podría ser una concatenación como NaN5:
+
+## Ejemplo
+```javascript
+let x = NaN;
+let y = "5";
+let z = x + y; // z será "NaN5"
+```
+
+NaN es un número: typeof NaN devuelve number:
+
+## Ejemplo
+```javascript
+typeof NaN; // "number"
+```
+
+### Infinito
+Infinity (o -Infinity) es el valor que JavaScript devolverá si calculas un número fuera del mayor número posible.
+
+## Ejemplo
+```javascript
+let myNumber = 2;
+// Ejecuta hasta Infinity
+while (myNumber != Infinity) {
+  myNumber = myNumber * myNumber;
+}
+```
+
+La división por 0 (cero) también genera Infinity:
+
+## Ejemplo
+```javascript
+let x =  2 / 0; // x será Infinity
+let y = -2 / 0; // y será -Infinity
+```
+
+Infinity es un número: typeof Infinity devuelve number.
+
+## Ejemplo
+```javascript
+typeof Infinity; // "number"
+```
+
+### Hexadecimal
+JavaScript interpreta constantes numéricas como hexadecimales si están precedidas por 0x.
+
+## Ejemplo
+```javascript
+let x = 0xFF; // x será 255
+```
+
+Nunca escribas un número con un cero inicial (como 07). Algunas versiones de JavaScript interpretan números como octales si se escriben con un cero inicial.
+
+Por defecto, JavaScript muestra números en base 10 decimal.
+
+Pero puedes usar el método toString() para mostrar números desde la base 2 hasta la base 36.
+
+- Hexadecimal es base 16.
+- Decimal es base 10.
+- Octal es base 8.
+- Binario es base 2.
+
+## Ejemplo
+```javascript
+let myNumber = 32;
+myNumber.toString(32); // "10"
+myNumber.toString(16); // "20"
+myNumber.toString(12); // "28"
+myNumber.toString(10); // "32"
+myNumber.toString(8);  // "40"
+myNumber.toString(2);  // "100000"
+```
+
+### Números en JavaScript como Objetos
+Normalmente, los números en JavaScript son valores primitivos creados a partir de literales:
+
+```javascript
+let x = 123;
+```
+
+Pero los números también se pueden definir como objetos con la palabra clave new:
+
+```javascript
+let y = new Number(123);
+```
+
+## Ejemplo
+```javascript
+let x = 123;
+let y = new Number(123);
+```
+
+No crees objetos Number.
+
+La palabra clave new complica el código y ralentiza la velocidad de ejecución.
+
+Los objetos Number pueden producir resultados inesperados:
+
+Al usar el operador ==, x e y son iguales:
+
+## Ejemplo
+```javascript
+let x = 500;
+let y = new Number(500); // true
+```
+
+Al usar el operador ===, x e y no son iguales.
+
+## Ejemplo
+```javascript
+let x = 500;
+let y = new Number(500); // false
+```
+
+---
+
+# JavaScript BigInt: Un Viajero en el Mundo de los Números Gigantes
+
+## Introducción a BigInt
+JavaScript BigInt es un tipo de dato especial que se utiliza para almacenar valores enteros muy grandes que no pueden ser representados por un número normal en JavaScript.
+
+### Analogía
+Imagina que tienes una caja de herramientas. Los números normales son como un destornillador común: sirven para la mayoría de las tareas, pero si necesitas un destornillador de gran tamaño (un número realmente grande), necesitas una herramienta especial, que es BigInt.
+
+## Precisión de los Enteros en JavaScript
+Los enteros en JavaScript solo son precisos hasta 15 dígitos:
+
+```javascript
+let x = 999999999999999; // Preciso
+let y = 9999999999999999; // No preciso
+```
+
+En JavaScript, todos los números se almacenan en un formato de punto flotante de 64 bits (estándar IEEE 754). Esto significa que los números grandes no pueden ser representados con exactitud y se redondean.
+
+### Analogía
+Es como un reloj que solo puede mostrar hasta las 12 horas. Si intentas poner 15 horas, el reloj volverá a empezar desde 3. Así, los números grandes son "redondeados" para ajustarse a este formato.
+
+### Rango de Enteros Seguros
+JavaScript puede representar de manera segura enteros:
+
+- Hasta **9007199254740991** ( \(2^{53} - 1\) )
+- Y hasta **-9007199254740991** ( \(-2^{53} + 1\) )
+
+Los valores fuera de este rango pierden precisión.
+
+## Cómo Crear un BigInt
+Para crear un BigInt, puedes añadir `n` al final de un número entero o llamar a `BigInt()`:
+
+### Ejemplos
+```javascript
+let x = 9999999999999999; // Normal
+let y = 9999999999999999n; // BigInt
+let z = BigInt(1234567890123456789012345); // BigInt
+```
+
+## BigInt: Un Nuevo Tipo de Dato en JavaScript
+El tipo de dato de un BigInt es `"bigint"`:
+
+### Ejemplo
+```javascript
+let x = BigInt(999999999999999);
+let type = typeof x; // "bigint"
+```
+
+BigInt es el segundo tipo de dato numérico en JavaScript (después de Number). Con BigInt, el total de tipos de datos soportados en JavaScript es **8**:
+
+1. String
+2. Number
+3. Bigint
+4. Boolean
+5. Undefined
+6. Null
+7. Symbol
+8. Object
+
+### Analogía
+Imagina que tienes una tienda que vende diferentes tipos de frutas. Cada tipo de fruta representa un tipo de dato en JavaScript. BigInt es una nueva fruta que han añadido a la tienda.
+
+## Operadores de BigInt
+Los operadores que se pueden usar en un número normal también se pueden usar en un BigInt.
+
+### Ejemplo de Multiplicación de BigInt
+```javascript
+let x = 9007199254740995n;
+let y = 9007199254740995n;
+let z = x * y; // Multiplicación
+```
+
+### Notas
+- No se permite realizar aritmética entre un BigInt y un número normal (la conversión de tipo puede perder información).
+- El desplazamiento a la derecha sin signo (`>>>`) no se puede hacer en un BigInt (no tiene un ancho fijo).
+
+## BigInt y Decimales
+Un BigInt no puede tener decimales.
+
+### Ejemplo de División de BigInt
+```javascript
+let x = 5n;
+let y = x / 2; // Error: No se pueden mezclar BigInt y otros tipos
+let z = Number(x) / 2; // Conversión explícita
+```
+
+## Notación Hexadecimal, Octal y Binaria para BigInt
+Un BigInt también puede escribirse en notación hexadecimal, octal o binaria:
+
+### Ejemplo en Hexadecimal
+```javascript
+let hex = 0x20000000000003n; // Hexadecimal
+let oct = 0o400000000000000003n; // Octal
+let bin = 0b100000000000000000000000000000000000000000000000000011n; // Binario
+```
+
+## Curiosidad sobre la Precisión
+El redondeo puede comprometer la seguridad del programa.
+
+### Ejemplo de MAX_SAFE_INTEGER
+```javascript
+9007199254740992 === 9007199254740993; // es verdadero !!!
+```
+
+## Soporte en Navegadores
+BigInt es compatible en todos los navegadores desde septiembre de 2020:
+
+- Chrome 67
+- Edge 79
+- Firefox 68
+- Safari 14
+- Opera 54
+
+## Mínimos y Máximos Enteros Seguros
+ES6 agregó propiedades máximas y mínimas al objeto Number:
+
+- **MAX_SAFE_INTEGER**
+- **MIN_SAFE_INTEGER**
+
+### Ejemplo de MAX_SAFE_INTEGER
+```javascript
+let x = Number.MAX_SAFE_INTEGER; // 9007199254740991
+```
+
+### Ejemplo de MIN_SAFE_INTEGER
+```javascript
+let x = Number.MIN_SAFE_INTEGER; // -9007199254740991
+```
+
+## Nuevos Métodos para el Objeto Number
+ES6 también agregó 2 nuevos métodos al objeto Number:
+
+- **Number.isInteger()**
+- **Number.isSafeInteger()**
+
+### Método Number.isInteger()
+El método `Number.isInteger()` devuelve `true` si el argumento es un entero.
+
+#### Ejemplo de isInteger()
+```javascript
+Number.isInteger(10); // true
+Number.isInteger(10.5); // false
+```
+
+### Método Number.isSafeInteger()
+Un entero seguro es un entero que puede ser representado exactamente como un número de doble precisión.
+
+El método `Number.isSafeInteger()` devuelve `true` si el argumento es un entero seguro.
+
+#### Ejemplo de isSafeInteger()
+```javascript
+Number.isSafeInteger(10); // true
+Number.isSafeInteger(12345678901234567890); // false
+```
+
+Los enteros seguros son todos los enteros desde \(-(2^{53} - 1)\) hasta \((2^{53} - 1)\). Este es seguro: **9007199254740991**. Este no es seguro: **9007199254740992**.
+
+---
+
+# Métodos Numéricos de JavaScript
+
+Los métodos numéricos de JavaScript pueden ser utilizados en todos los números de JavaScript:
+
+| Método           | Descripción                                           |
+|------------------|------------------------------------------------------|
+| `toString()`     | Devuelve un número como una cadena.                  |
+| `toExponential()`| Devuelve un número escrito en notación exponencial.  |
+| `toFixed()`      | Devuelve un número escrito con un número de decimales. |
+| `toPrecision()`  | Devuelve un número escrito con una longitud especificada. |
+| `valueOf()`      | Devuelve un número como un número.                   |
+
+## El Método `toString()`
+
+El método `toString()` devuelve un número como una cadena.
+
+Puedes usarlo con cualquier tipo de número (literals, variables o expresiones):
+
+**Ejemplo**
+```javascript
+let x = 123;
+x.toString(); // "123"
+(123).toString(); // "123"
+(100 + 23).toString(); // "123"
+```
+
+**Analogía**: Imagina que `toString()` es como poner una etiqueta en un frasco de mermelada. El frasco sigue siendo el mismo, pero ahora tiene un nombre que lo identifica.
+
+## El Método `toExponential()`
+
+El método `toExponential()` devuelve una cadena, con un número redondeado y escrito usando notación exponencial.
+
+Un parámetro define el número de caracteres detrás del punto decimal:
+
+**Ejemplo**
+```javascript
+let x = 9.656;
+x.toExponential(2); // "9.66e+0"
+x.toExponential(4); // "9.6560e+0"
+x.toExponential(6); // "9.656000e+0"
+```
+
+**Nota**: Si no especificas el parámetro, JavaScript no redondeará el número.
+
+**Analogía**: Piensa en `toExponential()` como una forma de poner tus números en una caja compacta, donde se muestra el valor pero de manera más simplificada.
+
+## El Método `toFixed()`
+
+El método `toFixed()` devuelve una cadena, con el número escrito con un número especificado de decimales:
+
+**Ejemplo**
+```javascript
+let x = 9.656;
+x.toFixed(0); // "10"
+x.toFixed(2); // "9.66"
+x.toFixed(4); // "9.6560"
+x.toFixed(6); // "9.656000"
+```
+
+**Analogía**: Imagina que `toFixed()` es como hacer un corte perfecto en una torta, asegurándote de que cada porción tenga el mismo tamaño, ya sea grande o pequeña.
+
+## El Método `toPrecision()`
+
+El método `toPrecision()` devuelve una cadena, con un número escrito con una longitud especificada:
+
+**Ejemplo**
+```javascript
+let x = 9.656;
+x.toPrecision(); // "9.656"
+x.toPrecision(2); // "9.7"
+x.toPrecision(4); // "9.656"
+x.toPrecision(6); // "9.65600"
+```
+
+**Analogía**: Piensa en `toPrecision()` como elegir el tamaño de una caja para un regalo. Dependiendo de cuán grande quieras que sea, puedes ajustar el tamaño de la caja para que se vea perfecto.
+
+## El Método `valueOf()`
+
+El método `valueOf()` devuelve un número como un número.
+
+**Ejemplo**
+```javascript
+let x = 123;
+x.valueOf(); // 123
+(123).valueOf(); // 123
+(100 + 23).valueOf(); // 123
+```
+
+En JavaScript, un número puede ser un valor primitivo (`typeof = number`) o un objeto (`typeof = object`).
+
+El método `valueOf()` se utiliza internamente en JavaScript para convertir objetos de tipo Número a valores primitivos.
+
+**Nota**: No hay razón para usarlo en tu código.
+
+**Analogía**: Imagina que `valueOf()` es como un cartero que te entrega la carta sin envoltura. Solo te da el contenido directo.
+
+## Conversión de Variables a Números
+
+Hay 3 métodos de JavaScript que se pueden usar para convertir una variable a un número:
+
+| Método      | Descripción                                              |
+|-------------|---------------------------------------------------------|
+| `Number()`  | Devuelve un número convertido de su argumento.          |
+| `parseFloat()` | Analiza su argumento y devuelve un número de punto flotante. |
+| `parseInt()` | Analiza su argumento y devuelve un número entero.       |
+
+### El Método `Number()`
+
+El método `Number()` puede ser usado para convertir variables de JavaScript a números:
+
+**Ejemplo**
+```javascript
+Number(true);          // 1
+Number(false);         // 0
+Number("10");          // 10
+Number("  10");        // 10
+Number("10  ");        // 10
+Number(" 10  ");       // 10
+Number("10.33");       // 10.33
+Number("10,33");       // NaN
+Number("10 33");       // NaN
+Number("John");        // NaN
+```
+
+**Nota**: Si el número no puede ser convertido, se devuelve `NaN` (Not a Number).
+
+**Analogía**: Considera `Number()` como un traductor que convierte palabras o expresiones a un número, pero si la traducción no es posible, devuelve un "no sé" (NaN).
+
+### El Método `parseInt()`
+
+El método `parseInt()` analiza una cadena y devuelve un número entero. Se permiten espacios. Solo se devuelve el primer número:
+
+**Ejemplo**
+```javascript
+parseInt("-10");          // -10
+parseInt("-10.33");       // -10
+parseInt("10");           // 10
+parseInt("10.33");        // 10
+parseInt("10 20 30");     // 10
+parseInt("10 años");      // 10
+parseInt("años 10");      // NaN
+```
+
+**Analogía**: Piensa en `parseInt()` como un detector de precios en un supermercado, que solo puede leer el precio inicial y descarta cualquier información adicional.
+
+### El Método `parseFloat()`
+
+El método `parseFloat()` analiza una cadena y devuelve un número. Se permiten espacios. Solo se devuelve el primer número:
+
+**Ejemplo**
+```javascript
+parseFloat("10");          // 10
+parseFloat("10.33");       // 10.33
+parseFloat("10 20 30");    // 10
+parseFloat("10 años");      // 10
+parseFloat("años 10");      // NaN
+```
+
+**Analogía**: `parseFloat()` es como un vaso medidor que mide el líquido hasta cierto nivel y no se preocupa por lo que hay más allá.
+
+## Métodos del Objeto Number
+
+Estos métodos pertenecen al objeto Number:
+
+| Método                          | Descripción                                                    |
+|---------------------------------|---------------------------------------------------------------|
+| `Number.isInteger()`            | Devuelve verdadero si el argumento es un número entero.       |
+| `Number.isSafeInteger()`        | Devuelve verdadero si el argumento es un número entero seguro.|
+| `Number.parseFloat()`           | Convierte una cadena a un número.                             |
+| `Number.parseInt()`             | Convierte una cadena a un número entero.                      |
+
+### El Método `Number.isInteger()`
+
+El método `Number.isInteger()` devuelve verdadero si el argumento es un número entero.
+
+**Ejemplo**
+```javascript
+Number.isInteger(10);      // true
+Number.isInteger(10.5);    // false
+```
+
+**Analogía**: Imagina que `Number.isInteger()` es como un guardia en una fiesta que solo deja entrar a aquellos con un "boleto entero".
+
+### El Método `Number.isSafeInteger()`
+
+Un número entero seguro es un número entero que puede ser representado exactamente como un número de precisión doble.
+
+El método `Number.isSafeInteger()` devuelve verdadero si el argumento es un número entero seguro.
+
+**Ejemplo**
+```javascript
+Number.isSafeInteger(10);                   // true
+Number.isSafeInteger(12345678901234567890); // false
+```
+
+Los números enteros seguros son todos los enteros desde `-(2^53 - 1)` hasta `+(2^53 - 1)`.
+
+**Analogía**: Piensa en `Number.isSafeInteger()` como un detector de metal que asegura que los números no son demasiado grandes para ser manejados.
+
+### El Método `Number.parseFloat()`
+
+El método `Number.parseFloat()` analiza una cadena y devuelve un número.
+
+Se permiten espacios. Solo se devuelve el primer número:
+
+**Ejemplo**
+```javascript
+Number.parseFloat("10");          // 10
+Number.parseFloat("10.33");       // 10.33
+Number.parseFloat("10 20 30");    // 10
+Number.parseFloat("10 años");      // 10
+Number.parseFloat("años 10");      // NaN
+```
+
+**Nota**: Los métodos `Number.parseInt()` y `Number.parseFloat()` son los mismos que los métodos globales `parseInt()` y `parseFloat()`. 
+
+El propósito es la modularización de los globales (para facilitar el uso del mismo código de JavaScript fuera del navegador).
+
+**Analogía**: `Number.parseFloat()` es como un filtro de café que extrae solo el líquido
+
+ útil y deja la parte no deseada atrás.
+
+### Resumen
+
+Los métodos numéricos de JavaScript son herramientas poderosas para manipular y trabajar con números. Usando analogías simples, podemos entender su funcionamiento y aplicarlos de manera efectiva en nuestros programas.
+
+¡Prueba estos métodos en tu código y observa cómo transforman tus números!
+
+---
+
+# Propiedades de Number en JavaScript
+
+## Propiedades de Número
+
+| Propiedad            | Descripción                                                  |
+|----------------------|--------------------------------------------------------------|
+| `EPSILON`            | La diferencia entre 1 y el número más pequeño > 1.          |
+| `MAX_VALUE`          | El número más grande posible en JavaScript.                 |
+| `MIN_VALUE`          | El número más pequeño posible en JavaScript.                |
+| `MAX_SAFE_INTEGER`   | El máximo entero seguro (253 - 1).                          |
+| `MIN_SAFE_INTEGER`   | El mínimo entero seguro -(253 - 1).                         |
+| `POSITIVE_INFINITY`  | Infinito (devuelto en un desbordamiento).                  |
+| `NEGATIVE_INFINITY`  | Infinito negativo (devuelto en un desbordamiento).         |
+| `NaN`                | Un valor "No es un número".                                 |
+
+## JavaScript EPSILON
+
+La propiedad `Number.EPSILON` representa la diferencia entre el número de punto flotante más pequeño mayor que 1 y 1.
+
+**Ejemplo**
+```javascript
+let x = Number.EPSILON;
+console.log(x); // 2.220446049250313e-16
+```
+
+**Nota**: `Number.EPSILON` es una característica de ES6 y no funciona en Internet Explorer.
+
+**Analogía**: Imagina que `EPSILON` es como una regla que mide el espacio más pequeño que puedes percibir entre dos objetos. Aunque parece un pequeño espacio, es importante para saber la precisión de los números.
+
+## JavaScript MAX_VALUE
+
+`Number.MAX_VALUE` es una constante que representa el número más grande posible en JavaScript.
+
+**Ejemplo**
+```javascript
+let x = Number.MAX_VALUE;
+console.log(x); // 1.7976931348623157e+308
+```
+
+**Analogía**: Piensa en `MAX_VALUE` como el límite de una montaña. A medida que subes, te acercas a la cima, pero hay un punto en el que no puedes ir más allá. Ese es el número más grande que JavaScript puede manejar.
+
+## JavaScript MIN_VALUE
+
+`Number.MIN_VALUE` es una constante que representa el número más pequeño posible en JavaScript.
+
+**Ejemplo**
+```javascript
+let x = Number.MIN_VALUE;
+console.log(x); // 5e-324
+```
+
+**Analogía**: Imagina que `MIN_VALUE` es el fondo de un océano. Es el punto más bajo que puedes alcanzar en el agua, pero aún hay un poco de agua, aunque sea muy poca.
+
+## JavaScript MAX_SAFE_INTEGER
+
+`Number.MAX_SAFE_INTEGER` representa el entero seguro máximo en JavaScript, que es (253 - 1).
+
+**Ejemplo**
+```javascript
+let x = Number.MAX_SAFE_INTEGER;
+console.log(x); // 9007199254740991
+```
+
+**Analogía**: Piensa en `MAX_SAFE_INTEGER` como una caja de seguridad. Puedes almacenar objetos hasta cierto límite; más allá de eso, los objetos podrían dañarse o perderse.
+
+## JavaScript MIN_SAFE_INTEGER
+
+`Number.MIN_SAFE_INTEGER` representa el entero seguro mínimo en JavaScript, que es -(253 - 1).
+
+**Ejemplo**
+```javascript
+let x = Number.MIN_SAFE_INTEGER;
+console.log(x); // -9007199254740991
+```
+
+**Nota**: `MAX_SAFE_INTEGER` y `MIN_SAFE_INTEGER` son características de ES6 y no funcionan en Internet Explorer.
+
+**Analogía**: Considera `MIN_SAFE_INTEGER` como el fondo de una caja de seguridad. Es el punto más bajo que puedes llegar a almacenar sin que los objetos se pierdan.
+
+## JavaScript POSITIVE_INFINITY
+
+`Number.POSITIVE_INFINITY` representa infinito positivo.
+
+**Ejemplo**
+```javascript
+let x = Number.POSITIVE_INFINITY;
+console.log(x); // Infinity
+```
+
+**Infinito positivo** se devuelve en caso de un desbordamiento:
+
+```javascript
+let x = 1 / 0; // Devuelve Infinity
+console.log(x);
+```
+
+**Analogía**: Imagina que `POSITIVE_INFINITY` es como el horizonte. No importa cuánto camines hacia él, siempre parece estar a la distancia, nunca lo alcanzas.
+
+## JavaScript NEGATIVE_INFINITY
+
+`Number.NEGATIVE_INFINITY` representa infinito negativo.
+
+**Ejemplo**
+```javascript
+let x = Number.NEGATIVE_INFINITY;
+console.log(x); // -Infinity
+```
+
+**Infinito negativo** se devuelve en caso de un desbordamiento:
+
+```javascript
+let x = -1 / 0; // Devuelve -Infinity
+console.log(x);
+```
+
+**Analogía**: Piensa en `NEGATIVE_INFINITY` como el fondo de un pozo. Cuanto más profundo cavas, más lejos te alejas de la superficie, pero nunca llegas a un final.
+
+## JavaScript NaN - Not a Number
+
+`NaN` es una palabra reservada en JavaScript que indica un número que no es legal.
+
+**Ejemplo**
+```javascript
+let x = Number.NaN;
+console.log(x); // NaN
+```
+
+Intentar realizar una operación aritmética con una cadena no numérica resultará en `NaN` (No es un número):
+
+```javascript
+let x = 100 / "Apple"; // Devuelve NaN
+console.log(x);
+```
+
+**Analogía**: Imagina que `NaN` es como un rompecabezas con piezas que no encajan. A pesar de que lo intentas, no puedes formar una imagen coherente con esas piezas.
+
+## Propiedades de Números No Se Pueden Usar en Variables
+
+Las propiedades de número pertenecen al objeto Number de JavaScript. Estas propiedades solo se pueden acceder como `Number.MAX_VALUE`. 
+
+Usar `x.MAX_VALUE`, donde `x` es una variable o un valor, devolverá `undefined`:
+
+**Ejemplo**
+```javascript
+let x = 6;
+console.log(x.MAX_VALUE); // undefined
+```
+
+**Analogía**: Esto es como intentar usar una etiqueta que solo está en la caja, no en el objeto dentro de la caja. El objeto dentro de la caja no puede acceder a las propiedades de la caja.
+
+---
+
+# Arrays en JavaScript
+
+Un **array** (o arreglo) es una variable especial que puede contener más de un valor:
+
+```javascript
+const autos = ["Saab", "Volvo", "BMW"];
+```
+
+## ¿Por qué usar arrays?
+
+Si tienes una lista de elementos (por ejemplo, una lista de nombres de autos), almacenar los autos en variables individuales podría verse así:
+
+```javascript
+let auto1 = "Saab";
+let auto2 = "Volvo";
+let auto3 = "BMW";
+```
+
+Pero, ¿qué pasa si quieres recorrer los autos y encontrar uno específico? ¿Y si tuvieras no 3 autos, sino 300?
+
+La solución es un **array**.
+
+Un array puede contener muchos valores bajo un solo nombre, y puedes acceder a los valores al referirte a un número de índice.
+
+## Crear un Array
+
+Usar un literal de array es la forma más fácil de crear un array en JavaScript.
+
+### Sintaxis
+
+```javascript
+const nombre_array = [elemento1, elemento2, ...];
+```
+
+Es común declarar arrays con la palabra clave `const`.
+
+### Ejemplo
+
+```javascript
+const autos = ["Saab", "Volvo", "BMW"];
+```
+
+Los espacios y saltos de línea no son importantes. Una declaración puede ocupar varias líneas:
+
+### Ejemplo
+
+```javascript
+const autos = [
+  "Saab",
+  "Volvo",
+  "BMW"
+];
+```
+
+También puedes crear un array y luego proporcionar los elementos:
+
+### Ejemplo
+
+```javascript
+const autos = [];
+autos[0] = "Saab";
+autos[1] = "Volvo";
+autos[2] = "BMW";
+```
+
+### Usando la palabra clave `new`
+
+El siguiente ejemplo también crea un array y le asigna valores:
+
+### Ejemplo
+
+```javascript
+const autos = new Array("Saab", "Volvo", "BMW");
+```
+
+Los dos ejemplos anteriores hacen exactamente lo mismo. No es necesario usar `new Array()`. 
+
+Para simplicidad, legibilidad y velocidad de ejecución, usa el método de literal de array.
+
+## Acceder a Elementos de un Array
+
+Puedes acceder a un elemento de un array refiriéndote al número de índice:
+
+```javascript
+const autos = ["Saab", "Volvo", "BMW"];
+let auto = autos[0];
+```
+
+**Nota:** Los índices de los arrays comienzan en 0. 
+
+- `[0]` es el primer elemento.
+- `[1]` es el segundo elemento.
+
+## Cambiar un Elemento de un Array
+
+Esta declaración cambia el valor del primer elemento en `autos`:
+
+```javascript
+autos[0] = "Opel";
+```
+
+### Ejemplo
+
+```javascript
+const autos = ["Saab", "Volvo", "BMW"];
+autos[0] = "Opel";
+```
+
+## Convertir un Array a una Cadena
+
+El método de JavaScript `toString()` convierte un array en una cadena de valores de array (separados por comas).
+
+### Ejemplo
+
+```javascript
+const frutas = ["Banana", "Naranja", "Manzana", "Mango"];
+document.getElementById("demo").innerHTML = frutas.toString();
+```
+
+**Resultado:**
+
+```
+Banana,Naranja,Manzana,Mango
+```
+
+## Acceder al Array Completo
+
+Con JavaScript, el array completo se puede acceder refiriéndote al nombre del array:
+
+### Ejemplo
+
+```javascript
+const autos = ["Saab", "Volvo", "BMW"];
+document.getElementById("demo").innerHTML = autos;
+```
+
+## Los Arrays son Objetos
+
+Los arrays son un tipo especial de objetos. El operador `typeof` en JavaScript devuelve "object" para los arrays.
+
+Pero, los arrays en JavaScript se describen mejor como arrays.
+
+Los arrays utilizan números para acceder a sus "elementos". En este ejemplo, `persona[0]` devuelve "Juan":
+
+### Array:
+
+```javascript
+const persona = ["Juan", "Doe", 46];
+```
+
+Los objetos utilizan nombres para acceder a sus "miembros". En este ejemplo, `persona.firstName` devuelve "Juan":
+
+### Objeto:
+
+```javascript
+const persona = {firstName: "Juan", lastName: "Doe", age: 46};
+```
+
+## Los Elementos de un Array Pueden Ser Objetos
+
+Las variables en JavaScript pueden ser objetos. Los arrays son tipos especiales de objetos.
+
+Debido a esto, puedes tener variables de diferentes tipos en el mismo array.
+
+Puedes tener objetos en un array. Puedes tener funciones en un array. Puedes tener arrays en un array:
+
+```javascript
+miArray[0] = Date.now;
+miArray[1] = miFuncion;
+miArray[2] = misAutos;
+```
+
+## Propiedades y Métodos de Arrays
+
+La verdadera fortaleza de los arrays en JavaScript son las propiedades y métodos de array integrados:
+
+- `autos.length`   // Devuelve el número de elementos
+- `autos.sort()`   // Ordena el array
+
+Los métodos de array se cubrirán en los próximos capítulos.
+
+## La Propiedad Length
+
+La propiedad `length` de un array devuelve la longitud de un array (el número de elementos del array).
+
+### Ejemplo
+
+```javascript
+const frutas = ["Banana", "Naranja", "Manzana", "Mango"];
+let longitud = frutas.length;
+```
+
+La propiedad `length` siempre es una más que el índice más alto del array.
+
+## Accediendo al Primer Elemento del Array
+
+### Ejemplo
+
+```javascript
+const frutas = ["Banana", "Naranja", "Manzana", "Mango"];
+let fruta = frutas[0];
+```
+
+## Accediendo al Último Elemento del Array
+
+### Ejemplo
+
+```javascript
+const frutas = ["Banana", "Naranja", "Manzana", "Mango"];
+let fruta = frutas[frutas.length - 1];
+```
+
+## Recorrer Elementos de un Array
+
+Una forma de recorrer un array es utilizando un bucle `for`:
+
+### Ejemplo
+
+```javascript
+const frutas = ["Banana", "Naranja", "Manzana", "Mango"];
+let fLen = frutas.length;
+
+let texto = "<ul>";
+for (let i = 0; i < fLen; i++) {
+  texto += "<li>" + frutas[i] + "</li>";
+}
+texto += "</ul>";
+```
+
+También puedes usar la función `Array.forEach()`:
+
+### Ejemplo
+
+```javascript
+const frutas = ["Banana", "Naranja", "Manzana", "Mango"];
+
+let texto = "<ul>";
+frutas.forEach(miFuncion);
+texto += "</ul>";
+
+function miFuncion(valor) {
+  texto += "<li>" + valor + "</li>";
+}
+```
+
+## Agregar Elementos a un Array
+
+La forma más fácil de agregar un nuevo elemento a un array es utilizando el método `push()`:
+
+### Ejemplo
+
+```javascript
+const frutas = ["Banana", "Naranja", "Manzana"];
+frutas.push("Limón");  // Agrega un nuevo elemento (Limón) a frutas
+```
+
+También se puede agregar un nuevo elemento a un array usando la propiedad `length`:
+
+### Ejemplo
+
+```javascript
+const frutas = ["Banana", "Naranja", "Manzana"];
+frutas[frutas.length] = "Limón";  // Agrega "Limón" a frutas
+```
+
+## ¡ADVERTENCIA!
+
+Agregar elementos con índices altos puede crear "huecos" indefinidos en un array:
+
+### Ejemplo
+
+```javascript
+const frutas = ["Banana", "Naranja", "Manzana"];
+frutas[6] = "Limón";  // Crea huecos indefinidos en frutas
+```
+
+## Arrays Asociativos
+
+Muchos lenguajes de programación admiten arrays con índices nombrados.
+
+Los arrays con índices nombrados se llaman arrays asociativos (o hashes).
+
+JavaScript no admite arrays con índices nombrados.
+
+En JavaScript, los arrays siempre utilizan índices numerados.  
+
+### Ejemplo
+
+```javascript
+const persona = [];
+persona[0] = "Juan";
+persona[1] = "Doe";
+persona[2] = 46;
+persona.length;    // Devolverá 3
+persona[0];        // Devolverá "Juan"
+```
+
+## ¡ADVERTENCIA!
+
+Si usas índices nombrados, JavaScript redefinirá el array como un objeto.
+
+Después de eso, algunos métodos y propiedades del array producirán resultados incorrectos.
+
+### Ejemplo:
+
+```javascript
+const persona = [];
+persona["firstName"] = "Juan";
+persona["lastName"] = "Doe";
+persona["age"] = 46;
+persona.length;     // Devolverá 0
+persona[0];         // Devolverá indefinido
+```
+
+## La Diferencia Entre Arrays y Objetos
+
+En JavaScript, los arrays utilizan índices numerados.  
+
+En JavaScript, los objetos utilizan índices nombrados.
+
+Los arrays son una especie especial de objetos, con índices numerados.
+
+### Cuándo usar Arrays. Cuándo usar Objetos.
+
+JavaScript no admite arrays asociativos. 
+
+Debes usar objetos cuando quieras que los nombres de los elementos sean cadenas (texto).
+
+Debes usar arrays cuando quieras que los nombres de los elementos sean números.
+
+## JavaScript new Array()
+
+JavaScript tiene un constructor de array incorporado `new Array()`.
+
+Pero puedes usar `[]` de forma segura en su lugar.
+
+Estas dos declaraciones diferentes crean un nuevo array vacío llamado `puntos`:
+
+```javascript
+const puntos = new Array();
+const puntos = [];
+```
+
+Estas dos declaraciones diferentes crean
+
+ un nuevo array llamado `puntos` que contiene tres elementos:
+
+```javascript
+const puntos = new Array(3);  // Crea un array de longitud 3
+const puntos = [1, 2, 3];      // Crea un array que contiene 3 elementos
+```
+
+## Conclusión
+
+Los arrays son estructuras de datos fundamentales en JavaScript que te permiten almacenar y gestionar múltiples valores de manera eficiente. 
+
+Desde acceder y modificar elementos hasta recorrer sus valores y utilizar métodos incorporados, los arrays son una herramienta poderosa para el desarrollo web. Al comprender cómo funcionan y cuándo utilizarlos, puedes mejorar significativamente la calidad y la eficacia de tu código.
+
+---
+
+# Metodos de Array en JavaScript
+
+## Basic Array Methods
+
+### Array length
+
+El **método `length`** es como contar cuántas manzanas hay en una canasta. Devuelve el número de elementos que hay en un arreglo.
+
+```javascript
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+let size = fruits.length; // size es 4
+```
+
+### Array toString()
+
+El **método `toString()`** convierte un arreglo en una cadena de texto, similar a listar todos los ingredientes de una receta separados por comas.
+
+```javascript
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits.toString(); // "Banana,Orange,Apple,Mango"
+```
+
+### Array at()
+
+El **método `at()`** te permite acceder a un elemento en un arreglo, como si estuvieras buscando un libro en una estantería, usando su posición.
+
+```javascript
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+let fruit = fruits.at(2); // fruit es "Apple"
+```
+
+### Array join()
+
+El **método `join()`** une todos los elementos de un arreglo en una cadena, como juntar las piezas de un rompecabezas para formar una imagen.
+
+```javascript
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits.join(" * "); // "Banana * Orange * Apple * Mango"
+```
+
+## Popping and Pushing
+
+Cuando trabajas con arreglos, puedes **sacar (pop)** o **meter (push)** elementos, como en una caja de juguetes.
+
+### JavaScript Array pop()
+
+El **método `pop()`** quita el último elemento de un arreglo.
+
+```javascript
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.pop(); // El arreglo ahora es ["Banana", "Orange", "Apple"]
+```
+
+### JavaScript Array push()
+
+El **método `push()`** agrega un nuevo elemento al final de un arreglo.
+
+```javascript
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.push("Kiwi"); // El arreglo ahora es ["Banana", "Orange", "Apple", "Mango", "Kiwi"]
+```
+
+## Shifting Elements
+
+**Shifting** es como **popping**, pero quita el primer elemento.
+
+### JavaScript Array shift()
+
+El **método `shift()`** quita el primer elemento de un arreglo y mueve todos los demás elementos hacia abajo.
+
+```javascript
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.shift(); // El arreglo ahora es ["Orange", "Apple", "Mango"]
+```
+
+### JavaScript Array unshift()
+
+El **método `unshift()`** agrega un nuevo elemento al principio del arreglo, como si estuvieras agregando una nueva caja a la parte superior de una torre de cajas.
+
+```javascript
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.unshift("Lemon"); // El arreglo ahora es ["Lemon", "Banana", "Orange", "Apple", "Mango"]
+```
+
+## Changing Elements
+
+Acceder a los elementos de un arreglo es como abrir una caja. Cada elemento tiene un número de índice, comenzando desde cero.
+
+```javascript
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits[0] = "Kiwi"; // El arreglo ahora es ["Kiwi", "Orange", "Apple", "Mango"]
+```
+
+## JavaScript Array delete()
+
+El **método `delete()`** elimina un elemento, pero deja un "hueco" en el arreglo. Es como sacar una manzana de una canasta y dejar el espacio vacío.
+
+```javascript
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+delete fruits[0]; // El arreglo ahora es [undefined, "Orange", "Apple", "Mango"]
+```
+
+## Merging Arrays (Concatenating)
+
+**Concatenar** arreglos es como juntar dos listas de compras en una sola.
+
+### JavaScript Array concat()
+
+El **método `concat()`** combina dos o más arreglos.
+
+```javascript
+const myGirls = ["Cecilie", "Lone"];
+const myBoys = ["Emil", "Tobias", "Linus"];
+const myChildren = myGirls.concat(myBoys); // ["Cecilie", "Lone", "Emil", "Tobias", "Linus"]
+```
+
+## Array copyWithin()
+
+El **método `copyWithin()`** copia elementos de un arreglo a otra posición dentro del mismo arreglo.
+
+```javascript
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.copyWithin(2, 0); // El arreglo ahora es ["Banana", "Orange", "Banana", "Orange"]
+```
+
+## Flattening an Array
+
+**Flattening** un arreglo significa convertir un arreglo multidimensional en uno unidimensional.
+
+### JavaScript Array flat()
+
+El **método `flat()`** aplana un arreglo a una profundidad específica.
+
+```javascript
+const myArr = [[1,2],[3,4],[5,6]];
+const newArr = myArr.flat(); // [1, 2, 3, 4, 5, 6]
+```
+
+## Splicing and Slicing Arrays
+
+Los métodos **splice()** y **slice()** te permiten modificar un arreglo de diferentes maneras.
+
+### JavaScript Array splice()
+
+El **método `splice()`** puede agregar y eliminar elementos al mismo tiempo.
+
+```javascript
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.splice(2, 0, "Lemon", "Kiwi"); // ["Banana", "Orange", "Lemon", "Kiwi", "Apple", "Mango"]
+```
+
+### JavaScript Array slice()
+
+El **método `slice()`** extrae una sección de un arreglo y crea un nuevo arreglo.
+
+```javascript
+const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+const citrus = fruits.slice(1, 3); // ["Orange", "Lemon"]
+```
+
+---
+
+Este documento proporciona una visión general de los métodos básicos de arreglos en JavaScript, ilustrando conceptos técnicos a través de analogías cotidianas. Con el tiempo, comprender estos métodos te ayudará a construir aplicaciones más complejas y efectivas.
+
+### Notas
+- Puedes personalizar aún más el contenido y las analogías para que se ajusten mejor a tu estilo.
+- Asegúrate de probar el código y los ejemplos antes de publicarlos para garantizar su funcionamiento.
+- Considera agregar secciones adicionales sobre métodos de búsqueda, ordenación e iteración según lo mencionado en la sección "See Also".
+
+---
+
+# Búsqueda en Arrays de JavaScript
+
+En esta sección, exploraremos varios métodos para buscar en arrays en JavaScript. Piensa en un array como una fila de personas esperando para entrar a un concierto, y queremos encontrar individuos específicos (o valores) en esa fila. Cada persona tiene una posición, al igual que cada valor en el array tiene un índice.
+
+## Métodos de Búsqueda y Encuentro de Arrays
+
+### Array `indexOf()`
+
+El método `indexOf()` es como preguntar por la posición de un amigo en la fila. Si tu amigo "Apple" está en la segunda posición, obtendrás `1` (recuerda, comenzamos a contar desde 0).
+
+**Ejemplo:**
+
+```javascript
+const frutas = ["Apple", "Orange", "Apple", "Mango"];
+let posicion = frutas.indexOf("Apple") + 1; // devuelve 1 (primer ocurrencia)
+```
+
+**Sintaxis:**
+
+```javascript
+array.indexOf(item, start)
+```
+
+- `item`: El ítem que estás buscando.
+- `start`: Opcional. El índice desde el cual comenzar la búsqueda. Los valores negativos comenzarán a contar desde el final.
+
+**Nota:** Si el ítem no se encuentra, devuelve `-1`. Si aparece múltiples veces, solo devuelve la posición de la primera ocurrencia.
+
+---
+
+### Array `lastIndexOf()`
+
+El método `lastIndexOf()` funciona como una búsqueda inversa, buscando la última ocurrencia de un amigo en la fila. Si hay varios amigos "Apple", te dirá la posición del último.
+
+**Ejemplo:**
+
+```javascript
+const frutas = ["Apple", "Orange", "Apple", "Mango"];
+let posicion = frutas.lastIndexOf("Apple") + 1; // devuelve 3 (última ocurrencia)
+```
+
+**Sintaxis:**
+
+```javascript
+array.lastIndexOf(item, start)
+```
+
+- `item`: El ítem que se busca.
+- `start`: Opcional. El índice desde el cual comenzar la búsqueda. Los valores negativos comenzarán a contar desde el final.
+
+---
+
+### Array `includes()`
+
+Introducido en ECMAScript 2016, `includes()` comprueba si un amigo está presente en la fila sin dar su posición.
+
+**Ejemplo:**
+
+```javascript
+const frutas = ["Banana", "Orange", "Apple", "Mango"];
+console.log(frutas.includes("Mango")); // true
+```
+
+**Sintaxis:**
+
+```javascript
+array.includes(search-item)
+```
+
+**Nota:** Este método también puede comprobar valores `NaN`, a diferencia de `indexOf()`.
+
+**Soporte en Navegadores:** Este método es compatible con todos los navegadores modernos, pero no con Internet Explorer.
+
+---
+
+### Método `find()` de JavaScript Array
+
+El método `find()` es como buscar al primer amigo en la fila que sea más alto que 18. Devuelve el valor de la primera persona que satisface la condición.
+
+**Ejemplo:**
+
+```javascript
+const numeros = [4, 9, 16, 25, 29];
+let primero = numeros.find(valor => valor > 18); // devuelve 25
+```
+
+**Soporte en Navegadores:** Esta es una característica de ES6 y es compatible con todos los navegadores modernos desde junio de 2017.
+
+---
+
+### Método `findIndex()` de JavaScript Array
+
+Similar a `find()`, el método `findIndex()` devuelve la posición (índice) de la primera persona en la fila que satisface la condición.
+
+**Ejemplo:**
+
+```javascript
+const numeros = [4, 9, 16, 25, 29];
+let primerIndice = numeros.findIndex(valor => valor > 18); // devuelve 3
+```
+
+**Soporte en Navegadores:** Este método también es una característica de ES6 y es compatible con todos los navegadores modernos.
+
+---
+
+### Método `findLast()` de JavaScript Array
+
+Introducido en ES2023, `findLast()` comienza desde el final de la fila y devuelve el valor de la primera persona que satisface la condición.
+
+**Ejemplo:**
+
+```javascript
+const temp = [27, 28, 30, 40, 42, 35, 30];
+let alto = temp.findLast(x => x > 40); // devuelve 42
+```
+
+**Soporte en Navegadores:** Compatible en navegadores modernos desde julio de 2023.
+
+---
+
+### Método `findLastIndex()` de JavaScript Array
+
+El método `findLastIndex()` encuentra el índice de la última persona que satisface una condición.
+
+**Ejemplo:**
+
+```javascript
+const temp = [27, 28, 30, 40, 42, 35, 30];
+let ultimoIndice = temp.findLastIndex(x => x > 40); // devuelve 4
+```
+
+**Soporte en Navegadores:** Compatible en navegadores modernos desde julio de 2023.
+
+---
+
+# JavaScript Sorting Arrays
+
+En este artículo, exploraremos cómo ordenar arreglos en JavaScript y aprenderemos sobre métodos importantes como `sort()`, `reverse()`, `toSorted()`, y más, utilizando analogías para entender mejor cada concepto.
+
+## Métodos de Ordenación de Arreglos
+
+### Orden Alfabético
+
+Imagina que tienes un grupo de amigos y decides organizarlos en orden alfabético por sus nombres. Así es como funciona el método `sort()`. Ordena los elementos de un arreglo como si estuvieras organizando nombres en una lista.
+
+#### Ejemplo
+```javascript
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.sort();
+console.log(fruits); // ["Apple", "Banana", "Mango", "Orange"]
+```
+
+### Reversar un Arreglo
+
+Si al final de la fiesta decides hacer una broma y poner a todos los amigos en orden inverso, usarías el método `reverse()`. Este método invierte el orden de los elementos en un arreglo.
+
+#### Ejemplo
+```javascript
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.reverse();
+console.log(fruits); // ["Mango", "Apple", "Orange", "Banana"]
+```
+
+Al combinar `sort()` y `reverse()`, puedes ordenar un arreglo en orden descendente, como poner a tus amigos en orden inverso después de haberlos organizado.
+
+#### Ejemplo
+```javascript
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.sort().reverse();
+console.log(fruits); // ["Orange", "Mango", "Banana", "Apple"]
+```
+
+## Método `toSorted()`
+
+Imagina que quieres ordenar la lista de amigos, pero no quieres perder el orden original. El método `toSorted()` es como hacer una copia de la lista y ordenarla, dejando la original intacta.
+
+#### Ejemplo
+```javascript
+const months = ["Jan", "Feb", "Mar", "Apr"];
+const sorted = months.toSorted();
+console.log(sorted); // ["Apr", "Feb", "Jan", "Mar"]
+console.log(months); // ["Jan", "Feb", "Mar", "Apr"]
+```
+
+## Método `toReversed()`
+
+Al igual que `toSorted()`, el método `toReversed()` te permite invertir un arreglo sin alterar el original.
+
+#### Ejemplo
+```javascript
+const months = ["Jan", "Feb", "Mar", "Apr"];
+const reversed = months.toReversed();
+console.log(reversed); // ["Apr", "Mar", "Feb", "Jan"]
+console.log(months); // ["Jan", "Feb", "Mar", "Apr"]
+```
+
+## Ordenación Numérica
+
+Por defecto, `sort()` ordena los elementos como si fueran cadenas. Si intentas ordenar números, puede que obtengas resultados inesperados. Es como si quisieras organizar tus amigos por edad, pero los ordenas como si fueran nombres, lo que puede causar confusión.
+
+### Ejemplo
+```javascript
+const points = [40, 100, 1, 5, 25, 10];
+points.sort();
+console.log(points); // [1, 10, 100, 25, 40]
+```
+
+Para solucionar esto, puedes proporcionar una función de comparación que te ayude a ordenar los números correctamente.
+
+### Ejemplo
+```javascript
+points.sort(function(a, b) { return a - b; });
+console.log(points); // [1, 5, 10, 25, 40, 100]
+```
+
+### La Función de Comparación
+
+La función de comparación define el orden de clasificación. Si devuelve un valor negativo, `a` se coloca antes que `b`. Si devuelve un valor positivo, `b` se coloca antes que `a`. Si devuelve 0, el orden se mantiene.
+
+## Ordenación Aleatoria de un Arreglo
+
+Si deseas mezclar los números, puedes hacerlo usando `sort()` con un truco, aunque no será muy preciso.
+
+### Ejemplo
+```javascript
+const points = [40, 100, 1, 5, 25, 10];
+points.sort(function() { return 0.5 - Math.random(); });
+console.log(points); // Ejemplo: [25, 1, 100, 5, 10, 40]
+```
+
+### El Método Fisher-Yates
+
+Para mezclar un arreglo de manera más efectiva, puedes usar el método Fisher-Yates, que es un método más confiable.
+
+### Ejemplo
+```javascript
+const points = [40, 100, 1, 5, 25, 10];
+for (let i = points.length - 1; i > 0; i--) {
+  let j = Math.floor(Math.random() * (i + 1));
+  [points[i], points[j]] = [points[j], points[i]];
+}
+console.log(points); // Ejemplo: [1, 40, 25, 10, 100, 5]
+```
+
+## Encontrar el Valor Más Bajo (o Más Alto) de un Arreglo
+
+Para encontrar el valor más bajo o más alto en un arreglo, puedes utilizar varios métodos, como ordenar el arreglo y leer el primer o último elemento.
+
+### Ejemplo (Encontrar el Mínimo)
+```javascript
+const points = [40, 100, 1, 5, 25, 10];
+points.sort(function(a, b) { return a - b; });
+// Ahora points[0] contiene el valor más bajo
+console.log(points[0]); // 1
+```
+
+### Usando `Math.min()`
+
+También puedes usar `Math.min()` para encontrar el número más bajo en un arreglo.
+
+### Ejemplo
+```javascript
+function myArrayMin(arr) {
+  return Math.min.apply(null, arr);
+}
+console.log(myArrayMin([1, 2, 3])); // 1
+```
+
+### Usando `Math.max()`
+
+De manera similar, puedes usar `Math.max()` para encontrar el número más alto.
+
+### Ejemplo
+```javascript
+function myArrayMax(arr) {
+  return Math.max.apply(null, arr);
+}
+console.log(myArrayMax([1, 2, 3])); // 3
+```
+
+## Métodos Caseros para Mínimos y Máximos
+
+Si no tienes acceso a `Math.min()` o `Math.max()`, puedes escribir tus propias funciones que recorran el arreglo y encuentren los valores.
+
+### Ejemplo (Encontrar Mínimo)
+```javascript
+function myArrayMin(arr) {
+  let min = Infinity;
+  for (let value of arr) {
+    if (value < min) {
+      min = value;
+    }
+  }
+  return min;
+}
+```
+
+### Ejemplo (Encontrar Máximo)
+```javascript
+function myArrayMax(arr) {
+  let max = -Infinity;
+  for (let value of arr) {
+    if (value > max) {
+      max = value;
+    }
+  }
+  return max;
+}
+```
+
+## Ordenar Arreglos de Objetos
+
+Cuando trabajas con arreglos de objetos, también puedes usar `sort()`. Es como tener un grupo de amigos, pero cada uno tiene su propia edad.
+
+### Ejemplo
+```javascript
+const cars = [
+  {type: "Volvo", year: 2016},
+  {type: "Saab", year: 2001},
+  {type: "BMW", year: 2010}
+];
+cars.sort(function(a, b) { return a.year - b.year; });
+console.log(cars);
+```
+
+### Comparar Propiedades de Cadenas
+
+Cuando comparas propiedades de cadena, el proceso es un poco más complejo, como decidir el orden de los nombres de tus amigos alfabéticamente.
+
+### Ejemplo
+```javascript
+cars.sort(function(a, b) {
+  let x = a.type.toLowerCase();
+  let y = b.type.toLowerCase();
+  return x < y ? -1 : x > y ? 1 : 0;
+});
+console.log(cars);
+```
+
+## Ordenación Estable de Arreglos
+
+Desde ES2019, la especificación de `Array.sort()` permite algoritmos de ordenación estables. Esto significa que si dos elementos tienen el mismo valor, mantendrán su posición relativa.
+
+### Ejemplo
+```javascript
+const myArr = [
+  {name: "X00", price: 100},
+  {name: "X01", price: 100},
+  {name: "X02", price: 100},
+  {name: "X03", price: 100},
+  {name: "X04", price: 110},
+  {name: "X05", price: 110},
+  {name: "X06", price: 110},
+  {name: "X07", price: 110}
+];
+myArr.sort(function(a, b) { return a.price - b.price; });
+console.log(myArr);
+```
+
+---
+
+# Iteración de Arreglos en JavaScript
+
+## Métodos de Iteración de Arreglos
+
+Los métodos de iteración de arreglos operan sobre cada elemento de un arreglo:
+
+- `Array.forEach`
+- `Array.map()`
+- `Array.flatMap()`
+- `Array.filter()`
+- `Array.reduce()`
+- `Array.reduceRight()`
+
+### Véase también:
+- Métodos Básicos de Arreglos
+- Métodos de Búsqueda de Arreglos
+- Métodos de Ordenamiento de Arreglos
+- `Array.every()`
+- `Array.some()`
+- `Array.from()`
+- `Array.keys()`
+- `Array.entries()`
+- `Array.with()`
+- Expansión de Arreglos `(...)`
+
+---
+
+## JavaScript Array.forEach()
+
+El método `forEach()` llama a una función (una función de callback) una vez para cada elemento del arreglo.
+
+### Ejemplo
+```javascript
+const numeros = [45, 4, 9, 16, 25];
+let txt = "";
+numeros.forEach(miFuncion);
+
+function miFuncion(valor, indice, arreglo) {
+  txt += valor + "<br>";
+}
+```
+
+**Nota:** La función toma 3 argumentos:
+
+- El valor del elemento
+- El índice del elemento
+- El propio arreglo
+
+El ejemplo anterior utiliza solo el parámetro `valor`. Se puede reescribir como:
+
+### Ejemplo
+```javascript
+const numeros = [45, 4, 9, 16, 25];
+let txt = "";
+numeros.forEach(miFuncion);
+
+function miFuncion(valor) {
+  txt += valor + "<br>";
+}
+```
+
+---
+
+## JavaScript Array.map()
+
+El método `map()` crea un nuevo arreglo realizando una función en cada elemento del arreglo.
+
+Este método no ejecuta la función para los elementos del arreglo que no tienen valores y no cambia el arreglo original.
+
+### Ejemplo
+```javascript
+const numeros1 = [45, 4, 9, 16, 25];
+const numeros2 = numeros1.map(miFuncion);
+
+function miFuncion(valor, indice, arreglo) {
+  return valor * 2;
+}
+```
+
+**Nota:** La función toma 3 argumentos:
+
+- El valor del elemento
+- El índice del elemento
+- El propio arreglo
+
+Cuando una función de callback usa solo el parámetro `valor`, los parámetros `índice` y `arreglo` pueden omitirse.
+
+### Ejemplo
+```javascript
+const numeros1 = [45, 4, 9, 16, 25];
+const numeros2 = numeros1.map(miFuncion);
+
+function miFuncion(valor) {
+  return valor * 2;
+}
+```
+
+---
+
+## JavaScript Array.flatMap()
+
+ES2019 agregó el método `flatMap()` a JavaScript.
+
+El método `flatMap()` primero mapea todos los elementos de un arreglo y luego crea un nuevo arreglo aplanando el arreglo.
+
+### Ejemplo
+```javascript
+const miArr = [1, 2, 3, 4, 5, 6];
+const nuevoArr = miArr.flatMap((x) => x * 2);
+```
+
+### Soporte en Navegadores
+El método `flatMap()` es compatible con todos los navegadores modernos desde enero de 2020:
+
+- Chrome 69
+- Edge 79
+- Firefox 62
+- Safari 12
+- Opera 56
+
+---
+
+## JavaScript Array.filter()
+
+El método `filter()` crea un nuevo arreglo con los elementos del arreglo que pasan una prueba.
+
+### Ejemplo
+```javascript
+const numeros = [45, 4, 9, 16, 25];
+const mayoresDe18 = numeros.filter(miFuncion);
+
+function miFuncion(valor) {
+  return valor > 18;
+}
+```
+
+**Nota:** La función toma 3 argumentos:
+
+- El valor del elemento
+- El índice del elemento
+- El propio arreglo
+
+---
+
+## JavaScript Array.reduce()
+
+El método `reduce()` ejecuta una función en cada elemento del arreglo para producir (reducirlo a) un único valor.
+
+El método `reduce()` trabaja de izquierda a derecha en el arreglo. Ver también `reduceRight()`.
+
+### Ejemplo
+```javascript
+const numeros = [45, 4, 9, 16, 25];
+let suma = numeros.reduce(miFuncion);
+
+function miFuncion(total, valor) {
+  return total + valor;
+}
+```
+
+**Nota:** La función toma 4 argumentos:
+
+- El total (el valor inicial / valor previamente devuelto)
+- El valor del elemento
+- El índice del elemento
+- El propio arreglo
+
+---
+
+## JavaScript Array.reduceRight()
+
+El método `reduceRight()` ejecuta una función en cada elemento del arreglo para producir (reducirlo a) un único valor.
+
+`reduceRight()` trabaja de derecha a izquierda en el arreglo. Ver también `reduce()`.
+
+### Ejemplo
+```javascript
+const numeros = [45, 4, 9, 16, 25];
+let suma = numeros.reduceRight(miFuncion);
+
+function miFuncion(total, valor) {
+  return total + valor;
+}
+```
+
+---
+
+## JavaScript Array.every()
+
+El método `every()` verifica si todos los valores del arreglo pasan una prueba.
+
+### Ejemplo
+```javascript
+const numeros = [45, 4, 9, 16, 25];
+let todosMayoresDe18 = numeros.every(miFuncion);
+
+function miFuncion(valor) {
+  return valor > 18;
+}
+```
+
+---
+
+## JavaScript Array.some()
+
+El método `some()` verifica si algunos valores del arreglo pasan una prueba.
+
+### Ejemplo
+```javascript
+const numeros = [45, 4, 9, 16, 25];
+let algunosMayoresDe18 = numeros.some(miFuncion);
+
+function miFuncion(valor) {
+  return valor > 18;
+}
+```
+
+---
+
+## JavaScript Array.from()
+
+El método `Array.from()` devuelve un objeto Array de cualquier objeto con una propiedad de longitud o cualquier objeto iterable.
+
+### Ejemplo
+Crea un Array a partir de una cadena:
+
+```javascript
+Array.from("ABCDEFG");
+```
+
+### Soporte en Navegadores
+`from()` es una característica de ES6 (JavaScript 2015). ES6 es completamente compatible en todos los navegadores modernos desde junio de 2017.
+
+---
+
+## JavaScript Array.keys()
+
+El método `Array.keys()` devuelve un objeto Iterador de Arreglo con las claves de un arreglo.
+
+### Ejemplo
+Crea un objeto Iterador de Arreglo, conteniendo las claves del arreglo:
+
+```javascript
+const frutas = ["Banana", "Naranja", "Manzana", "Mango"];
+const claves = frutas.keys();
+
+for (let x of claves) {
+  console.log(x);
+}
+```
+
+### Soporte en Navegadores
+`keys()` es una característica de ES6 (JavaScript 2015). ES6 es completamente compatible en todos los navegadores modernos desde junio de 2017.
+
+---
+
+## JavaScript Array.entries()
+
+Crea un Iterador de Arreglo y luego itera sobre los pares clave/valor:
+
+### Ejemplo
+```javascript
+const frutas = ["Banana", "Naranja", "Manzana", "Mango"];
+const f = frutas.entries();
+
+for (let x of f) {
+  console.log(x);
+}
+```
+
+El método `entries()` devuelve un objeto Iterador de Arreglo con pares clave/valor:
+
+- [0, "Banana"]
+- [1, "Naranja"]
+- [2, "Manzana"]
+- [3, "Mango"]
+
+### Soporte en Navegadores
+`entries()` es una característica de ES6 (JavaScript 2015). ES6 es completamente compatible en todos los navegadores modernos desde junio de 2017.
+
+---
+
+## JavaScript Array.with() Método
+
+ES2023 agregó el método `Array.with()` como una forma segura de actualizar elementos en un arreglo sin alterar el arreglo original.
+
+### Ejemplo
+```javascript
+const meses = ["Enero", "Febrero", "Marzo", "Abril"];
+const misMeses = meses.with(2, "Marzo");
+```
+
+---
+
+## JavaScript Array Spread (...)
+
+
+El operador `...` expande un iterable (como un arreglo) en más elementos:
+
+### Ejemplo
+```javascript
+const t1 = ["Ene", "Feb", "Mar"];
+const t2 = ["Abr", "May", "Jun"];
+const t3 = ["Jul", "Ago", "Sep"];
+const t4 = ["Oct", "Nov", "Dic"];
+
+const anio = [...t1, ...t2, ...t3, ...t4];
+```
+
+### Soporte en Navegadores
+`...` es una característica de ES6 (JavaScript 2015). ES6 es completamente compatible en todos los navegadores modernos desde junio de 2017.
+
+---
+
+# JavaScript Array Const
+
+## ECMAScript 2015 (ES6)
+
+En 2015, JavaScript introdujo una nueva palabra clave importante: `const`.
+
+Es una práctica común declarar arrays utilizando `const`:
+
+### Ejemplo
+```javascript
+const cars = ["Saab", "Volvo", "BMW"];
+```
+
+## No se Puede Reasignar
+
+Un array declarado con `const` no puede ser reasignado:
+
+### Ejemplo
+```javascript
+const cars = ["Saab", "Volvo", "BMW"];
+cars = ["Toyota", "Volvo", "Audi"]; // ERROR
+```
+
+### Analogía
+Imagina que `const` es como un nombre en una etiqueta de una caja. Si etiquetas la caja con "Coches", no puedes cambiar la etiqueta a "Autos" (reasignar la variable). Sin embargo, puedes seguir cambiando los objetos dentro de la caja (modificar el contenido del array).
+
+## Los Arrays No Son Constantes
+
+La palabra clave `const` puede ser un poco engañosa. No define un array constante; define una referencia constante a un array.
+
+Por eso, aún podemos cambiar los elementos de un array constante.
+
+### Los Elementos Pueden Ser Reasignados
+Puedes cambiar los elementos de un array constante:
+
+### Ejemplo
+```javascript
+// Puedes crear un array constante:
+const cars = ["Saab", "Volvo", "BMW"];
+
+// Puedes cambiar un elemento:
+cars[0] = "Toyota"; // Cambia "Saab" a "Toyota"
+
+// Puedes agregar un elemento:
+cars.push("Audi"); // Agrega "Audi"
+```
+
+### Analogía
+Imagina que la caja etiquetada "Coches" contiene varios modelos de coches. Puedes cambiar "Saab" por "Toyota" o añadir un nuevo coche "Audi" a la colección, pero la caja siempre llevará la etiqueta "Coches".
+
+## Soporte del Navegador
+
+La palabra clave `const` no es compatible con Internet Explorer 10 o versiones anteriores.
+
+La siguiente tabla define las primeras versiones de los navegadores con soporte completo para la palabra clave `const`:
+
+| Navegador  | Versión       |
+|------------|---------------|
+| Chrome     | 49            |
+| IE         | 11 / Edge     |
+| Firefox    | 36            |
+| Safari     | 10            |
+| Opera      | 36            |
+| Fecha      | Mar, 2016     |
+
+## Asignado al Declarar
+
+Las variables de JavaScript declaradas con `const` deben ser asignadas a un valor cuando se declaran. 
+
+Esto significa que un array declarado con `const` debe ser inicializado cuando se declara.
+
+### Ejemplo
+Esto no funcionará:
+```javascript
+const cars; // ERROR
+cars = ["Saab", "Volvo", "BMW"];
+```
+
+Los arrays declarados con `var` pueden ser inicializados en cualquier momento.
+
+### Ejemplo
+Esto está bien:
+```javascript
+cars = ["Saab", "Volvo", "BMW"]; // OK
+var cars;
+```
+
+### Analogía
+Piensa en `const` como una orden en un restaurante. Si pides un plato (declara el array), debes especificar lo que quieres (asignar un valor) al momento de hacer el pedido. Si solo haces el pedido sin especificar, el camarero (el compilador) no sabrá qué traer.
+
+## Alcance del Bloque de Const
+
+Un array declarado con `const` tiene **alcance de bloque**. 
+
+Un array declarado en un bloque no es lo mismo que un array declarado fuera del bloque:
+
+### Ejemplo
+```javascript
+const cars = ["Saab", "Volvo", "BMW"];
+// Aquí cars[0] es "Saab"
+{
+  const cars = ["Toyota", "Volvo", "BMW"];
+  // Aquí cars[0] es "Toyota"
+}
+// Aquí cars[0] es "Saab"
+```
+
+Un array declarado con `var` no tiene alcance de bloque:
+
+### Ejemplo
+```javascript
+var cars = ["Saab", "Volvo", "BMW"];
+// Aquí cars[0] es "Saab"
+{
+  var cars = ["Toyota", "Volvo", "BMW"];
+  // Aquí cars[0] es "Toyota"
+}
+// Aquí cars[0] es "Toyota"
+```
+
+### Analogía
+Imagina que tienes dos habitaciones (bloques) en una casa. En cada habitación, puedes tener una caja etiquetada "Coches", pero cada habitación puede contener diferentes modelos de coches sin interferir entre sí.
+
+## Redeclarar Arrays
+
+Re-declarar un array declarado con `var` se permite en cualquier lugar de un programa:
+
+### Ejemplo
+```javascript
+var cars = ["Volvo", "BMW"];   // Permitido
+var cars = ["Toyota", "BMW"];  // Permitido
+cars = ["Volvo", "Saab"];      // Permitido
+```
+
+Re-declarar o reasignar un array a `const`, en el mismo ámbito o en el mismo bloque, no está permitido:
+
+### Ejemplo
+```javascript
+var cars = ["Volvo", "BMW"];     // Permitido
+const cars = ["Volvo", "BMW"];   // No permitido
+{
+  var cars = ["Volvo", "BMW"];   // Permitido
+  const cars = ["Volvo", "BMW"]; // No permitido
+}
+```
+
+Re-declarar o reasignar un array constante existente, en el mismo ámbito o en el mismo bloque, no está permitido:
+
+### Ejemplo
+```javascript
+const cars = ["Volvo", "BMW"];   // Permitido
+const cars = ["Volvo", "BMW"];   // No permitido
+var cars = ["Volvo", "BMW"];     // No permitido
+cars = ["Volvo", "BMW"];         // No permitido
+
+{
+  const cars = ["Volvo", "BMW"]; // Permitido
+  const cars = ["Volvo", "BMW"]; // No permitido
+  var cars = ["Volvo", "BMW"];   // No permitido
+  cars = ["Volvo", "BMW"];       // No permitido
+}
+```
+
+Re-declarar un array con `const`, en otro ámbito, o en otro bloque, está permitido:
+
+### Ejemplo
+```javascript
+const cars = ["Volvo", "BMW"];   // Permitido
+{
+  const cars = ["Volvo", "BMW"]; // Permitido
+}
+{
+  const cars = ["Volvo", "BMW"]; // Permitido
+}
+```
+
+## Conclusión
+
+La palabra clave `const` es una herramienta poderosa en JavaScript, especialmente para trabajar con arrays. Al comprender cómo funcionan los arrays constantes y sus límites, puedes escribir un código más limpio y efectivo. ¡Sigue explorando y aprendiendo!
+
+---
+
+# Objetos de Fecha en JavaScript
+
+Los objetos de fecha en JavaScript nos permiten trabajar con fechas. Por ejemplo, un objeto de fecha puede lucir así:
+
+```
+Tue Oct 08 2024 15:01:51 GMT-0300 (hora estándar de Argentina)
+```
+
+## Ejemplos
+
+```javascript
+const d = new Date();
+const d = new Date("2022-03-25");
+```
+
+**Nota:** Los objetos de fecha son estáticos. El "reloj" no está "corriendo". La hora del ordenador avanza, pero los objetos de fecha no.
+
+## Salida de Fecha en JavaScript
+
+Por defecto, JavaScript usará la zona horaria del navegador y mostrará una fecha como una cadena de texto completa:
+
+```
+Tue Oct 08 2024 15:01:51 GMT-0300 (hora estándar de Argentina)
+```
+
+Aprenderás mucho más sobre cómo mostrar fechas más adelante en este tutorial.
+
+## Creando Objetos de Fecha
+
+Los objetos de fecha se crean con el constructor `new Date()`. Hay 9 maneras de crear un nuevo objeto de fecha:
+
+1. `new Date()`
+2. `new Date(cadena de fecha)`
+3. `new Date(año, mes)`
+4. `new Date(año, mes, día)`
+5. `new Date(año, mes, día, horas)`
+6. `new Date(año, mes, día, horas, minutos)`
+7. `new Date(año, mes, día, horas, minutos, segundos)`
+8. `new Date(año, mes, día, horas, minutos, segundos, milisegundos)`
+9. `new Date(milisegundos)`
+
+### `new Date()`
+
+`new Date()` crea un objeto de fecha con la fecha y hora actuales:
+
+```javascript
+const d = new Date();
+```
+
+### `new Date(cadena de fecha)`
+
+`new Date(cadena de fecha)` crea un objeto de fecha a partir de una cadena de fecha:
+
+```javascript
+const d = new Date("13 de octubre de 2014 11:13:00");
+const d = new Date("2022-03-25");
+```
+
+Los formatos de cadena de fecha se describen en el siguiente capítulo.
+
+### `new Date(año, mes, ...)`
+
+`new Date(año, mes, ...)` crea un objeto de fecha con una fecha y hora especificadas. Se especifican 7 números que representan año, mes, día, hora, minuto, segundo y milisegundo (en ese orden):
+
+```javascript
+const d = new Date(2018, 11, 24, 10, 33, 30, 0);
+```
+
+**Nota:** JavaScript cuenta los meses de 0 a 11:
+
+- Enero = 0
+- Diciembre = 11
+
+Especificar un mes mayor a 11 no resultará en un error, sino que sumará el desbordamiento al año siguiente:
+
+Especificar:
+
+```javascript
+const d = new Date(2018, 15, 24, 10, 33, 30);
+```
+
+Es lo mismo que:
+
+```javascript
+const d = new Date(2019, 3, 24, 10, 33, 30);
+```
+
+Especificar un día mayor al máximo no resultará en un error, sino que sumará el desbordamiento al mes siguiente:
+
+Especificar:
+
+```javascript
+const d = new Date(2018, 5, 35, 10, 33, 30);
+```
+
+Es lo mismo que:
+
+```javascript
+const d = new Date(2018, 6, 5, 10, 33, 30);
+```
+
+### Usando 6, 4, 3 o 2 Números
+
+- 6 números especifican año, mes, día, hora, minuto y segundo:
+
+```javascript
+const d = new Date(2018, 11, 24, 10, 33, 30);
+```
+
+- 5 números especifican año, mes, día, hora y minuto:
+
+```javascript
+const d = new Date(2018, 11, 24, 10, 33);
+```
+
+- 4 números especifican año, mes y día:
+
+```javascript
+const d = new Date(2018, 11, 24, 10);
+```
+
+- 3 números especifican año, mes y día:
+
+```javascript
+const d = new Date(2018, 11, 24);
+```
+
+- 2 números especifican año y mes:
+
+```javascript
+const d = new Date(2018, 11);
+```
+
+No puedes omitir el mes. Si proporcionas solo un parámetro, se interpretará como milisegundos.
+
+```javascript
+const d = new Date(2018);
+```
+
+### Siglo Anterior
+
+Los años de uno y dos dígitos se interpretarán como 19xx:
+
+```javascript
+const d = new Date(99, 11, 24);
+const d = new Date(9, 11, 24);
+```
+
+## JavaScript Almacena Fechas como Milisegundos
+
+JavaScript almacena fechas como el número de milisegundos desde el 1 de enero de 1970. 
+
+El tiempo cero es 1 de enero de 1970 00:00:00 UTC.
+
+Un día (24 horas) son 86,400,000 milisegundos.
+
+Ahora el tiempo es: `1728410511980` milisegundos desde el 1 de enero de 1970.
+
+### `new Date(milisegundos)`
+
+`new Date(milisegundos)` crea un nuevo objeto de fecha como milisegundos más el tiempo cero:
+
+```javascript
+// 1 de enero de 1970 más 100,000,000,000 milisegundos es:
+const d = new Date(100000000000);
+
+// 1 de enero de 1970 menos 100,000,000,000 milisegundos es:
+const d = new Date(-100000000000);
+
+// 1 de enero de 1970 más 24 horas es:
+const d = new Date(24 * 60 * 60 * 1000);
+// o
+const d = new Date(86400000);
+
+// 1 de enero de 1970 más 0 milisegundos es:
+const d = new Date(0);
+```
+
+## Métodos de Fecha
+
+Cuando se crea un objeto de fecha, varios métodos permiten operar sobre él. Los métodos de fecha permiten obtener y establecer el año, mes, día, hora, minuto, segundo y milisegundo de los objetos de fecha, utilizando la hora local o UTC (universal, o GMT).
+
+Los métodos de fecha y las zonas horarias se cubren en los siguientes capítulos.
+
+## Mostrando Fechas
+
+JavaScript (por defecto) mostrará las fechas usando el método `toString()`. Esta es una representación en cadena de la fecha, que incluye la zona horaria. El formato está especificado en la especificación de ECMAScript:
+
+```javascript
+Tue Oct 08 2024 15:01:51 GMT-0300 (hora estándar de Argentina)
+```
+
+Cuando muestras un objeto de fecha en HTML, se convierte automáticamente a una cadena, utilizando el método `toString()`.
+
+```javascript
+const d = new Date();
+d.toString();
+```
+
+El método `toDateString()` convierte una fecha a un formato más legible:
+
+```javascript
+const d = new Date();
+d.toDateString();
+```
+
+El método `toUTCString()` convierte una fecha a una cadena usando el estándar UTC:
+
+```javascript
+const d = new Date();
+d.toUTCString();
+```
+
+El método `toISOString()` convierte una fecha a una cadena usando el estándar ISO:
+
+```javascript
+const d = new Date();
+d.toISOString();
+```
+
+---
+
+# Formatos de Fecha en JavaScript
+
+Cuando trabajamos con fechas en JavaScript, es fundamental entender cómo se representan y se manejan. Imagina que las fechas son como etiquetas de tiempo en una línea de producción: necesitan ser precisas y fáciles de interpretar. A continuación, exploraremos los diferentes formatos de entrada y salida de fechas en JavaScript.
+
+## Entrada de Fechas en JavaScript
+
+Existen tres tipos generales de formatos de entrada de fecha en JavaScript:
+
+| Tipo         | Ejemplo               |
+|--------------|----------------------|
+| Fecha ISO    | "2015-03-25"         |
+| Fecha Corta  | "03/25/2015"         |
+| Fecha Larga  | "Mar 25 2015" o "25 Mar 2015" |
+
+### Formato ISO
+
+El formato ISO sigue un estándar estricto en JavaScript, como un manual de instrucciones que todos deben seguir. Es el formato recomendado y se presenta como `YYYY-MM-DD` (Año-Mes-Día). Por ejemplo:
+
+```javascript
+const d = new Date("2015-03-25");
+```
+
+### Fechas Cortas
+
+Las fechas cortas suelen tener el formato "MM/DD/YYYY". Este formato puede ser más familiar para quienes están acostumbrados a escribir fechas de esta manera:
+
+```javascript
+const d = new Date("03/25/2015");
+```
+
+### Fechas Largas
+
+Las fechas largas se escriben generalmente con el formato "MMM DD YYYY", donde "MMM" representa el mes en forma abreviada (por ejemplo, "Mar" para marzo):
+
+```javascript
+const d = new Date("Mar 25 2015");
+```
+
+## Salida de Fechas en JavaScript
+
+Independientemente del formato de entrada, JavaScript por defecto mostrará las fechas en un formato de cadena de texto completo:
+
+```
+Tue Oct 08 2024 15:02:46 GMT-0300 (hora estándar de Argentina)
+```
+
+### Fechas ISO en JavaScript
+
+ISO 8601 es el estándar internacional para la representación de fechas y horas. Utilizar este formato asegura que tus fechas sean interpretadas de manera consistente. 
+
+#### Ejemplo (Fecha Completa)
+
+```javascript
+const d = new Date("2015-03-25");
+```
+
+Ten en cuenta que la fecha computada será relativa a tu zona horaria. Dependiendo de tu ubicación, el resultado podría variar entre el 24 y el 25 de marzo.
+
+#### Fechas ISO (Año y Mes)
+
+Puedes escribir fechas ISO sin especificar el día:
+
+```javascript
+const d = new Date("2015-03");
+```
+
+En este caso, el resultado podría variar entre el 28 de febrero y el 1 de marzo, dependiendo de la zona horaria.
+
+#### Fechas ISO (Solo Año)
+
+También es posible escribir fechas ISO solo con el año:
+
+```javascript
+const d = new Date("2015");
+```
+
+Esto puede resultar en fechas que oscilan entre el 31 de diciembre de 2014 y el 1 de enero de 2015.
+
+#### Fechas ISO (Fecha-Hora)
+
+Las fechas ISO pueden incluir horas, minutos y segundos:
+
+```javascript
+const d = new Date("2015-03-25T12:00:00Z");
+```
+
+En este formato, la "T" separa la fecha y la hora, y la "Z" indica que es hora UTC.
+
+Si deseas ajustar el tiempo relativo a UTC, puedes eliminar la "Z" y agregar `+HH:MM` o `-HH:MM`:
+
+```javascript
+const d = new Date("2015-03-25T12:00:00-06:30");
+```
+
+### Zonas Horarias
+
+Al establecer una fecha sin especificar la zona horaria, JavaScript utilizará la zona horaria del navegador. Por ejemplo, si un usuario navega desde los EE. UU. Central, una fecha/hora creada en GMT se convertirá a CDT.
+
+## Fechas Cortas y Advertencias
+
+Las fechas cortas se escriben con la sintaxis "MM/DD/YYYY":
+
+```javascript
+const d = new Date("03/25/2015");
+```
+
+**Advertencias:**
+- En algunos navegadores, los meses o días sin ceros a la izquierda pueden causar errores:
+
+```javascript
+const d = new Date("2015-3-25"); // Puede fallar
+```
+
+- La interpretación de "YYYY/MM/DD" es indefinida, y algunos navegadores pueden adivinar el formato o devolver NaN:
+
+```javascript
+const d = new Date("2015/03/25"); // Indefinido
+```
+
+- La interpretación de "DD-MM-YYYY" también es indefinida:
+
+```javascript
+const d = new Date("25-03-2015"); // Indefinido
+```
+
+## Fechas Largas
+
+Las fechas largas se suelen escribir con la sintaxis "MMM DD YYYY":
+
+```javascript
+const d = new Date("Mar 25 2015");
+```
+
+El mes y el día pueden estar en cualquier orden:
+
+```javascript
+const d = new Date("25 Mar 2015");
+```
+
+El mes puede escribirse completo (January) o abreviado (Jan):
+
+```javascript
+const d = new Date("January 25 2015");
+const d = new Date("Jan 25 2015");
+```
+
+Las comas son ignoradas y los nombres son insensibles a mayúsculas y minúsculas:
+
+```javascript
+const d = new Date("JANUARY, 25, 2015");
+```
+
+## Entrada de Fecha - Analizando Fechas
+
+Si tienes una cadena de fecha válida, puedes usar el método `Date.parse()` para convertirla en milisegundos. Esto es como usar un cronómetro que cuenta desde un momento específico (1 de enero de 1970).
+
+```javascript
+let msec = Date.parse("March 21, 2012");
+```
+
+Luego, puedes utilizar el número de milisegundos para convertirlo en un objeto de fecha:
+
+```javascript
+const d = new Date(msec);
+```
+
+## Conclusión
+
+Entender los formatos de fecha en JavaScript es esencial para trabajar eficazmente con datos temporales. Las analogías y los conceptos técnicos aquí presentados son herramientas valiosas en tu camino para convertirte en un experto frontend.
+
+---
+
+# Métodos para Obtener Fechas en JavaScript
+
+## El Constructor `new Date()`
+En JavaScript, los objetos de fecha se crean utilizando `new Date()`.
+
+Cuando usas `new Date()`, te devuelve un objeto de fecha con la fecha y hora actual.
+
+### Ejemplo:
+```javascript
+const date = new Date();
+```
+
+### **Analogía:**
+Imagina que `new Date()` es como sacar una foto del reloj en tu pared. En el momento en que la tomas, captura la hora exacta en ese instante. Pero, la foto no cambia; no se mueve. Solo refleja ese momento específico.
+
+## Métodos para Obtener Datos de Fechas
+Estos métodos permiten extraer partes específicas de una fecha, como el año, mes, día, etc.
+
+| Método               | Descripción                                                  |
+|----------------------|--------------------------------------------------------------|
+| `getFullYear()`       | Obtiene el año como un número de cuatro dígitos (yyyy).       |
+| `getMonth()`          | Obtiene el mes como un número (0-11).                        |
+| `getDate()`           | Obtiene el día como un número (1-31).                        |
+| `getDay()`            | Obtiene el día de la semana como un número (0-6).            |
+| `getHours()`          | Obtiene la hora (0-23).                                      |
+| `getMinutes()`        | Obtiene los minutos (0-59).                                  |
+| `getSeconds()`        | Obtiene los segundos (0-59).                                 |
+| `getMilliseconds()`   | Obtiene los milisegundos (0-999).                            |
+| `getTime()`           | Obtiene el tiempo en milisegundos desde el 1 de enero de 1970.|
+
+### Nota 1:
+Los métodos `get` devuelven la hora local (de tu zona horaria).
+
+### Nota 2:
+El tiempo en un objeto de fecha es estático. Es decir, una vez que creas la fecha, no cambia automáticamente con el tiempo real. La "foto" del reloj no se mueve sola.
+
+### **Analogía:**
+Es como si hubieras creado una copia de la fecha y hora en un papel. Ese papel no cambia por sí solo, aunque el tiempo real sí siga avanzando.
+
+## El Método `getFullYear()`
+El método `getFullYear()` devuelve el año de una fecha como un número de cuatro dígitos.
+
+### Ejemplo:
+```javascript
+const d = new Date("2021-03-25");
+console.log(d.getFullYear()); // 2021
+```
+
+### Advertencia:
+El método `getYear()` es obsoleto y puede dar resultados incorrectos. Evita usarlo.
+
+## El Método `getMonth()`
+El método `getMonth()` devuelve el mes de una fecha como un número (0-11).
+
+### Nota:
+En JavaScript, el mes de enero es 0, febrero es 1, y así sucesivamente, hasta diciembre, que es 11.
+
+### Ejemplo:
+```javascript
+const d = new Date("2021-03-25");
+console.log(d.getMonth()); // 2 (Marzo, ya que comienza desde 0)
+```
+
+### **Analogía:**
+Imagina que los meses son cajones en una cajonera. El primer cajón (Enero) está etiquetado como 0, el segundo (Febrero) es el 1, y así hasta llegar al último cajón, que es diciembre (11).
+
+Para facilitar, puedes usar una lista de nombres de meses y obtener el nombre en lugar del número:
+
+```javascript
+const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+const d = new Date("2021-03-25");
+let month = months[d.getMonth()];
+console.log(month); // "Marzo"
+```
+
+## El Método `getDate()`
+El método `getDate()` devuelve el día del mes (1-31).
+
+### Ejemplo:
+```javascript
+const d = new Date("2021-03-25");
+console.log(d.getDate()); // 25
+```
+
+## El Método `getHours()`
+El método `getHours()` devuelve la hora de una fecha como un número (0-23).
+
+### Ejemplo:
+```javascript
+const d = new Date("2021-03-25T10:20:30");
+console.log(d.getHours()); // 10
+```
+
+## El Método `getMinutes()`
+El método `getMinutes()` devuelve los minutos de una fecha (0-59).
+
+### Ejemplo:
+```javascript
+const d = new Date("2021-03-25T10:20:30");
+console.log(d.getMinutes()); // 20
+```
+
+## El Método `getSeconds()`
+El método `getSeconds()` devuelve los segundos de una fecha (0-59).
+
+### Ejemplo:
+```javascript
+const d = new Date("2021-03-25T10:20:30");
+console.log(d.getSeconds()); // 30
+```
+
+## El Método `getMilliseconds()`
+El método `getMilliseconds()` devuelve los milisegundos de una fecha (0-999).
+
+### Ejemplo:
+```javascript
+const d = new Date("2021-03-25T10:20:30.123");
+console.log(d.getMilliseconds()); // 123
+```
+
+## El Método `getDay()`
+El método `getDay()` devuelve el día de la semana como un número (0-6), donde 0 es domingo y 6 es sábado.
+
+### Ejemplo:
+```javascript
+const d = new Date("2021-03-25");
+console.log(d.getDay()); // 4 (Jueves)
+```
+
+Para convertir el número en el nombre del día de la semana, puedes usar una lista:
+
+```javascript
+const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+const d = new Date("2021-03-25");
+let day = days[d.getDay()];
+console.log(day); // "Jueves"
+```
+
+## El Método `getTime()`
+El método `getTime()` devuelve el tiempo en milisegundos desde el 1 de enero de 1970.
+
+### Ejemplo:
+```javascript
+const d = new Date("1970-01-01");
+console.log(d.getTime()); // 0
+```
+
+## El Método `Date.now()`
+El método `Date.now()` devuelve la cantidad de milisegundos desde el 1 de enero de 1970 hasta el momento actual.
+
+### Ejemplo:
+```javascript
+let ms = Date.now();
+console.log(ms);
+```
+
+Este método es estático, lo que significa que no puedes usarlo en una fecha específica, solo como `Date.now()`.
+
+## Métodos UTC
+Estos métodos son similares a los métodos `get`, pero devuelven la fecha y hora en tiempo universal (UTC), en lugar de la hora local.
+
+| Método              | Equivalente      | Descripción                        |
+|---------------------|------------------|------------------------------------|
+| `getUTCDate()`       | `getDate()`      | Devuelve el día en UTC             |
+| `getUTCFullYear()`   | `getFullYear()`  | Devuelve el año en UTC             |
+| `getUTCMonth()`      | `getMonth()`     | Devuelve el mes en UTC             |
+| `getUTCDay()`        | `getDay()`       | Devuelve el día de la semana en UTC|
+| `getUTCHours()`      | `getHours()`     | Devuelve la hora en UTC            |
+| `getUTCMinutes()`    | `getMinutes()`   | Devuelve los minutos en UTC        |
+| `getUTCSeconds()`    | `getSeconds()`   | Devuelve los segundos en UTC       |
+| `getUTCMilliseconds()`| `getMilliseconds()` | Devuelve los milisegundos en UTC|
+
+### **Analogía:**
+Imagina que UTC es como la hora estándar que usan en una conferencia internacional, sin importar el lugar donde estés. Todos sincronizan su reloj a esa hora para estar en la misma página.
+
+## El Método `getTimezoneOffset()`
+Este método devuelve la diferencia (en minutos) entre la hora local y la hora UTC.
+
+### Ejemplo:
+```javascript
+let diff = d.getTimezoneOffset();
+```
+
+---
+
+# Métodos para Establecer Fechas en JavaScript
+
+En JavaScript, puedes utilizar varios métodos para establecer partes específicas de una fecha, como el año, mes, día, hora, minutos, segundos, y milisegundos. Estos métodos te permiten modificar una fecha según tus necesidades.
+
+## Métodos para Establecer Fechas
+Los métodos para **"establecer"** (`set`) en JavaScript permiten modificar partes específicas de un objeto de fecha:
+
+| Método               | Descripción                                         |
+|----------------------|-----------------------------------------------------|
+| `setDate()`          | Establece el día del mes (1-31)                     |
+| `setFullYear()`      | Establece el año (opcionalmente el mes y día)       |
+| `setHours()`         | Establece la hora (0-23)                            |
+| `setMilliseconds()`  | Establece los milisegundos (0-999)                  |
+| `setMinutes()`       | Establece los minutos (0-59)                        |
+| `setMonth()`         | Establece el mes (0-11)                             |
+| `setSeconds()`       | Establece los segundos (0-59)                       |
+| `setTime()`          | Establece el tiempo en milisegundos desde el 1 de enero de 1970 |
+
+### **Analogía:**
+Imagina que tienes una agenda de papel y puedes cambiar cualquier detalle de una cita que ya habías anotado: el día, la hora, el mes o incluso el año. Los métodos `set` en JavaScript hacen lo mismo, te permiten modificar partes específicas de una fecha existente.
+
+## El Método `setFullYear()`
+El método `setFullYear()` establece el año de un objeto de fecha.
+
+### Ejemplo:
+```javascript
+const d = new Date();
+d.setFullYear(2020);
+```
+
+Este código cambia el año de la fecha actual a 2020.
+
+### **Analogía:**
+Es como si agarraras una página de tu calendario y, en lugar de tachar toda la fecha, solo cambias el año que está escrito, dejando el resto intacto. En este caso, cambias el año a 2020 pero el mes y el día no se tocan.
+
+Este método también puede establecer opcionalmente el mes y el día:
+
+### Ejemplo:
+```javascript
+const d = new Date();
+d.setFullYear(2020, 11, 3);  // Año 2020, Diciembre 3
+```
+
+### **Analogía Extendida:**
+Ahora no solo cambias el año, sino que también decides mover la fecha a un mes específico (en este caso diciembre, porque los meses empiezan desde 0) y un día específico (el 3). Es como ajustar varios detalles de tu cita en la agenda, no solo el año.
+
+## El Método `setMonth()`
+El método `setMonth()` establece el mes de un objeto de fecha.
+
+### Ejemplo:
+```javascript
+const d = new Date();
+d.setMonth(11);  // Diciembre, porque los meses empiezan desde 0
+```
+
+### **Analogía:**
+Piensa que estás en una hoja de tu calendario y quieres cambiar el mes de tu cita. Cambias el número del mes, como si cambiaras de la página de noviembre a diciembre. Recuerda que en JavaScript, los meses comienzan desde 0, por lo que 0 es enero y 11 es diciembre.
+
+## El Método `setDate()`
+El método `setDate()` establece el día del mes.
+
+### Ejemplo:
+```javascript
+const d = new Date();
+d.setDate(15);  // Establece el día 15 del mes actual
+```
+
+### **Analogía:**
+Imagina que ya tienes una cita en tu calendario, pero decides moverla a otro día del mismo mes. Es como si estuvieras borrando el día original y anotaras el nuevo día, por ejemplo, del 1 al 15.
+
+También puedes usar este método para **agregar días a una fecha**:
+
+### Ejemplo:
+```javascript
+const d = new Date();
+d.setDate(d.getDate() + 50);  // Añade 50 días a la fecha actual
+```
+
+### **Analogía:**
+Es como si en lugar de cambiar una cita a una fecha exacta, decidieras moverla 50 días más adelante, sin importar el mes. Si la fecha se mueve a otro mes o año, JavaScript ajusta eso automáticamente, como si el calendario se deslizara correctamente hasta la nueva fecha.
+
+## El Método `setHours()`
+El método `setHours()` establece las horas de un objeto de fecha.
+
+### Ejemplo:
+```javascript
+const d = new Date();
+d.setHours(22);  // Establece las 10 PM
+```
+
+### **Analogía:**
+Esto es como cambiar la hora de una reunión en tu agenda. Decides moverla de la mañana a la noche y escribes las 10 PM.
+
+## El Método `setMinutes()`
+El método `setMinutes()` establece los minutos.
+
+### Ejemplo:
+```javascript
+const d = new Date();
+d.setMinutes(30);  // Establece los minutos en 30
+```
+
+### **Analogía:**
+Es como si ajustaras los minutos de una cita. Por ejemplo, en lugar de que sea a las 10:00, decides que sea a las 10:30.
+
+## El Método `setSeconds()`
+El método `setSeconds()` establece los segundos de un objeto de fecha.
+
+### Ejemplo:
+```javascript
+const d = new Date();
+d.setSeconds(30);  // Establece los segundos en 30
+```
+
+### **Analogía:**
+Si fueras extremadamente preciso con tu agenda, podrías incluso ajustar los segundos exactos en los que ocurren las cosas. En este caso, decides que algo ocurrirá a los 30 segundos del minuto.
+
+## Comparar Fechas
+Puedes comparar fácilmente fechas en JavaScript para ver cuál es anterior o posterior.
+
+### Ejemplo:
+```javascript
+let text = "";
+const today = new Date();
+const someday = new Date();
+someday.setFullYear(2100, 0, 14);  // Establece la fecha en 14 de enero de 2100
+
+if (someday > today) {
+  text = "Hoy es antes del 14 de enero de 2100.";
+} else {
+  text = "Hoy es después del 14 de enero de 2100.";
+}
+```
+
+Este código compara la fecha de hoy con el 14 de enero de 2100 y te dice si la fecha de hoy es anterior o posterior a esa fecha.
+
+### **Analogía:**
+Imagina que tienes dos citas en tu calendario y quieres saber cuál ocurre primero. Simplemente comparas las dos fechas y decides cuál es anterior. JavaScript te permite hacer exactamente eso, comparando dos objetos de fecha para ver cuál es "más temprano" o "más tarde".
+
+## Nota sobre los Meses en JavaScript
+Recuerda que JavaScript cuenta los meses del 0 al 11: enero es 0 y diciembre es 11. Esto es algo importante a tener en cuenta cuando trabajas con fechas.
+
+### **Analogía:**
+Es como si tuvieras una lista de casilleros donde el primer casillero es el 0, no el 1. Entonces, si estás buscando "enero", en lugar de ir al casillero 1, tienes que buscar en el casillero 0.
+
+---
+
