@@ -1734,13 +1734,13 @@ Piensa en un formulario de dirección como una guía turística para llegar a un
 
 ### Precaución
 
-**Evita Restricciones Innecesarias**: Permite caracteres Unicode en los campos de nombre para que todos puedan ingresar sus datos correctamente. No restrinjas los caracteres solo a los latinos.
+1. **Evita Restricciones Innecesarias**: Permite caracteres Unicode en los campos de nombre para que todos puedan ingresar sus datos correctamente. No restrinjas los caracteres solo a los latinos.
 
 ```html
 <input type="text" id="full-name" name="full-name" pattern="[^\x00-\x7F]+" placeholder="名字">
 ```
 
-**Campo de Código Postal Opcional**: No todas las direcciones tienen un código postal. Usa una etiqueta que indique claramente que el código postal es opcional.
+2. **Campo de Código Postal Opcional**: No todas las direcciones tienen un código postal. Usa una etiqueta que indique claramente que el código postal es opcional.
 
 ```html
 <label for="postal-code">Código postal (opcional):</label>
