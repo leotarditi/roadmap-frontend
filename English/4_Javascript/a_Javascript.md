@@ -6970,3 +6970,3200 @@ It’s like having a row of numbered lockers where the first locker is labeled 0
 
 ---
 
+# JavaScript Math Object
+
+## Understanding the Math Object with a Simple Analogy
+
+Imagine you're a construction worker, and in your toolbox, you have a special tool that helps you do all kinds of mathematical tasks: this tool is the **Math Object** in JavaScript. It's like having a calculator built into your toolbox that you can use at any time without needing to assemble it. This calculator is always there, ready to help you with calculations, constants, and mathematical functions.
+
+### Key Concepts:
+- **Static Tool**: The Math object doesn't need to be created, like how a hammer is ready to use without needing to build it first. Just grab it when you need it!
+- **Mathematical Constants**: Imagine constants as fixed numbers that never change, like the height of a building that’s already built. JavaScript provides 8 such constants in Math.
+
+### Example: 
+```js
+Math.PI; // returns the value of Pi (3.14159...)
+```
+
+## Math Properties (Constants)
+
+The **Math object** gives you access to some important numbers, which you can think of as "pre-measured" tools in your toolbox.
+
+### JavaScript provides 8 mathematical constants:
+- **Math.E**: Euler’s number, the base of natural logarithms (≈ 2.718)
+- **Math.PI**: The value of Pi (≈ 3.14159)
+- **Math.SQRT2**: The square root of 2 (≈ 1.414)
+- **Math.SQRT1_2**: The square root of 1/2 (≈ 0.707)
+- **Math.LN2**: The natural logarithm of 2 (≈ 0.693)
+- **Math.LN10**: The natural logarithm of 10 (≈ 2.302)
+- **Math.LOG2E**: The logarithm of E base 2 (≈ 1.442)
+- **Math.LOG10E**: The logarithm of E base 10 (≈ 0.434)
+
+These constants are like pre-programmed settings on your calculator; you don't need to calculate them yourself.
+
+### Example:
+```js
+console.log(Math.PI);  // Outputs 3.14159...
+```
+
+## Math Methods: Working with Numbers
+
+Think of **Math methods** as the different functions or modes on your calculator that perform tasks like rounding, finding square roots, and more. Let’s explore the common ones with a practical analogy.
+
+### Number to Integer Methods: The Rounding Crew
+
+Imagine you’re building a fence and need to decide how many full planks of wood to cut from a longer piece. You can either round to the nearest full plank, round up, or round down. These are similar to rounding numbers in JavaScript.
+
+1. **Math.round(x)**: Rounds to the nearest integer. It’s like deciding whether to cut the wood slightly shorter or longer based on which is closest to your target.
+   ```js
+   Math.round(4.6); // returns 5
+   Math.round(4.4); // returns 4
+   ```
+
+2. **Math.ceil(x)**: Rounds up to the nearest whole number. Think of this as always cutting the wood a bit longer just to be safe.
+   ```js
+   Math.ceil(4.2);  // returns 5
+   ```
+
+3. **Math.floor(x)**: Rounds down to the nearest whole number. This is like cutting the plank a bit shorter to avoid any excess.
+   ```js
+   Math.floor(4.9);  // returns 4
+   ```
+
+4. **Math.trunc(x)**: Removes the decimal part, leaving just the integer. It’s like cutting off the decimal portion completely without rounding.
+   ```js
+   Math.trunc(4.7);  // returns 4
+   ```
+
+### Math.sign(x): Checking the Sign of a Number
+
+Imagine you're setting up a level to see if something is tilted. Is it leaning to the left (-1), balanced perfectly (0), or tilted to the right (1)? **Math.sign(x)** helps determine whether a number is negative, zero, or positive.
+
+```js
+Math.sign(-4);  // returns -1 (negative)
+Math.sign(0);   // returns 0 (neutral)
+Math.sign(5);   // returns 1 (positive)
+```
+
+### Math.pow(x, y): Raising Numbers to Power
+
+If you want to multiply a number by itself several times, you use **Math.pow(x, y)**. This method is like saying, "I want to stack this block **x** times to make a tower with **y** blocks."
+
+```js
+Math.pow(2, 3); // returns 8 (2 cubed)
+```
+
+### Math.sqrt(x): Finding the Square Root
+
+Taking the square root is like asking, "If I have a square, what would the length of one side be if the total area is **x**?" **Math.sqrt(x)** answers that.
+
+```js
+Math.sqrt(64);  // returns 8
+```
+
+### Math.random(): Rolling the Dice
+
+Whenever you want to generate a random number (like rolling a dice), **Math.random()** returns a number between 0 (inclusive) and 1 (exclusive). Imagine shaking a box of marbles and pulling one out randomly.
+
+```js
+Math.random(); // returns a random number between 0 and 1
+```
+
+## More Useful Math Methods
+
+Here’s a quick overview of other useful methods in the **Math Object**:
+
+- **Math.abs(x)**: Returns the absolute value (always positive).
+   ```js
+   Math.abs(-4.7); // returns 4.7
+   ```
+
+- **Math.min() / Math.max()**: Find the lowest and highest value from a list.
+   ```js
+   Math.min(1, -3, 5); // returns -3
+   Math.max(1, -3, 5); // returns 5
+   ```
+
+- **Math.sin(x) / Math.cos(x)**: Returns the sine or cosine of an angle (in radians).
+   ```js
+   Math.sin(Math.PI / 2); // returns 1 (sine of 90 degrees)
+   ```
+
+- **Math.log(x)**: Returns the natural logarithm of **x**, which tells you how much something has grown over time.
+   ```js
+   Math.log(1);  // returns 0
+   ```
+
+### Summary:
+
+The **Math Object** in JavaScript is like your multi-purpose toolbox for handling numbers. Whether you’re rounding, calculating roots, or finding maximum values, these methods allow you to perform mathematical operations efficiently. And just like a trusty toolbox, you can use these functions anywhere in your code, without needing to create an object first.
+
+---
+
+# JavaScript: Generating Random Numbers
+
+## What is `Math.random()`?
+
+Imagine you have a box filled with numbered balls between 0 and 1. Every time you reach into the box, you pull out a random number. That number will always be greater than or equal to 0 but less than 1 (meaning you will **never get exactly 1**). In JavaScript, this "box" is the **`Math.random()`** function.
+
+### Example:
+
+```javascript
+// Returns a random number between 0 and 1 (excluding 1)
+Math.random();
+```
+
+### Technical Concept:
+- **`Math.random()`** generates a floating-point number (a decimal) in the range [0, 1), meaning from 0 (inclusive) to 1 (exclusive).
+- Each time you call **`Math.random()`**, you get a different value within that range.
+
+## Random Integers
+
+Although **`Math.random()`** gives you a decimal number, we often need **whole numbers** (integers) in programming. For example, if you want to simulate rolling a die, you only need whole numbers between 1 and 6.
+
+To turn that decimal number into an integer, we combine **`Math.random()`** with **`Math.floor()`**.
+
+### Analogy:
+Think of **`Math.floor()`** as a pair of scissors that cuts off the decimal part. If you have the number 4.7, **`Math.floor()`** turns it into 4, removing the decimal without rounding.
+
+### Example: Random integers from 0 to 9
+
+```javascript
+// Returns a random integer between 0 and 9
+Math.floor(Math.random() * 10);
+```
+
+Here, we multiply the random number (which is between 0 and 1) by 10 to shift the range to [0, 10). Then, **`Math.floor()`** removes the decimals, giving us a number between 0 and 9.
+
+### Technical Concept:
+- **`Math.floor()`** rounds the number down to the nearest integer.
+- By multiplying **`Math.random()`** by a number, you extend the range. For example, multiplying by 10 makes the output range from 0 to 9 (since **`Math.floor()`** cuts off the decimals).
+
+## More Examples of Random Integers
+
+- **Random integer between 0 and 10**:
+  ```javascript
+  Math.floor(Math.random() * 11);
+  ```
+  This code generates a number between 0 and 10 (including both).
+
+- **Random integer between 0 and 99**:
+  ```javascript
+  Math.floor(Math.random() * 100);
+  ```
+
+- **Random integer between 1 and 100**:
+  ```javascript
+  Math.floor(Math.random() * 100) + 1;
+  ```
+
+### Explanation:
+In the examples above, we multiply **`Math.random()`** by the desired range. To get numbers starting from 1, we simply add 1 to the result.
+
+### Analogy:
+Imagine a spinning wheel with 100 numbers, but the first position is 0. If you want the first number to be 1, you just shift the numbers forward by adding 1, which is what we do in the last line of code.
+
+## Creating a Custom Random Number Function
+
+Sometimes, you’ll need to generate a random number within a specific range. Instead of repeating the same code every time, it's better to create a **reusable function**.
+
+### Example:
+
+```javascript
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+```
+
+### What does this function do?
+
+- **`min`**: The minimum value you want to get.
+- **`max`**: The maximum value you want to get (not included).
+- **`Math.random()`**: Generates a number between 0 and 1.
+- **Multiplication**: By multiplying by **`(max - min)`**, we expand the range between **`min`** and **`max`**.
+- **Addition**: By adding **`min`**, we shift the range so the lowest possible value is **`min`**.
+
+### Example using the function:
+
+```javascript
+// Returns a number between 5 and 15 (excluding 15)
+getRndInteger(5, 15);
+```
+
+### Function to Include the Maximum Value
+
+If you want both the minimum and maximum values to be included in the range, you can adjust the function:
+
+```javascript
+function getRndIntegerInclusive(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+```
+
+### Technical Explanation:
+
+- Adding **1** to the **`(max - min)`** calculation ensures that the maximum number is included in the result.
+  
+### Example:
+
+```javascript
+// Returns a number between 1 and 100, including both limits
+getRndIntegerInclusive(1, 100);
+```
+
+## Summary
+
+- **`Math.random()`** is a powerful tool for generating random numbers between 0 and 1.
+- Combining **`Math.random()`** with **`Math.floor()`** allows you to generate integers in any range you need.
+- Creating reusable functions to generate random numbers within specific ranges is a good practice and saves you time when writing code.
+
+---
+
+# Booleans in JavaScript
+
+## What is a Boolean in JavaScript?
+
+Imagine you have a light switch on the wall. It only has two possible positions: ON or OFF. In programming, we often need a data type that can only have two possible values, like this switch. In JavaScript, this is called a **Boolean**, and the two values it can take are `true` (on) or `false` (off).
+
+### Boolean Values
+In programming, there are many situations where we only want to know if something is `yes` or `no`, `true` or `false`, like:
+- Is the switch on?
+- Is the person older than 18?
+- Is the value greater than 10?
+
+In these cases, we use a **Boolean**, which can only be `true` or `false`.
+
+### Example:
+
+```javascript
+// Returns true, since 10 is greater than 9
+Boolean(10 > 9);
+```
+
+Even simpler, you don't even need the `Boolean()` function. You can directly perform a comparison:
+
+```javascript
+// Returns true
+10 > 9;
+```
+
+## Comparisons and Conditions
+
+Boolean values are the foundation of comparisons and conditions in JavaScript. Here are some common examples:
+
+| Operator  | Description       | Example                |
+|-----------|-------------------|------------------------|
+| ==        | Equal to           | `if (day == "Monday")` |
+| >         | Greater than       | `if (salary > 9000)`   |
+| <         | Less than          | `if (age < 18)`        |
+
+### Technical concept:
+When you perform comparisons like `10 > 9`, JavaScript returns a Boolean value (`true` or `false`), which you can then use in conditional statements like `if`.
+
+## Everything that has a "value" is true
+
+### Analogy:
+Think of any number or word as physical objects. As long as you have something in your hands, no matter what it is, that counts as "true" (you have something). In JavaScript, anything that is not empty or `0` is considered **true**.
+
+### Examples of values that are true (`true`):
+
+```javascript
+Boolean(100);      // true
+Boolean(3.14);     // true
+Boolean(-15);      // true
+Boolean("Hello");  // true
+Boolean("false");  // true
+Boolean(7 + 1);    // true
+```
+
+- Any number that isn't 0 is `true`, even negative numbers.
+- Any non-empty string, like `"Hello"` or even `"false"`, is also `true`.
+
+## Everything without a "value" is false
+
+### Analogy:
+If your hands are empty, that means "false." In JavaScript, certain values are considered "empty" or **false**.
+
+### Examples of values that are false (`false`):
+
+```javascript
+Boolean(0);          // false
+Boolean(-0);         // false
+Boolean("");         // false
+Boolean(undefined);  // false
+Boolean(null);       // false
+Boolean(false);      // false
+Boolean(NaN);        // false
+```
+
+- The number `0`, the empty string `""`, `undefined`, `null`, `false`, and `NaN` (Not a Number) are all considered **false**.
+
+### Technical concept:
+Any value that is considered "empty" or without value will be evaluated as `false`. This is useful in conditions where you only care if there is something or not, like checking if a user has entered data into a form.
+
+## Booleans in JavaScript as Objects
+
+Normally, Boolean values in JavaScript are **primitive**. This means they are simple values like `true` or `false` created directly, without much complexity.
+
+### Example:
+
+```javascript
+let x = false;  // Primitive Boolean
+```
+
+However, you can also create booleans as **objects** using the `new` keyword:
+
+```javascript
+let y = new Boolean(false);  // Boolean as an object
+```
+
+### What’s the difference?
+
+- **`typeof x`** will return `"boolean"` because `x` is a primitive Boolean value.
+- **`typeof y`** will return `"object"` because `y` is an object created with `new Boolean()`.
+
+### Warning: Don’t use booleans as objects!
+
+- Creating booleans as objects (with `new`) complicates the code and slows it down.
+- Additionally, it can cause unexpected results.
+
+### Example of unexpected behavior:
+
+When comparing a primitive Boolean with a Boolean object using the `==` operator, they appear to be equal:
+
+```javascript
+let x = false;
+let y = new Boolean(false);
+x == y;  // true
+```
+
+But when using the `===` operator, which compares both the value and the type, they are not equal:
+
+```javascript
+x === y;  // false
+```
+
+### Technical concept:
+The `==` operator only compares the value, but the `===` operator compares both the value and the data type. Since `x` is a primitive Boolean and `y` is an object, `x === y` returns `false`.
+
+### Summary:
+
+- In JavaScript, booleans represent two values: `true` or `false`.
+- Values that "have something" are considered `true` (like numbers or non-empty strings).
+- Values that are "empty" are considered `false` (like `0`, `""`, `undefined`, `null`, etc.).
+- Avoid using booleans as objects with `new Boolean()` because it complicates the code and can lead to unexpected behavior.
+
+---
+
+# JavaScript Comparison and Logical Operators
+
+Comparison and logical operators are used to evaluate conditions and determine if they are true or false.
+
+## Comparison Operators
+
+Comparison operators are used in logical statements to determine the equality or difference between variables or values.
+
+### Comparison Operators Table
+
+Given that `x = 5`, the following table explains the comparison operators:
+
+| Operator | Description                           | Comparing          | Returns | Try it |
+|----------|---------------------------------------|---------------------|---------|--------|
+| `==`     | equal to                               | `x == 8`            | false   |        |
+|          |                                       | `x == 5`            | true    |        |
+|          |                                       | `x == "5"`          | true    |        |
+| `===`    | equal value and equal type            | `x === 5`           | true    |        |
+|          |                                       | `x === "5"`         | false   |        |
+| `!=`     | not equal                              | `x != 8`            | true    |        |
+| `!==`    | not equal value or not equal type     | `x !== 5`           | false   |        |
+|          |                                       | `x !== "5"`         | true    |        |
+|          |                                       | `x !== 8`           | true    |        |
+| `>`      | greater than                           | `x > 8`             | false   |        |
+| `<`      | less than                              | `x < 8`             | true    |        |
+| `>=`     | greater than or equal to               | `x >= 8`            | false   |        |
+| `<=`     | less than or equal to                 | `x <= 8`            | true    |        |
+
+### How It Can Be Used
+
+Comparison operators can be used in conditional statements to compare values and take actions depending on the result. For example:
+
+```javascript
+if (age < 18) text = "Too young to buy alcohol";
+```
+
+You will learn more about the use of conditional statements in the next chapter of this tutorial.
+
+## Logical Operators
+
+Logical operators are used to determine the logic between variables or values.
+
+### Logical Operators Table
+
+Given that `x = 6` and `y = 3`, the following table explains the logical operators:
+
+| Operator | Description | Example                             | Try it |
+|----------|-------------|-------------------------------------|--------|
+| `&&`     | and         | `(x < 10 && y > 1)` is true        |        |
+| `||`     | or          | `(x == 5 || y == 5)` is false      |        |
+| `!`      | not         | `!(x == y)` is true                 |        |
+
+### Analogy:
+Imagine you have a box with two compartments. If you want both compartments to contain something for the box to be considered "full," you would use the `&&` (and) operator. If only one of the compartments needs to contain something, you would use `||` (or). And if you want to check that a compartment is empty, you would use `!` (not).
+
+## Conditional (Ternary) Operator
+
+JavaScript also contains a conditional operator that assigns a value to a variable based on some condition.
+
+### Syntax
+
+```javascript
+variableName = (condition) ? value1 : value2;
+```
+
+### Example
+
+```javascript
+let voteable = (age < 18) ? "Too young" : "Old enough";
+```
+
+If the variable `age` is a value below 18, the value of the variable `voteable` will be "Too young"; otherwise, the value of `voteable` will be "Old enough".
+
+## Comparing Different Types
+
+Comparing data of different types may yield unexpected results.
+
+When comparing a string with a number, JavaScript will convert the string to a number when making the comparison. An empty string converts to 0. A non-numeric string converts to NaN (Not a Number), which is always false.
+
+### Comparison Examples
+
+| Case                | Value | Try     |
+|---------------------|-------|---------|
+| `2 < 12`            | true  |         |
+| `2 < "12"`          | true  |         |
+| `2 < "John"`        | false |         |
+| `2 > "John"`        | false |         |
+| `2 == "John"`       | false |         |
+| `"2" < "12"`        | false |         |
+| `"2" > "12"`        | true  |         |
+| `"2" == "12"`       | false |         |
+
+When comparing two strings, "2" will be greater than "12" because (alphabetically) 1 is less than 2.
+
+To secure a proper result, variables should be converted to the proper type before comparison:
+
+```javascript
+age = Number(age);
+if (isNaN(age)) {
+  voteable = "Input is not a number";
+} else {
+  voteable = (age < 18) ? "Too young" : "Old enough";
+}
+```
+
+## The Nullish Coalescing Operator (??)
+
+The `??` operator returns the first argument if it is not nullish (null or undefined). Otherwise, it returns the second argument.
+
+### Example
+
+```javascript
+let name = null;
+let text = "missing";
+let result = name ?? text;
+```
+
+The nullish coalescing operator is supported in all browsers since March 2020.
+
+| Browser   | Version  |
+|-----------|----------|
+| Chrome    | 80       |
+| Edge      | 80       |
+| Firefox    | 72      |
+| Safari    | 13.1     |
+| Opera     | 67       |
+
+## The Optional Chaining Operator (?.)
+
+The `?.` operator returns undefined if an object is undefined or null (instead of throwing an error).
+
+### Example
+
+```javascript
+// Create an object:
+const car = {type: "Fiat", model: "500", color: "white"};
+// Ask for car name:
+document.getElementById("demo").innerHTML = car?.name;
+```
+
+The optional chaining operator is supported in all browsers since March 2020.
+
+| Browser   | Version  |
+|-----------|----------|
+| Chrome    | 80       |
+| Edge      | 80       |
+| Firefox    | 72       |
+| Safari    | 13.1     |
+| Opera     | 67       |
+
+---
+
+# JavaScript: if, else, and else if
+
+Conditional statements are used to perform different actions based on different conditions.
+
+## Conditional Statements
+
+Very often, when you write code, you want to perform different actions based on different decisions.
+
+You can use conditional statements in your code to do this.
+
+In JavaScript, we have the following conditional statements:
+
+- **if**: Specifies a block of code that will be executed if a specified condition is true.
+- **else**: Specifies a block of code that will be executed if the same condition is false.
+- **else if**: Specifies a new condition to test if the first condition is false.
+- **switch**: Specifies many alternative blocks of code to be executed. The `switch` statement will be described in the next chapter.
+
+## The if Statement
+
+Use the `if` statement to specify a block of JavaScript code that will be executed if a condition is true.
+
+### Syntax
+
+```javascript
+if (condition) {
+  //  block of code to be executed if the condition is true
+}
+```
+
+**Note**: `if` must be written in lowercase. Uppercase letters (If or IF) will generate a JavaScript error.
+
+### Example
+
+Make a "Good day" greeting if the hour is less than 18:00:
+
+```javascript
+if (hour < 18) {
+  greeting = "Good day";
+}
+```
+
+The result of `greeting` will be:
+
+```
+Good day
+```
+
+### Analogy
+
+Imagine you are a chef in a restaurant. You have to decide what dish to prepare based on the time of day. If it’s before 18:00, you decide to prepare lunch (i.e., "Good day"). But if that time has passed, you might consider serving dinner.
+
+---
+
+## The else Statement
+
+Use the `else` statement to specify a block of code that will be executed if the condition is false.
+
+### Syntax
+
+```javascript
+if (condition) {
+  //  block of code to be executed if the condition is true
+} else {
+  //  block of code to be executed if the condition is false
+}
+```
+
+### Example
+
+If the hour is less than 18, create a "Good day" greeting; otherwise, create a "Good evening":
+
+```javascript
+if (hour < 18) {
+  greeting = "Good day";
+} else {
+  greeting = "Good evening";
+}
+```
+
+The result of `greeting` will be:
+
+```
+Good day
+```
+
+### Analogy
+
+Continuing with the chef analogy: if you decide it’s lunchtime, you’ll serve a light dish. If it’s late and dinner time has arrived, you choose to serve a heavier, more elaborate dish, meaning "Good evening".
+
+---
+
+## The else if Statement
+
+Use the `else if` statement to specify a new condition if the first condition is false.
+
+### Syntax
+
+```javascript
+if (condition1) {
+  //  block of code to be executed if condition1 is true
+} else if (condition2) {
+  //  block of code to be executed if condition1 is false and condition2 is true
+} else {
+  //  block of code to be executed if condition1 is false and condition2 is false
+}
+```
+
+### Example
+
+If the hour is less than 10:00, create a "Good morning" greeting; if not, but the hour is less than 20:00, create a "Good day" greeting; otherwise, create a "Good evening":
+
+```javascript
+if (hour < 10) {
+  greeting = "Good morning";
+} else if (hour < 20) {
+  greeting = "Good day";
+} else {
+  greeting = "Good evening";
+}
+```
+
+The result of `greeting` will be:
+
+```
+Good day
+```
+
+### Analogy
+
+Imagine you are a receptionist at a hotel. If a guest arrives very early (before 10:00), you welcome them with a warm "Good morning!". If they arrive during the day (before 20:00), you also greet them with "Good day!". But if they arrive late at night, you say "Good evening!" because that is the appropriate time for it.
+
+---
+
+## More Examples
+
+### Random Link Example
+
+This example will write a link to either W3Schools or the World Wildlife Foundation (WWF). By using a random number, there is a 50% chance for each of the links.
+
+```javascript
+let randomNumber = Math.random();
+if (randomNumber < 0.5) {
+  document.write('<a href="https://www.w3schools.com">Visit W3Schools</a>');
+} else {
+  document.write('<a href="https://www.worldwildlife.org">Visit WWF</a>');
+}
+```
+
+### Analogy
+
+Think of it like a game of chance, like rolling a die. If you roll a number less than 4, you win a prize. If you roll a number 4 or higher, you win nothing. Similarly, this code randomly chooses between two links.
+
+---
+
+# JavaScript: Switch Statement
+
+The `switch` statement is used to perform different actions based on different conditions.
+
+## The Switch Statement in JavaScript
+
+Use the `switch` statement to select one of many code blocks to be executed.
+
+### Syntax
+
+```javascript
+switch (expression) {
+  case x:
+    // code block
+    break;
+  case y:
+    // code block
+    break;
+  default:
+    // code block
+}
+```
+
+### How It Works
+
+1. The `switch` expression is evaluated once.
+2. The value of the expression is compared with the values of each case.
+3. If there is a match, the associated block of code is executed.
+4. If there is no match, the default code block is executed.
+
+### Example
+
+The `getDay()` method returns the weekday as a number between 0 and 6 (Sunday=0, Monday=1, Tuesday=2, etc.).
+
+This example uses the weekday number to calculate the name of the day:
+
+```javascript
+switch (new Date().getDay()) {
+  case 0:
+    day = "Sunday";
+    break;
+  case 1:
+    day = "Monday";
+    break;
+  case 2:
+    day = "Tuesday";
+    break;
+  case 3:
+    day = "Wednesday";
+    break;
+  case 4:
+    day = "Thursday";
+    break;
+  case 5:
+    day = "Friday";
+    break;
+  case 6:
+    day = "Saturday";
+}
+```
+
+The result of `day` will be:
+
+```
+Wednesday
+```
+
+### Analogy
+
+Imagine you are an event organizer. Each day of the week has a special event. You use a `switch` to decide what event happens based on the current day. If it’s Sunday, you prepare a brunch; if it’s Monday, a seminar, and so on.
+
+---
+
+## The Break Keyword
+
+When JavaScript reaches a `break` keyword, it breaks out of the `switch` block.
+
+This stops the execution inside the `switch` block.
+
+It is not necessary to break the last case in a `switch` block, as the block ends there anyway.
+
+**Note**: If you omit the `break` statement, the next case will be executed even if the evaluation does not match the case.
+
+### Example
+
+If the expression matches case 1, the corresponding block will execute and then exit the `switch` thanks to the `break`.
+
+---
+
+## The Default Keyword
+
+The `default` keyword specifies the code to run if there is no case match:
+
+### Example
+
+If today is neither Saturday (6) nor Sunday (0), write a default message:
+
+```javascript
+switch (new Date().getDay()) {
+  case 6:
+    text = "Today is Saturday";
+    break;
+  case 0:
+    text = "Today is Sunday";
+    break;
+  default:
+    text = "Looking forward to the Weekend";
+}
+```
+
+The result of `text` will be:
+
+```
+Looking forward to the Weekend
+```
+
+### Analogy
+
+If you are the chef of a restaurant and someone arrives on a Monday, if you don’t have a special menu, you offer a generic message like "Looking forward to the Weekend," because you might have special dishes only on weekends.
+
+---
+
+## Common Code Blocks
+
+Sometimes you will want different `switch` cases to use the same code.
+
+### Example
+
+In this example, cases 4 and 5 share the same code block, and 0 and 6 share another block:
+
+```javascript
+switch (new Date().getDay()) {
+  case 4:
+  case 5:
+    text = "Soon it is Weekend";
+    break;
+  case 0:
+  case 6:
+    text = "It is Weekend";
+    break;
+  default:
+    text = "Looking forward to the Weekend";
+}
+```
+
+### Analogy
+
+Imagine you are a master of ceremonies. If it’s Thursday or Friday, you say "Soon it is Weekend!" But if it’s Saturday or Sunday, you celebrate by saying "It is Weekend!"
+
+---
+
+## Switching Details
+
+- If multiple cases match a case value, the first case is selected.
+- If no matching cases are found, the program continues to the `default` label.
+- If no `default` label is found, the program continues to the statement(s) after the `switch`.
+
+### Strict Comparison
+
+Switch cases use strict comparison (===). The values must be of the same type to match.
+
+In this example, there will be no match for `x`:
+
+```javascript
+let x = "0";
+switch (x) {
+  case 0:
+    text = "Off";
+    break;
+  case 1:
+    text = "On";
+    break;
+  default:
+    text = "No value found";
+}
+```
+
+### Analogy
+
+Think of a remote control. If you press the power button and the remote is set to "turn on," but you only press the wrong button, there will be no match.
+
+---
+
+# JavaScript: For Loop
+
+Loops can execute a block of code multiple times.
+
+## Loops in JavaScript
+
+Loops are handy if you want to run the same code repeatedly, each time with a different value.
+
+This is especially common when working with arrays:
+
+Instead of writing:
+
+```javascript
+text += cars[0] + "<br>";
+text += cars[1] + "<br>";
+text += cars[2] + "<br>";
+text += cars[3] + "<br>";
+text += cars[4] + "<br>";
+text += cars[5] + "<br>";
+```
+
+You can write:
+
+```javascript
+for (let i = 0; i < cars.length; i++) {
+  text += cars[i] + "<br>";
+}
+```
+
+## Different Types of Loops
+
+JavaScript supports different kinds of loops:
+
+- **for**: loops through a block of code a specific number of times.
+- **for/in**: loops through the properties of an object.
+- **for/of**: loops through the values of an iterable object.
+- **while**: loops through a block of code while a specified condition is true.
+- **do/while**: also loops through a block of code while a specified condition is true.
+
+## The For Loop
+
+The `for` statement creates a loop with 3 optional expressions:
+
+```javascript
+for (expression 1; expression 2; expression 3) {
+  // code block to be executed
+}
+```
+
+- **Expression 1** is executed (once) before the execution of the code block.
+- **Expression 2** defines the condition for executing the code block.
+- **Expression 3** is executed (every time) after the code block has been executed.
+
+### Example
+
+```javascript
+for (let i = 0; i < 5; i++) {
+  text += "The number is " + i + "<br>";
+}
+```
+
+From the example above, you can read:
+
+- **Expression 1** sets a variable before the loop starts (`let i = 0`).
+- **Expression 2** defines the condition for the loop to run (`i must be less than 5`).
+- **Expression 3** increments a value (`i++`) each time the code block in the loop has been executed.
+
+### Expression 1
+
+Normally, you will use expression 1 to initialize the variable used in the loop (`let i = 0`).
+
+This is not always the case. JavaScript doesn't care. Expression 1 is optional.
+
+You can initiate multiple values in expression 1 (separated by commas):
+
+#### Example
+
+```javascript
+for (let i = 0, len = cars.length, text = ""; i < len; i++) {
+  text += cars[i] + "<br>";
+}
+```
+
+And you can omit expression 1 (like when your values are set before the loop starts):
+
+#### Example
+
+```javascript
+let i = 2;
+let len = cars.length;
+let text = "";
+for (; i < len; i++) {
+  text += cars[i] + "<br>";
+}
+```
+
+### Expression 2
+
+Often, expression 2 is used to evaluate the condition of the initial variable.
+
+This is not always the case. JavaScript doesn't care. Expression 2 is also optional.
+
+If expression 2 returns true, the loop will start over again. If it returns false, the loop will end.
+
+If you omit expression 2, you must provide a `break` inside the loop. Otherwise, the loop will never end. This can crash your browser. Read about breaks in a later chapter of this tutorial.
+
+### Expression 3
+
+Often, expression 3 increments the value of the initial variable.
+
+This is not always the case. JavaScript doesn't care. Expression 3 is optional.
+
+Expression 3 can do anything like negative increment (`i--`), positive increment (`i = i + 15`), or anything else.
+
+Expression 3 can also be omitted (like when you increment your values inside the loop):
+
+#### Example
+
+```javascript
+let i = 0;
+let len = cars.length;
+let text = "";
+for (; i < len; ) {
+  text += cars[i] + "<br>";
+  i++;
+}
+```
+
+## Loop Scope
+
+### Using var in a loop:
+
+```javascript
+var i = 5;
+
+for (var i = 0; i < 10; i++) {
+  // some code
+}
+
+// Here i is 10
+```
+
+### Using let in a loop:
+
+```javascript
+let i = 5;
+
+for (let i = 0; i < 10; i++) {
+  // some code
+}
+
+// Here i is 5
+```
+
+In the first example, using `var`, the variable declared in the loop redeclares the variable outside the loop.
+
+In the second example, using `let`, the variable declared in the loop does not redeclare the variable outside the loop.
+
+When `let` is used to declare the variable `i` in a loop, the variable `i` will only be visible within the loop.
+
+## For/Of and For/In Loops
+
+The `for/in` loop and the `for/of` loop are explained in the next chapter.
+
+## While Loops
+
+The `while` loop and the `do/while` are explained in the next chapters.
+
+---
+
+### Analogy to Understand Loops
+
+Imagine you are organizing an event and need to invite several people. Instead of writing an invitation for each person manually, you can use a loop.
+
+Each time you call the guest list (like an array), the loop takes care of sending an invitation to each one of them. It's much more efficient and faster.
+
+That's how loops work: they automate repetitive tasks, allowing you to focus on other important parts of your event.
+
+---
+
+# JavaScript: For In
+
+## The For In Loop
+
+The JavaScript `for...in` statement loops through the properties of an object.
+
+### Syntax
+
+```javascript
+for (key in object) {
+  // code block to be executed
+}
+```
+
+### Example
+
+```javascript
+const person = {fname: "John", lname: "Doe", age: 25};
+
+let text = "";
+for (let x in person) {
+  text += person[x];
+}
+```
+
+### Example Explained
+
+1. **Iterating Over an Object**: The `for...in` loop iterates over the `person` object.
+2. **Iteration Key**: In each iteration, a key (in this case, `x`) is returned.
+3. **Accessing Value**: The key is used to access the value of the object's property.
+4. **Value of the Key**: The value of the key is retrieved using `person[x]`, which represents the value corresponding to the current key.
+
+### Simple Analogy
+
+Imagine you have a closet with several shelves (each shelf is a property of the object). If you want to see what's on each shelf, you can use a `for...in` loop to look at each one. So, every time you check a shelf (a key), you can take out what’s on it (the value of that key).
+
+---
+
+## For In Over Arrays
+
+The JavaScript `for...in` statement can also loop over the properties of an array.
+
+### Syntax
+
+```javascript
+for (variable in array) {
+  // code
+}
+```
+
+### Example
+
+```javascript
+const numbers = [45, 4, 9, 16, 25];
+
+let txt = "";
+for (let x in numbers) {
+  txt += numbers[x];
+}
+```
+
+### Caution
+
+Do not use `for...in` over an array if the index order is important. The index order is implementation-dependent, and array values may not be accessed in the order you expect.
+
+It's better to use a `for` loop, a `for...of` loop, or `Array.forEach()` when the order is important.
+
+---
+
+## Array.forEach()
+
+The `forEach()` method calls a function (a callback function) once for each array element.
+
+### Example
+
+```javascript
+const numbers = [45, 4, 9, 16, 25];
+
+let txt = "";
+numbers.forEach(myFunction);
+
+function myFunction(value, index, array) {
+  txt += value;
+}
+```
+
+### Function Arguments
+
+Note that the function takes 3 arguments:
+
+- **The item value**
+- **The item index**
+- **The array itself**
+
+The example above uses only the value parameter. It can be rewritten as follows:
+
+### Simplified Example
+
+```javascript
+const numbers = [45, 4, 9, 16, 25];
+
+let txt = "";
+numbers.forEach(myFunction);
+
+function myFunction(value) {
+  txt += value;
+}
+```
+
+### Analogy for forEach()
+
+Imagine you are organizing a party and need to invite each of your friends. Instead of sending invitations one by one, you can use `forEach()` like a guest list. Each time you call a friend from the list (each element of the array), you send them the invitation (execute the function). This helps you ensure that each friend gets their invitation efficiently without forgetting anyone.
+
+---
+
+# JavaScript: For Of
+
+## The For Of Loop
+
+The `for...of` statement in JavaScript iterates over the values of an iterable object. This allows you to loop over iterable data structures such as Arrays, Strings, Maps, NodeLists, and more.
+
+### Syntax
+
+```javascript
+for (variable of iterable) {
+  // code block to be executed
+}
+```
+
+- **variable**: For every iteration, the value of the next property is assigned to the variable. The variable can be declared with `const`, `let`, or `var`.
+- **iterable**: An object that has iterable properties.
+
+### Browser Support
+
+The `for...of` loop was added to JavaScript in 2015 (ES6). The first browser to support `for...of` was Safari 7:
+
+| Browser     | Version | Release Date |
+|-------------|---------|--------------|
+| Chrome      | 38      | Oct 2014     |
+| Edge        | 12      | Jul 2015     |
+| Firefox     | 51      | Oct 2016     |
+| Safari      | 7       | Oct 2013     |
+| Opera       | 25      | Oct 2014     |
+
+Note that `for...of` is not supported in Internet Explorer.
+
+---
+
+## Looping Over an Array
+
+### Example
+
+```javascript
+const cars = ["BMW", "Volvo", "Mini"];
+
+let text = "";
+for (let x of cars) {
+  text += x;
+}
+```
+
+### Explanation
+
+In this example, the `for...of` loop iterates over the `cars` array. In each iteration, the value of `x` is assigned to the next element in the array, and then it is added to the `text` variable.
+
+### Analogy
+
+Imagine you have a box of chocolates. Each time you open the box, you take a chocolate (an element of the array). Instead of counting the chocolates (using indices), you simply eat them one by one until they are gone. That’s how `for...of` works: you take the value directly without worrying about its position.
+
+---
+
+## Looping Over a String
+
+### Example
+
+```javascript
+let language = "JavaScript";
+
+let text = "";
+for (let x of language) {
+  text += x;
+}
+```
+
+### Explanation
+
+Here, the `for...of` loop iterates over the `language` string. In each iteration, a character from the string is taken and added to `text`.
+
+### Analogy
+
+Imagine you are reading a book. Each time you turn the page, you see a letter (a character from the string). Instead of counting how many letters are left in the book, you simply keep reading one by one. That’s what `for...of` does: it goes through the characters without worrying about their index.
+
+---
+
+# JavaScript: While Loop
+
+## Loops
+
+Loops can execute a block of code as long as a specified condition is true.
+
+## The While Loop
+
+The `while` loop iterates through a block of code as long as a specified condition is true.
+
+### Syntax
+
+```javascript
+while (condition) {
+  // code block to be executed
+}
+```
+
+### Example
+
+In the following example, the code in the loop will run repeatedly as long as the variable `i` is less than 10:
+
+```javascript
+let i = 0; // Initialize the variable
+let text = "";
+
+while (i < 10) {
+  text += "The number is " + i + "\n"; // Concatenate the text
+  i++; // Increment i by 1
+}
+```
+
+### Warning
+
+If you forget to increase the variable used in the condition, the loop will never end, which could crash your browser. Always ensure that the condition eventually becomes false.
+
+### Analogy
+
+Imagine you are filling a bucket with water. Each time you pour water into the bucket (executing the code), you check if the bucket is full (evaluating the condition). If you don't increase the water level in the bucket (don't increment the variable), the bucket will never fill up, and you'll keep pouring water endlessly.
+
+---
+
+## The Do While Loop
+
+The `do while` loop is a variant of the `while` loop. This loop will execute the code block at least once before checking if the condition is true, and then it will repeat the loop as long as the condition remains true.
+
+### Syntax
+
+```javascript
+do {
+  // code block to be executed
+} while (condition);
+```
+
+### Example
+
+In the following example, the `do while` loop will always execute at least once, even if the condition is false:
+
+```javascript
+let i = 0; // Initialize the variable
+let text = "";
+
+do {
+  text += "The number is " + i + "\n"; // Concatenate the text
+  i++; // Increment i by 1
+} while (i < 10);
+```
+
+### Warning
+
+Just like with the `while` loop, don't forget to increase the variable used in the condition. Otherwise, the loop will never end.
+
+### Analogy
+
+Think of a game where you have to roll a die. You roll the die (execute the code) at least once. After each roll, you decide if you want to keep playing (evaluate the condition). If you haven't set a limit on how many times to roll the die, you could end up rolling it indefinitely.
+
+---
+
+## Comparing For and While
+
+If you've read the previous chapter about the `for` loop, you’ll find that a `while` loop is very similar to a `for` loop, with the first and third statements omitted.
+
+### For Loop Example
+
+```javascript
+const cars = ["BMW", "Volvo", "Saab", "Ford"];
+let i = 0; // Initialize the index
+let text = "";
+
+for (; cars[i];) {
+  text += cars[i]; // Concatenate the text
+  i++; // Increment i by 1
+}
+```
+
+### While Loop Example
+
+```javascript
+const cars = ["BMW", "Volvo", "Saab", "Ford"];
+let i = 0; // Initialize the index
+let text = "";
+
+while (cars[i]) {
+  text += cars[i]; // Concatenate the text
+  i++; // Increment i by 1
+}
+```
+
+---
+
+# JavaScript: Break and Continue
+
+In JavaScript, the `break` and `continue` statements allow you to control the flow of loops effectively.
+
+## The Break Statement
+
+The `break` statement "jumps out" of a loop.
+
+### Example
+
+In this example, the loop stops when the counter (i) is equal to 3:
+
+```javascript
+let text = "";
+for (let i = 0; i < 10; i++) {
+  if (i === 3) { 
+    break; 
+  }
+  text += "The number is " + i + "<br>";
+}
+```
+
+### Explanation
+
+- The loop starts at 0 and increments up to 10.
+- When `i` is equal to 3, the `break` statement is executed, causing the loop to stop immediately.
+- Therefore, the output will be: "The number is 0", "The number is 1", and "The number is 2".
+
+### Analogy
+
+Imagine you are playing a board game, and every time you reach square 3, you decide you’ve had enough and leave the game (executing `break`). You no longer continue moving on the board.
+
+---
+
+## The Continue Statement
+
+The `continue` statement "jumps over" one iteration in the loop. When a specified condition is met, it skips the rest of the code in that iteration and continues with the next one.
+
+### Example
+
+In this case, the value 3 is skipped:
+
+```javascript
+let text = "";
+for (let i = 0; i < 10; i++) {
+  if (i === 3) { 
+    continue; 
+  }
+  text += "The number is " + i + "<br>";
+}
+```
+
+### Explanation
+
+- Here, the loop iterates from 0 to 9.
+- When `i` is equal to 3, the `continue` statement is executed, causing the loop to skip that iteration.
+- Therefore, the output will be: "The number is 0", "The number is 1", "The number is 2", "The number is 4", "The number is 5", etc.
+
+### Analogy
+
+Imagine you are in a line to enter a store, and you decide to skip the person in the 3rd position because they are taking too long. You continue moving forward in the line and leave that person behind (executing `continue`).
+
+---
+
+## Labels in JavaScript
+
+To label JavaScript statements, precede the statements with a label name and a colon:
+
+```javascript
+label:
+statements
+```
+
+The `break` and `continue` statements are the only JavaScript statements that can "jump out of" a code block.
+
+### Syntax
+
+- For the `break` statement with a label:
+
+```javascript
+break labelname;
+```
+
+- For the `continue` statement with a label:
+
+```javascript
+continue labelname;
+```
+
+### Example with a Label
+
+Here’s an example using a label:
+
+```javascript
+const cars = ["BMW", "Volvo", "Saab", "Ford"];
+list: {
+  text += cars[0] + "<br>";
+  text += cars[1] + "<br>";
+  break list; // Jumps out of the "list" block
+  text += cars[2] + "<br>";
+  text += cars[3] + "<br>";
+}
+```
+
+### Explanation
+
+- In this example, the code block labeled `list` executes.
+- When the `break list` statement is encountered, the flow exits the labeled block, and the lines following it do not execute.
+
+---
+
+# JavaScript Iterables
+
+Iterables are objects that can be iterated over (like arrays).
+
+Iterables can be accessed with simple and efficient code, and they can be iterated with `for..of` loops.
+
+## The For Of Loop
+
+The `for..of` statement in JavaScript loops through the elements of an iterable object.
+
+### Syntax
+
+```javascript
+for (variable of iterable) {
+  // code block to be executed
+}
+```
+
+### Iteration
+
+Iteration is easy to understand. It simply means looping over a sequence of elements.
+
+### Easy Examples:
+
+- Iterating over a string
+- Iterating over an array
+
+## Iterating Over a String
+
+You can use a `for..of` loop to iterate over the elements of a string:
+
+### Example
+
+```javascript
+const name = "W3Schools";
+
+for (const x of name) {
+  // code block to be executed
+}
+```
+
+### Analogy
+
+Imagine you are reading a book. Each time you turn a page, you see a new letter (or word). In this case, each letter of the string is like a page being "read" in each iteration of the loop.
+
+---
+
+## Iterating Over an Array
+
+You can use a `for..of` loop to iterate over the elements of an array:
+
+### Example 1
+
+```javascript
+const letters = ["a", "b", "c"];
+
+for (const x of letters) {
+  // code block to be executed
+}
+```
+
+### Example 2
+
+```javascript
+const numbers = [2, 4, 6, 8];
+
+for (const x of numbers) {
+  // code block to be executed
+}
+```
+
+### Analogy
+
+Think of an array like a fruit platter. Each fruit (or element) is an object on the platter. Using `for..of` is like picking each fruit one by one and examining it.
+
+---
+
+## Iterating Over a Set
+
+You can use a `for..of` loop to iterate over the elements of a Set:
+
+### Example
+
+```javascript
+const letters = new Set(["a", "b", "c"]);
+
+for (const x of letters) {
+  // code block to be executed
+}
+```
+
+### Note
+
+Sets and Maps are covered in the next chapters.
+
+---
+
+## Iterating Over a Map
+
+You can use a `for..of` loop to iterate over the elements of a Map:
+
+### Example
+
+```javascript
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+
+for (const x of fruits) {
+  // code block to be executed
+}
+```
+
+### Analogy
+
+Imagine a Map like a phone directory. Each entry has a name (key) and a phone number (value). When using `for..of`, you are going through each entry in the directory and seeing the name and phone number.
+
+---
+
+## JavaScript Iterators
+
+The iterator protocol defines how to produce a sequence of values from an object.
+
+An object becomes an iterator when it implements a `next()` method.
+
+### The next() Method
+
+The `next()` method must return an object with two properties:
+
+- **value**: the next value
+- **done**: (true or false)
+
+**value**: The value returned by the iterator (can be omitted if done is true).
+
+**done**: true if the iterator has completed, false if the iterator has produced a new value.
+
+### Note
+
+Technically, iterables must implement the `Symbol.iterator` method.
+
+Strings, arrays, TypedArrays, Maps, and Sets are all iterables because their prototype objects have a `Symbol.iterator` method.
+
+---
+
+## Home Made Iterable
+
+This iterable returns an endless sequence: 10, 20, 30, 40,... Every time `next()` is called:
+
+### Example
+
+```javascript
+// Home Made Iterable
+function myNumbers() {
+  let n = 0;
+  return {
+    next: function() {
+      n += 10;
+      return { value: n, done: false };
+    }
+  };
+}
+
+// Create Iterable
+const n = myNumbers();
+n.next(); // Returns 10
+n.next(); // Returns 20
+n.next(); // Returns 30
+```
+
+### Problem with a Home Made Iterable
+
+It does not support the JavaScript `for..of` statement. A JavaScript iterable is an object that has a `Symbol.iterator`.
+
+The `Symbol.iterator` is a function that returns a `next()` function.
+
+An iterable can be iterated over with the code:
+
+```javascript
+for (const x of iterable) {
+  // Any code here
+}
+```
+
+### Example
+
+```javascript
+// Create an Object
+myNumbers = {};
+
+// Make it Iterable
+myNumbers[Symbol.iterator] = function() {
+  let n = 0;
+  done = false;
+  return {
+    next() {
+      n += 10;
+      if (n == 100) { done = true; }
+      return { value: n, done: done };
+    }
+  };
+}
+```
+
+Now you can use `for..of`:
+
+```javascript
+for (const num of myNumbers) {
+  // Any code here
+}
+```
+
+The `Symbol.iterator` method is called automatically by `for..of`. But we can also do it "manually":
+
+### Manual Example
+
+```javascript
+let iterator = myNumbers[Symbol.iterator]();
+
+while (true) {
+  const result = iterator.next();
+  if (result.done) break;
+  // Any code here
+}
+```
+
+### Analogy
+
+Imagine you are a mail carrier. Your job is to deliver letters (values) to each recipient (iteration). Each time you deliver a letter, you decide if there are more letters to deliver (done). If there are no more letters, you simply finish the delivery.
+
+---
+
+# JavaScript Sets
+
+A **Set** in JavaScript is a collection of unique values. This means that each value can only occur once in a Set.
+
+The values in a Set can be of any type, including primitive values or objects.
+
+## How to Create a Set
+
+You can create a JavaScript Set in the following ways:
+
+1. By passing an array to the `new Set()` constructor.
+2. By creating an empty Set and using the `add()` method to add values.
+
+### The new Set() Method
+
+To create a Set, you can pass an array to the `new Set()` constructor:
+
+#### Example
+
+```javascript
+// Create a Set
+const letters = new Set(["a", "b", "c"]);
+```
+
+### Create a Set and Add Values
+
+You can also create an empty Set and use the `add()` method to add values:
+
+#### Example
+
+```javascript
+// Create a Set
+const letters = new Set();
+
+// Add Values to the Set
+letters.add("a");
+letters.add("b");
+letters.add("c");
+```
+
+### Create a Set and Add Variables
+
+Another option is to create a Set and then add variables:
+
+#### Example
+
+```javascript
+// Create a Set
+const letters = new Set();
+
+// Create Variables
+const a = "a";
+const b = "b";
+const c = "c";
+
+// Add Variables to the Set
+letters.add(a);
+letters.add(b);
+letters.add(c);
+```
+
+## The add() Method
+
+You can use the `add()` method to add elements to the Set. If you try to add duplicate elements, only the first one will be kept:
+
+#### Example
+
+```javascript
+letters.add("d");
+letters.add("e");
+letters.add("a"); // Only the first will be saved
+```
+
+In the next example, attempting to add the same value multiple times will not change the Set:
+
+#### Example
+
+```javascript
+letters.add("a");
+letters.add("b");
+letters.add("c");
+letters.add("c"); // Ignored
+letters.add("c"); // Ignored
+letters.add("c"); // Ignored
+```
+
+### Listing the Elements
+
+You can list all the elements of a Set using a `for..of` loop:
+
+#### Example
+
+```javascript
+// Create a Set
+const letters = new Set(["a", "b", "c"]);
+
+// List all Elements
+let text = "";
+for (const x of letters) {
+  text += x;
+}
+console.log(text); // Output: abc
+```
+
+### Sets Are Objects
+
+In JavaScript, Sets are a type of object. You can check the type using `typeof`, and you can also verify if it is an instance of Set using `instanceof`.
+
+#### Example
+
+```javascript
+typeof letters;      // Returns "object"
+letters instanceof Set;  // Returns true
+```
+
+## Analogies to Understand Sets
+
+Imagine that a Set is like a toy box. You can only have one type of toy for each category. If you try to put two toys of the same type (for example, two soccer balls), only one will remain in the box. This unique characteristic of Sets ensures that each toy (or value) is distinct.
+
+Just like in a toy box, you can open the box (using a `for..of` loop) and take out each toy (value) to play with, always remembering that you can’t have duplicates.
+
+---
+
+# JavaScript Set Methods
+
+**Sets** in JavaScript are collections of unique values. Below, we will explore some of the most commonly used methods for working with Sets, along with examples and analogies to make the concepts easier to understand.
+
+## The new Set() Method
+
+To create a Set, you can pass an array to the `new Set()` constructor:
+
+### Example
+
+```javascript
+// Create a Set
+const letters = new Set(["a", "b", "c"]);
+```
+
+### Analogy
+
+Think of a Set as a toolbox. When you buy a set of tools, each tool (value) comes in its own space, and you can't have two of the same tool in the same space. That's how a Set works: you can only have one instance of each value.
+
+## The add() Method
+
+You can add values to a Set using the `add()` method. If you try to add duplicate values, only the first occurrence will be saved.
+
+### Example
+
+```javascript
+letters.add("d");
+letters.add("e");
+
+// If you try to add equal elements, only the first will be saved
+letters.add("a");
+letters.add("b");
+letters.add("c");
+letters.add("c"); // Ignored
+```
+
+### Analogy
+
+Continuing with the toolbox analogy, if you try to put two hammers in the same space, only one will remain in the box. So, when you add a value that already exists, the Set ignores the new value.
+
+## Listing Set Elements
+
+You can list all the elements in a Set using a `for..of` loop.
+
+### Example
+
+```javascript
+// Create a Set
+const letters = new Set(["a", "b", "c"]);
+
+// List all Elements
+let text = "";
+for (const x of letters) {
+  text += x;
+}
+console.log(text); // Output: abc
+```
+
+### Analogy
+
+Imagine you are taking tools out of your toolbox and showing each one to your friends. With the `for..of` loop, you can display each tool (value) that is in your box (Set).
+
+## The has() Method
+
+The `has()` method returns `true` if a specified value exists in a Set.
+
+### Example
+
+```javascript
+// Create a Set
+const letters = new Set(["a", "b", "c"]);
+
+// Does the Set contain "d"?
+const answer = letters.has("d"); // false
+```
+
+### Analogy
+
+It's like checking if you have a specific tool in your toolbox. Asking yourself "Do I have a screwdriver?" would be like using the `has()` method. If the tool is there, you get a positive answer; otherwise, you do not.
+
+## The forEach() Method
+
+The `forEach()` method invokes a function for each element in the Set.
+
+### Example
+
+```javascript
+// Create a Set
+const letters = new Set(["a", "b", "c"]);
+
+// List all entries
+let text = "";
+letters.forEach(function(value) {
+  text += value;
+});
+console.log(text); // Output: abc
+```
+
+### Analogy
+
+Imagine you ask a friend to list all the tools in your toolbox. The `forEach()` method acts like that friend, mentioning each tool one by one.
+
+## The values() Method
+
+The `values()` method returns an iterator object with the values in a Set.
+
+### Example 1
+
+```javascript
+// Create a Set
+const letters = new Set(["a", "b", "c"]);
+
+// Get all Values
+const myIterator = letters.values();
+
+// List all Values
+let text = "";
+for (const entry of myIterator) {
+  text += entry;
+}
+console.log(text); // Output: abc
+```
+
+### Example 2
+
+```javascript
+// Create a Set
+const letters = new Set(["a", "b", "c"]);
+
+// List all Values
+let text = "";
+for (const entry of letters.values()) {
+  text += entry;
+}
+console.log(text); // Output: abc
+```
+
+### Analogy
+
+Think of the `values()` method like a directory of tools. It gives you easy access to each tool (value) in the box (Set), allowing you to list them all.
+
+## The keys() Method
+
+The `keys()` method returns an iterator object with the values in a Set.
+
+### Note
+
+A Set has no keys, so `keys()` returns the same as `values()`. This makes Sets compatible with Maps.
+
+### Example 1
+
+```javascript
+// Create a Set
+const letters = new Set(["a", "b", "c"]);
+
+// Create an Iterator
+const myIterator = letters.keys();
+
+// List all Elements
+let text = "";
+for (const x of myIterator) {
+  text += x;
+}
+console.log(text); // Output: abc
+```
+
+### Example 2
+
+```javascript
+// Create a Set
+const letters = new Set(["a", "b", "c"]);
+
+// List all Elements
+let text = "";
+for (const x of letters.keys()) {
+  text += x;
+}
+console.log(text); // Output: abc
+```
+
+### Analogy
+
+The `keys()` method is like having a map of your toolbox. Even though there are no keys, you can see what tools are available. This is similar to how `keys()` and `values()` give you access to the same values.
+
+## The entries() Method
+
+The `entries()` method returns an iterator with [value, value] pairs from a Set.
+
+### Note
+
+The `entries()` method is supposed to return a [key, value] pair from an object. Since a Set has no keys, the `entries()` method returns [value, value]. This makes Sets compatible with Maps.
+
+### Example 1
+
+```javascript
+// Create a Set
+const letters = new Set(["a", "b", "c"]);
+
+// Get all Entries
+const myIterator = letters.entries();
+
+// List all Entries
+let text = "";
+for (const entry of myIterator) {
+  text += entry;
+}
+console.log(text); // Output: abcabc
+```
+
+### Example 2
+
+```javascript
+// Create a Set
+const letters = new Set(["a", "b", "c"]);
+
+// List all Entries
+let text = "";
+for (const entry of letters.entries()) {
+  text += entry;
+}
+console.log(text); // Output: abcabc
+```
+
+### Analogy
+
+The `entries()` method is like receiving a list of tools with a description of each one. Although there are no actual keys, you can see what tools you have and their respective "descriptions" (values).
+
+---
+
+# JavaScript Maps
+
+A **Map** in JavaScript is a collection of key-value pairs where the keys can be any data type. Unlike objects, a Map remembers the original insertion order of the keys.
+
+## How to Create a Map
+
+You can create a Map in JavaScript in the following ways:
+
+1. Passing an Array to the `new Map()` constructor
+2. Creating a Map and using the `Map.set()` method
+
+### The new Map() Method
+
+You can create a Map by passing an Array to the `new Map()` constructor:
+
+#### Example
+
+```javascript
+// Create a Map
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+```
+
+### Analogy
+
+Think of a Map as a shelf where you place fruits. Each fruit (key) has a quantity (value). When you create a Map, it’s like placing those fruits on a shelf, remembering how many you have of each type.
+
+## The set() Method
+
+You can add elements to a Map using the `set()` method:
+
+#### Example
+
+```javascript
+// Create a Map
+const fruits = new Map();
+
+// Set Map Values
+fruits.set("apples", 500);
+fruits.set("bananas", 300);
+fruits.set("oranges", 200);
+```
+
+The `set()` method can also be used to change existing Map values:
+
+#### Example
+
+```javascript
+fruits.set("apples", 200);
+```
+
+### Analogy
+
+Think of the `set()` method as an assistant organizing your fruits on the shelf. If you decide to change the number of apples you have, you simply tell the assistant to update it.
+
+## The get() Method
+
+The `get()` method retrieves the value of a key in a Map:
+
+#### Example
+
+```javascript
+fruits.get("apples"); // Returns 500
+```
+
+### Analogy
+
+Using `get()` is like asking your assistant how many apples are on the shelf. He will respond with the exact quantity.
+
+## Maps are Objects
+
+When you use `typeof` on a Map, it returns "object":
+
+#### Example
+
+```javascript
+// Returns object:
+typeof fruits; // "object"
+```
+
+The `instanceof` operator returns `true` if an object is an instance of Map:
+
+#### Example
+
+```javascript
+// Returns true:
+fruits instanceof Map; // true
+```
+
+### Analogy
+
+Maps are like a special category of objects in JavaScript. While they are objects, they have unique properties that make them different and more organized.
+
+## Differences between JavaScript Objects and Maps
+
+Here are some key differences between JavaScript objects and Maps:
+
+| **Object**                             | **Map**                             |
+|----------------------------------------|-------------------------------------|
+| Not directly iterable                  | Directly iterable                   |
+| Do not have a size property            | Have a size property                |
+| Keys must be Strings (or Symbols)     | Keys can be any data type          |
+| Keys are not well ordered              | Keys are ordered by insertion       |
+| Have default keys                      | Do not have default keys            |
+
+### Analogy
+
+Think of objects as messy storage boxes where items are piled up without any specific order. In contrast, Maps are like organized shelves where each item has its place, and you can easily access them.
+
+## Complete Map Reference
+
+For a complete reference, check out our [Complete JavaScript Map Reference](#).
+
+The reference contains descriptions and examples of all Map properties and methods.
+
+## Browser Support
+
+Map is an ES6 feature (JavaScript 2015). ES6 is fully supported in all modern browsers since June 2017:
+
+| Browser     | Version |
+|-------------|---------|
+| Chrome      | 51      |
+| Edge        | 15      |
+| Firefox     | 54      |
+| Safari      | 10      |
+| Opera       | 38      |
+
+**Note:** Map is not supported in Internet Explorer.
+
+---
+
+# JavaScript Map Methods
+
+A **Map** in JavaScript is a collection of key-value pairs where the keys can be of any data type. Here we will explore various methods you can use with Maps and how they work.
+
+## The new Map() Method
+
+You can create a map by passing an array to the `new Map()` constructor:
+
+### Example
+
+```javascript
+// Create a Map
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+```
+
+### Analogy
+
+Imagine the map is a pantry where you store different fruits. Each type of fruit (key) has an associated quantity (value).
+
+## Map.get()
+
+To get the value of a key in a map, the `get()` method is used:
+
+### Example
+
+```javascript
+fruits.get("apples"); // Returns 500
+```
+
+### Analogy
+
+It's like asking a friend how many apples you have in the pantry. They will tell you the exact amount.
+
+## Map.set()
+
+You can add elements to a map with the `set()` method:
+
+### Example
+
+```javascript
+// Create a Map
+const fruits = new Map();
+
+// Set Map Values
+fruits.set("apples", 500);
+fruits.set("bananas", 300);
+fruits.set("oranges", 200);
+```
+
+The `set()` method can also be used to change existing map values:
+
+### Example
+
+```javascript
+fruits.set("apples", 400); // Changes the quantity of apples
+```
+
+### Analogy
+
+Imagine you're reorganizing your pantry. If you decide to change the quantity of apples, you just tell your friend to update the number.
+
+## Map.size
+
+The `size` property returns the number of elements in a map:
+
+### Example
+
+```javascript
+fruits.size; // Returns 3
+```
+
+### Analogy
+
+It's like counting how many different fruits you have in your pantry.
+
+## Map.delete()
+
+The `delete()` method removes an element from the map:
+
+### Example
+
+```javascript
+fruits.delete("apples"); // Removes apples
+```
+
+### Analogy
+
+It's like taking a fruit out of the pantry. After using it, it's no longer there.
+
+## Map.clear()
+
+The `clear()` method removes all the elements from a map:
+
+### Example
+
+```javascript
+fruits.clear(); // Empties the pantry
+```
+
+### Analogy
+
+It's like completely emptying your pantry.
+
+## Map.has()
+
+The `has()` method returns `true` if a key exists in the map:
+
+### Example
+
+```javascript
+fruits.has("apples"); // Returns false if apples were deleted
+```
+
+### Analogy
+
+It's like asking if you still have apples in your pantry. If they’re not there, the answer is "no".
+
+### Try This
+
+```javascript
+fruits.delete("apples"); // Deletes apples
+fruits.has("apples"); // Checks if apples still exist
+```
+
+## Map.forEach()
+
+The `forEach()` method invokes a callback for each key/value pair in a map:
+
+### Example
+
+```javascript
+// List all entries
+let text = "";
+fruits.forEach(function(value, key) {
+  text += key + ' = ' + value + "\n";
+});
+```
+
+### Analogy
+
+It's like taking inventory of all the fruits you have. You go through each fruit, naming it and its quantity.
+
+## Map.entries()
+
+The `entries()` method returns an iterator object with the [key, value] pairs in a map:
+
+### Example
+
+```javascript
+// List all entries
+let text = "";
+for (const x of fruits.entries()) {
+  text += x[0] + " = " + x[1] + "\n";
+}
+```
+
+### Analogy
+
+Imagine your pantry has labels on each shelf indicating what fruits are there and how many.
+
+## Map.keys()
+
+The `keys()` method returns an iterator object with the keys in a map:
+
+### Example
+
+```javascript
+// List all keys
+let text = "";
+for (const x of fruits.keys()) {
+  text += x + "\n";
+}
+```
+
+### Analogy
+
+It's like making a list of all the fruits you have in the pantry.
+
+## Map.values()
+
+The `values()` method returns an iterator object with the values in a map:
+
+### Example
+
+```javascript
+// List all values
+let text = "";
+for (const x of fruits.values()) {
+  text += x + "\n";
+}
+```
+
+You can use the `values()` method to sum the values in a map:
+
+### Example
+
+```javascript
+// Sum all values
+let total = 0;
+for (const x of fruits.values()) {
+  total += x;
+}
+```
+
+### Analogy
+
+It's like counting how many fruits you have in total in your pantry.
+
+## Objects as Keys
+
+An important feature of Maps is that you can use objects as keys.
+
+### Example
+
+```javascript
+// Create Objects
+const apples = {name: 'Apples'};
+const bananas = {name: 'Bananas'};
+const oranges = {name: 'Oranges'};
+
+// Create a Map
+const fruits = new Map();
+
+// Add new Elements to the Map
+fruits.set(apples, 500);
+fruits.set(bananas, 300);
+fruits.set(oranges, 200);
+```
+
+Remember: the key is an object (`apples`), not a string (`"apples"`):
+
+### Example
+
+```javascript
+fruits.get("apples"); // Returns undefined
+```
+
+### Analogy
+
+It's like using a picture of a fruit instead of its name to identify it in your pantry. If you search by name, you won’t find it.
+
+## JavaScript Map.groupBy()
+
+ES2024 added the `Map.groupBy()` method to JavaScript.
+
+The `Map.groupBy()` method groups elements of an object according to string values returned from a callback function. This method does not change the original object.
+
+### Example
+
+```javascript
+// Create an Array
+const fruits = [
+  {name: "apples", quantity: 300},
+  {name: "bananas", quantity: 500},
+  {name: "oranges", quantity: 200},
+  {name: "kiwi", quantity: 150}
+];
+
+// Callback function to Group Elements
+function myCallback({ quantity }) {
+  return quantity > 200 ? "ok" : "low";
+}
+
+// Group by Quantity
+const result = Map.groupBy(fruits, myCallback);
+```
+
+## Browser Support
+
+`Map.groupBy()` is an ES2024 feature and is supported in new browsers since March 2024:
+
+| Browser    | Version |
+|------------|---------|
+| Chrome     | 117     |
+| Edge       | 117     |
+| Firefox    | 119     |
+| Safari     | 17.4    |
+| Opera      | 103     |
+
+### Warning
+
+ES2024 features are relatively new. Older browsers may need alternative code (Polyfill).
+
+## Object.groupBy() vs Map.groupBy()
+
+The difference between `Object.groupBy()` and `Map.groupBy()` is:
+
+- `Object.groupBy()` groups elements into a JavaScript object.
+- `Map.groupBy()` groups elements into a Map object.
+
+---
+
+# JavaScript: Understanding the `typeof` Operator
+
+## The `typeof` Operator
+
+The `typeof` operator returns the data type of a variable in JavaScript. Imagine you have a friend who can tell you what type of animal each of your pets is just by looking at them. That's what `typeof` does with variables.
+
+### Primitive Data Types
+
+In JavaScript, a primitive value is a single value that has no properties or methods. Think of them as different types of fruits in a fruit basket: each fruit is unique and has its own identity.
+
+JavaScript has **7 primitive data types**:
+
+- **string**: Text. Example: "apple"
+- **number**: Numbers. Example: 42
+- **boolean**: True or false. Example: true
+- **bigint**: Large integers. Example: 123456789012345678901234567890n
+- **symbol**: A unique identifier. Example: Symbol()
+- **null**: Represents "nothing" or "empty." Example: null
+- **undefined**: A variable that has not been defined. Example: undefined
+
+The `typeof` operator returns the type of a variable or expression.
+
+### Examples
+
+```javascript
+typeof "John"         // Returns "string"
+typeof ("John" + "Doe") // Returns "string"
+typeof 3.14           // Returns "number"
+typeof 33             // Returns "number"
+typeof (33 + 66)      // Returns "number"
+typeof true           // Returns "boolean"
+typeof false          // Returns "boolean"
+typeof 1234n          // Returns "bigint"
+typeof Symbol()       // Returns "symbol"
+typeof x              // Returns "undefined"
+typeof null           // Returns "object"
+```
+
+**Note**: In JavaScript, `null` is a primitive value. However, `typeof` returns "object." This is a well-known bug in JavaScript with historical reasons.
+
+### Complex Data Types
+
+A complex data type can store multiple values and/or different types of data together. You can think of this as a fruit salad, where each type of fruit can be different, but they are all together in a single bowl.
+
+JavaScript has **one complex data type**:
+
+- **object**: A container to store data in key-value pairs.
+
+All other complex types, like arrays, functions, sets, and maps, are just different types of objects.
+
+The `typeof` operator only returns two types for objects:
+
+- **object**
+- **function**
+
+### Example
+
+```javascript
+typeof {name:'John'}   // Returns "object"
+typeof [1, 2, 3, 4]     // Returns "object"
+typeof new Map()       // Returns "object"
+typeof new Set()       // Returns "object"
+typeof function (){}   // Returns "function"
+```
+
+**Note**: The `typeof` operator returns "object" for all object types:
+
+- objects
+- arrays
+- sets
+- maps
+
+You cannot use `typeof` to determine if an object in JavaScript is an array or a date.
+
+### How to Recognize an Array
+
+How can you tell if a variable is an array? 
+
+ECMAScript 5 (2009) defined a new method for this: `Array.isArray()`.
+
+### Example
+
+```javascript
+// Create an array
+const fruits = ["apples", "bananas", "oranges"];
+Array.isArray(fruits); // Returns true
+```
+
+### The `instanceof` Operator
+
+The `instanceof` operator returns `true` if an object is an instance of a specified type of object. It's like your friend telling you whether the creature you have is a dog or a cat.
+
+### Examples
+
+```javascript
+// Create a date
+const time = new Date();
+console.log(time instanceof Date); // Returns true
+
+// Create an array
+const fruits = ["apples", "bananas", "oranges"];
+console.log(fruits instanceof Array); // Returns true
+
+// Create a map
+const fruitMap = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+console.log(fruitMap instanceof Map); // Returns true
+
+// Create a set
+const fruitSet = new Set(["apples", "bananas", "oranges"]);
+console.log(fruitSet instanceof Set); // Returns true
+```
+
+### Undefined Variables
+
+The `typeof` of an undefined variable is "undefined." 
+
+### Example
+
+```javascript
+typeof car; // Returns "undefined"
+```
+
+The `typeof` of a variable without a value is also "undefined."
+
+### Example
+
+```javascript
+let car;
+typeof car; // Returns "undefined"
+```
+
+Any variable can be emptied by assigning it the value `undefined`.
+
+### Example
+
+```javascript
+let car = "Volvo";
+car = undefined; // Now the value is undefined
+```
+
+### Empty Values
+
+An empty value has nothing to do with `undefined`. 
+
+An empty string has both a legal value and a type.
+
+### Example
+
+```javascript
+let car = "";
+typeof car; // Returns "string"
+```
+
+### Null
+
+In JavaScript, `null` means "nothing." It is supposed to represent something that does not exist. Unfortunately, in JavaScript, the data type of `null` is an object.
+
+You can empty an object by assigning it `null`.
+
+### Example
+
+```javascript
+// Create an object
+let person = {name: "John", surname: "Doe", age: 50, eyeColor: "blue"};
+person = null; // Now the value is null, but the type remains "object"
+```
+
+You can also empty an object by assigning it `undefined`.
+
+### Example
+
+```javascript
+let person = {name: "John", surname: "Doe", age: 50, eyeColor: "blue"};
+person = undefined; // Now both the value and the type are "undefined"
+```
+
+### Difference Between Undefined and Null
+
+`undefined` and `null` are equal in value, but different in type:
+
+```javascript
+typeof undefined      // "undefined"
+typeof null           // "object"
+
+null === undefined    // false
+null == undefined     // true
+```
+
+### The Constructor Property
+
+The `constructor` property returns the constructor function for all JavaScript variables.
+
+### Example
+
+```javascript
+// Returns the Object() function:
+{name:'John', age:34}.constructor
+
+// Returns the Array() function:
+[1,2,3,4].constructor
+
+// Returns the Date() function:
+new Date().constructor
+
+// Returns the Set() function:
+new Set().constructor
+
+// Returns the Map() function:
+new Map().constructor
+
+// Returns the Function() function:
+function () {}.constructor
+```
+
+With the constructor, you can check if an object is an array:
+
+### Example
+
+```javascript
+(myArray.constructor === Array); // Returns true if it is an array
+```
+
+With the constructor, you can also check if an object is a date:
+
+### Example
+
+```javascript
+(myDate.constructor === Date); // Returns true if it is a date
+```
+
+### All Together
+
+```javascript
+typeof "John"          // Returns "string"
+typeof ("John" + "Doe") // Returns "string"
+typeof 3.14            // Returns "number"
+typeof (33 + 66)       // Returns "number"
+typeof NaN             // Returns "number"
+typeof 1234n           // Returns "bigint"
+typeof true            // Returns "boolean"
+typeof false           // Returns "boolean"
+typeof {name:'John'}   // Returns "object"
+typeof [1, 2, 3, 4]     // Returns "object"
+typeof {}              // Returns "object"
+typeof []              // Returns "object"
+typeof new Object()    // Returns "object"
+typeof new Array()     // Returns "object"
+typeof new Date()      // Returns "object"
+typeof new Set()       // Returns "object"
+typeof new Map()       // Returns "object"
+typeof function () {}  // Returns "function"
+typeof x               // Returns "undefined"
+typeof null            // Returns "object"
+```
+
+**Note**: The data type of `NaN` (Not a Number) is `number`!
+
+### The `void` Operator
+
+The `void` operator evaluates an expression and returns `undefined`. This operator is often used to obtain the primitive value `undefined`, using `void(0)` (useful when evaluating an expression without using the return value).
+
+### Example
+
+```html
+<a href="javascript:void(0);">
+  Useless link
+</a>
+
+<a href="javascript:void(document.body.style.backgroundColor='red');">
+  Click here to change the background color to red
+</a>
+```
+
+---
+
+# JavaScript Type Conversion
+
+JavaScript is a language that allows you to change the types of variables flexibly. This process is called **Type Conversion**. Imagine you have a set of Lego pieces. Some are squares, others are rectangles, and some are triangles. In JavaScript, you can transform those pieces (variables) into other shapes (data types) as needed. Here's how this works:
+
+## Converting Strings to Numbers
+
+The global function `Number()` converts a variable (or a value) into a number.
+
+- A numeric string (like "3.14") is converted to a number (like 3.14).
+- An empty string (like "") is converted to 0.
+- A non-numeric string (like "John") is converted to NaN (Not a Number).
+
+### Examples
+
+These will convert:
+
+```javascript
+Number("3.14") // 3.14
+Number(Math.PI) // 3.14159
+Number(" ")    // 0
+Number("")     // 0
+```
+
+These will not convert:
+
+```javascript
+Number("99 88") // NaN
+Number("John")  // NaN
+```
+
+### Number Methods
+
+In the Number Methods chapter, you'll find more methods that can be used to convert strings to numbers:
+
+| Method         | Description                                    |
+|----------------|------------------------------------------------|
+| `Number()`     | Returns a number converted from its argument   |
+| `parseFloat()` | Parses a string and returns a floating-point number |
+| `parseInt()`   | Parses a string and returns an integer        |
+
+### The Unary + Operator
+
+The unary operator `+` can be used to convert a variable to a number.
+
+#### Example
+
+```javascript
+let y = "5";      // y is a string
+let x = +y;      // x is a number
+```
+
+If the variable cannot be converted, it will result in NaN:
+
+```javascript
+let y = "John";   // y is a string
+let x = +y;      // x is a number (NaN)
+```
+
+## Converting Numbers to Strings
+
+The global method `String()` can convert numbers to strings.
+
+It can be used on any type of numbers, literals, variables, or expressions:
+
+### Example
+
+```javascript
+String(x)         // returns a string of the numeric variable x
+String(123)       // returns a string of the numeric literal 123
+String(100 + 23)  // returns a string of the number from an expression
+```
+
+The `toString()` method of Number does the same.
+
+### Example
+
+```javascript
+x.toString()        // converts x to a string
+(123).toString()    // converts 123 to a string
+(100 + 23).toString() // converts the result to a string
+```
+
+### More Methods
+
+In the Number Methods chapter, you'll find more methods for converting numbers to strings:
+
+| Method               | Description                                           |
+|----------------------|-------------------------------------------------------|
+| `toExponential()`    | Returns a string, with a number rounded and written in exponential notation |
+| `toFixed()`          | Returns a string, with a number rounded and written with a specified number of decimals |
+| `toPrecision()`      | Returns a string, with a number written with a specified length |
+
+## Converting Dates to Numbers
+
+The global method `Number()` can also be used to convert dates to numbers.
+
+```javascript
+let d = new Date();
+Number(d)          // returns 1404568027739
+```
+
+The `getTime()` method of Date does the same.
+
+```javascript
+let d = new Date();
+d.getTime()        // returns 1404568027739
+```
+
+## Converting Dates to Strings
+
+The global method `String()` can convert dates to strings.
+
+```javascript
+String(Date())  // returns "Thu Jul 17 2014 15:38:19 GMT+0200 (W. Europe Daylight Time)"
+```
+
+The `toString()` method of Date does the same.
+
+### Example
+
+```javascript
+Date().toString()  // returns "Thu Jul 17 2014 15:38:19 GMT+0200 (W. Europe Daylight Time)"
+```
+
+### More Methods
+
+In the Date Methods chapter, you'll find more methods for converting dates to strings:
+
+| Method               | Description                                       |
+|----------------------|---------------------------------------------------|
+| `getDate()`          | Gets the day as a number (1-31)                  |
+| `getDay()`           | Gets the day of the week as a number (0-6)       |
+| `getFullYear()`      | Gets the year as a four-digit number (yyyy)      |
+| `getHours()`         | Gets the hour (0-23)                              |
+| `getMilliseconds()`   | Gets the milliseconds (0-999)                     |
+| `getMinutes()`       | Gets the minutes (0-59)                           |
+| `getMonth()`         | Gets the month (0-11)                            |
+| `getSeconds()`       | Gets the seconds (0-59)                          |
+| `getTime()`          | Gets the time (milliseconds since January 1, 1970) |
+
+## Converting Booleans to Numbers
+
+The global method `Number()` can also convert booleans to numbers.
+
+```javascript
+Number(false)     // returns 0
+Number(true)      // returns 1
+```
+
+## Converting Booleans to Strings
+
+The global method `String()` can convert booleans to strings.
+
+```javascript
+String(false)      // returns "false"
+String(true)       // returns "true"
+```
+
+The `toString()` method of Boolean does the same.
+
+```javascript
+false.toString()   // returns "false"
+true.toString()    // returns "true"
+```
+
+## Automatic Type Conversion
+
+When JavaScript tries to operate with an "incorrect" data type, it attempts to convert the value to the "correct" type.
+
+The result is not always what you expect:
+
+```javascript
+5 + null    // returns 5         because null is converted to 0
+"5" + null  // returns "5null"   because null is converted to "null"
+"5" + 2     // returns "52"      because 2 is converted to "2"
+"5" - 2     // returns 3         because "5" is converted to 5
+"5" * "2"   // returns 10        because "5" and "2" are converted to 5 and 2
+```
+
+## Automatic Conversion to String
+
+JavaScript automatically calls the `toString()` function of a variable when you try to "output" an object or variable:
+
+```javascript
+document.getElementById("demo").innerHTML = myVar;
+
+// if myVar = {name:"Fjohn"}  // toString converts to "[object Object]"
+// if myVar = [1,2,3,4]       // toString converts to "1,2,3,4"
+// if myVar = new Date()      // toString converts to "Fri Jul 18 2014 09:08:55 GMT+0200"
+
+// numbers and booleans are also converted, but this is not very visible:
+// if myVar = 123             // toString converts to "123"
+// if myVar = true            // toString converts to "true"
+// if myVar = false           // toString converts to "false"
+```
+
+## Type Conversion Table in JavaScript
+
+This table shows the result of converting different JavaScript values to Number, String, and Boolean:
+
+| Original Value       | Converted to Number | Converted to String | Converted to Boolean |
+|----------------------|----------------------|----------------------|------------------------|
+| false                | 0                    | "false"              | false                  |
+| true                 | 1                    | "true"               | true                   |
+| 0                    | 0                    | "0"                  | false                  |
+| 1                    | 1                    | "1"                  | true                   |
+| "0"                  | 0                    | "0"                  | true                   |
+| "000"                | 0                    | "000"                | true                   |
+| "1"                  | 1                    | "1"                  | true                   |
+| NaN                  | NaN                  | "NaN"                | false                  |
+| Infinity             | Infinity             | "Infinity"           | true                   |
+| -Infinity            | -Infinity            | "-Infinity"          | true                   |
+| ""                   | 0                    | ""                   | false                  |
+| "20"                 | 20                   | "20"                 | true                   |
+| "twenty"             | NaN                  | "twenty"             | true                   |
+| [ ]                  | 0                    | ""                   | true                   |
+| [20]                 | 20                   | "20"                 | true                   |
+| [10,20]             | NaN                  | "10,20"              | true                   |
+| ["twenty"]          | NaN                  | "twenty"             | true                   |
+| { }                  | NaN                  | "[object Object]"    | true                   |
+| { x:20 }            | NaN                  | "[object Object]"    | true                   |
+
+## Conclusion
+
+Type conversion in JavaScript is a fundamental process that allows you to manipulate data flexibly and dynamically. Understanding how it works can help you avoid errors and write more efficient code. Keep exploring and practicing!
+
+---
+
+# JavaScript Destructuring
+
+Destructuring is a powerful feature in JavaScript that allows you to unpack values from arrays or properties from objects into distinct variables. To illustrate this concept, consider the following analogies and examples.
+
+## Destructuring Assignment Syntax
+
+The destructuring assignment syntax allows us to extract values from objects or arrays and assign them to variables, making our code cleaner and more readable.
+
+### Analogy: Unpacking a Box
+
+Imagine you have a box with several compartments. Each compartment contains an object (or a value) that you want to use. Destructuring is like opening the box and taking the objects directly from each compartment without having to search for them one by one.
+
+**Example of Object Destructuring:**
+
+```javascript
+// Create an object
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 50
+};
+
+// Destructuring
+let { firstName, lastName } = person;
+```
+
+**Note:** The order of properties does not matter:
+
+```javascript
+// Destructuring
+let { lastName, firstName } = person;
+```
+
+> **Important Note:** Destructuring is not destructive; it does not change the original object.
+
+## Default Values in Objects
+
+Sometimes, a property might not exist on the object. To handle this, we can set default values.
+
+### Analogy: A Surprise Party
+
+Suppose you are organizing a surprise party, but some guests can't attend. You might plan for a "backup guest" to show up in their place.
+
+**Example:**
+
+```javascript
+// Create an object
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 50
+};
+
+// Destructuring with default value
+let { firstName, lastName, country = "US" } = person;
+```
+
+## Object Property Aliasing
+
+Sometimes, we want to rename properties when destructuring them.
+
+### Analogy: Renaming a Product
+
+Imagine you sell a product called "sunglasses," but in your store, you call it "summer accessory." When destructuring, you can give the property a new name.
+
+**Example:**
+
+```javascript
+// Create an object
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 50
+};
+
+// Destructuring with alias
+let { lastName: name } = person;
+```
+
+## String Destructuring
+
+Destructuring can also be used to unpack characters from strings.
+
+### Analogy: Separating Letters from a Name
+
+Imagine you have a bag of letters and you want to take some out to form a name.
+
+**Example:**
+
+```javascript
+// Create a string
+let name = "W3Schools";
+
+// Destructuring
+let [a1, a2, a3, a4, a5] = name;
+```
+
+## Array Destructuring
+
+We can extract values from arrays and assign them to our own variables.
+
+### Analogy: Picking Fruits from a Basket
+
+If you have a basket full of fruits, you can select some directly.
+
+**Example:**
+
+```javascript
+// Create an array
+const fruits = ["Bananas", "Oranges", "Apples", "Mangos"];
+
+// Destructuring
+let [fruit1, fruit2] = fruits;
+```
+
+### Skipping Array Values
+
+If you want to skip some values, you can use commas.
+
+**Example:**
+
+```javascript
+// Create an array
+const fruits = ["Bananas", "Oranges", "Apples", "Mangos"];
+
+// Destructuring
+let [fruit1, , , fruit2] = fruits;
+```
+
+### Position-Based Values in Arrays
+
+You can select values from specific index locations in the array.
+
+**Example:**
+
+```javascript
+// Create an array
+const fruits = ["Bananas", "Oranges", "Apples", "Mangos"];
+
+// Destructuring
+let { [0]: fruit1, [1]: fruit2 } = fruits;
+```
+
+## The Rest Property
+
+You can end a destructuring syntax with a rest property, which stores all remaining values into a new array.
+
+### Analogy: Grouping Everything Leftover
+
+Imagine at the end of a party, you decide to group all leftover toys into one box.
+
+**Example:**
+
+```javascript
+// Create an array
+const numbers = [10, 20, 30, 40, 50, 60, 70];
+
+// Destructuring
+const [a, b, ...rest] = numbers;
+```
+
+## Destructuring Maps
+
+You can also use destructuring with `Map` objects.
+
+### Analogy: A Restaurant Menu
+
+Imagine a menu where each dish has a price. You can iterate over the menu and extract the names and prices of the dishes.
+
+**Example:**
+
+```javascript
+// Create a Map
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+
+// Destructuring
+let text = "";
+for (const [key, value] of fruits) {
+  text += key + " is " + value + "\n";
+}
+```
+
+## Swapping JavaScript Variables
+
+You can swap the values of two variables using a destructuring assignment.
+
+### Analogy: Changing Clothes
+
+If you decide to swap t-shirts with a friend, you simply take them off and give them to each other.
+
+**Example:**
+
+```javascript
+let firstName = "John";
+let lastName = "Doe";
+
+// Destructuring
+[firstName, lastName] = [lastName, firstName];
+```
+
+---
+
