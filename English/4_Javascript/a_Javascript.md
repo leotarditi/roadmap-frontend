@@ -10167,3 +10167,2343 @@ let lastName = "Doe";
 
 ---
 
+# JavaScript Bitwise Operations
+
+## Introduction
+
+Bitwise operations in JavaScript allow you to manipulate individual bits of binary numbers directly. To understand this better, imagine that numbers are like rows of tiny light bulbs (bits), where each light bulb can either be on (1) or off (0). Bitwise operators are like switches that control how these bulbs interact with each other. Let's explore these operations using simple analogies!
+
+---
+
+## JavaScript Bitwise Operators
+
+| Operator | Name                        | Description                                                                 |
+|----------|-----------------------------|-----------------------------------------------------------------------------|
+| `&`      | AND                         | Turns the light bulb on (1) only if both corresponding bulbs are on (1)     |
+| `|`      | OR                          | Turns the light bulb on (1) if at least one of the corresponding bulbs is on |
+| `^`      | XOR                         | Turns the light bulb on (1) if only one of the corresponding bulbs is on     |
+| `~`      | NOT                         | Flips all the bulbs (1 becomes 0, 0 becomes 1)                              |
+| `<<`     | Zero fill left shift         | Shifts all the bulbs to the left, filling in new bulbs on the right with 0   |
+| `>>`     | Signed right shift           | Shifts all the bulbs to the right, preserving the sign (leftmost bit)        |
+| `>>>`    | Zero fill right shift        | Shifts all the bulbs to the right, filling in new bulbs on the left with 0   |
+
+---
+
+### Example 1: Bitwise AND (`&`)
+- **Analogy**: Imagine you have two rows of bulbs. The `&` operator will only turn on a bulb in the final row if both bulbs in the same position are on in the original rows.
+  
+#### Operation: `5 & 1`
+- Binary of 5: `0101`
+- Binary of 1: `0001`
+- Result: `0001` (Decimal: 1)
+
+```javascript
+let result = 5 & 1; // result = 1
+```
+
+---
+
+### Example 2: Bitwise OR (`|`)
+- **Analogy**: If at least one of the two bulbs in the original rows is on, the `|` operator will turn on the corresponding bulb in the final row.
+
+#### Operation: `5 | 1`
+- Binary of 5: `0101`
+- Binary of 1: `0001`
+- Result: `0101` (Decimal: 5)
+
+```javascript
+let result = 5 | 1; // result = 5
+```
+
+---
+
+### Example 3: Bitwise XOR (`^`)
+- **Analogy**: The XOR operator checks each position. If the bulbs are different (one is on and the other is off), it will turn on the bulb in the final row. If both are the same (both on or both off), it turns the bulb off.
+
+#### Operation: `5 ^ 1`
+- Binary of 5: `0101`
+- Binary of 1: `0001`
+- Result: `0100` (Decimal: 4)
+
+```javascript
+let result = 5 ^ 1; // result = 4
+```
+
+---
+
+### Example 4: Bitwise NOT (`~`)
+- **Analogy**: Think of the NOT operator as a switch that flips every bulb. If the bulb is on, it turns off, and if it’s off, it turns on.
+
+#### Operation: `~5`
+- Binary of 5: `00000000000000000000000000000101`
+- Result (flipped): `11111111111111111111111111111010` (Decimal: -6)
+
+```javascript
+let result = ~5; // result = -6
+```
+
+---
+
+### Example 5: Left Shift (`<<`)
+- **Analogy**: Shifting the bulbs to the left means the row of bulbs moves over, and new bulbs on the right are added and always turned off (0).
+
+#### Operation: `5 << 1`
+- Binary of 5: `0101`
+- Result (shifted left): `1010` (Decimal: 10)
+
+```javascript
+let result = 5 << 1; // result = 10
+```
+
+---
+
+### Example 6: Signed Right Shift (`>>`)
+- **Analogy**: Shifting bulbs to the right means the row of bulbs moves over to the right, and the leftmost bulb (which is the sign bit) is duplicated to fill in the gap.
+
+#### Operation: `-5 >> 1`
+- Binary of -5: `11111111111111111111111111111011`
+- Result: `11111111111111111111111111111101` (Decimal: -3)
+
+```javascript
+let result = -5 >> 1; // result = -3
+```
+
+---
+
+### Example 7: Zero Fill Right Shift (`>>>`)
+- **Analogy**: Like the right shift, but instead of duplicating the leftmost bulb, it fills in the left side with off bulbs (0).
+
+#### Operation: `5 >>> 1`
+- Binary of 5: `00000000000000000000000000000101`
+- Result: `00000000000000000000000000000010` (Decimal: 2)
+
+```javascript
+let result = 5 >>> 1; // result = 2
+```
+
+---
+
+## Binary Numbers
+
+Binary numbers are like a sequence of light bulbs that represent values. Each bulb corresponds to a specific power of two. For example:
+
+- `0001` = 1
+- `0010` = 2
+- `0100` = 4
+- `1000` = 8
+
+If more bulbs are turned on, the value becomes a sum of the powers of two. For example, `0101` = 5 (4 + 1).
+
+---
+
+## Fun Binary Joke
+
+There are only 10 types of people in the world: those who understand binary and those who don’t!
+
+---
+
+## Converting Decimal to Binary
+
+You can easily convert a decimal number to its binary representation using JavaScript:
+
+```javascript
+function dec2bin(dec) {
+  return (dec >>> 0).toString(2);
+}
+
+console.log(dec2bin(5)); // Output: "101"
+```
+
+This function shifts the number to the right and converts it to binary.
+
+---
+
+## Conclusion
+
+Bitwise operations may seem complicated, but with simple analogies and understanding the rules of binary, they become much easier to grasp. Think of bitwise operators as tiny switches controlling light bulbs, and you're on your way to mastering them!
+
+---
+
+# JavaScript Regular Expressions
+
+## Introduction
+
+**Regular expressions** are sequences of characters that form a search pattern. This pattern can be used for text search or text replacement.
+
+### What is a Regular Expression?
+
+Imagine you're looking for a number in a big book. Regular expressions are like magical glasses that allow you to see only the numbers, ignoring everything else. They can be as simple as searching for a single character or as complex as defining advanced patterns to find exactly what you need.
+
+In summary:
+- A regular expression can be a single character or a more elaborate pattern.
+- They are used to perform searches or text replacements in strings.
+
+---
+
+## Regular Expression Syntax
+
+The basic syntax is:
+
+```
+/pattern/modifiers;
+```
+
+### Example:
+
+```javascript
+/w3schools/i;
+```
+
+#### Explanation of the Example:
+
+- `/w3schools/` is a **regular expression**.
+- `w3schools` is the **pattern** (what you're searching for).
+- `i` is a **modifier** that makes the search **case-insensitive**.
+
+---
+
+## Using String Methods with Regular Expressions
+
+In JavaScript, regular expressions are often used with the `search()` and `replace()` string methods.
+
+### The `search()` Method
+The `search()` method uses an expression to find a match and returns the position where it was found.
+
+#### Example:
+
+```javascript
+let text = "Visit W3Schools!";
+let n = text.search("W3Schools");
+```
+
+In this case, the search will return `6`, which is the position where "W3Schools" starts in the string.
+
+### The `replace()` Method
+The `replace()` method returns a new string where the pattern found is replaced.
+
+#### Example:
+
+```javascript
+let text = "Visit Microsoft!";
+let result = text.replace("Microsoft", "W3Schools");
+```
+
+This code replaces "Microsoft" with "W3Schools", returning "Visit W3Schools!".
+
+---
+
+## Using `search()` with Regular Expressions
+
+When using regular expressions instead of plain strings, you can make more advanced searches. For example, you can search regardless of uppercase or lowercase letters.
+
+#### Example:
+
+```javascript
+let text = "Visit W3Schools";
+let n = text.search(/w3schools/i);
+```
+
+Here, we're searching for "w3schools" in a case-insensitive way. The result will still be `6`.
+
+---
+
+## Using `replace()` with Regular Expressions
+
+You can also use regular expressions in the `replace()` method to replace text in a more flexible way.
+
+#### Example:
+
+```javascript
+let text = "Visit Microsoft!";
+let result = text.replace(/microsoft/i, "W3Schools");
+```
+
+Here, we're replacing "Microsoft" with "W3Schools" regardless of case. The result will be "Visit W3Schools!".
+
+---
+
+## Regular Expression Modifiers
+
+**Modifiers** are like small additional instructions that tell the regular expression how to search.
+
+| Modifier  | Description                                      |
+|-----------|--------------------------------------------------|
+| `i`       | Case-insensitive matching                        |
+| `g`       | Global search (find all matches)                 |
+| `m`       | Multiline search                                 |
+| `d`       | Start and end match (New in ES2022)              |
+
+---
+
+## Regular Expression Patterns
+
+Patterns define what you're specifically searching for. Here are some common examples:
+
+### Using Brackets `[]`
+
+Brackets are used to find any character within a range.
+
+| Expression   | Description                                      |
+|--------------|--------------------------------------------------|
+| `[abc]`      | Find any of the characters between the brackets   |
+| `[0-9]`      | Find any digit between 0 and 9                    |
+| `(x|y)`      | Find any of the alternatives separated by `|`     |
+
+### Using Metacharacters
+
+**Metacharacters** are special characters with unique meanings.
+
+| Metacharacter | Description                                      |
+|---------------|--------------------------------------------------|
+| `\d`          | Find a digit                                     |
+| `\s`          | Find a whitespace character                      |
+| `\b`          | Find a match at the beginning or end of a word   |
+
+### Using Quantifiers
+
+**Quantifiers** define how many times a character should appear in a match.
+
+| Quantifier    | Description                                      |
+|---------------|--------------------------------------------------|
+| `n+`          | Matches any string containing at least one `n`   |
+| `n*`          | Matches any string containing zero or more occurrences of `n` |
+| `n?`          | Matches any string containing zero or one occurrence of `n`    |
+
+---
+
+## The RegExp Object in JavaScript
+
+The **RegExp object** is a predefined object in JavaScript used to work with regular expressions.
+
+### Using `test()`
+
+The `test()` method searches for a pattern in a string and returns `true` or `false`, depending on whether it finds a match.
+
+#### Example:
+
+```javascript
+const pattern = /e/;
+console.log(pattern.test("The best things in life are free!")); // true
+```
+
+Since the letter "e" is in the string, the result will be `true`.
+
+### Using `exec()`
+
+The `exec()` method searches for a pattern in a string and returns the matched text as an object. If no match is found, it returns `null`.
+
+#### Example:
+
+```javascript
+/e/.exec("The best things in life are free!");
+```
+
+This code will search for the letter "e" and return the first match found.
+
+---
+
+## Conclusion
+
+Regular expressions are a powerful tool in JavaScript for searching and replacing text. Although they may seem complex at first, with practice and using simple analogies like magical glasses that filter what you're looking for, we can learn to handle them and make the most of their potential.
+
+---
+
+# JavaScript Operator Precedence
+
+## Introduction
+
+**Operator precedence** in JavaScript describes the order in which operations are performed in an arithmetic expression. Understanding this concept is essential to ensure your code behaves as expected. A good way to think about it is to imagine that you are tackling a list of tasks in a certain order: some tasks are more urgent than others, so you have to do those first.
+
+## Analogy: Solving Tasks in Order
+
+Think of operator precedence like a to-do list. For example, if you have to multiply and add several numbers, it’s like having a list of things to do. Multiplication is an urgent task, while addition is less urgent. Therefore, multiplication is done first, regardless of the order it appears in!
+
+In code:
+
+```javascript
+let x = 100 + 50 * 3;
+```
+
+Here, even though `100 + 50` comes first, `50 * 3` is solved first because multiplication has higher priority. Then, we add the result to 100, which gives us `250`.
+
+### Grouping with Parentheses
+
+Now, if you want addition to happen first, you can use parentheses, as if saying, “do this first, because it’s more important.”
+
+```javascript
+let x = (100 + 50) * 3;
+```
+
+With the parentheses, we’re telling JavaScript to add `100 + 50` first and then multiply the result by 3. Now, the result is `450`.
+
+---
+
+## Operator Precedence Rules
+
+### Operators with the Same Precedence
+
+If two operators have the same precedence, like multiplication (`*`) and division (`/`), they are solved from left to right, just like you would read a book.
+
+For example:
+
+```javascript
+let x = 100 / 50 * 3;
+```
+
+First, `100 / 50` is solved, which gives `2`, and then we multiply it by `3`, giving `6`.
+
+---
+
+## Operator Precedence Values
+
+Below is a list of the most important operators and their precedence level, from highest to lowest. The higher the number, the more urgent (or prioritized) the operator is:
+
+### Expression Grouping
+
+The operator with the highest precedence is **parentheses** `()`, which groups operations and tells JavaScript to solve them first.
+
+| Precedence | Operator      | Description                     | Example              |
+|------------|---------------|---------------------------------|----------------------|
+| 18         | `()`          | Expression Grouping              | `(100 + 50) * 3`     |
+
+### Accessing Properties
+
+When accessing object properties, whether using dot notation (`.`) or brackets (`[]`), these operators have high precedence because they need to execute before you can work with the value.
+
+| Precedence | Operator      | Description                     | Example              |
+|------------|---------------|---------------------------------|----------------------|
+| 17         | `.`           | Access a property                | `person.name`        |
+| 17         | `[]`          | Access a property                | `person["name"]`     |
+
+### Increment and Decrement Operators
+
+The **postfix version** (when the operator is after the variable, like `i++`) has higher precedence than the **prefix version** (when the operator comes first, like `++i`).
+
+| Precedence | Operator      | Description                     | Example              |
+|------------|---------------|---------------------------------|----------------------|
+| 15         | `i++`         | Postfix increment                | `i++`                |
+| 14         | `++i`         | Prefix increment                 | `++i`                |
+
+### Logical and Unary Operators
+
+Unary operators, such as **logical NOT** (`!`) and **bitwise NOT** (`~`), have relatively high precedence. These operators change the value of a variable without needing other operands.
+
+| Precedence | Operator      | Description                     | Example              |
+|------------|---------------|---------------------------------|----------------------|
+| 14         | `!`           | Logical NOT                      | `!(x == y)`          |
+| 14         | `~`           | Bitwise NOT                      | `~x`                 |
+
+### Arithmetic Operators
+
+**Exponentiation** (`**`) has higher precedence than multiplication (`*`) or division (`/`). These, in turn, have higher precedence than addition (`+`) or subtraction (`-`).
+
+| Precedence | Operator      | Description                     | Example              |
+|------------|---------------|---------------------------------|----------------------|
+| 13         | `**`          | Exponentiation                   | `10 ** 2`            |
+| 12         | `*`           | Multiplication                   | `10 * 5`             |
+| 12         | `/`           | Division                         | `10 / 5`             |
+| 11         | `+`           | Addition                         | `10 + 5`             |
+| 11         | `-`           | Subtraction                      | `10 - 5`             |
+
+---
+
+## Conclusion
+
+Operator precedence may seem complex at first, but the key is to remember that some operators, like multiplication and division, are more urgent than addition and subtraction. When in doubt, use parentheses to make sure the operation you want is executed first.
+
+And that’s it! Now you have a clear guide on how operator precedence affects your calculations in JavaScript, using a simple analogy to make it easier to remember. 🚀
+
+---
+
+# JavaScript Errors: `Throw`, `Try...Catch...Finally`
+
+### Understanding Errors with Simple Analogies
+
+Imagine you're trying to bake a cake. You follow a recipe, but there are some mistakes along the way. Maybe you accidentally add salt instead of sugar (an **error**). You could choose to ignore it and bake the cake anyway, but it won't turn out well! To prevent this, you set up some rules: if you notice the mistake early, you’ll stop and fix it, or handle the problem somehow.
+
+JavaScript works similarly when it runs code. It expects everything to go smoothly, but **errors** can happen. Sometimes we can predict and handle these errors using `try...catch...finally`.
+
+---
+
+### `try`: Baking the Cake (Running the Code)
+
+The `try` block is like following the recipe. You attempt to bake the cake (run the code) step by step.
+
+```js
+try {
+  // Try to follow the recipe (execute code)
+}
+```
+
+---
+
+### `catch`: Handling the Salt Mistake (Catching Errors)
+
+If something goes wrong—like realizing you added salt instead of sugar—this is where `catch` comes in. You can decide how to handle the error, like starting over or fixing it.
+
+```js
+catch (err) {
+  // Handle the mistake (handle the error)
+}
+```
+
+---
+
+### `finally`: Clean Up After Baking (Code that Always Runs)
+
+Regardless of whether the cake turned out well or not, you’ll clean up the kitchen afterward. This is what `finally` does: it always runs, whether there was an error or not.
+
+```js
+finally {
+  // Clean up after baking (code that always runs)
+}
+```
+
+---
+
+### Custom Errors with `throw`: Creating Your Own "Recipe Alert"
+
+In some cases, you might want to deliberately stop the process if you know something is wrong, like running out of flour. With `throw`, you can create your own custom errors. It's like saying, "Stop! We can't continue without flour."
+
+```js
+throw "Out of flour"; // Custom error
+```
+
+---
+
+### Example: The Cake Recipe (Try, Catch, Finally in Action)
+
+Let’s look at a simple example where we try to run some code, but handle any errors that come up:
+
+```html
+<p id="demo"></p>
+
+<script>
+try {
+  adddlert("Welcome guest!"); // This will cause an error
+}
+catch (err) {
+  document.getElementById("demo").innerHTML = err.message; // Handle the error
+}
+finally {
+  // Code that will run no matter what
+}
+</script>
+```
+
+Here, we deliberately made a typo with `adddlert` instead of `alert`. When JavaScript encounters this error, it “catches” it in the `catch` block and displays the error message.
+
+---
+
+### JavaScript Throws Errors
+
+When JavaScript runs into an error, it "throws" an error message, like when you realize there’s a mistake in your recipe. It stops what it's doing and raises the alert.
+
+JavaScript creates an **Error Object** with two important properties:
+1. `name`: The type of error (e.g., SyntaxError, TypeError).
+2. `message`: A description of the error.
+
+---
+
+### Using `throw` to Create Custom Errors
+
+The `throw` statement is like creating your own emergency stop in a recipe. You can stop the process with your own error message. It can be a string, a number, or even an object.
+
+```js
+throw "Too many ingredients!";
+throw 500;  // You can throw numbers too
+```
+
+---
+
+### Example: Input Validation
+
+Here's an example where we check if someone’s input is a valid number between 5 and 10. If it’s not, we throw a custom error:
+
+```html
+<p>Please input a number between 5 and 10:</p>
+
+<input id="demo" type="text">
+<button type="button" onclick="myFunction()">Test Input</button>
+<p id="p01"></p>
+
+<script>
+function myFunction() {
+  const message = document.getElementById("p01");
+  message.innerHTML = "";
+  let x = document.getElementById("demo").value;
+  try {
+    if (x.trim() == "") throw "empty";
+    if (isNaN(x)) throw "not a number";
+    x = Number(x);
+    if (x < 5) throw "too low";
+    if (x > 10) throw "too high";
+  }
+  catch (err) {
+    message.innerHTML = "Input is " + err;
+  }
+}
+</script>
+```
+
+Here, the user inputs a number. If the input is incorrect (e.g., empty, not a number, too low, or too high), we throw custom error messages, which are then caught and displayed.
+
+---
+
+### The `finally` Statement: Always Cleaning Up
+
+The `finally` block ensures that certain code runs no matter what, even if there's an error. For example, resetting the input field after checking the value.
+
+```js
+finally {
+  document.getElementById("demo").value = ""; // Clear the input field no matter what
+}
+```
+
+---
+
+### JavaScript Error Object
+
+JavaScript has built-in error types, which come with specific names and messages. Here are the most common ones:
+
+- **EvalError**: Issues in the `eval()` function.
+- **RangeError**: A number that is out of range (e.g., asking for 500 decimal places).
+- **ReferenceError**: Referring to a variable that hasn’t been declared.
+- **SyntaxError**: Incorrect syntax, like missing quotes or parentheses.
+- **TypeError**: A mismatch between the type expected and the type provided (e.g., trying to call a method on a number).
+- **URIError**: Issues with URI encoding/decoding.
+
+---
+
+### Example of Common Errors
+
+#### **RangeError**
+```js
+let num = 1;
+try {
+  num.toPrecision(500); // 500 is too many decimal places
+}
+catch (err) {
+  console.log(err.name); // RangeError
+}
+```
+
+#### **ReferenceError**
+```js
+try {
+  x = y + 1; // y is not declared
+}
+catch (err) {
+  console.log(err.name); // ReferenceError
+}
+```
+
+#### **SyntaxError**
+```js
+try {
+  eval("alert('Hello)"); // Missing closing quote
+}
+catch (err) {
+  console.log(err.name); // SyntaxError
+}
+```
+
+#### **TypeError**
+```js
+let num = 1;
+try {
+  num.toUpperCase(); // Can't apply toUpperCase on a number
+}
+catch (err) {
+  console.log(err.name); // TypeError
+}
+```
+
+#### **URIError**
+```js
+try {
+  decodeURI("%%%"); // Invalid URI characters
+}
+catch (err) {
+  console.log(err.name); // URIError
+}
+```
+
+---
+
+### Conclusion
+
+Handling errors in JavaScript is like troubleshooting during a recipe. By using `try`, `catch`, `finally`, and `throw`, you can anticipate and handle problems gracefully, ensuring your code continues to function smoothly, even when unexpected issues arise.
+
+---
+
+# JavaScript Scope
+
+**Scope** determines the accessibility (visibility) of variables in JavaScript.
+
+JavaScript has 3 types of scope:
+
+- **Block Scope**
+- **Function Scope**
+- **Global Scope**
+
+## Block Scope
+
+Before ES6 (2015), JavaScript only had Global Scope and Function Scope.
+
+ES6 introduced two important keywords: `let` and `const`.
+
+These two keywords provide **Block Scope** in JavaScript. Variables declared inside a block `{ }` cannot be accessed from outside the block.
+
+### Example
+
+```javascript
+{
+  let x = 2;
+}
+// x CANNOT be used here
+```
+
+Variables declared with the `var` keyword do NOT have block scope. Variables declared inside a block `{ }` can be accessed from outside the block.
+
+### Example
+
+```javascript
+{
+  var x = 2;
+}
+// x CAN be used here
+```
+
+**Analogy**: Imagine you have a box (the block). If you close the box and put a toy inside, you cannot access that toy from outside. But if you leave a toy on the floor (using `var`), you can access it from anywhere in the room.
+
+---
+
+## Local Scope
+
+Variables declared within a JavaScript function are **local** to that function.
+
+### Example
+
+```javascript
+// This code CANNOT use carName
+
+function myFunction() {
+  let carName = "Volvo";
+  // This code CAN use carName
+}
+
+// This code CANNOT use carName
+```
+
+Local variables have **Function Scope**. They can only be accessed from within the function.
+
+Since local variables are only recognized inside their functions, variables with the same name can be used in different functions.
+
+Local variables are created when a function starts and deleted when the function completes.
+
+**Analogy**: Think of a party. Each room has its own games (variables). If you leave a game in the living room (outside the function), everyone can play with it, but if you put it in a bedroom (inside the function), only those in that room can use it.
+
+---
+
+## Function Scope
+
+JavaScript has **function scope**: each function creates a new scope. Variables defined inside a function are not accessible (visible) from outside the function.
+
+Variables declared with `var`, `let`, and `const` are quite similar when declared inside a function; they all have Function Scope.
+
+### Example
+
+```javascript
+function myFunction() {
+  var carName = "Volvo";   // Function Scope
+}
+function myFunction() {
+  let carName = "Volvo";   // Function Scope
+}
+function myFunction() {
+  const carName = "Volvo"; // Function Scope
+}
+```
+
+---
+
+## Global Variables in JavaScript
+
+A variable declared outside of a function becomes **GLOBAL**.
+
+### Example
+
+```javascript
+let carName = "Volvo";
+// This code can use carName
+
+function myFunction() {
+  // This code can also use carName
+}
+```
+
+A global variable has **Global Scope**: all scripts and functions on a webpage can access it.
+
+Variables declared with `var`, `let`, and `const` are similar when declared outside a block; they all have Global Scope.
+
+### Example
+
+```javascript
+var x = 2;       // Global scope
+let x = 2;       // Global scope
+const x = 2;     // Global scope
+```
+
+**Analogy**: Imagine a cat's name written on a whiteboard in the center of a room (the global scope). Everyone in the room can see and use that name, no matter what corner of the room they are in.
+
+---
+
+## Automatically Global Variables
+
+If you assign a value to a variable that has not been declared, it will automatically become a **GLOBAL** variable.
+
+### Example
+
+```javascript
+myFunction();
+
+// This code can use carName
+
+function myFunction() {
+  carName = "Volvo"; // Becomes a global variable
+}
+```
+
+### Strict Mode
+
+All modern browsers support running JavaScript in **"Strict Mode"**. In this mode, undeclared variables are not automatically global.
+
+---
+
+## Global Variables in HTML
+
+With JavaScript, the global scope is the JavaScript environment. In HTML, the global scope is the `window` object.
+
+Global variables defined with the `var` keyword belong to the `window` object:
+
+### Example
+
+```javascript
+var carName = "Volvo";
+// This code can use window.carName
+```
+
+Global variables defined with the `let` keyword do not belong to the `window` object:
+
+### Example
+
+```javascript
+let carName = "Volvo";
+// This code CANNOT use window.carName
+```
+
+### Warning
+
+**Do NOT create global variables unless you intend to!** Your global variables (or functions) can overwrite window variables (or functions). 
+
+Any function, including the `window` object, can overwrite your global variables and functions.
+
+---
+
+## The Lifetime of JavaScript Variables
+
+The lifetime of a JavaScript variable starts when it is declared.
+
+Function (local) variables are deleted when the function is completed. In a web browser, global variables are deleted when you close the browser window (or tab).
+
+### Function Arguments
+
+Function arguments (parameters) work as local variables inside functions.
+
+---
+
+# JavaScript Hoisting
+
+### What is Hoisting?
+Hoisting is JavaScript's default behavior of moving declarations to the top of their scope. Imagine a teacher organizing students' desks at the start of the school year. Even if students sit down at their desks first, the teacher ensures that each desk has a nameplate at the top for the respective student. This way, even if a student arrives late, their name is already at their desk.
+
+### JavaScript Declarations are Hoisted
+In JavaScript, a variable can be used before it has been declared. 
+
+**Example 1:**
+```javascript
+x = 5; // Assign 5 to x
+elem = document.getElementById("demo"); // Find an element
+elem.innerHTML = x; // Display x in the element
+var x; // Declare x
+```
+
+**Example 2:**
+```javascript
+var x; // Declare x
+x = 5; // Assign 5 to x
+elem = document.getElementById("demo"); // Find an element
+elem.innerHTML = x; // Display x in the element
+```
+
+Both examples produce the same result. In other words, JavaScript lifts the declaration of `x` to the top, much like how the teacher organizes the nameplates first.
+
+### The let and const Keywords
+Variables defined with `let` and `const` are hoisted to the top of the block, but they are not initialized. Think of it as placing the students' nameplates on their desks without assigning them to a particular student yet. The desk is ready, but the student cannot be recognized until they arrive.
+
+Using a `let` variable before it is declared results in a `ReferenceError`, indicating that the variable exists but has not yet been defined:
+
+**Example:**
+```javascript
+carName = "Volvo"; // ReferenceError
+let carName;
+```
+
+Similarly, using a `const` variable before it is declared causes a syntax error. The code will simply not run:
+
+**Example:**
+```javascript
+carName = "Volvo"; // SyntaxError
+const carName;
+```
+
+### JavaScript Initializations are Not Hoisted
+JavaScript only hoists declarations, not initializations. This means that the variable `y` is declared but not initialized before it is used, resulting in `undefined`.
+
+**Example 1:**
+```javascript
+var x = 5; // Initialize x
+var y = 7; // Initialize y
+elem = document.getElementById("demo"); // Find an element
+elem.innerHTML = x + " " + y; // Display x and y
+```
+
+**Example 2:**
+```javascript
+var x = 5; // Initialize x
+elem = document.getElementById("demo"); // Find an element
+elem.innerHTML = x + " " + y; // Display x and y
+var y = 7; // Initialize y
+```
+
+In the second example, `y` is `undefined` because only its declaration was hoisted to the top, similar to a student being present in class but without their assignment being completed yet.
+
+### Declare Your Variables At the Top!
+Hoisting can lead to bugs if not understood properly. To avoid confusion and errors, it's a good practice to always declare all variables at the beginning of every scope. This is like ensuring all students are seated and have their nameplates organized before starting class. In strict mode, JavaScript does not allow the use of undeclared variables.
+
+# JavaScript Use Strict
+
+### What is "use strict"?
+The `"use strict";` directive tells JavaScript to run the code in strict mode. Think of this as a set of rules for a game that ensures everyone plays fairly. Strict mode helps catch common coding mistakes and "bad syntax" by throwing errors when they occur.
+
+### Declaring Strict Mode
+You can declare strict mode by adding `"use strict";` at the beginning of your script or function. 
+
+**Example:**
+```javascript
+"use strict";
+x = 3.14; // This will cause an error because x is not declared
+```
+
+If strict mode is declared inside a function, it only affects that function:
+
+**Example:**
+```javascript
+function myFunction() {
+  "use strict";
+  y = 3.14; // This will cause an error
+}
+myFunction();
+```
+
+### Why Use Strict Mode?
+Strict mode helps prevent the accidental creation of global variables and improves the overall quality of the code. For example, if you mistype a variable name, it will throw an error in strict mode instead of creating a new global variable.
+
+### Not Allowed in Strict Mode
+In strict mode, the following actions are not allowed:
+
+- Using undeclared variables:
+    ```javascript
+    "use strict";
+    x = 3.14; // Error
+    ```
+
+- Deleting variables:
+    ```javascript
+    "use strict";
+    let x = 3.14;
+    delete x; // Error
+    ```
+
+- Duplicating parameter names:
+    ```javascript
+    "use strict";
+    function x(p1, p1) {}; // Error
+    ```
+
+- Using `eval` and `with` statements improperly, and other restrictions related to variable names.
+
+### Future Proof!
+Strict mode also prevents the use of future reserved keywords as variable names. For instance, the following code will cause an error:
+
+```javascript
+"use strict";
+let public = 1500; // Error
+```
+
+### Conclusion
+Using `"use strict";` and understanding hoisting are fundamental in writing clean, bug-free JavaScript code. Always declare your variables at the top and utilize strict mode to enforce better coding practices!
+
+---
+
+# Understanding JavaScript Concepts: `this` Keyword and Arrow Functions
+
+## The JavaScript `this` Keyword
+
+### Example
+```javascript
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  id: 5566,
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+```
+
+### What is `this`?
+In JavaScript, the `this` keyword refers to an object, but its meaning changes based on the context in which it is used. Think of `this` as a "contextual pointer" that indicates which object you are currently working with. Here’s how `this` behaves in different scenarios:
+
+1. **In an object method:** `this` refers to the object itself.
+2. **Alone:** `this` refers to the global object (e.g., `window` in browsers).
+3. **In a function:** `this` refers to the global object.
+4. **In a strict mode function:** `this` is `undefined`.
+5. **In an event:** `this` refers to the element that triggered the event.
+6. **Using `call()`, `apply()`, or `bind()`:** You can explicitly set what `this` refers to.
+
+### Note
+`this` is a keyword, not a variable. You cannot change its value directly.
+
+### `this` in a Method
+When used in an object method, `this` points to the object that the method belongs to. For instance, in the `person` object, calling `fullName()` returns `John Doe` because `this` refers to the `person` object.
+
+### `this` Alone
+When `this` is used alone, it refers to the global object. In a browser, the global object is represented as `[object Window]`.
+
+**Example**
+```javascript
+let x = this; // x is the global object
+```
+
+In strict mode, `this` still refers to the global object, but in a stricter sense.
+
+**Example**
+```javascript
+"use strict";
+let x = this; // x is undefined
+```
+
+### `this` in a Function (Default)
+By default, in a regular function, `this` refers to the global object.
+
+**Example**
+```javascript
+function myFunction() {
+  return this; // Returns the global object
+}
+```
+
+### `this` in a Function (Strict)
+In strict mode, `this` will be `undefined` within a regular function, preventing unintentional global variable creation.
+
+**Example**
+```javascript
+"use strict";
+function myFunction() {
+  return this; // Returns undefined
+}
+```
+
+### `this` in Event Handlers
+In HTML event handlers, `this` refers to the HTML element that received the event.
+
+**Example**
+```html
+<button onclick="this.style.display='none'">
+  Click to Remove Me!
+</button>
+```
+
+### Object Method Binding
+In these examples, `this` is still the `person` object.
+
+**Example**
+```javascript
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  id: 5566,
+  myFunction: function() {
+    return this; // Refers to the person object
+  }
+};
+```
+
+### Explicit Function Binding
+The `call()` and `apply()` methods allow you to specify which object `this` refers to.
+
+**Example**
+```javascript
+const person1 = {
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+}
+
+const person2 = {
+  firstName: "John",
+  lastName: "Doe",
+}
+
+// Returns "John Doe":
+person1.fullName.call(person2); // person2 is now the context
+```
+
+### Function Borrowing
+With the `bind()` method, an object can borrow a method from another object.
+
+**Example**
+```javascript
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+}
+
+const member = {
+  firstName: "Hege",
+  lastName: "Nilsen",
+}
+
+let fullName = person.fullName.bind(member); // member borrows fullName
+```
+
+### Precedence of `this`
+To determine which object `this` refers to, follow this precedence:
+
+1. `bind()`
+2. `apply()` and `call()`
+3. Object method
+4. Global scope
+
+# JavaScript Arrow Function
+
+Arrow functions were introduced in ES6 to provide a shorter syntax for writing functions.
+
+### Shorter Syntax
+```javascript
+let myFunction = (a, b) => a * b; // Shortened function syntax
+```
+
+### Before Arrow Functions
+```javascript
+hello = function() {
+  return "Hello World!";
+}
+```
+
+### With Arrow Function
+```javascript
+hello = () => {
+  return "Hello World!";
+}
+```
+
+If the function has only one statement, and the statement returns a value, you can omit the brackets and the `return` keyword.
+
+### Arrow Functions Return Value by Default
+```javascript
+hello = () => "Hello World!"; // Returns value by default
+```
+
+### Arrow Function With Parameters
+When using parameters, you include them within parentheses:
+```javascript
+hello = (val) => "Hello " + val;
+```
+
+If you have only one parameter, you can even omit the parentheses:
+```javascript
+hello = val => "Hello " + val;
+```
+
+### What About `this`?
+Arrow functions handle `this` differently than regular functions. In arrow functions, there is **no binding of `this`**. Instead, `this` retains the value of the enclosing lexical context.
+
+### Example: Regular Function vs Arrow Function
+Both examples below call a method twice, but with different outcomes for `this`.
+
+#### Regular Function:
+```javascript
+hello = function() {
+  document.getElementById("demo").innerHTML += this;
+}
+
+window.addEventListener("load", hello); // `this` refers to the window
+document.getElementById("btn").addEventListener("click", hello); // `this` refers to the button
+```
+
+#### Arrow Function:
+```javascript
+hello = () => {
+  document.getElementById("demo").innerHTML += this; // `this` is the owner (window)
+}
+
+window.addEventListener("load", hello); // `this` still refers to the window
+document.getElementById("btn").addEventListener("click", hello); // `this` still refers to the window
+```
+
+### Remember these differences when working with functions. Sometimes the behavior of regular functions is what you want, if not, consider using arrow functions.
+
+### Browser Support
+The following table defines the first browser versions with full support for Arrow Functions in JavaScript:
+
+| Browser  | Version | Release Date  |
+|----------|---------|----------------|
+| Chrome   | 45      | Sep 2015       |
+| Edge     | 12      | Jul 2015       |
+| Firefox   | 22      | May 2013       |
+| Safari   | 10      | Sep 2016       |
+| Opera    | 32      | Sep 2015       |
+
+---
+
+# JavaScript Classes
+
+### Introduction to Classes
+ECMAScript 2015, also known as ES6, introduced JavaScript Classes.
+
+JavaScript Classes are templates for JavaScript Objects. Think of a class as a blueprint for building a house: the blueprint tells you how the house should be, but it is not the house itself.
+
+### JavaScript Class Syntax
+To create a class, use the `class` keyword. Always add a method named `constructor()`.
+
+#### Syntax
+```javascript
+class ClassName {
+  constructor() { ... }
+}
+```
+
+### Example
+```javascript
+class Car {
+  constructor(name, year) {
+    this.name = name;
+    this.year = year;
+  }
+}
+```
+The example above creates a class called `Car`. The class has two initial properties: `name` and `year`.
+
+Remember: a class itself is not an object; it is a template for creating objects.
+
+### Using a Class
+When you have a class, you can use it to create objects:
+
+#### Example
+```javascript
+const myCar1 = new Car("Ford", 2014);
+const myCar2 = new Car("Audi", 2019);
+```
+In this example, we use the `Car` class to create two `Car` objects. The `constructor` method is called automatically when a new object is created.
+
+### The Constructor Method
+The constructor method is a special method:
+- It must have the exact name "constructor".
+- It runs automatically when a new object is created.
+- It is used to initialize the object's properties.
+
+If you do not define a constructor method, JavaScript will add an empty constructor method by default.
+
+### Class Methods
+Class methods are created with the same syntax as object methods.
+
+#### Syntax
+```javascript
+class ClassName {
+  constructor() { ... }
+  method_1() { ... }
+  method_2() { ... }
+  method_3() { ... }
+}
+```
+
+#### Example of a Class Method
+Create a class method named `age`, which returns the car's age:
+
+```javascript
+class Car {
+  constructor(name, year) {
+    this.name = name;
+    this.year = year;
+  }
+  age() {
+    const date = new Date();
+    return date.getFullYear() - this.year;
+  }
+}
+
+const myCar = new Car("Ford", 2014);
+document.getElementById("demo").innerHTML =
+"My car is " + myCar.age() + " years old.";
+```
+
+### Sending Parameters to Class Methods
+You can send parameters to class methods:
+
+```javascript
+class Car {
+  constructor(name, year) {
+    this.name = name;
+    this.year = year;
+  }
+  age(x) {
+    return x - this.year;
+  }
+}
+
+const date = new Date();
+let year = date.getFullYear();
+
+const myCar = new Car("Ford", 2014);
+document.getElementById("demo").innerHTML=
+"My car is " + myCar.age(year) + " years old.";
+```
+
+### Browser Support
+The following table defines the first browser version with full support for Classes in JavaScript:
+
+| Browser   | Version | Release Date         |
+|-----------|---------|-----------------------|
+| Chrome    | 49      | Mar, 2016             |
+| Edge      | 12      | Jul, 2015             |
+| Firefox   | 45      | Mar, 2016             |
+| Safari    | 9       | Oct, 2015             |
+| Opera     | 36      | Mar, 2016             |
+
+### Conclusion
+You will learn a lot more about JavaScript Classes later in this tutorial.
+
+---
+
+# JavaScript Modules
+
+### Introduction to Modules
+JavaScript modules allow you to break up your code into separate files. This makes it easier to maintain a codebase. Think of modules as compartments in a wardrobe: each compartment (module) holds different things, but they all form part of the same wardrobe (the application).
+
+### Importing Modules
+Modules are imported from external files with the `import` statement. Additionally, modules rely on `type="module"` in the `<script>` tag.
+
+#### Example
+```html
+<script type="module">
+import message from "./message.js";
+</script>
+```
+
+### Exporting
+Modules with functions or variables can be stored in any external file. There are two types of exports: **Named Exports** and **Default Exports**.
+
+#### Named Exports
+Let’s create a file named `person.js` and fill it with the things we want to export. You can create named exports in two ways: inline individually or all at once at the bottom.
+
+- **Inline Individually:**
+```javascript
+// person.js
+export const name = "Jesse";
+export const age = 40;
+```
+
+- **All at Once at the Bottom:**
+```javascript
+// person.js
+const name = "Jesse";
+const age = 40;
+
+export { name, age };
+```
+
+#### Default Exports
+Let’s create another file named `message.js` and use it to demonstrate the default export. You can only have one default export in a file.
+
+#### Example
+```javascript
+// message.js
+const message = () => {
+  const name = "Jesse";
+  const age = 40;
+  return name + ' is ' + age + ' years old.';
+};
+
+export default message;
+```
+
+### Importing Modules
+You can import modules into a file in two ways, based on whether they are named exports or default exports.
+
+- **Importing from Named Exports**
+```javascript
+import { name, age } from "./person.js";
+```
+
+- **Importing from Default Exports**
+```javascript
+import message from "./message.js";
+```
+
+### Note
+Modules only work with the HTTP(s) protocol. A web page opened via the `file://` protocol cannot use import/export.
+
+### Conclusion
+Modules are a powerful tool for organizing your code and improving maintainability. As you advance in your learning, you will explore more about their usage and application.
+
+---
+
+# JavaScript JSON
+
+### What is JSON?
+Imagine JSON (JavaScript Object Notation) as a neatly packed suitcase for data. Just like you store your clothes in a suitcase for a trip, JSON helps us store and transport data efficiently.
+
+- **JSON is a format for storing and transporting data.**
+- **It is lightweight, like a small suitcase, making it easy to carry around.**
+- **JSON is language-independent, meaning it can be understood by many different programming languages, just as a suitcase can be recognized by anyone, regardless of where they're from.**
+- **JSON is "self-describing" and easy to understand, much like labels on a suitcase that tell you what’s inside.**
+
+### JSON Example
+Here’s a simple JSON example that defines an "employees" object, which is like a list of passengers in our suitcase:
+
+```json
+{
+  "employees":[
+    {"firstName":"John", "lastName":"Doe"},
+    {"firstName":"Anna", "lastName":"Smith"},
+    {"firstName":"Peter", "lastName":"Jones"}
+  ]
+}
+```
+
+### JSON Format Evaluates to JavaScript Objects
+The beautiful thing about JSON is that it looks like JavaScript. When you unpack the suitcase, you find the clothes neatly folded inside. Similarly, we can easily convert JSON data into JavaScript objects.
+
+### JSON Syntax Rules
+To keep our data organized in JSON, we have some simple rules, just like folding clothes in a specific way for a suitcase:
+
+1. **Data is in name/value pairs:** Think of this as a tag on a shirt indicating its size. For example, `"firstName":"John"`.
+2. **Data is separated by commas:** Like keeping shirts apart with small dividers in the suitcase.
+3. **Curly braces hold objects:** This is like the suitcase itself, containing various items.
+4. **Square brackets hold arrays:** Think of this as a drawer inside the suitcase containing multiple items, like socks.
+
+### JSON Data - A Name and a Value
+Each piece of JSON data is a name/value pair, similar to how every item in your suitcase has a name tag:
+
+```json
+"firstName":"John"
+```
+
+### JSON Objects
+JSON objects are written inside curly braces, much like the suitcase containing all your clothes:
+
+```json
+{"firstName":"John", "lastName":"Doe"}
+```
+
+### JSON Arrays
+JSON arrays are written inside square brackets. They hold multiple items, like a drawer filled with socks:
+
+```json
+"employees":[
+  {"firstName":"John", "lastName":"Doe"},
+  {"firstName":"Anna", "lastName":"Smith"},
+  {"firstName":"Peter", "lastName":"Jones"}
+]
+```
+
+### Converting JSON Text to a JavaScript Object
+Just like opening your suitcase to see what’s inside, we can convert a JSON string into a JavaScript object. Here’s how you can do it:
+
+1. Create a JavaScript string containing JSON syntax:
+
+```javascript
+let text = '{ "employees" : [' +
+'{ "firstName":"John" , "lastName":"Doe" },' +
+'{ "firstName":"Anna" , "lastName":"Smith" },' +
+'{ "firstName":"Peter" , "lastName":"Jones" } ]}';
+```
+
+2. Use the built-in function `JSON.parse()` to unpack the suitcase:
+
+```javascript
+const obj = JSON.parse(text);
+```
+
+3. Finally, use the new JavaScript object in your page:
+
+```html
+<p id="demo"></p>
+
+<script>
+document.getElementById("demo").innerHTML =
+obj.employees[1].firstName + " " + obj.employees[1].lastName;
+</script>
+```
+
+---
+
+# JavaScript Debugging
+
+### Code Debugging
+Imagine writing a recipe but making mistakes along the way. Sometimes, the dish doesn’t turn out as expected, and you must figure out what went wrong. This process of finding and fixing errors in your code is called debugging.
+
+- **Errors can (and will) happen every time you write new code.**
+- **Code might contain syntax errors (like misspelled words in a recipe) or logical errors (like forgetting to add an ingredient).**
+- **Debugging helps you diagnose these errors. Often, nothing happens when there’s an error, like when your cake doesn’t rise, and you’re left wondering why.**
+
+### JavaScript Debuggers
+Fortunately, modern browsers have built-in JavaScript debuggers, much like having a sous chef to assist you in the kitchen:
+
+- You can turn the debugger on and off, ensuring errors are reported, just like a sous chef alerts you to missing ingredients.
+- With a debugger, you can set breakpoints (places to stop and examine your code) and check the values of variables, similar to tasting the dish at various stages of cooking.
+
+To activate debugging, typically you press F12 and select "Console" in the debugger menu.
+
+### The console.log() Method
+If your browser supports debugging, you can use `console.log()` to display JavaScript values in the debugger window, like writing notes on your recipe to track what you did:
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My First Web Page</h1>
+
+<script>
+a = 5;
+b = 6;
+c = a + b;
+console.log(c); // This will show 11 in the console
+</script>
+
+</body>
+</html>
+```
+
+### Setting Breakpoints
+In the debugger window, you can set breakpoints in your JavaScript code. At each breakpoint, JavaScript will pause execution, allowing you to check values, just like checking the oven temperature:
+
+- After checking, you can resume execution (like putting the dish back in the oven).
+
+### The debugger Keyword
+Using the `debugger` keyword in your code is like placing a timer on your oven:
+
+```javascript
+let x = 15 * 5;
+debugger; // Execution will pause here
+document.getElementById("demo").innerHTML = x;
+```
+
+### Major Browsers' Debugging Tools
+To access debugging in different browsers, here’s what you typically do:
+
+- **Chrome:** Press F12 > "More tools" > "Developer tools" > "Console".
+- **Firefox:** Press F12 > "Web Developer" > "Web Console".
+- **Edge:** Press F12 > "Developer Tools" > "Console".
+- **Opera:** Press F12 > "Developer" > "Developer tools" > "Console".
+- **Safari:** Enable the "Develop" menu, then choose "Show Error Console".
+
+### Did You Know?
+Debugging is the process of testing, finding, and reducing bugs (errors) in computer programs. The first known computer bug was a real bug (an insect) stuck in the electronics!
+
+---
+
+# JavaScript Style Guide
+
+Always use the same coding conventions for all your JavaScript projects. Consistency is like having a common language in a conversation; it helps everyone understand each other better.
+
+## JavaScript Coding Conventions
+
+Coding conventions are style guidelines for programming. They typically cover:
+
+- Naming and declaration rules for variables and functions.
+- Rules for the use of white space, indentation, and comments.
+- Programming practices and principles.
+
+**Coding conventions secure quality:**
+
+- Improve code readability
+- Make code maintenance easier
+
+These conventions can be documented rules for teams to follow or just your individual coding practice.
+
+This page describes the general JavaScript code conventions used by W3Schools. You should also read the next chapter "Best Practices" and learn how to avoid coding pitfalls.
+
+## Variable Names
+
+At W3Schools, we use camelCase for identifier names (variables and functions). Think of it as a friendly little camel hopping over the words, connecting them:
+
+```javascript
+firstName = "John";
+lastName = "Doe";
+```
+
+All names start with a letter:
+
+```javascript
+price = 19.90;
+tax = 0.20;
+
+fullPrice = price + (price * tax);
+```
+
+### Spaces Around Operators
+
+Always put spaces around operators (`=`, `+`, `-`, `*`, `/`), and after commas. This is like giving your code some breathing room:
+
+```javascript
+let x = y + z;
+const myArray = ["Volvo", "Saab", "Fiat"];
+```
+
+## Code Indentation
+
+Always use 2 spaces for indentation of code blocks. Think of it like organizing your desk; a clean, organized space helps you find things more easily:
+
+```javascript
+function toCelsius(fahrenheit) {
+  return (5 / 9) * (fahrenheit - 32);
+}
+```
+
+Do not use tabs for indentation. Different editors interpret tabs differently, which can create confusion.
+
+### Statement Rules
+
+**General rules for simple statements:**
+
+Always end a simple statement with a semicolon:
+
+```javascript
+const cars = ["Volvo", "Saab", "Fiat"];
+```
+
+**General rules for complex (compound) statements:**
+
+- Put the opening bracket at the end of the first line.
+- Use one space before the opening bracket.
+- Put the closing bracket on a new line, without leading spaces.
+- Do not end a complex statement with a semicolon.
+
+```javascript
+function toCelsius(fahrenheit) {
+  return (5 / 9) * (fahrenheit - 32);
+}
+
+for (let i = 0; i < 5; i++) {
+  x += i;
+}
+
+if (time < 20) {
+  greeting = "Good day";
+} else {
+  greeting = "Good evening";
+}
+```
+
+## Object Rules
+
+**General rules for object definitions:**
+
+- Place the opening bracket on the same line as the object name.
+- Use a colon plus one space between each property and its value.
+- Use quotes around string values, not around numeric values.
+- Do not add a comma after the last property-value pair.
+- Place the closing bracket on a new line, without leading spaces.
+- Always end an object definition with a semicolon.
+
+Example:
+
+```javascript
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 50,
+  eyeColor: "blue"
+};
+```
+
+Short objects can be written compressed, on one line, using spaces only between properties:
+
+```javascript
+const person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+```
+
+## Line Length < 80
+
+For readability, avoid lines longer than 80 characters. If a JavaScript statement does not fit on one line, break it after an operator or a comma:
+
+```javascript
+document.getElementById("demo").innerHTML = "Hello Dolly.";
+```
+
+## Naming Conventions
+
+Always use the same naming convention for all your code. For example:
+
+- Variable and function names written in camelCase.
+- Global variables written in UPPERCASE (though not mandatory, it's common).
+- Constants (like PI) written in UPPERCASE.
+
+Should you use hyphens, camelCase, or underscores in variable names? This is a common topic of discussion among programmers. The answer often depends on personal or team preference.
+
+### Hyphens in HTML and CSS
+
+HTML5 attributes can start with `data-` (like `data-quantity`, `data-price`). CSS uses hyphens in property names (like `font-size`). However, hyphens can be mistaken as subtraction attempts and are not allowed in JavaScript names.
+
+### Underscores
+
+Many programmers prefer using underscores (like `date_of_birth`), especially in SQL databases. Underscores are also common in PHP documentation.
+
+### PascalCase
+
+PascalCase is often preferred by C programmers.
+
+### camelCase
+
+camelCase is used by JavaScript itself, jQuery, and other JavaScript libraries.
+
+**Avoid starting names with a `$` sign.** It can conflict with many JavaScript library names.
+
+## Loading JavaScript in HTML
+
+Use simple syntax for loading external scripts (the type attribute is not necessary):
+
+```html
+<script src="myscript.js"></script>
+```
+
+## Accessing HTML Elements
+
+A consequence of using "untidy" HTML styles might result in JavaScript errors. These two statements will produce different results:
+
+```javascript
+const obj = getElementById("Demo"); // Incorrect case
+
+const obj = getElementById("demo"); // Correct case
+```
+
+If possible, use the same naming convention (as JavaScript) in HTML.
+
+## File Extensions
+
+- HTML files should have a `.html` extension (`.htm` is allowed).
+- CSS files should have a `.css` extension.
+- JavaScript files should have a `.js` extension.
+
+## Use Lower Case File Names
+
+Most web servers (like Apache, Unix) are case-sensitive about file names:
+
+- `london.jpg` cannot be accessed as `London.jpg`.
+
+Other web servers (like Microsoft, IIS) are not case-sensitive:
+
+- `london.jpg` can be accessed as either `London.jpg` or `london.jpg`.
+
+To avoid confusion, always use lower case file names if possible.
+
+## Performance
+
+Coding conventions are not used by computers. Most rules have little impact on the execution of programs. Indentation and extra spaces are not significant in small scripts. For code in development, prioritize readability. Larger production scripts can be minimized for performance.
+
+---
+
+# JavaScript Best Practices
+
+**Avoid global variables, avoid new, avoid `==`, avoid `eval()`.**
+
+## Avoid Global Variables
+
+Minimize the use of global variables. This includes all data types, objects, and functions. Think of global variables like public property; they can be overwritten by other scripts. Use local variables instead and learn how to use closures.
+
+### Always Declare Local Variables
+
+All variables used in a function should be declared as local variables. Local variables must be declared with the `var`, `let`, or `const` keyword; otherwise, they will become global variables. Strict mode does not allow undeclared variables.
+
+**Declarations on Top**
+
+It's a good coding practice to put all declarations at the top of each script or function. This gives you cleaner code and provides a single place to look for local variables, making it easier to avoid unwanted global variables and re-declarations:
+
+```javascript
+// Declare at the beginning
+let firstName, lastName, price, discount, fullPrice;
+
+// Use later
+firstName = "John";
+lastName = "Doe";
+
+price = 19.90;
+discount = 0.10;
+
+fullPrice = price - discount;
+```
+
+This also applies to loop variables:
+
+```javascript
+for (let i = 0; i < 5; i++) {
+  // Do something
+}
+```
+
+## Initialize Variables
+
+It's a good practice to initialize variables when you declare them. This provides cleaner code, offers a single place to initialize variables, and avoids undefined values:
+
+```javascript
+// Declare and initiate at the beginning
+let firstName = "";
+let lastName = "";
+let price = 0;
+let discount = 0;
+let fullPrice = 0;
+
+const myArray = [];
+const myObject = {};
+```
+
+Initializing variables gives an idea of the intended use and data type.
+
+## Declare Objects with `const`
+
+Declaring objects with `const` will prevent accidental changes in type:
+
+```javascript
+let car = {type:"Fiat", model:"500", color:"white"};
+car = "Fiat"; // Changes object to string
+
+const car = {type:"Fiat", model:"500", color:"white"};
+car = "Fiat"; // Not possible
+```
+
+## Declare Arrays with `const`
+
+The same applies to arrays. Declaring arrays with `const` will prevent accidental changes in type:
+
+```javascript
+let cars = ["Saab", "Volvo", "BMW"];
+cars = 3; // Changes array to number
+
+const cars = ["Saab", "Volvo", "BMW"];
+cars = 3; // Not possible
+```
+
+## Don't Use `new Object()`
+
+Use `""` instead of `new String()`, `0` instead of `new Number()`, `false` instead of `new Boolean()`, `{}` instead of `new Object()`, `[]` instead of `new Array()`, `/()/` instead of `new RegExp()`, and `function (){}` instead of `new Function()`.
+
+```javascript
+let x1 = ""; // new primitive string
+let x2 = 0; // new primitive number
+let x3 = false; // new primitive boolean
+const x4 = {}; // new object
+
+
+const x5 = []; // new array
+const x6 = /()/; // new regular expression
+const x7 = function(){}; // new function
+```
+
+Using these conventions improves performance and reduces code size.
+
+## Use `===` and `!==` instead of `==` and `!=`
+
+Using `===` and `!==` checks the value and type of variables. This eliminates unexpected type coercion:
+
+```javascript
+const a = "5";
+const b = 5;
+
+// Using ==
+console.log(a == b); // true
+// Using ===
+console.log(a === b); // false
+```
+
+## Avoid Using `eval()`
+
+The `eval()` function executes the code it receives as a string. Avoid it if possible:
+
+```javascript
+const x = eval("2 + 2");
+```
+
+It can be slow, introduce security problems, and lead to debugging nightmares.
+
+## Functions and Naming Conventions
+
+- Always name your functions with a verb, like `calculateTotal()`, `formatDate()`, etc.
+- Avoid overusing nested functions, as they can make your code less readable.
+- Prefer arrow functions for anonymous functions or when using higher-order functions.
+
+## Use Comments
+
+- Use comments to explain the purpose of complex code.
+- Keep comments concise and to the point.
+- Remove commented-out code; it's usually better to delete it than leave it in.
+
+## Use Strict Mode
+
+Using strict mode helps you write cleaner code by catching common coding errors. Use `"use strict";` at the top of your scripts or functions:
+
+```javascript
+"use strict";
+```
+
+## Conclusion
+
+By adhering to these guidelines and best practices, you can write cleaner, more maintainable, and less error-prone JavaScript code. Your code will be more understandable for yourself and others, just like a well-structured book!
+
+---
+
+# JavaScript Common Mistakes
+
+This chapter points out some common JavaScript mistakes.
+
+## Accidentally Using the Assignment Operator
+
+Imagine you are trying to weigh yourself, but instead of stepping on the scale, you write down your weight on a piece of paper. In JavaScript, if you accidentally use the assignment operator `=` instead of the comparison operator `==` in an `if` statement, your program may yield unexpected results.
+
+For example:
+
+```javascript
+let x = 0;
+if (x == 10) { // This if statement returns false (as expected) because x is not equal to 10.
+}
+```
+
+However, consider this:
+
+```javascript
+let x = 0;
+if (x = 10) { // This if statement returns true (maybe not as expected), because x is now 10.
+}
+```
+
+Here, `x` is assigned the value `10`, and thus the condition evaluates to true. Similarly:
+
+```javascript
+let x = 0;
+if (x = 0) { // This if statement returns false (maybe not as expected), because 0 is considered false.
+}
+```
+
+### Explanation
+
+An assignment always returns the value of the assignment. Be cautious when writing conditions!
+
+## Expecting Loose Comparison
+
+Think of loose comparison like a wide-open door: it doesn’t care about what’s outside. In regular comparison, data types do not matter. This example returns true:
+
+```javascript
+let x = 10;
+let y = "10";
+if (x == y) { // This evaluates to true because the value is the same.
+}
+```
+
+In contrast, strict comparison is like a locked door: it checks both value and type. This returns false:
+
+```javascript
+let x = 10;
+let y = "10";
+if (x === y) { // This evaluates to false because the types are different.
+}
+```
+
+It's also common to forget that `switch` statements use strict comparison:
+
+```javascript
+let x = 10;
+switch(x) {
+  case 10: alert("Hello"); // This case will display an alert.
+}
+```
+
+But:
+
+```javascript
+let x = 10;
+switch(x) {
+  case "10": alert("Hello"); // This case will not display an alert.
+}
+```
+
+## Confusing Addition & Concatenation
+
+Imagine trying to add apples and oranges together. In JavaScript, addition is about numbers, while concatenation is about strings, but both use the `+` operator.
+
+When you add numbers:
+
+```javascript
+let x = 10;
+x = 10 + 5; // Now x is 15
+```
+
+However, when adding a number and a string:
+
+```javascript
+let y = 10;
+y += "5"; // Now y is "105"
+```
+
+This can lead to confusion:
+
+```javascript
+let x = 10;
+let y = 5;
+let z = x + y;     // Now z is 15
+
+let x = 10;
+let y = "5";
+let z = x + y;     // Now z is "105"
+```
+
+### Explanation
+
+Be mindful of data types when performing operations, as they can yield unexpected results.
+
+## Misunderstanding Floats
+
+Think of floating-point numbers as balancing on a tightrope: they can easily tip over. All numbers in JavaScript are stored as 64-bit floating-point numbers. This can lead to imprecise calculations:
+
+```javascript
+let x = 0.1;
+let y = 0.2;
+let z = x + y; // The result in z will not be exactly 0.3
+```
+
+To solve this issue, you can multiply and divide:
+
+```javascript
+let z = (x * 10 + y * 10) / 10; // z will be 0.3
+```
+
+## Breaking a JavaScript String
+
+Consider a sentence as a long piece of string. JavaScript allows you to break a statement into two lines, but not in the middle of a string:
+
+```javascript
+let x =
+"Hello World!"; // This works
+```
+
+However, this breaks the string:
+
+```javascript
+let x = "Hello
+World!"; // This will not work.
+```
+
+To break a statement in a string correctly, use a backslash:
+
+```javascript
+let x = "Hello \
+World!"; // This works.
+```
+
+## Misplacing Semicolon
+
+Think of a misplaced semicolon as putting a lock on a door you wanted to leave open. Because of it, this code block will execute regardless of the value of `x`:
+
+```javascript
+if (x == 19); // The semicolon here ends the if statement.
+{
+  // code block 
+}
+```
+
+## Breaking a Return Statement
+
+Imagine that at the end of a line, the story abruptly ends. JavaScript automatically closes statements at the end of a line.
+
+This function will work fine:
+
+```javascript
+function myFunction(a) {
+  let power = 10; 
+  return a * power;
+}
+```
+
+But what happens if you break the return statement like this:
+
+```javascript
+function myFunction(a) {
+  let power = 10; 
+  return
+  a * power; // This will return undefined!
+}
+```
+
+### Explanation
+
+JavaScript thinks you meant:
+
+```javascript
+function myFunction(a) {
+  let power = 10; 
+  return; // The return statement closes here.
+  a * power;
+}
+```
+
+Because ending statements with a semicolon is optional in JavaScript, the return statement gets closed automatically.
+
+### Key Point
+
+Never break a return statement.
+
+## Accessing Arrays with Named Indexes
+
+Think of arrays like numbered lockers. Many programming languages support associative arrays (or hashes) with named indexes, but JavaScript does not.
+
+In JavaScript, arrays use numbered indexes:
+
+```javascript
+const person = [];
+person[0] = "John";
+person[1] = "Doe";
+person[2] = 46;
+person.length;       // This returns 3
+person[0];           // This returns "John"
+```
+
+If you use a named index while accessing an array, JavaScript will redefine it to a standard object:
+
+```javascript
+const person = [];
+person["firstName"] = "John"; // This redefines the array.
+person["lastName"] = "Doe";
+person["age"] = 46;
+person.length;      // This returns 0
+person[0];          // This returns undefined
+```
+
+## Ending Definitions with a Comma
+
+Trailing commas in object and array definitions are legal in ECMAScript 5, but beware:
+
+```javascript
+person = {firstName:"John", lastName:"Doe", age:46,}; // Object example
+points = [40, 100, 1, 5, 25, 10,]; // Array example
+```
+
+**WARNING:** 
+
+Internet Explorer 8 will crash, and JSON does not allow trailing commas.
+
+## Undefined is Not Null
+
+In JavaScript, variables, properties, and methods can be `undefined`, while empty objects can have the value `null`. This makes testing for an empty object tricky.
+
+To check if an object exists:
+
+```javascript
+if (typeof myObj === "undefined") 
+```
+
+However, testing for `null` can throw an error if the object is `undefined`:
+
+```javascript
+if (myObj === null) // This is incorrect.
+```
+
+### Correct Approach
+
+Test if an object is not `null` and not `undefined`:
+
+```javascript
+if (typeof myObj !== "undefined" && myObj !== null) // This is correct.
+```
+
+Be mindful of these common mistakes to ensure smoother coding in JavaScript!
+
+---
+
+# JavaScript Performance
+
+## How to Speed Up Your JavaScript Code
+
+### Reduce Activity in Loops
+
+Loops are like a worker on an assembly line. If every time the worker needs to check how long the line is, it slows down production. 
+
+**Bad Example:**
+```javascript
+for (let i = 0; i < arr.length; i++) {
+    // do something with arr[i]
+}
+```
+
+**Better Code:**
+```javascript
+let l = arr.length; // Store the length outside the loop
+for (let i = 0; i < l; i++) {
+    // do something with arr[i]
+}
+```
+
+In the bad example, the code checks the length of the array during every iteration, which is inefficient. In the better code, we store the length in a variable before the loop, making it faster because it avoids repetitive checks.
+
+### Reduce DOM Access
+
+Accessing the Document Object Model (DOM) is like trying to find a book in a huge library. The more you search, the more time it takes. 
+
+**Example:**
+```javascript
+const obj = document.getElementById("demo"); // Access once
+obj.innerHTML = "Hello"; // Use the local variable
+```
+
+Instead of searching the DOM multiple times, access an element once and store it in a variable. This speeds up your code by reducing the number of searches.
+
+### Reduce DOM Size
+
+A cluttered library is hard to navigate. Similarly, a large DOM slows down page loading and rendering.
+
+**Tip:** Keep the number of elements in the HTML DOM small. This improves loading speed and enhances performance, especially on smaller devices. Fewer elements mean faster searches and rendering.
+
+### Avoid Unnecessary Variables
+
+Creating unnecessary variables is like bringing extra tools to a simple job. It complicates things without adding value.
+
+**Instead of this:**
+```javascript
+let fullName = firstName + " " + lastName;
+document.getElementById("demo").innerHTML = fullName;
+```
+
+**Do this:**
+```javascript
+document.getElementById("demo").innerHTML = firstName + " " + lastName; // Directly assign
+```
+
+By directly assigning the value, you simplify your code and improve performance.
+
+### Delay JavaScript Loading
+
+Think of loading scripts as setting up a stage for a show. If the stage is not ready, you can't start the performance.
+
+Placing your scripts at the bottom of the page allows the browser to load the main content first. While the script is loading, the browser can’t perform other tasks, slowing down the overall loading time.
+
+**Better Approach:**
+```html
+<script>
+window.onload = function() {
+    const element = document.createElement("script");
+    element.src = "myScript.js"; // Load script after the page is ready
+    document.body.appendChild(element);
+};
+</script>
+```
+
+Using the `defer` attribute in the script tag is another option. It ensures that the script runs only after the page has finished loading.
+
+### Avoid Using `with`
+
+Using the `with` keyword is like giving someone too many instructions at once; it can create confusion and slow things down. 
+
+**Note:** The `with` keyword is not allowed in strict mode, so it's best to avoid it altogether.
+
+---
+
+# JavaScript Reserved Words
+
+In JavaScript, certain words are reserved and cannot be used as variable names, labels, or function names. These reserved words act like "no parking" signs in a neighborhood — they signal that you can't use that space for something else.
+
+## Reserved Words
+
+Here are some examples of reserved words:
+
+- `abstract`
+- `arguments`
+- `await` (ES6)
+- `boolean`
+- `break`
+- `case`
+- `catch`
+
+Words marked with an asterisk (*) were introduced in ECMAScript 5 and 6.
+
+### Removed Reserved Words
+
+The following words have been removed from the ECMAScript 5/6 standard and should not be used as variables:
+
+- `abstract`
+- `boolean`
+- `byte`
+- `char`
+- `double`
+- `final`
+- `float`
+- `goto`
+- `int`
+- `long`
+- `native`
+- `short`
+- `synchronized`
+- `throws`
+- `transient`
+- `volatile`
+
+### JavaScript Built-In Objects, Properties, and Methods
+
+Avoid using names of built-in objects and properties as identifiers:
+
+- `Array`
+- `Date`
+- `eval`
+- `Function`
+- `Math`
+- `String`
+
+### Java Reserved Words
+
+If you're working with Java, avoid using these names as JavaScript identifiers:
+
+- `getClass`
+- `JavaObject`
+- `JavaPackage`
+
+### Other Reserved Words
+
+JavaScript can also interact with HTML, so avoid using names of HTML and Window objects:
+
+- `alert`
+- `document`
+- `window`
+
+### HTML Event Handlers
+
+Additionally, don't use the names of HTML event handlers:
+
+- `onclick`
+- `onload`
+- `onblur`
+
+By following these guidelines, you can avoid potential issues and ensure your code runs smoothly.
